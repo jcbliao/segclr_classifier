@@ -18,13 +18,17 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import torch  # noqa: E402
 from torch_geometric.loader import DataLoader  # noqa: E402
+from tqdm import tqdm  # noqa: E402
 
 from data.dataset import ReplacementPool, SegCLRGraphDataset, load_manifest  # noqa: E402
 from gnn.losses import masked_reconstruction_loss  # noqa: E402
 from gnn.model import GraphAutoEncoderClassifier, ModelConfig  # noqa: E402
 
 
-def run_epoch(model, loader, pool, device, opt=None, accum_steps=1, use_smooth_l1=False, lambda_mag=1.0):
+def run_epoch(
+    model, loader, pool, device, opt=None, accum_steps=1, use_smooth_l1=False, lambda_mag=1.0,
+    desc="train",
+):
     """opt=None -> eval mode, no gradient step."""
     train_mode = opt is not None
     model.train(train_mode)
@@ -33,7 +37,8 @@ def run_epoch(model, loader, pool, device, opt=None, accum_steps=1, use_smooth_l
     with ctx:
         if train_mode:
             opt.zero_grad()
-        for step, data in enumerate(loader):
+        pbar = tqdm(enumerate(loader), total=len(loader), desc=desc, unit="cell", leave=False)
+        for step, data in pbar:
             data = data.to(device)
             label = int(data.y.item())
             replacement_source = pool.sampler_for(label)
@@ -53,6 +58,7 @@ def run_epoch(model, loader, pool, device, opt=None, accum_steps=1, use_smooth_l
                     opt.zero_grad()
             total_loss += loss.item()
             n += 1
+            pbar.set_postfix(loss=f"{total_loss / n:.4f}")
         if train_mode and (step + 1) % accum_steps != 0:
             opt.step()
             opt.zero_grad()
@@ -88,24 +94,44 @@ def main(args):
     model = GraphAutoEncoderClassifier(config).to(device)
     opt = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
 
-    out_dir = Path(__file__).resolve().parent.parent / "results" / f"pretrain_{args.replace_strategy}"
+    # mask_prob is part of the run identity -- without it here, two runs that
+    # only differ by --mask-prob would both write to results/pretrain_random/
+    # and silently clobber each other's checkpoints.
+    run_name = f"pretrain_{args.replace_strategy}_mask{args.mask_prob:g}"
+    out_dir = Path(__file__).resolve().parent.parent / "results" / run_name
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    for epoch in range(args.epochs):
+    best_val_loss, best_epoch = float("inf"), -1
+    epoch_bar = tqdm(range(args.epochs), desc="pretrain", unit="epoch")
+    for epoch in epoch_bar:
         train_loss = run_epoch(
-            model, train_loader, pool, device, opt, args.accum_steps, args.use_smooth_l1, args.lambda_mag
+            model, train_loader, pool, device, opt, args.accum_steps, args.use_smooth_l1, args.lambda_mag,
+            desc=f"e{epoch} train",
         )
         val_loss = run_epoch(
-            model, val_loader, pool, device, None, use_smooth_l1=args.use_smooth_l1, lambda_mag=args.lambda_mag
+            model, val_loader, pool, device, None, use_smooth_l1=args.use_smooth_l1, lambda_mag=args.lambda_mag,
+            desc=f"e{epoch} val",
         )
-        print(f"epoch {epoch:4d}  train_loss={train_loss:.4f}  val_loss={val_loss:.4f}")
+        epoch_bar.set_postfix(train_loss=f"{train_loss:.4f}", val_loss=f"{val_loss:.4f}")
+        tqdm.write(f"epoch {epoch:4d}  train_loss={train_loss:.4f}  val_loss={val_loss:.4f}")
+
+        if val_loss < best_val_loss:
+            best_val_loss, best_epoch = val_loss, epoch
+            torch.save(
+                {"model_state": model.state_dict(), "config": config, "epoch": epoch, "val_loss": val_loss},
+                out_dir / "checkpoint_best.pt",
+            )
+            tqdm.write(f"  new best val_loss={val_loss:.4f} at epoch {epoch} -> checkpoint_best.pt")
 
         if (epoch + 1) % args.ckpt_every == 0 or epoch == args.epochs - 1:
             ckpt_path = out_dir / f"checkpoint_e{epoch}.pt"
             torch.save(
-                {"model_state": model.state_dict(), "config": config, "epoch": epoch}, ckpt_path
+                {"model_state": model.state_dict(), "config": config, "epoch": epoch, "val_loss": val_loss},
+                ckpt_path,
             )
-            print(f"  saved {ckpt_path}")
+            tqdm.write(f"  saved {ckpt_path}")
+
+    tqdm.write(f"best val_loss={best_val_loss:.4f} at epoch {best_epoch} ({out_dir / 'checkpoint_best.pt'})")
 
 
 if __name__ == "__main__":

@@ -1,17 +1,28 @@
 # The from-scratch local data pipeline is deprecated
 
-**Deprecated 2026-08-04, replacement store readable as of 2026-08-05.**
-`data/build_dataset.py`, `data/cave_skeletons.py`, and `data/public_reader.py`'s
-raw-embedding-fetch-and-match path (i.e. everything that produced `data/manifest.json` +
-`data/graph_cache/*.pt`) is superseded by reading directly from the real, properly-indexed
-segclr-db store at `/orcd/compute/sdorkenw/001/collina/segclr-db` — see "Replacement" below,
-now unblocked (permissions fixed 2026-08-05). Test results already produced by this deprecated
+**Deprecated 2026-08-04, replaced 2026-08-05.** `data/build_dataset.py`,
+`data/cave_skeletons.py`, and `data/public_reader.py`'s raw-embedding-fetch-and-match path is
+superseded by `data/build_dataset_from_store.py`, which reads directly from the real,
+properly-indexed segclr-db store at `/orcd/compute/sdorkenw/001/collina/segclr-db` (see
+"Replacement" below). The deprecated script's outputs were renamed out of the way so the new
+pipeline could claim the paths `data/dataset.py` and every training script already expect:
+`data/manifest_deprecated.json` + `data/graph_cache_deprecated/*.pt` (was
+`data/manifest.json` + `data/graph_cache/`) hold the OLD data;
+`data/manifest.json` + `data/graph_cache/` are now the NEW pipeline's output.
+`data/skeleton_cache/*.pkl` is shared between both -- a Skeleton for a given root_id is the
+same regardless of which pipeline fetched it. Test results already produced by the deprecated
 pipeline are archived under `results/deprecated_local_pipeline/`, not deleted, but should not
 be cited as performance numbers (see that directory's README for an additional overfitting
 concern found independent of the embedding-correspondence problem). Kept in the repo as a
 fallback (see "Why keep it around" below), and because `gnn/` and `baseline/` are data-source
 agnostic — they consume whatever produces a manifest + `torch_geometric.data.Data` per cell,
-so nothing there needs to change for the pivot.
+so nothing there needed to change for the pivot.
+
+One more thing worth flagging even though it doesn't affect the deprecation reasoning: the
+replacement store's embeddings are from `resnet_860b_reshuffled`, a model this lab
+trained/ran (datastack `minnie65_phase3_v1`, mat_version 1718) — **not** Google's public
+SegCLR release from the original paper, which is what the deprecated pipeline used. The user
+confirmed switching to this model is intentional, not an oversight.
 
 ## Why
 
@@ -64,13 +75,16 @@ script to (re-)run for a full inventory — it checks `tables()`, experiments,
 cells/labels/splits, and does one real end-to-end cell read; it hit the permission error on
 its first run (2026-08-04) and needs re-running now that access works.
 
-Two things this store does NOT have, confirmed via `tables()` even before the permission fix:
-`cells`/`cell_labels` are 0 rows and `splits` is 0 rows. So even after the pivot, ground-truth
-labels still need to come from the public label feather file
-(`data/public_reader.py::get_celltype_labels`, already working) joined locally by `root_id` —
-and a train/val/test split still needs to be constructed (either registered into the store via
-`SegCLRWriter.create_split`, or kept local, per whatever the permission situation ends up
-allowing).
+Two things this store does NOT have, confirmed via `tables()`: `cells`/`cell_labels` are 0
+rows and `splits` is 0 rows. So labels/splits come from elsewhere: CAVE's `cortical_neurons`
+subset (`cell_type_multifeature_combo` + `proofreading_status_and_strategy`, filtered to
+`status_axon=True`) at mat_version 1718 -- queried through the **public** `minnie65_public`
+datastack rather than `minnie65_phase3_v1` (the store's own run metadata says
+`minnie65_phase3_v1`, which needs CAVE "view" permission this account doesn't have; mat_version
+1718 turned out to also be queryable through `minnie65_public`, which already works, sidestepping
+the permission gap entirely -- confirmed via `scripts/check_cell_type_labels.py`, 2193/2193
+labeled root_ids overlap with the store's cells). The split is constructed locally (reusing
+`data.build_dataset.stratified_split`), not registered into the shared store.
 
 ## Why keep the deprecated code around
 

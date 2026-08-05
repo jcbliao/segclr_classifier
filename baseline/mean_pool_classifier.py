@@ -5,17 +5,21 @@ not through segclr_db's Store/Writer/Database (see data/cave_skeletons.py for
 why). window_nm=25000 (25um) matches the paper and the public release's own
 "_agg25um" bucket naming.
 
-Consumes the SAME cells, splits, and label vocabulary as the GNN (built once
-by data/build_dataset.py) -- only the aggregation/readout differs, which is
-the whole point of the comparison (CLAUDE.md "Project goal"). Per-cell feature
-vectors come from geodesic_mean over data.orig_node_ids/data.x (the identical
-covered-node embeddings the GNN trains on), then a mean over nodes for one
-vector per cell -- the same "many node vectors -> one graph-level vector"
-collapse the GNN's CLS-attention readout does, just with a mean instead of
-learned attention. That is deliberately the only degree of freedom this
-baseline gets: everything downstream (the classifier head) matches the GNN's
-head as closely as possible so an accuracy gap reflects the aggregation
-choice, not incidental architecture differences.
+Classification happens **per aggregated point**, not on a single whole-cell-
+averaged vector -- confirmed against two independent sources: the original
+classifier gist (train_embeddings.extend(e), flattening every windowed node
+embedding in a cell into its own training example) and this lab's own
+replication (github.mit.edu/collina/segCLR_cell_classification's
+aggregation_study/03_train_evaluate.py, which reports "per-point accuracy"
+and "cell-level majority-vote accuracy" via cell_majority_vote_accuracy(),
+never embedding averaging). An earlier version of this module averaged a
+cell's windowed embeddings into one vector before classifying once --
+deprecated, see results/deprecated_wholecell_baseline/README.md for why that
+measures something different from "aggregation radius" as the paper means it.
+
+Consumes the SAME cells, splits, and label vocabulary as the GNN (built by
+data/build_dataset_from_store.py) -- only the aggregation/readout differs,
+which is the whole point of the comparison (CLAUDE.md "Project goal").
 """
 
 from __future__ import annotations
@@ -39,39 +43,45 @@ WINDOW_NM = 25_000
 GRAPH_CACHE_DIR = Path(__file__).resolve().parent.parent / "data" / "graph_cache"
 
 
-def pooled_feature(root_id: int, window_nm: float = WINDOW_NM) -> np.ndarray:
-    """One (D,) feature vector per cell: geodesic_mean over window_nm, then
-    mean over the resulting per-node vectors."""
+def node_level_features(root_id: int, window_nm: float = WINDOW_NM) -> np.ndarray:
+    """geodesic_mean at every covered node, kept per-node -- NOT collapsed to
+    a single whole-cell vector. Returns (n_covered_nodes, D)."""
     data = torch.load(GRAPH_CACHE_DIR / f"{root_id}.pt", weights_only=False)
     skeleton = cs.load_cached(root_id)
     if skeleton is None:
-        raise FileNotFoundError(f"no cached skeleton for {root_id} -- run data/build_dataset.py first")
+        raise FileNotFoundError(f"no cached skeleton for {root_id} -- run the dataset build first")
     result = geodesic_mean(skeleton, data.orig_node_ids.numpy(), data.x.numpy(), window_nm)
-    return result.embeddings.mean(axis=0)
+    return result.embeddings
 
 
-def build_feature_matrix(manifest: dict, split: str, depth: int, window_nm: float = WINDOW_NM):
+def build_node_feature_matrix(manifest: dict, split: str, depth: int, window_nm: float = WINDOW_NM):
+    """Stacks EVERY covered node's windowed embedding across every cell in the
+    split into one big (N_nodes_total, D) matrix, with a parallel per-node
+    label (the parent cell's label, repeated) and root_id (for majority-vote
+    aggregation back to cell level at eval time)."""
     classes, class_to_idx = label_vocab(manifest, depth)
     X, y, root_ids = [], [], []
     for root_id_str, info in manifest["cells"].items():
         if info["split"] != split:
             continue
         root_id = int(root_id_str)
-        X.append(pooled_feature(root_id, window_nm))
-        ct = "-".join(info["cell_type"].split("-")[:depth])
-        y.append(class_to_idx[ct])
-        root_ids.append(root_id)
-    return np.stack(X), np.array(y, dtype=np.int64), root_ids, classes
+        feats = node_level_features(root_id, window_nm)
+        ct = info["cell_type"] if depth is None else "-".join(info["cell_type"].split("-")[:depth])
+        label = class_to_idx[ct]
+        X.append(feats)
+        y.append(np.full(len(feats), label, dtype=np.int64))
+        root_ids.append(np.full(len(feats), root_id, dtype=np.int64))
+    return np.concatenate(X), np.concatenate(y), np.concatenate(root_ids), classes
 
 
 class MeanPoolClassifier(nn.Module):
     """Same-capacity classifier head as gnn.model.GraphAutoEncoderClassifier's
-    cls_head (a linear layer on a d-dim graph vector) -- an MLP is offered too
-    since the baseline's "graph vector" here is a mean, not something an
-    encoder already nonlinearly transformed, so a single linear layer may be
-    an unfairly weak comparison. Try both; report whichever the baseline does
-    better with, since the point is the best baseline this aggregation choice
-    can produce, not the weakest one.
+    cls_head -- an MLP option is offered too since a single linear layer may
+    be an unfairly weak comparison. Try both; report whichever the baseline
+    does better with, since the point is the best baseline this aggregation
+    choice can produce, not the weakest one. Operates per-node here (see
+    module docstring) -- the "many nodes -> one cell decision" collapse
+    happens via majority vote on predictions, not by averaging features.
     """
 
     def __init__(self, in_dim: int, num_classes: int, hidden_dim: int | None = None):

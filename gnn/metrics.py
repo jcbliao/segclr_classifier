@@ -44,6 +44,29 @@ def macro_f1(cm: np.ndarray) -> float:
     return float(f1[support > 0].mean()) if (support > 0).any() else 0.0
 
 
+def majority_vote_by_group(
+    group_ids: np.ndarray, y_true: np.ndarray, y_pred: np.ndarray
+) -> tuple[np.ndarray, np.ndarray]:
+    """Collapses per-point predictions to one per group (e.g. per cell) by
+    majority vote -- matches the SegCLR paper's classifier and this lab's
+    replication (aggregation_study/03_train_evaluate.py's
+    cell_majority_vote_accuracy): classify each point independently, THEN
+    majority-vote for a cell-level answer, never by averaging features
+    before classifying (see baseline/mean_pool_classifier.py's docstring).
+
+    Returns (group_y_true, group_y_pred), one entry per unique group_id in
+    the order np.unique returns them -- pass straight to summarize().
+    """
+    groups = np.unique(group_ids)
+    true_out = np.empty(len(groups), dtype=y_true.dtype)
+    pred_out = np.empty(len(groups), dtype=y_pred.dtype)
+    for i, g in enumerate(groups):
+        mask = group_ids == g
+        true_out[i] = y_true[mask][0]  # constant within a group by construction
+        pred_out[i] = np.bincount(y_pred[mask]).argmax()
+    return true_out, pred_out
+
+
 def summarize(y_true: np.ndarray, y_pred: np.ndarray, num_classes: int, classes: list[str]) -> dict:
     cm = confusion_matrix(y_true, y_pred, num_classes)
     recall = per_class_recall(cm)

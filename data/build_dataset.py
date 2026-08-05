@@ -61,8 +61,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from data import cave_skeletons as cs  # noqa: E402
 from data import public_reader as pr  # noqa: E402
 
-GRAPH_CACHE_DIR = Path(__file__).resolve().parent / "graph_cache"
-MANIFEST_PATH = Path(__file__).resolve().parent / "manifest.json"
+GRAPH_CACHE_DIR = Path(__file__).resolve().parent / "graph_cache_deprecated"
+MANIFEST_PATH = Path(__file__).resolve().parent / "manifest_deprecated.json"
 DATA_KEY = "microns_nm_coord_public_offset_v343"
 SPLIT_SEED = 0
 SPLIT_FRACS = (0.7, 0.15, 0.15)  # train, val, test

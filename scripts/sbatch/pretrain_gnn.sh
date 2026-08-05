@@ -5,8 +5,8 @@
 #SBATCH --job-name=pretrain_gnn
 #SBATCH --partition=mit_normal_gpu
 #SBATCH --account=mit_general
-#SBATCH --time=06:00:00
-#SBATCH --gres=gpu:1
+#SBATCH --time=01:00:00
+#SBATCH --gres=gpu:h200:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=32G
 #SBATCH --output=/home/jcbliao/rotation/segclr/gnn_classifier/logs/%x_%j.out
@@ -17,4 +17,7 @@ set -euo pipefail
 PY=/home/jcbliao/rotation/segclr/gnn_classifier/segclr_db/.venv/bin/python
 cd /home/jcbliao/rotation/segclr/gnn_classifier
 
-"$PY" scripts/pretrain_gnn.py --replace-strategy "${REPLACE_STRATEGY:-random}" --epochs "${EPOCHS:-100}"
+"$PY" -u scripts/pretrain_gnn.py \
+  --replace-strategy "${REPLACE_STRATEGY:-random}" \
+  --epochs "${EPOCHS:-100}" \
+  --mask-prob "${MASK_PROB:-0.3}"

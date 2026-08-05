@@ -25,6 +25,14 @@ evaluated against the *same* cells, splits, and label hierarchy as the mean-pool
 > definition" guarantee above without the registration ceremony. See "Public SegCLR data
 > source (validation phase)" below for exactly what was validated and how.
 >
+> **Baseline infrastructure update (2026-08-05):** the baseline is no longer our own
+> reimplementation (`baseline/mean_pool_classifier.py` + `scripts/train_baseline.py`, kept for
+> reference only) — it now trains through `segCLR_cell_classification/`, a clone of the lab's
+> own actual training codebase (`github.mit.edu/collina/segCLR_cell_classification`:
+> `DeepResNet`, their `CellTypingDataset`, their `cell_level_accuracy` majority-vote metric).
+> See `results/deprecated_own_baseline_reimplementation/README.md`. Do not compare new results
+> against anything under `results/deprecated_*/`.
+>
 > **This local pipeline is now DEPRECATED (2026-08-04)** — the nearest-neighbor xyz
 > reconciliation it uses to join embeddings onto CAVE skeleton nodes is quantifiably
 > unreliable (85.9% of matches land outside the local process radius). A real, properly-indexed
@@ -108,6 +116,14 @@ anything, (3) can they be ablated (`scripts/norm_diagnostic.py`).
 > for the starting choice. `use_smooth_l1=False` is the default everywhere
 > (`gnn/losses.py`, `scripts/pretrain_gnn.py`).
 
+## Related work
+
+A fellow lab member's notebook, `analysis/presynaptic-distributions.ipynb` on the
+`main` branch of https://github.mit.edu/collina/segCLR_cell_classification (also has
+`aggregation_study`, `cleanup`, `hierarchical`, `lcpn`, `refactor`, `simple_classifiers`
+branches) — noted here as a pointer only; the user will add real documentation on it in
+their own style. SSH access confirmed working (`git@github.mit.edu`).
+
 ## Progress log (Notion)
 
 "Claude Updates by Day" — https://app.notion.com/p/Claude-Updates-by-Day-3b3d7b059212801db512e3bdc797c35a
@@ -161,6 +177,31 @@ These are user requirements, not preferences:
    tensors onto it, or the GPU allocation sits unused while everything silently runs on CPU
    anyway — this bit us once with `train_baseline.py`/`smoke_test_model.py` before both were
    fixed to move things onto the device properly.
+6. **Every training loop uses a `tqdm` progress bar, not periodic `print`s.** Applies to
+   `scripts/train_baseline.py`, `pretrain_gnn.py`, `finetune_gnn.py` — an outer epoch-level bar
+   with `set_postfix(...)` showing loss/val metrics updated *every* epoch (not just every
+   Nth), plus an inner per-batch bar (`leave=False`) for the mini-batch loops in the GNN
+   scripts, since a single epoch over ~1500+ cells at `batch_size=1` can run long enough that
+   "is this hanging or working" needs a live answer. Milestone summary lines still get a real
+   `tqdm.write(...)` (not `print`, which corrupts an active bar) at the same cadence as before,
+   so the log retains permanent, greppable per-epoch records alongside the live bar. This
+   mirrors `data/build_dataset*.py`'s existing tqdm usage, which already proved bars work fine
+   when redirected to a log file for later inspection (the `\r`-updated sequence is still
+   readable/greppable, just not on separate newlines). Also run training scripts with
+   `python -u` (unbuffered) in the sbatch wrapper — without it, Python fully block-buffers
+   stdout/stderr when not a TTY, so a bar/log can sit silently for many minutes on a real
+   dataset even though the job is alive and working (bit us once: `pretrain_gnn.py` produced
+   zero output for 10+ minutes on the 2193-cell dataset, confirmed alive via `scontrol` the
+   whole time — just nothing had flushed yet).
+7. **Prioritize H200s for training jobs when available.** `mit_normal_gpu` has three GPU
+   types: H100 (4 total, scarcest by far), H200 (104 total, most consistently available), L40S
+   (212 total, most numerous but less memory than H200). All training sbatch scripts request
+   `--gres=gpu:h200:1` explicitly rather than a generic `--gres=gpu:1` (which schedules on
+   whichever type is free first, including the scarce H100 pool). SLURM has no native
+   "prefer H200, fall back to L40S" within one submission — an explicit type request just
+   queues for that type — so this is a deliberate tradeoff (wait for an H200 rather than
+   opportunistically grab an L40S), not a hidden side effect. Check current availability with
+   `sinfo -p mit_normal_gpu -o "%N %G %t"` before assuming H200s are free.
 
 ## Environment
 

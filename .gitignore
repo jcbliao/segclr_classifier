@@ -1,14 +1,19 @@
-# vendored dependency -- separate git clone (dorkenwald-lab/segclr_db, upstream
-# remote intact), not part of this repo's history. See CLAUDE.md.
+# vendored dependencies -- separate git clones with their own remotes, not
+# part of this repo's history. See CLAUDE.md.
 segclr_db/
+segCLR_cell_classification/
 
 # regeneratable local data cache
 data/skeleton_cache/
 data/graph_cache/
+data/graph_cache_deprecated/
 data/_smoke_dataset/
 data/_smoketest_store/
 data/manifest.json
+data/manifest_deprecated.json
 data/root_id_currency.json
+data/lab_baseline_aggregated_25um.h5
+*.h5
 
 # job logs -- ephemeral, regeneratable, can get large
 logs/

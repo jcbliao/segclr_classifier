@@ -26,6 +26,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import numpy as np  # noqa: E402
 import torch  # noqa: E402
 from torch_geometric.loader import DataLoader  # noqa: E402
+from tqdm import tqdm  # noqa: E402
 
 from data.dataset import ReplacementPool, SegCLRGraphDataset, load_manifest  # noqa: E402
 from gnn.losses import (  # noqa: E402
@@ -99,10 +100,12 @@ def main(args):
     )
 
     best_val_bacc, best_state = -1.0, None
-    for epoch in range(args.epochs):
+    epoch_bar = tqdm(range(args.epochs), desc="finetune", unit="epoch")
+    for epoch in epoch_bar:
         model.train()
         total_loss, n = 0.0, 0
-        for data in train_loader:
+        batch_bar = tqdm(train_loader, desc=f"epoch {epoch}", unit="batch", leave=False)
+        for data in batch_bar:
             data = data.to(device)
             opt.zero_grad()
             if args.mode == "joint":
@@ -125,14 +128,20 @@ def main(args):
             opt.step()
             total_loss += loss.item() * data.num_graphs
             n += data.num_graphs
+            batch_bar.set_postfix(loss=f"{total_loss / max(1, n):.4f}")
 
         val_labels, val_preds = evaluate(model, val_loader, device)
         val_metrics = summarize(val_labels, val_preds, len(classes), classes)
         if val_metrics["balanced_accuracy"] > best_val_bacc:
             best_val_bacc = val_metrics["balanced_accuracy"]
             best_state = {k: v.clone() for k, v in model.state_dict().items()}
+        epoch_bar.set_postfix(
+            train_loss=f"{total_loss / max(1, n):.4f}",
+            val_bacc=f"{val_metrics['balanced_accuracy']:.3f}",
+            val_acc=f"{val_metrics['accuracy']:.3f}",
+        )
         if epoch % max(1, args.epochs // 20) == 0:
-            print(
+            tqdm.write(
                 f"epoch {epoch:4d}  train_loss={total_loss / max(1, n):.4f}  "
                 f"val_bacc={val_metrics['balanced_accuracy']:.3f}  val_acc={val_metrics['accuracy']:.3f}"
             )
@@ -145,7 +154,14 @@ def main(args):
 
     out_dir = Path(__file__).resolve().parent.parent / "results"
     out_dir.mkdir(exist_ok=True)
-    out_path = out_dir / f"gnn_{args.mode}_depth{args.depth}.json"
+    # Tag by source pretrain run (e.g. "pretrain_random_mask0.1") so frozen/
+    # finetune results from different masking ratios don't collide on the
+    # same two filenames -- mode+depth alone doesn't distinguish them.
+    if args.pretrained_ckpt:
+        ckpt_tag = Path(args.pretrained_ckpt).parent.name
+        out_path = out_dir / f"gnn_{args.mode}_{ckpt_tag}_depth{args.depth}.json"
+    else:
+        out_path = out_dir / f"gnn_{args.mode}_depth{args.depth}.json"
     out_path.write_text(
         json.dumps({"args": vars(args), "test_metrics": test_metrics, "classes": classes}, indent=2)
     )
