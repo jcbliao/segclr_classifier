@@ -1,0 +1,27 @@
+# vendored dependency -- separate git clone (dorkenwald-lab/segclr_db, upstream
+# remote intact), not part of this repo's history. See CLAUDE.md.
+segclr_db/
+
+# regeneratable local data cache
+data/skeleton_cache/
+data/graph_cache/
+data/_smoke_dataset/
+data/_smoketest_store/
+data/manifest.json
+data/root_id_currency.json
+
+# job logs -- ephemeral, regeneratable, can get large
+logs/
+
+# model checkpoints -- large, regeneratable; keep the JSON metrics/READMEs
+results/**/*.pt
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+
+# editor/OS
+.DS_Store
