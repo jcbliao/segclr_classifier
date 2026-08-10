@@ -118,12 +118,36 @@ MICRONS_CELLTYPE_LABELS_URL = (
 )
 
 
-def get_reader(key: str, filesystem, num_shards: int = 10_000) -> EmbeddingReader:
-    """Vendored from connectomics.segclr.reader.get_reader."""
-    if key not in DATA_URL_FROM_KEY_BYTEWIDTH64:
+# v943 (128-dim, the version this project's h5-derived pipeline windows at
+# 10um) uses a DIFFERENT sharding convention than the bytewidth64 exports
+# above -- bytewidth=8, num_shards=50_000 -- confirmed directly from the
+# lab's own segCLR_cell_classification/embedding_query/embedding_cache.py
+# (DATA_URL_FROM_KEY_BYTEWIDTH8), not guessed. Same bucket path /
+# nm-coord/public-offset variant reasoning as v343: this is what lines up
+# with CAVE skeleton coordinates.
+DATA_URL_FROM_KEY_BYTEWIDTH8 = dict(
+    microns_v943=(
+        "gs://iarpa_microns/minnie/minnie65/embeddings_m943/"
+        "segclr_nm_coord_public_offset_csvzips"
+    ),
+)
+
+
+def get_reader(key: str, filesystem, num_shards: int | None = None) -> EmbeddingReader:
+    """Vendored from connectomics.segclr.reader.get_reader, extended to also
+    cover the bytewidth8 (v943) bucket layout -- num_shards defaults per
+    bucket family (10_000 for bytewidth64, 50_000 for bytewidth8) unless
+    overridden."""
+    if key in DATA_URL_FROM_KEY_BYTEWIDTH64:
+        url = DATA_URL_FROM_KEY_BYTEWIDTH64[key]
+        bytewidth = 64
+        num_shards = num_shards or 10_000
+    elif key in DATA_URL_FROM_KEY_BYTEWIDTH8:
+        url = DATA_URL_FROM_KEY_BYTEWIDTH8[key]
+        bytewidth = 8
+        num_shards = num_shards or 50_000
+    else:
         raise ValueError(f"Key not found: {key}")
-    url = DATA_URL_FROM_KEY_BYTEWIDTH64[key]
-    bytewidth = 64
 
     def sharder(segment_id: int) -> int:
         return md5_shard(segment_id, num_shards=num_shards, bytewidth=bytewidth)

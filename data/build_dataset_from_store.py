@@ -9,17 +9,21 @@ Data sources:
     see data/DEPRECATED.md). node_id already indexes the same skeleton for
     both node_embeddings and skeleton_nodes/skeleton_edges by construction --
     no nearest-neighbor matching needed, unlike the deprecated pipeline.
-  - labels: CAVE's "cortical_neurons" subset (cell_type_multifeature_combo,
-    filtered to status_axon=True in proofreading_status_and_strategy) at
-    mat_version 1718 -- queried through the PUBLIC minnie65_public datastack.
-    The store's own run metadata says datastack minnie65_phase3_v1, which
-    needs CAVE "view" permission this account doesn't have; mat_version 1718
-    turned out to also be queryable through minnie65_public (already
-    working), sidestepping that gap entirely. Confirmed 2193/2193 labeled
-    root_ids overlap with the store's cells
-    (scripts/check_cell_type_labels.py).
+  - labels: segclr_db's own registered `cell_labels` table
+    (db.get_labels(label_set="cell_type")), not a direct CAVE query --
+    switched 2026-08-06 per explicit user direction, once the store's
+    permissions opened enough to read it (scripts/explore_db_cell_labels.py
+    re-checked live and found it populated, not empty/blocked as earlier
+    checks this session had found). Strictly more coverage than the CAVE
+    `cortical_neurons`+status_axon=True query it replaces: 2410 labeled
+    cells vs. that query's 2193 (100% label agreement on the overlap),
+    including astrocyte/microglia/thalamocortical cells the old
+    status_axon=True filter excluded outright -- the old "non_neuron branch
+    never receives gradient" caveat no longer applies once this is rerun.
+    Chandelier cells (ChC, n=1 -- too few to train or hold out on) are
+    dropped here; see EXCLUDED_LABELS.
 
-For each of the 2193 labeled cells:
+For each labeled cell (minus EXCLUDED_LABELS):
   1. fetch raw node_embeddings (root_id, node_id, embedding) -- one call,
      already exactly indexed to the skeleton
   2. fetch the skeleton (coords, edges) from the store (no CAVE call: already
@@ -28,15 +32,18 @@ For each of the 2193 labeled cells:
      partially embedded), symmetrize edges, edge_attr = length (nm)
   4. save one torch_geometric Data per cell to data/graph_cache/
   5. also cache the Skeleton itself to data/skeleton_cache/*.pkl (shared
-     format with the deprecated pipeline -- baseline/mean_pool_classifier.py
+     format with the deprecated pipeline -- baseline/mean_pool_classifier.py (deleted 2026-08-06, deprecated cleanup)
      reads from there regardless of which pipeline produced it) so the
      geodesic-mean baseline can be recomputed without re-hitting the store
 
 Also writes data/manifest.json: per-cell root_id, cell_type label (flat
 Allen-style string, e.g. "L4IT" -- no dash-hierarchy like the deprecated
 pipeline's labels, so there is no depth>flat grouping here yet), and a
-deterministic stratified train/val/test split (reuses
-data.build_dataset.stratified_split -- pure function, source-agnostic).
+deterministic stratified train/test split (reuses
+data.build_dataset.stratified_split -- pure function, source-agnostic). No
+separate val fraction: "val" is an alias for the test split at the consumer
+level (scripts/train_gnn.py builds its "val" dataset from split=="test")
+rather than a third partition computed here -- an 80/20 split, val=test.
 
 Run via sbatch (mit_normal, >=32G -- reading tables this size needs real
 memory, see scripts/explore_real_store.py's OOM lesson). Resumable: cells
@@ -50,7 +57,6 @@ from __future__ import annotations
 import argparse
 import json
 import logging
-import os
 import pickle
 import sys
 import time
@@ -63,9 +69,7 @@ from tqdm import tqdm
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "segclr_db" / "src"))
 
-from segclr_db import cave as cave_mod  # noqa: E402
 from segclr_db import store as st  # noqa: E402
-from segclr_db.cave import CAVEConfig  # noqa: E402
 from segclr_db.database import SegCLRDatabase  # noqa: E402
 from segclr_db.skeletons import SkeletonCache  # noqa: E402
 
@@ -75,14 +79,13 @@ from data.build_dataset import stratified_split  # noqa: E402 -- pure fn, source
 STORE_ROOT = "/orcd/compute/sdorkenw/001/collina/segclr-db"
 STORE_DATASET = "microns"
 EXPERIMENT_ID = "resnet_860b_reshuffled"
-LABEL_DATASTACK = "minnie65_public"  # not minnie65_phase3_v1 -- see module docstring
-LABEL_MAT_VERSION = 1718
-LABEL_SUBSET = "cortical_neurons"
+LABEL_SET = "cell_type"  # the only label_set currently in segclr_db's cell_labels table
+EXCLUDED_LABELS = {"ChC"}  # chandelier cells: n=1 in the store, too few to train or hold out on
 
 GRAPH_CACHE_DIR = Path(__file__).resolve().parent / "graph_cache"
 MANIFEST_PATH = Path(__file__).resolve().parent / "manifest.json"
 SPLIT_SEED = 0
-SPLIT_FRACS = (0.7, 0.15, 0.15)
+SPLIT_FRACS = (0.8, 0.2)  # train, test -- val is an alias for test, see module docstring
 DEFAULT_WORKERS = 8
 
 logging.basicConfig(
@@ -174,23 +177,35 @@ def _fetch_and_build(root_id: int, db: SegCLRDatabase, skel_cache: SkeletonCache
     return root_id, data, skeleton, None if data is not None else "no covered nodes"
 
 
-def fetch_labels() -> dict[int, str]:
-    token = os.environ.get("CAVE_TOKEN")
-    if not token:
-        raise RuntimeError("CAVE_TOKEN not set")
-    config = CAVEConfig(
-        datastack=LABEL_DATASTACK, materialization_version=LABEL_MAT_VERSION, token=token
-    )
-    client = config.build_client()
-    frame = cave_mod.query_cells(client, LABEL_DATASTACK, LABEL_MAT_VERSION, subsets=[LABEL_SUBSET])
-    return {int(r.root_id): str(r.label) for r in frame.itertuples()}
+def fetch_labels(db: SegCLRDatabase) -> tuple[dict[int, str], list[int]]:
+    """Raw granular cell_type label per cell, straight from segclr_db's own
+    registered cell_labels table -- see module docstring for why this
+    replaced the earlier direct CAVE query. Returns (labels, mat_versions)
+    so main() can record the real mat_version(s) the data came from instead
+    of a hardcoded constant that could silently drift out of sync with what
+    the store actually holds.
+    """
+    df = db.get_labels(label_set=LABEL_SET)
+    mat_versions = sorted(int(v) for v in df["mat_version"].dropna().unique())
+    labels = {int(r.root_id): str(r.label) for r in df.itertuples()}
+
+    n_before = len(labels)
+    labels = {rid: lab for rid, lab in labels.items() if lab not in EXCLUDED_LABELS}
+    n_excluded = n_before - len(labels)
+    if n_excluded:
+        logger.info("  dropped %d cells with excluded labels %s", n_excluded, sorted(EXCLUDED_LABELS))
+    return labels, mat_versions
 
 
 def main(args) -> int:
     GRAPH_CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
-    logger.info("fetching labels: %s subset, %s mat_version %d ...", LABEL_SUBSET, LABEL_DATASTACK, LABEL_MAT_VERSION)
-    labels = fetch_labels()
+    store = st.open_store(STORE_ROOT, STORE_DATASET)
+    db = SegCLRDatabase(store=store)
+    skel_cache = SkeletonCache(store)  # read-only: no cave_config
+
+    logger.info("fetching labels from segclr_db cell_labels (label_set=%r) ...", LABEL_SET)
+    labels, label_mat_versions = fetch_labels(db)
     logger.info("  %d labeled cells, %d distinct cell_type values", len(labels), len(set(labels.values())))
 
     root_ids = sorted(labels)
@@ -204,11 +219,20 @@ def main(args) -> int:
         manifest = json.loads(MANIFEST_PATH.read_text())
     cells_manifest = manifest.get("cells", {})
 
-    if todo:
-        store = st.open_store(STORE_ROOT, STORE_DATASET)
-        db = SegCLRDatabase(store=store)
-        skel_cache = SkeletonCache(store)  # read-only: no cave_config
+    # Prune anything not in the CURRENT label set -- e.g. a ChC cell cached
+    # under an older manifest.json from before EXCLUDED_LABELS existed, or
+    # any other cell that dropped out on a label-source change -- and
+    # refresh cell_type from that current source, so a stale on-disk
+    # manifest.json never silently outlives a label-source switch (like
+    # this one, CAVE query -> segclr_db cell_labels). Cells needing a fresh
+    # fetch (not yet in cells_manifest at all) are added below.
+    cells_manifest = {
+        str(rid): {**cells_manifest[str(rid)], "cell_type": labels[rid]}
+        for rid in labels
+        if str(rid) in cells_manifest
+    }
 
+    if todo:
         logger.info("reading %d cells from the store with %d parallel workers ...", len(todo), args.workers)
         n_ok, n_skip, n_err = 0, 0, 0
         t0 = time.monotonic()
@@ -230,7 +254,7 @@ def main(args) -> int:
 
                 torch.save(data, _cell_path(root_id))
                 # Shared pickle cache format with the deprecated pipeline --
-                # lets baseline/mean_pool_classifier.py recompute geodesic_mean
+                # lets baseline/mean_pool_classifier.py (deleted 2026-08-06, deprecated cleanup) recompute geodesic_mean
                 # for these cells too without touching the store again.
                 cs.CACHE_DIR.mkdir(parents=True, exist_ok=True)
                 if not cs._cache_path(root_id).exists():
@@ -259,8 +283,10 @@ def main(args) -> int:
     manifest["cells"] = cells_manifest
     manifest["experiment_id"] = EXPERIMENT_ID
     manifest["store_root"] = STORE_ROOT
-    manifest["label_datastack"] = LABEL_DATASTACK
-    manifest["label_mat_version"] = LABEL_MAT_VERSION
+    manifest["label_source"] = "segclr_db cell_labels"
+    manifest["label_set"] = LABEL_SET
+    manifest["label_mat_versions"] = label_mat_versions
+    manifest["excluded_labels"] = sorted(EXCLUDED_LABELS)
     manifest["split_seed"] = SPLIT_SEED
     manifest["split_fracs"] = list(SPLIT_FRACS)
     MANIFEST_PATH.write_text(json.dumps(manifest, indent=2, sort_keys=True))

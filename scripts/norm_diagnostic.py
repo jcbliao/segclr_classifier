@@ -1,13 +1,6 @@
-"""Embedding-norm diagnostic, per the Notion spec's "Notes" section: before
-committing to a reconstruction loss, check (1) how variable embedding norms
-are, (2) whether they predict anything, (3) whether they can be ablated.
-
-Per explicit user direction, this is now INFORMATIVE ONLY: pretraining starts
-with cosine loss (gnn/losses.py::cosine_reconstruction_loss) regardless of
-what this script finds -- cosine is the principled default for SegCLR
-embeddings either way. This script's output would only ever matter for a
-later decision about whether to ALSO add the SmoothL1 magnitude term
-(L_mask = L_cos + lambda_mag * SmoothL1), not for the starting choice.
+"""Embedding-norm diagnostic: how variable are SegCLR embedding norms, do
+they predict anything, and can they be ablated. Informative only -- nothing
+in the training pipeline branches on its output.
 
 Uses the local dataset from data/build_dataset.py (data/manifest.json +
 data/graph_cache/*.pt) -- run build_dataset.py first. Run via sbatch

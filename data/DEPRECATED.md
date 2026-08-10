@@ -10,13 +10,13 @@ pipeline could claim the paths `data/dataset.py` and every training script alrea
 `data/manifest.json` + `data/graph_cache/`) hold the OLD data;
 `data/manifest.json` + `data/graph_cache/` are now the NEW pipeline's output.
 `data/skeleton_cache/*.pkl` is shared between both -- a Skeleton for a given root_id is the
-same regardless of which pipeline fetched it. Test results already produced by the deprecated
-pipeline are archived under `results/deprecated_local_pipeline/`, not deleted, but should not
-be cited as performance numbers (see that directory's README for an additional overfitting
-concern found independent of the embedding-correspondence problem). Kept in the repo as a
-fallback (see "Why keep it around" below), and because `gnn/` and `baseline/` are data-source
-agnostic — they consume whatever produces a manifest + `torch_geometric.data.Data` per cell,
-so nothing there needed to change for the pivot.
+same regardless of which pipeline fetched it. Test results produced by the deprecated pipeline
+have been deleted from `results/`; if you find any elsewhere, they are not to be cited as
+performance numbers (there was an additional overfitting concern, found independent of the
+embedding-correspondence problem). The code is kept in the repo as a fallback (see "Why keep
+it around" below), and because `gnn/` is data-source agnostic — it consumes whatever produces
+a manifest + `torch_geometric.data.Data` per cell, so nothing there needed to change for the
+pivot.
 
 One more thing worth flagging even though it doesn't affect the deprecation reasoning: the
 replacement store's embeddings are from `resnet_860b_reshuffled`, a model this lab
@@ -85,6 +85,14 @@ datastack rather than `minnie65_phase3_v1` (the store's own run metadata says
 the permission gap entirely -- confirmed via `scripts/check_cell_type_labels.py`, 2193/2193
 labeled root_ids overlap with the store's cells). The split is constructed locally (reusing
 `data.build_dataset.stratified_split`), not registered into the shared store.
+
+**Cache deleted 2026-08-05**: `data/graph_cache_deprecated/` (552M) and `data/manifest_deprecated.json`
+were deleted from disk to free space -- the deprecated pipeline's own code
+(`data/build_dataset.py`) still writes to those paths and will simply
+regenerate them from scratch if ever re-run. `data/skeleton_cache/*.pkl` was
+NOT deleted -- it's shared with the current pipeline (both
+`data/build_dataset_from_store.py` and `scripts/generate_lab_baseline_hdf5.py`
+read from it via `baseline/mean_pool_classifier.py`).
 
 ## Why keep the deprecated code around
 

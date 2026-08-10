@@ -17,6 +17,6 @@ set -euo pipefail
 PY=/home/jcbliao/rotation/segclr/gnn_classifier/segclr_db/.venv/bin/python
 cd /home/jcbliao/rotation/segclr/gnn_classifier
 
-export CAVE_TOKEN=$(jq -r .token ~/.cloudvolume/secrets/global.daf-apis.com-cave-secret.json)
-
-"$PY" data/build_dataset_from_store.py --workers "${WORKERS:-8}"
+# No CAVE_TOKEN needed anymore -- labels come from segclr_db's own
+# registered cell_labels table (db.get_labels()), not a direct CAVE query.
+"$PY" -u data/build_dataset_from_store.py --workers "${WORKERS:-8}"

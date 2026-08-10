@@ -37,6 +37,17 @@ def balanced_accuracy(cm: np.ndarray) -> float:
     return float(recall[support > 0].mean()) if (support > 0).any() else 0.0
 
 
+def macro_precision(cm: np.ndarray) -> float:
+    """Mean per-class precision, over the same "classes with >=1 true
+    example in this eval set" filter macro_f1/balanced_accuracy use -- a
+    class absent from y_true but present in y_pred would otherwise pull the
+    macro average around on a class that isn't actually being evaluated
+    here."""
+    precision = per_class_precision(cm)
+    support = cm.sum(axis=1)
+    return float(precision[support > 0].mean()) if (support > 0).any() else 0.0
+
+
 def macro_f1(cm: np.ndarray) -> float:
     p, r = per_class_precision(cm), per_class_recall(cm)
     f1 = np.divide(2 * p * r, p + r, out=np.zeros_like(p), where=(p + r) > 0)
@@ -52,7 +63,7 @@ def majority_vote_by_group(
     replication (aggregation_study/03_train_evaluate.py's
     cell_majority_vote_accuracy): classify each point independently, THEN
     majority-vote for a cell-level answer, never by averaging features
-    before classifying (see baseline/mean_pool_classifier.py's docstring).
+    before classifying (see baseline/mean_pool_classifier.py (deleted 2026-08-06, deprecated cleanup)'s docstring).
 
     Returns (group_y_true, group_y_pred), one entry per unique group_id in
     the order np.unique returns them -- pass straight to summarize().
@@ -70,10 +81,13 @@ def majority_vote_by_group(
 def summarize(y_true: np.ndarray, y_pred: np.ndarray, num_classes: int, classes: list[str]) -> dict:
     cm = confusion_matrix(y_true, y_pred, num_classes)
     recall = per_class_recall(cm)
+    precision = per_class_precision(cm)
     return {
         "accuracy": float((y_true == y_pred).mean()),
         "balanced_accuracy": balanced_accuracy(cm),
+        "macro_precision": macro_precision(cm),
         "macro_f1": macro_f1(cm),
         "per_class_recall": {c: float(recall[i]) for i, c in enumerate(classes)},
+        "per_class_precision": {c: float(precision[i]) for i, c in enumerate(classes)},
         "confusion_matrix": cm.tolist(),
     }
