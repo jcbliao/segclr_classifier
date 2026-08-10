@@ -401,11 +401,18 @@ gnn_classifier/
     check_*.py, explore_*.py                       one-off data/CAVE diagnostics
 
   analysis/              training_curves.ipynb -- reads results/<run>/epoch_metrics.csv
-  results/               per-run checkpoint_best.pt + epoch_metrics.csv + <run>.json.
-                         Currently EMPTY: cleared deliberately, since every run predating the
-                         current model (4-channel rel_pos, the mpnn architecture) was no longer
-                         comparable to what scripts/train_gnn.py now produces. Do not cite
-                         numbers from this conversation's logs as results -- rerun instead.
+  results/               per-run checkpoint_{best,last}.pt + epoch_metrics.csv, plus a
+                         <run>.json summary alongside the directory. Holds 9 runs: meanpool,
+                         mpnn_L2, gt_L4_H4 and its ablations (nolpe, norelpos, noadjbias,
+                         nbhd, distbias, distbias_resnet4x128). Everything predating the
+                         current model (4-channel rel_pos, the mpnn architecture) was cleared
+                         deliberately as no longer comparable, so these are the only citable
+                         numbers -- don't cite figures from a conversation log, read the CSV.
+                         Epoch counts differ per run (100 down to 16); a preempted run keeps
+                         its best checkpoint and every completed epoch, so a short CSV is
+                         truncated, not a converged run. _archive_10epoch/ holds an earlier
+                         10-epoch distbias_resnet4x128 before it was rerun longer.
+                         Only the .pt files are gitignored; metrics are committed.
   logs/                  SLURM job output
 
   segclr_db/             git clone of dorkenwald-lab/segclr_db (branch main, upstream intact).
