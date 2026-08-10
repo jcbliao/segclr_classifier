@@ -65,7 +65,11 @@ GRAPH_CACHE_DIR = Path(__file__).resolve().parent / "graph_cache_deprecated"
 MANIFEST_PATH = Path(__file__).resolve().parent / "manifest_deprecated.json"
 DATA_KEY = "microns_nm_coord_public_offset_v343"
 SPLIT_SEED = 0
-SPLIT_FRACS = (0.7, 0.15, 0.15)  # train, val, test
+# train, test -- there is no separate val fraction: "val" is an alias for
+# the test split at the consumer level (scripts/train_gnn.py builds its
+# "val" dataset from split=="test"), not a third partition computed here.
+# See stratified_split's docstring.
+SPLIT_FRACS = (0.8, 0.2)
 DEFAULT_WORKERS = 12
 
 logging.basicConfig(
@@ -171,9 +175,13 @@ def _fetch_and_build(root_id: int, skeleton, fs) -> tuple[int, object, dict | No
 
 
 def stratified_split(labels: dict[int, str], seed: int = SPLIT_SEED, fracs=SPLIT_FRACS):
-    """Deterministic per-class split. Classes with < 3 examples can't be
-    represented in all three splits -- those go entirely to train, logged so
-    it's visible rather than silently thin val/test classes."""
+    """Deterministic per-class split, two-way (train/test only -- see
+    SPLIT_FRACS's comment for why there's no separate val partition; callers
+    that need a validation set during training use split=="test" for it,
+    i.e. val and test are the SAME held-out cells by design, not two
+    disjoint holdouts). Classes with < 2 examples can't be represented in
+    both splits -- those go entirely to train, logged so it's visible
+    rather than silently thinning the test split."""
     rng = np.random.default_rng(seed)
     by_class: dict[str, list[int]] = {}
     for root_id, label in labels.items():
@@ -185,25 +193,21 @@ def stratified_split(labels: dict[int, str], seed: int = SPLIT_SEED, fracs=SPLIT
         ids = list(ids)
         rng.shuffle(ids)
         n = len(ids)
-        if n < 3:
+        if n < 2:
             thin_classes.append((label, n))
             for r in ids:
                 split_of[r] = "train"
             continue
         n_train = max(1, round(fracs[0] * n))
-        n_val = max(1, round(fracs[1] * n))
-        n_train = min(n_train, n - 2)  # leave >=1 each for val/test
-        n_val = min(n_val, n - n_train - 1)
+        n_train = min(n_train, n - 1)  # leave >=1 for test
         for r in ids[:n_train]:
             split_of[r] = "train"
-        for r in ids[n_train : n_train + n_val]:
-            split_of[r] = "val"
-        for r in ids[n_train + n_val :]:
+        for r in ids[n_train:]:
             split_of[r] = "test"
 
     if thin_classes:
         logger.warning(
-            "%d classes with <3 examples went entirely to train: %s", len(thin_classes), thin_classes
+            "%d classes with <2 examples went entirely to train: %s", len(thin_classes), thin_classes
         )
     return split_of
 

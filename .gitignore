@@ -7,6 +7,9 @@ segCLR_cell_classification/
 data/skeleton_cache/
 data/graph_cache/
 data/graph_cache_deprecated/
+data/graph_cache_lcpn/
+data/window_membership/
+data/dendrite_thickness_cache/
 data/_smoke_dataset/
 data/_smoketest_store/
 data/manifest.json
