@@ -11,6 +11,8 @@ the only thing that differs between a run of each:
       run name, so they never overwrite the full run.
   --architecture mpnn  gnn/encoder.py::MPNNEncoder -- plain GraphSAGE message
       passing, no attention, 2 layers by default -- followed by MeanReadout.
+      One opt-in switch, --mpnn-lpe, concatenating the per-window Laplacian
+      positional encoding onto the raw node features; it tags the run _lpe.
   --architecture mean  gnn/readout.py::MeanReadout straight over the raw
       per-node embeddings, no encoder -- the mean-pooling BASELINE.
 
@@ -41,6 +43,7 @@ diagnostic, not the headline number.
 Run via sbatch (mit_normal_gpu):
     python scripts/train_gnn.py                          # GraphTransformer (default)
     python scripts/train_gnn.py --architecture mpnn      # 2-layer GraphSAGE + mean
+    python scripts/train_gnn.py --architecture mpnn --mpnn-lpe  # -> ..._mpnn_L2_lpe
     python scripts/train_gnn.py --architecture mean      # mean-pool baseline
     python scripts/train_gnn.py --gt-no-lpe              # -> gnn_lcpn_scratch_gt_L4_H4_nolpe
     python scripts/train_gnn.py --gt-attention-scope neighborhood
@@ -148,6 +151,7 @@ def main(args):
         mpnn_out_dim=args.mpnn_hidden_dim,
         mpnn_layers=args.mpnn_layers,
         mpnn_dropout=args.mpnn_dropout,
+        mpnn_use_lpe=args.mpnn_lpe,
         gt_dim=args.gt_dim,
         gt_depth=args.gt_depth,
         gt_heads=args.gt_heads,
@@ -188,7 +192,10 @@ def main(args):
     if args.architecture == "mean":
         agg_tag = "meanpool"
     elif args.architecture == "mpnn":
-        agg_tag = f"mpnn_L{args.mpnn_layers}"
+        # _lpe for the same reason the GraphTransformer's switches are tagged:
+        # without it, --mpnn-lpe would land on the plain mpnn_L2 run's
+        # directory and overwrite its epoch_metrics.csv.
+        agg_tag = f"mpnn_L{args.mpnn_layers}" + ("_lpe" if args.mpnn_lpe else "")
     else:
         # Ablation switches go into the tag too -- without them, a full run
         # and any of its ablations would collide on one checkpoint dir and
@@ -457,6 +464,14 @@ if __name__ == "__main__":
     )
     p.add_argument("--mpnn-hidden-dim", type=int, default=128)
     p.add_argument("--mpnn-dropout", type=float, default=0.1)
+    p.add_argument(
+        "--mpnn-lpe", action="store_true",
+        help="concatenate the per-window Laplacian positional encoding onto the raw node "
+             "features before the first SAGEConv (--architecture mpnn only). OFF by default, "
+             "unlike the GraphTransformer's LPE, so the recorded mpnn_L{layers} runs stay "
+             "reproducible; enabling it tags the run _lpe. Width comes from --gt-pos-dim, "
+             "which is the one pos_dim the dataset itself was built with.",
+    )
     p.add_argument(
         "--cls-hidden-dim", type=int, default=None,
         help="LCPN head hidden layer size; default None = plain Linear per node",

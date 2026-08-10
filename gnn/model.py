@@ -14,7 +14,9 @@ SegCLR node embeddings, same LCPNHead, same evaluation:
     full model, `gt_use_thickness` defaults off since it needs an extra
     ingested cache.
   - "mpnn": gnn/encoder.py::MPNNEncoder (plain GraphSAGE message passing, no
-    attention) followed by MeanReadout.
+    attention) followed by MeanReadout. One opt-in switch, `mpnn_use_lpe`,
+    concatenating the same per-window Laplacian PE the GraphTransformer uses
+    onto the raw node features.
   - "mean": gnn/readout.py::MeanReadout over the raw node embeddings, with no
     encoder at all -- the mean-pooling baseline this project exists to beat,
     expressed as a configuration of this same class rather than a separately
@@ -75,6 +77,15 @@ class ModelConfig:
     mpnn_out_dim: int = 128
     mpnn_layers: int = 2
     mpnn_dropout: float = 0.1
+    # Concatenate the per-window Laplacian PE onto the raw node features before
+    # the first SAGEConv (gnn/encoder.py explains concat-vs-add). Off by
+    # default, unlike the GraphTransformer's `gt_use_lpe`: the mpnn baseline
+    # this project already has on record was trained without it, so this is an
+    # on-by-request switch and gets its own run name. Its width comes from
+    # `gt_pos_dim` -- there is only ever ONE pos_dim in play, the one the
+    # dataset was constructed with, and a second field for the same number
+    # would just be somewhere for the two to drift apart.
+    mpnn_use_lpe: bool = False
 
     # --- gnn/graph_transformer.py::GraphTransformer (architecture="graph_transformer") ---
     gt_dim: int = 128
@@ -146,6 +157,8 @@ class WindowClassifier(nn.Module):
                 out_dim=config.mpnn_out_dim,
                 num_layers=config.mpnn_layers,
                 dropout=config.mpnn_dropout,
+                use_lpe=config.mpnn_use_lpe,
+                pos_dim=config.gt_pos_dim,  # the dataset's pos_dim -- see mpnn_use_lpe
             )
             self.readout = MeanReadout()
             cls_in_dim = config.mpnn_out_dim
@@ -186,12 +199,12 @@ class WindowClassifier(nn.Module):
         edge_attr: torch.Tensor | None = None,
     ) -> torch.Tensor:
         """Returns g: (B, cls_in_dim), one embedding per window, ready for
-        self.cls_head. `pos_enc`/`rel_pos`/`thickness`/`edge_attr` are
-        consumed only by the GraphTransformer, and only by whichever of its
-        switches are on.
-        The other two architectures ignore them entirely: the MPNN reads
-        structure from `edge_index` alone, and the mean readout sees no
-        structure at all."""
+        self.cls_head. `rel_pos`/`thickness`/`edge_attr` are consumed only by
+        the GraphTransformer, and only by whichever of its switches are on;
+        `pos_enc` additionally reaches the MPNN encoder when `mpnn_use_lpe` is
+        set. Otherwise the other two architectures ignore them entirely: the
+        MPNN reads structure from `edge_index` alone, and the mean readout sees
+        no structure at all."""
         if self.graph_transformer is not None:
             # Only the inputs the configured switches actually consume are
             # required -- an ablated run (gt_use_lpe / gt_use_rel_pos off)
@@ -216,5 +229,11 @@ class WindowClassifier(nn.Module):
                 x, edge_index, batch_index, pos_enc, rel_pos, thickness, edge_attr
             )
 
-        z = self.encoder(x, edge_index) if self.encoder is not None else x
+        if self.encoder is not None:
+            # Same contract as the GraphTransformer's switches: the encoder
+            # raises if it was configured to read pos_enc and none arrived,
+            # rather than silently aggregating without it.
+            z = self.encoder(x, edge_index, pos_enc)
+        else:
+            z = x
         return self.readout(z, batch_index)

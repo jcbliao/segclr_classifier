@@ -57,6 +57,20 @@ separate architectures rather than one `conv_type` flag is the point. Its defaul
 is tied to window size: windows average 10.7 nodes and `window_nm` is a radius, so deeper
 stacks over-smooth a graph that small toward a constant vector.
 
+It carries one opt-in switch, `mpnn_use_lpe` / `--mpnn-lpe`: **concatenate** the same
+per-window Laplacian PE the GraphTransformer consumes onto the raw node features before the
+first `SAGEConv`. Concatenated, not added like `gt_use_lpe` is, because the GraphTransformer
+has a `to_node_embedding` MLP for an additive term to land in and the MPNN feeds raw 64-dim
+embeddings straight into the conv — adding an 8-dim PE onto SegCLR channels would corrupt the
+features rather than annotate them. It amounts to the same function either way: layer 0's
+weight gains `pos_dim` columns, i.e. a learned linear projection of the PE summed into the
+layer-0 pre-activation. Injected once at the input, like GraphDINO's. Off by default (unlike
+`gt_use_lpe`, which is on) so the recorded `mpnn_L2` run stays exactly the model it was, and
+the run name gets `_lpe` so it can't overwrite it. Width comes from `gt_pos_dim` — one
+`pos_dim` exists, the one the dataset was built with, and a second field would only be
+somewhere for them to drift apart. No dataset rebuild: `pos_enc` is attached to every window
+regardless of architecture.
+
 **GraphTransformer** takes the attention mechanism and transformer stack of Weis et al.'s
 GraphDINO (https://github.com/marissaweis/ssl_neuron, `ssl_neuron/graphdino.py`) — the
 architecture only, not GraphDINO's self-distillation pretraining (no teacher/student pair, no
@@ -426,7 +440,8 @@ Prefer adding new code in a sibling directory under `gnn_classifier/` over editi
 say so explicitly rather than committing into someone else's repo silently.
 
 Run names encode the aggregation method so runs don't collide: `gnn_lcpn_scratch_meanpool`,
-`gnn_lcpn_scratch_mpnn_L{layers}`, `gnn_lcpn_scratch_gt_L{depth}_H{heads}`.
+`gnn_lcpn_scratch_mpnn_L{layers}` (`_lpe` appended under `--mpnn-lpe`),
+`gnn_lcpn_scratch_gt_L{depth}_H{heads}`.
 
 ## Hard constraints on how work gets done
 
@@ -594,6 +609,7 @@ for reference, not for direct invocation.
 # training (via scripts/sbatch/train_gnn.sh; ARCHITECTURE / EPOCHS / NUM_WORKERS env vars)
 python -u scripts/train_gnn.py                       # GraphTransformer (default)
 python -u scripts/train_gnn.py --architecture mpnn   # 2-layer GraphSAGE + mean readout
+python -u scripts/train_gnn.py --architecture mpnn --mpnn-lpe   # -> ..._mpnn_L2_lpe
 python -u scripts/train_gnn.py --architecture mean   # mean-pool baseline
 python -u scripts/train_gnn.py --gt-no-lpe           # -> results/gnn_lcpn_scratch_gt_L4_H4_nolpe/
 python -u scripts/train_gnn.py --gt-attention-scope neighborhood

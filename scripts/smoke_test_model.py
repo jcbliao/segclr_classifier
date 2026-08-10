@@ -242,6 +242,59 @@ def main() -> int:
     assert g.shape == (batch.num_graphs, 32) and torch.isfinite(g).all()
     print("  LPE+rel_pos off runs with neither input supplied")
 
+    # --- MPNN's Laplacian PE switch -----------------------------------------
+    # Same two properties the GraphTransformer's switches are held to: with the
+    # switch off the encoder must be byte-identical in shape to the one the
+    # recorded mpnn_L2 runs used (no dead pos_dim columns), and with it on the
+    # input width must grow by exactly pos_dim.
+    print("\n--- mpnn: --mpnn-lpe ---")
+    for use_lpe in (False, True):
+        cfg = ModelConfig(
+            in_dim=d, architecture="mpnn", mpnn_hidden_dim=48, mpnn_out_dim=48,
+            mpnn_layers=2, mpnn_use_lpe=use_lpe, gt_pos_dim=GT_POS_DIM,
+        )
+        m = WindowClassifier(cfg, hierarchy=hierarchy).to(device)
+        expected_in = d + (GT_POS_DIM if use_lpe else 0)
+        conv0 = m.encoder.convs[0]
+        assert conv0.in_channels == expected_in, (
+            f"mpnn_use_lpe={use_lpe}: conv0 reads {conv0.in_channels}, want {expected_in}"
+        )
+        # Pass pos_enc regardless -- with the switch off it must be ignored, not
+        # silently concatenated.
+        g = m(batch.x, batch.edge_index, batch.batch, pos_enc=batch.pos_enc, rel_pos=batch.rel_pos)
+        assert g.shape == (batch.num_graphs, 48), g.shape
+        assert torch.isfinite(g).all(), f"mpnn_use_lpe={use_lpe}: non-finite embedding"
+        loss = m.cls_head.compute_loss(g, targets)
+        loss.backward()
+        assert any(
+            p.grad is not None and p.grad.abs().sum() > 0 for p in m.encoder.parameters()
+        ), f"mpnn_use_lpe={use_lpe}: encoder got no gradient"
+        n_params = sum(p.numel() for p in m.encoder.parameters())
+        print(f"  mpnn_use_lpe={str(use_lpe):<5} loss={loss.item():.4f}  encoder_params={n_params}")
+
+    # Off means the input is not merely ignored but not needed at all...
+    m = WindowClassifier(
+        ModelConfig(in_dim=d, architecture="mpnn", mpnn_hidden_dim=48, mpnn_out_dim=48),
+        hierarchy=hierarchy,
+    ).to(device)
+    g = m(batch.x, batch.edge_index, batch.batch)  # no pos_enc
+    assert g.shape == (batch.num_graphs, 48) and torch.isfinite(g).all()
+    print("  mpnn without LPE runs with no pos_enc supplied")
+
+    # ... and on means a missing pos_enc is an error, not a silent fallback to
+    # aggregating without it.
+    m = WindowClassifier(
+        ModelConfig(in_dim=d, architecture="mpnn", mpnn_hidden_dim=48, mpnn_out_dim=48,
+                    mpnn_use_lpe=True, gt_pos_dim=GT_POS_DIM),
+        hierarchy=hierarchy,
+    ).to(device)
+    try:
+        m(batch.x, batch.edge_index, batch.batch)
+    except ValueError as e:
+        print(f"  mpnn with LPE correctly rejects a missing pos_enc: {e}")
+    else:
+        raise AssertionError("mpnn_use_lpe=True should require pos_enc")
+
     # --- classification head: linear probe vs. the lab's ResNet trunk --------
     # Orthogonal to `architecture`, so check it composes with all three rather
     # than only with the GraphTransformer it was added alongside.
