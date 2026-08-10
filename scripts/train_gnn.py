@@ -249,9 +249,15 @@ def main(args):
         opt.load_state_dict(ckpt["optimizer_state"])
         start_epoch = ckpt["epoch"] + 1
         best_val_bacc = ckpt["best_val_bacc"]
-        torch.set_rng_state(ckpt["cpu_rng_state"])
+        # .cpu() is load-bearing, not defensive: map_location=device above sends
+        # EVERY tensor in the checkpoint to the GPU, RNG states included, and
+        # both set_rng_state calls require a CPU ByteTensor -- a CUDA one raises
+        # "RNG state must be a torch.ByteTensor". This only ever fires on a real
+        # GPU resume, so it is invisible until the first preemption of a real
+        # run (which is exactly when it costs the most).
+        torch.set_rng_state(ckpt["cpu_rng_state"].cpu())
         if ckpt.get("cuda_rng_state") is not None and torch.cuda.is_available():
-            torch.cuda.set_rng_state(ckpt["cuda_rng_state"])
+            torch.cuda.set_rng_state(ckpt["cuda_rng_state"].cpu())
         print(
             f"resumed from {last_path}: starting at epoch {start_epoch}, "
             f"best val_window_bacc so far {best_val_bacc:.4f}"
