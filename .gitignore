@@ -9,10 +9,16 @@ data/graph_cache/
 data/graph_cache_deprecated/
 data/graph_cache_lcpn/
 data/window_membership/
+data/window_membership_*nm/
+data/mask_volume_cache/
+data/partner_volume_cache/
+data/partner_volume_pilot_*/
 data/dendrite_thickness_cache/
+data/synapse_cache/
 data/_smoke_dataset/
 data/_smoketest_store/
 data/manifest.json
+data/nucleus_positions.json
 data/manifest_deprecated.json
 data/root_id_currency.json
 data/lab_baseline_aggregated_25um.h5
@@ -21,8 +27,15 @@ data/lab_baseline_aggregated_25um.h5
 # job logs -- ephemeral, regeneratable, can get large
 logs/
 
+# generated source-listing PDF
+gnn/code_pdf/
+
 # model checkpoints -- large, regeneratable; keep the JSON metrics/READMEs
-results/**/*.pt
+**/results/**/*.pt
+**/checkpoint_*.pt
+
+# notebook input aggregates -- rebuilt by scripts/sbatch/rebuild_path_analysis.sh
+analysis/embedding_paths_summary.npz
 
 # python
 __pycache__/
