@@ -32,7 +32,7 @@ from segclr_db.database import SegCLRDatabase  # noqa: E402
 # with DATASTACK=minnie65_phase3_v1 once/if that permission is granted.
 DATASTACK = os.environ.get("DATASTACK", "minnie65_public")
 MAT_VERSION = 1718
-STORE_ROOT = "/orcd/compute/sdorkenw/001/collina/segclr-db"
+STORE_ROOT = "/orcd/compute/sdorkenw/001/segclr-db"
 
 
 def main() -> int:

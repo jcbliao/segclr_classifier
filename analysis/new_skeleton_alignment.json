@@ -1,0 +1,9 @@
+{
+  "split": "test",
+  "manifest_cells": 467,
+  "aligned_cells": 467,
+  "missing": [],
+  "embedding_weighted_fraction_within_500nm": 0.9771824193845086,
+  "cell_median_of_nearest_medians_nm": 64.57302895982548,
+  "cell_p95_of_nearest_p95_nm": 591.0899639179245
+}

@@ -99,23 +99,23 @@ class LCPNHead(nn.Module):
                 g2l[global_idx] = local_idx
             self.register_buffer(f"g2l_{i}", g2l, persistent=False)
 
-        # Unweighted by default (matches segCLR_cell_classification's own
-        # LocalClassifierSNGPTrainer.compute_loss, which never passes
-        # weight= either) -- call set_class_weights() to enable per-node
-        # inverse-frequency weighting once real training showed this
-        # matters: with severe class imbalance (e.g. L4IT ~2.45M windows vs.
-        # singleton classes), unweighted per-node CE let val_cell_bacc sit
-        # at ~chance (~1/24) while val_cell_acc sat well above chance --
-        # the model learns to just predict populous classes since they
-        # dominate the (sum-reduced) loss, with no gradient pressure to
-        # learn rare ones. Neither of the lab's own weight_imbalanced_classes
-        # settings fixes this for THIS trainer type: "loss" only affects
-        # their flat/hierarchy-single-head trainers (which do read
-        # dataset.class_weights), and LocalClassifierSNGPTrainer never
-        # consumes class_weights at all regardless of the config value --
-        # their only real lever for this trainer is "sample" (a
-        # WeightedRandomSampler at the data level). This project's fix is
-        # loss-level weighting instead, applied directly here.
+        # Unweighted unless set_class_weights() is called, matching
+        # segCLR_cell_classification's own LocalClassifierSNGPTrainer.compute_loss,
+        # which never passes weight= either -- and which is not an oversight on
+        # their part: their LCPN config corrects the imbalance by RESAMPLING
+        # (weight_imbalanced_classes: sample, a WeightedRandomSampler at the
+        # data level), and their "loss" setting reaches only their flat and
+        # hierarchy-single-head trainers, which read dataset.class_weights.
+        # LocalClassifierSNGPTrainer never consumes class_weights whatever the
+        # config says.
+        #
+        # Correcting the imbalance SOMEHOW is not optional. Uncorrected, the
+        # severe spread (pyramidal ~8.04M windows vs. OPC 2562) let
+        # val_cell_bacc sit near chance while val_cell_acc looked fine: the
+        # populous classes dominate the sum-reduced loss and nothing pressures
+        # the model to learn the rare ones. This weighting is the alternative
+        # lever, selected by scripts/train_gnn.py's --class-balance loss; the
+        # default there is their resampling instead.
         for i in range(len(self.nodes)):
             self.register_buffer(f"class_weight_{i}", None, persistent=False)
 

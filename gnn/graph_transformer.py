@@ -70,16 +70,6 @@ from __future__ import annotations
 import torch
 from torch import nn
 
-# Bucket boundaries (nm) for the learned distance bias, chosen from the
-# measured edge-length distribution over 2.1M real skeleton edges
-# (scripts/check_edge_length_distribution.py): p5 529, p50 1867, p95 3865,
-# p99 6117. Finer where the mass is, coarser in the long right tail.
-DIST_BIAS_BOUNDARIES_NM = (250.0, 500.0, 750.0, 1000.0, 1500.0, 2000.0, 2500.0, 3000.0, 4000.0, 6000.0)
-
-# Bucket 0 = "no edge", bucket 1 = self-loop, buckets 2.. = binned edge length
-# (torch.bucketize over the boundaries above yields len+1 bins).
-N_DIST_BUCKETS = len(DIST_BIAS_BOUNDARIES_NM) + 3
-
 
 class GraphAttention(nn.Module):
     """Dense attention over one padded batch of windows, with two independent
@@ -110,7 +100,6 @@ class GraphAttention(nn.Module):
         qkv_bias: bool = False,
         use_exp: bool = True,
         use_adj_bias: bool = True,
-        use_dist_bias: bool = False,
     ):
         super().__init__()
         self.dim = dim
@@ -131,32 +120,17 @@ class GraphAttention(nn.Module):
         if self.predict_gamma is not None:
             self.predict_gamma.weight.data.uniform_(0.0, 0.01)
 
-        # Learned per-head scalar bias indexed by binned edge length, replacing
-        # the binary adjacency in the bias term. Initialized so it is EXACTLY
-        # the binary adjacency at step 0 -- every bucket 1.0 except "no edge"
-        # at 0.0 -- so switching this on starts from the unmodified model and
-        # learns away from it, rather than perturbing the initialization.
-        self.use_dist_bias = use_dist_bias
-        self.dist_bias = nn.Embedding(N_DIST_BUCKETS, num_heads) if use_dist_bias else None
-        if self.dist_bias is not None:
-            nn.init.ones_(self.dist_bias.weight)
-            self.dist_bias.weight.data[0].zero_()
-
     def forward(
         self,
         x: torch.Tensor,
         adj: torch.Tensor,
         key_padding_mask: torch.Tensor,
         attn_mask: torch.Tensor | None = None,
-        dist_bucket: torch.Tensor | None = None,
     ) -> torch.Tensor:
         """
         x: (B, N, dim)
         adj: (B, N, N) -- 0/1 (or float) adjacency, self-loops included.
-            Unused when `use_adj_bias` is False, and superseded by
-            `dist_bucket` when `use_dist_bias` is True.
-        dist_bucket: (B, N, N) long -- per-pair distance bucket index, from
-            GraphTransformer._distance_buckets. Required iff `use_dist_bias`.
+            Unused when `use_adj_bias` is False.
         key_padding_mask: (B, N) bool -- True where the node is REAL (not
             padding). Applied over the key axis so padded nodes never receive
             attention probability, independent of gamma/adj.
@@ -176,16 +150,7 @@ class GraphAttention(nn.Module):
             gamma = self.predict_gamma(x)[:, None].repeat(1, self.num_heads, 1, 1)  # (B, H, N, 2)
             if self.use_exp:
                 gamma = torch.exp(gamma)
-            if self.use_dist_bias:
-                if dist_bucket is None:
-                    raise ValueError("use_dist_bias=True but dist_bucket was not provided")
-                # (B, N, N, H) -> (B, H, N, N). Per head, unlike gamma, which
-                # predict_gamma broadcasts identically across heads -- so this
-                # is the only part of the bias term a single head can shape on
-                # its own (one head local, another global).
-                adj_b = self.dist_bias(dist_bucket).permute(0, 3, 1, 2)
-            else:
-                adj_b = adj[:, None].repeat(1, self.num_heads, 1, 1)  # (B, H, N, N)
+            adj_b = adj[:, None].repeat(1, self.num_heads, 1, 1)  # (B, H, N, N)
             attn = gamma[:, :, :, 0:1] * attn + gamma[:, :, :, 1:2] * adj_b
 
         pad = ~key_padding_mask[:, None, None, :]  # (B, 1, 1, N), True at padding
@@ -222,13 +187,12 @@ class AttentionBlock(nn.Module):
         qkv_bias: bool = False,
         use_exp: bool = True,
         use_adj_bias: bool = True,
-        use_dist_bias: bool = False,
     ):
         super().__init__()
         self.norm1 = nn.LayerNorm(dim)
         self.attn = GraphAttention(
             dim, num_heads=num_heads, qkv_bias=qkv_bias, use_exp=use_exp,
-            use_adj_bias=use_adj_bias, use_dist_bias=use_dist_bias,
+            use_adj_bias=use_adj_bias,
         )
         self.norm2 = nn.LayerNorm(dim)
         self.mlp = _MLP(dim=dim, hidden_dim=dim * mlp_ratio)
@@ -239,9 +203,8 @@ class AttentionBlock(nn.Module):
         adj: torch.Tensor,
         key_padding_mask: torch.Tensor,
         attn_mask: torch.Tensor | None = None,
-        dist_bucket: torch.Tensor | None = None,
     ) -> torch.Tensor:
-        x = x + self.attn(self.norm1(x), adj, key_padding_mask, attn_mask, dist_bucket)
+        x = x + self.attn(self.norm1(x), adj, key_padding_mask, attn_mask)
         x = x + self.mlp(self.norm2(x))
         return x
 
@@ -264,8 +227,6 @@ class GraphTransformer(nn.Module):
       use_thickness    concatenate the spine-corrected dendrite shaft radius
                        (+ its measured flag) onto the node features
       use_adj_bias     GraphDINO's `gamma_1 * adj` additive attention bias
-      use_dist_bias    replace that binary `adj` with a learned per-head scalar
-                       indexed by binned edge length (requires use_adj_bias)
       attention_scope  "global" (attend anywhere in the window) vs
                        "neighborhood" (hard-masked to graph neighbors)
 
@@ -321,8 +282,8 @@ class GraphTransformer(nn.Module):
         use_rel_pos: bool = True,
         use_thickness: bool = False,
         use_adj_bias: bool = True,
-        use_dist_bias: bool = False,
         attention_scope: str = "global",
+        use_features: bool = True,
     ):
         super().__init__()
         if attention_scope not in ("global", "neighborhood"):
@@ -332,26 +293,28 @@ class GraphTransformer(nn.Module):
         self.use_lpe = use_lpe
         self.use_rel_pos = use_rel_pos
         self.use_thickness = use_thickness
-        self.use_dist_bias = use_dist_bias
-        if use_dist_bias and not use_adj_bias:
-            # The distance bias IS the bias term's multiplicand -- with
-            # use_adj_bias off there is no bias term for it to occupy, so this
-            # combination would silently do nothing.
-            raise ValueError("use_dist_bias=True requires use_adj_bias=True")
-        self.register_buffer(
-            "_dist_boundaries", torch.tensor(DIST_BIAS_BOUNDARIES_NM), persistent=False
-        )
         self.attention_scope = attention_scope
+        # False drops the SegCLR embedding from the node input, leaving the
+        # model nothing but morphology: adjacency, the center-relative offset
+        # and the Laplacian PE. `x` is still consumed for batching (it defines
+        # B and N via to_dense_batch), just not as a feature.
+        self.use_features = use_features
 
         self.cls_token = nn.Parameter(torch.randn(1, 1, dim))
         self.cls_pos_embedding = nn.Parameter(torch.randn(1, 1, dim))
 
         # Must stay in lockstep with the concatenation order in forward().
         node_in_dim = (
-            feat_dim
+            (feat_dim if use_features else 0)
             + (self.REL_POS_DIM if use_rel_pos else 0)
             + (self.THICKNESS_DIM if use_thickness else 0)
         )
+        if node_in_dim == 0:
+            raise ValueError(
+                "every node-input switch is off (use_features, use_rel_pos, use_thickness) -- "
+                "there would be nothing to embed. The Laplacian PE alone cannot carry a node "
+                "input: it is added to the node embedding, not concatenated into it."
+            )
         self.to_node_embedding = nn.Sequential(
             nn.Linear(node_in_dim, dim * 2), nn.ReLU(True), nn.Linear(dim * 2, dim)
         )
@@ -363,7 +326,7 @@ class GraphTransformer(nn.Module):
             [
                 AttentionBlock(
                     dim=dim, num_heads=num_heads, mlp_ratio=mlp_ratio, qkv_bias=qkv_bias,
-                    use_exp=use_exp, use_adj_bias=use_adj_bias, use_dist_bias=use_dist_bias,
+                    use_exp=use_exp, use_adj_bias=use_adj_bias,
                 )
                 for _ in range(depth)
             ]
@@ -379,7 +342,6 @@ class GraphTransformer(nn.Module):
         pos_enc: torch.Tensor | None = None,
         rel_pos: torch.Tensor | None = None,
         thickness: torch.Tensor | None = None,
-        edge_attr: torch.Tensor | None = None,
     ) -> torch.Tensor:
         """
         x: (N_total, feat_dim) -- raw node features, PyG-batched (concatenated
@@ -407,10 +369,6 @@ class GraphTransformer(nn.Module):
             onto `x` alongside rel_pos, for the same reason: it is a physical
             property of the node, not a positional signal. Required iff
             `use_thickness`; ignored otherwise.
-        edge_attr: (E, 1) or (E,) -- skeleton edge length in nm. Required iff
-            `use_dist_bias`; ignored otherwise. Note this is the ONLY consumer
-            of edge_attr anywhere in gnn/ -- the binary-adjacency bias and the
-            MPNN's SAGEConv both discard it.
 
         Returns g: (B, dim), one embedding per window.
         """
@@ -423,7 +381,7 @@ class GraphTransformer(nn.Module):
         self_loops = torch.diag_embed(node_mask.to(adj_raw.dtype))
         adj = torch.maximum(adj_raw, self_loops)  # self-loops on real nodes only
 
-        node_parts = [x_dense]
+        node_parts = [x_dense] if self.use_features else []
         if self.use_rel_pos:
             if rel_pos is None:
                 raise ValueError("use_rel_pos=True but rel_pos was not provided")
@@ -470,49 +428,10 @@ class GraphTransformer(nn.Module):
 
         attn_mask = self._neighborhood_mask(adj_full, N, B) if self.attention_scope == "neighborhood" else None
 
-        dist_bucket = None
-        if self.use_dist_bias:
-            if edge_attr is None:
-                raise ValueError("use_dist_bias=True but edge_attr was not provided")
-            dist = to_dense_adj(
-                edge_index, batch_index, edge_attr=edge_attr.reshape(-1), max_num_nodes=N
-            )  # (B, N, N), edge length in nm at adjacent pairs, 0 elsewhere
-            dist_bucket = self._distance_buckets(adj_raw, dist, node_mask)
-
         for block in self.blocks:
-            h = block(h, adj_full, full_mask, attn_mask, dist_bucket)
+            h = block(h, adj_full, full_mask, attn_mask)
 
         return self.mlp_head(h[:, 0])
-
-    def _distance_buckets(
-        self, adj_raw: torch.Tensor, dist: torch.Tensor, node_mask: torch.Tensor
-    ) -> torch.Tensor:
-        """(B, N+1, N+1) long bucket index per pair, laid out on the same
-        CLS-prepended grid as adj_full.
-
-        Bucket 0 is "no edge", 1 is a self-loop, and 2.. are binned edge
-        lengths. Distinguishing 0 from the shortest length bin is why this
-        reads `adj_raw` (pre-self-loop adjacency) rather than inferring
-        absence from `dist == 0` -- a genuinely zero-length edge and a missing
-        edge are different facts.
-
-        CLS keeps bucket 0 to every node and 1 to itself, matching adj_full's
-        convention that CLS gets no adjacency bias toward any particular node
-        and reaches them through the unconstrained attention term instead.
-        """
-        B, N, _ = adj_raw.shape
-        bucket = torch.bucketize(dist, self._dist_boundaries) + 2  # (B, N, N)
-        bucket = torch.where(adj_raw > 0, bucket, torch.zeros_like(bucket))
-        # Self-loops on real nodes only; padding diagonals stay "no edge" so a
-        # padding row never claims a bias it should not have (it is masked out
-        # by key_padding_mask regardless, but keeping the two consistent means
-        # the bucket grid can be read on its own without that caveat).
-        bucket.diagonal(dim1=1, dim2=2).copy_(node_mask.long())
-
-        full = bucket.new_zeros(B, N + 1, N + 1)
-        full[:, 1:, 1:] = bucket
-        full[:, 0, 0] = 1
-        return full
 
     @staticmethod
     def _neighborhood_mask(adj_full: torch.Tensor, N: int, B: int) -> torch.Tensor:

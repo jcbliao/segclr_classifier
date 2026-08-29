@@ -5,7 +5,7 @@ the only thing that differs between a run of each:
 
   --architecture graph_transformer  (default) gnn/graph_transformer.py's
       AC-attention GraphTransformer. Four independent ablation switches:
-      --gt-no-lpe, --gt-no-rel-pos, --gt-no-adj-bias, --gt-dist-bias, and
+      --gt-no-lpe, --gt-no-rel-pos, --gt-no-adj-bias, and
       --gt-attention-scope {global,neighborhood}, plus the off-by-default
       --gt-use-thickness node feature. Enabled switches are appended to the
       run name, so they never overwrite the full run.
@@ -68,7 +68,9 @@ from data.dataset_lcpn import (  # noqa: E402
     load_manifest,
     train_window_counts_by_label,
 )
-from data.dataset_windowed import WindowedGraphDatasetLCPN  # noqa: E402
+from data.geodesic_window import DEFAULT_WINDOW_NM  # noqa: E402
+from data.dataset_windowed import WindowedGraphDatasetLCPN, balanced_sampler  # noqa: E402
+from data.window_prediction_cache import save_prediction_cache  # noqa: E402
 from gnn.lcpn import compute_node_class_weights  # noqa: E402
 from gnn.metrics import majority_vote_by_group, summarize  # noqa: E402
 from gnn.model import ModelConfig, WindowClassifier  # noqa: E402
@@ -87,7 +89,7 @@ def evaluate(model, loader, device):
         g = model(
             data.x, data.edge_index, data.batch,
             pos_enc=data.pos_enc, rel_pos=data.rel_pos,
-            thickness=getattr(data, "thickness", None), edge_attr=data.edge_attr,
+            thickness=getattr(data, "thickness", None),
         )
         level_preds = model.cls_head.predict_top_down(g)
         preds.append(level_preds[:, -1].cpu().numpy())
@@ -101,6 +103,33 @@ def cell_level_metrics(labels, preds, root_ids, num_classes, classes):
     Same two-stage design the baseline uses."""
     cell_true, cell_pred = majority_vote_by_group(root_ids, labels, preds)
     return summarize(cell_true, cell_pred, num_classes, classes)
+
+
+def publish_test_prediction_cache(run_name, dataset, predictions, targets, num_embeddings):
+    """Publish final held-out predictions without another inference pass."""
+    if num_embeddings is None:
+        print("radius-dataset run: shared fixed-window prediction cache not applicable")
+        return
+    if len(predictions) != len(dataset):
+        raise RuntimeError(
+            f"cannot cache {run_name}: {len(predictions)} predictions for {len(dataset)} windows"
+        )
+    xyz = np.empty((len(dataset), 3), np.float32)
+    for root_id in np.unique(dataset.index_root_ids):
+        rows = np.flatnonzero(dataset.index_root_ids == root_id)
+        xyz[rows] = dataset.cell_data[int(root_id)].pos[
+            dataset.index_centers[rows]
+        ].numpy()
+    path = save_prediction_cache(run_name, {
+        "split": np.full(len(dataset), "test", dtype="U5"),
+        "root_id": dataset.index_root_ids.astype(np.uint64),
+        "center_index": dataset.index_centers.astype(np.int32),
+        "center_xyz": xyz,
+        "prediction": np.asarray(predictions, dtype=np.int16),
+        "target": np.asarray(targets, dtype=np.int16),
+        "num_embeddings": np.array([num_embeddings], np.int16),
+    })
+    print(f"published shared window predictions to {path}")
 
 
 def main(args):
@@ -119,10 +148,14 @@ def main(args):
     # the dataset attaches the feature iff the model is configured to read it.
     use_thickness = args.gt_use_thickness
     train_ds = WindowedGraphDatasetLCPN(
-        manifest, "train", pos_dim=args.gt_pos_dim, use_thickness=use_thickness
+        manifest, "train", pos_dim=args.gt_pos_dim, use_thickness=use_thickness,
+        window_nm=args.window_nm, num_embeddings=args.num_embeddings,
+        neighborhood_root=args.neighborhood_root,
     )
     test_ds = WindowedGraphDatasetLCPN(
-        manifest, "test", pos_dim=args.gt_pos_dim, use_thickness=use_thickness
+        manifest, "test", pos_dim=args.gt_pos_dim, use_thickness=use_thickness,
+        window_nm=args.window_nm, num_embeddings=args.num_embeddings,
+        neighborhood_root=args.neighborhood_root,
     )
     val_ds = test_ds
     classes = train_ds.classes  # finest-level names, for summarize()'s per_class_recall keys
@@ -132,7 +165,14 @@ def main(args):
     # on one core and leaves the GPU idle waiting -- measured as the actual
     # bottleneck, not batch size. See CLAUDE.md's DataLoader-throughput note.
     loader_kwargs = dict(num_workers=args.num_workers, persistent_workers=args.num_workers > 0)
-    train_loader = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, **loader_kwargs)
+    # --class-balance sample resamples the training windows instead of shuffling
+    # them (see data/dataset_windowed.py::balanced_sampler); a sampler and
+    # shuffle=True are mutually exclusive in DataLoader.
+    train_sampler = balanced_sampler(train_ds) if args.class_balance == "sample" else None
+    train_loader = DataLoader(
+        train_ds, batch_size=args.batch_size,
+        sampler=train_sampler, shuffle=train_sampler is None, **loader_kwargs,
+    )
     test_loader = DataLoader(test_ds, batch_size=args.batch_size, shuffle=False, **loader_kwargs)
     val_loader = test_loader  # val_ds is test_ds -- see the dataset construction comment above
 
@@ -144,6 +184,10 @@ def main(args):
         cls_resnet_hidden=args.cls_resnet_hidden,
         cls_resnet_layers=args.cls_resnet_layers,
         cls_resnet_dropout=args.cls_resnet_dropout,
+        use_spatial_features=args.spatial,
+        use_position=args.position,
+        use_lpe=args.lpe,
+        use_embeddings=not args.no_embeddings,
         mpnn_hidden_dim=args.mpnn_hidden_dim,
         mpnn_out_dim=args.mpnn_hidden_dim,
         mpnn_layers=args.mpnn_layers,
@@ -159,23 +203,46 @@ def main(args):
         gt_use_rel_pos=not args.gt_no_rel_pos,
         gt_use_adj_bias=not args.gt_no_adj_bias,
         gt_attention_scope=args.gt_attention_scope,
-        gt_use_dist_bias=args.gt_dist_bias,
         gt_use_thickness=use_thickness,
     )
     model = WindowClassifier(config, hierarchy=hierarchy).to(device)
 
-    if not args.no_class_weights:
+    if args.freeze_aggregator:
+        n_frozen = model.freeze_aggregator()
+        n_train = sum(p.numel() for p in model.parameters() if p.requires_grad)
+        print(
+            f"aggregator frozen at random init: {n_frozen:,} parameters held fixed, "
+            f"{n_train:,} trainable (the classification head only)"
+        )
+
+    # Imbalance is severe enough that leaving it uncorrected drives the model
+    # to predict only populous classes -- balanced accuracy near chance while
+    # raw accuracy looks fine. Two ways to correct it, and they are exclusive:
+    # "sample" reweights which windows the model SEES (done at the loader
+    # above), "loss" reweights what it PAYS for them. Doing both would apply
+    # the correction twice.
+    if args.class_balance == "sample":
+        print("class balance: WeightedRandomSampler over train windows (1/sqrt(count), theirs)")
+    elif args.class_balance == "loss":
         # Per-node inverse-frequency weights, computed from TRAIN-split
         # window counts only (data/dataset_lcpn.py::train_window_counts_by_label)
-        # -- see gnn/lcpn.py::compute_node_class_weights for why this exists:
-        # unweighted, the LCPN loss just learns to predict populous classes
-        # (severe imbalance -- L4IT ~2.45M windows vs. singleton classes --
-        # gives no gradient pressure to learn the rare ones otherwise).
-        node_weights = compute_node_class_weights(hierarchy, train_window_counts_by_label(manifest))
+        # -- see gnn/lcpn.py::compute_node_class_weights.
+        node_weights = compute_node_class_weights(
+            hierarchy, train_window_counts_by_label(manifest, hierarchy)
+        )
         model.cls_head.set_class_weights(node_weights)
-        print("applied per-node class weights (train-split window counts)")
+        print("class balance: per-node inverse-frequency loss weights (train-split window counts)")
+    else:
+        print("class balance: none")
 
-    opt = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+    # Frozen parameters are filtered out rather than left in with requires_grad
+    # False: Adam would otherwise carry optimizer state for tensors it can
+    # never update, and the count in --freeze-aggregator's log line would
+    # disagree with what the optimizer actually holds.
+    opt = torch.optim.Adam(
+        [p for p in model.parameters() if p.requires_grad],
+        lr=args.lr, weight_decay=args.weight_decay,
+    )
 
     # agg_tag identifies the aggregation method -- "meanpool" for the
     # mean-readout baseline, "mpnn_L{layers}" for the message-passing encoder,
@@ -185,10 +252,20 @@ def main(args):
     # checkpoint is written to disk as soon as a new best is found, not just
     # kept in memory until the loop ends -- a killed/preempted job before the
     # last epoch used to lose the best state entirely.
-    if args.architecture == "mean":
-        agg_tag = "meanpool"
-    elif args.architecture == "mpnn":
-        agg_tag = f"mpnn_L{args.mpnn_layers}"
+    if args.architecture in ("mean", "mpnn", "fully_connected"):
+        if args.architecture == "mean":
+            agg_tag = "mean"
+        elif args.architecture == "fully_connected":
+            agg_tag = f"fc_L{args.mpnn_layers}"
+        else:
+            agg_tag = f"mpnn_L{args.mpnn_layers}"
+        # Tagged for the same reason the GT ablations are: a --spatial run is a
+        # different model on the same aggregator and must not land on the
+        # raw-embedding run's directory.
+        if args.position or args.spatial:
+            agg_tag += "_position"
+        if args.lpe or args.spatial:
+            agg_tag += "_lpe"
     else:
         # Ablation switches go into the tag too -- without them, a full run
         # and any of its ablations would collide on one checkpoint dir and
@@ -200,7 +277,6 @@ def main(args):
             (args.gt_no_lpe, "_nolpe"),
             (args.gt_no_rel_pos, "_norelpos"),
             (args.gt_no_adj_bias, "_noadjbias"),
-            (args.gt_dist_bias, "_distbias"),
             (args.gt_use_thickness, "_thick"),
         ):
             if flag:
@@ -210,6 +286,25 @@ def main(args):
     # linear-probe run's directory and overwrite its epoch_metrics.csv.
     if args.cls_resnet:
         agg_tag += f"_resnet{args.cls_resnet_layers}x{args.cls_resnet_hidden}"
+    # Window radius, likewise: the same aggregator over a 40um window is a
+    # different model of the data than over 10um, and the two must not share a
+    # results directory. The default radius stays untagged so the headline runs
+    # keep the names the rest of the repo already refers to.
+    if args.num_embeddings is not None:
+        agg_tag += f"_n{args.num_embeddings}"
+    elif args.window_nm != DEFAULT_WINDOW_NM:
+        um = args.window_nm / 1000.0
+        agg_tag += f"_w{um:g}um"
+    # Applies to every architecture, like the head choice, so it is tagged
+    # outside the aggregation branch -- a geometry-only run is a different
+    # model on the same aggregator and must not land on its directory.
+    if args.no_embeddings:
+        agg_tag += "_noemb"
+    # Same reasoning again: a frozen-aggregator run is the random-features
+    # control for its architecture, not a rerun of it, and must not overwrite
+    # the trained run's results.
+    if args.freeze_aggregator:
+        agg_tag += "_frozenagg"
     run_name = f"gnn_lcpn_scratch_{agg_tag}"
     ckpt_dir = Path(__file__).resolve().parent.parent / "results" / run_name
     ckpt_dir.mkdir(parents=True, exist_ok=True)
@@ -224,7 +319,7 @@ def main(args):
     # 100-epoch run survivable inside mit_normal_gpu's 6h walltime cap across
     # successive submissions.
     last_path = ckpt_dir / "checkpoint_last.pt"
-    start_epoch, best_val_bacc = 0, -1.0
+    start_epoch, best_val_f1 = 0, -1.0
     if args.resume and last_path.exists():
         ckpt = torch.load(last_path, map_location=device, weights_only=False)
         # A mismatched config means this directory belongs to a different model
@@ -238,16 +333,44 @@ def main(args):
                 f"  now:     {config}\n"
                 "Delete the directory to start fresh, or fix the flags."
             )
+        # Not part of ModelConfig -- it is a property of the training
+        # objective, not the model -- so it needs its own check. Resuming
+        # across a change would silently train the second half of a run
+        # against a different distribution than the first, and leave one
+        # epoch_metrics.csv describing both. Checkpoints written before this
+        # key existed carry the old default, "loss".
+        if ckpt.get("class_balance", "loss") != args.class_balance:
+            raise SystemExit(
+                f"--resume: {last_path} was trained with --class-balance "
+                f"{ckpt.get('class_balance', 'loss')}, not {args.class_balance}.\n"
+                "Delete the directory to start fresh, or pass the original setting."
+            )
+        # Also not part of ModelConfig -- it changes which parameters get
+        # gradient, not how the model is built, so two runs differing only in
+        # it produce identical state_dicts and would resume into each other
+        # without complaint.
+        if ckpt.get("freeze_aggregator", False) != args.freeze_aggregator:
+            raise SystemExit(
+                f"--resume: {last_path} was trained with --freeze-aggregator="
+                f"{ckpt.get('freeze_aggregator', False)}, not {args.freeze_aggregator}.\n"
+                "Delete the directory to start fresh, or pass the original setting."
+            )
         model.load_state_dict(ckpt["model_state"])
         opt.load_state_dict(ckpt["optimizer_state"])
         start_epoch = ckpt["epoch"] + 1
-        best_val_bacc = ckpt["best_val_bacc"]
-        torch.set_rng_state(ckpt["cpu_rng_state"])
+        best_val_f1 = ckpt["best_val_f1"]
+        # .cpu() is load-bearing, not defensive: map_location=device above sends
+        # EVERY tensor in the checkpoint to the GPU, RNG states included, and
+        # both set_rng_state calls require a CPU ByteTensor -- a CUDA one raises
+        # "RNG state must be a torch.ByteTensor". This only ever fires on a real
+        # GPU resume, so it is invisible until the first preemption of a real
+        # run (which is exactly when it costs the most).
+        torch.set_rng_state(ckpt["cpu_rng_state"].cpu())
         if ckpt.get("cuda_rng_state") is not None and torch.cuda.is_available():
-            torch.cuda.set_rng_state(ckpt["cuda_rng_state"])
+            torch.cuda.set_rng_state(ckpt["cuda_rng_state"].cpu())
         print(
             f"resumed from {last_path}: starting at epoch {start_epoch}, "
-            f"best val_window_bacc so far {best_val_bacc:.4f}"
+            f"best window macro F1 so far {best_val_f1:.4f}"
         )
         if start_epoch >= args.epochs:
             print(f"already at epoch {start_epoch} of {args.epochs} -- nothing left to train")
@@ -318,7 +441,7 @@ def main(args):
         with open(csv_path, "a", newline="") as f:
             csv.DictWriter(f, fieldnames=csv_fields).writerow(row)
 
-    # best_val_bacc comes from the resume block above (-1.0 on a fresh run).
+    # best_val_f1 comes from the resume block above (-1.0 on a fresh run).
     # The best weights live on disk in checkpoint_best.pt rather than in an
     # in-memory `best_state`: a resumed run may never beat a best set before
     # the interruption, so the final model has to be reloadable from disk.
@@ -336,7 +459,7 @@ def main(args):
             g = model(
                 data.x, data.edge_index, data.batch,
                 pos_enc=data.pos_enc, rel_pos=data.rel_pos,
-                thickness=getattr(data, "thickness", None), edge_attr=data.edge_attr,
+                thickness=getattr(data, "thickness", None),
             )
             loss = model.cls_head.compute_loss(g, data.y_levels)
             loss.backward()
@@ -351,7 +474,6 @@ def main(args):
         # classification step itself, independent of what majority voting
         # does to it afterward.
         window_val_metrics = summarize(val_labels, val_preds, len(classes), classes)
-        window_val_acc = window_val_metrics["accuracy"]
         val_metrics = cell_level_metrics(val_labels, val_preds, val_root_ids, len(classes), classes)
         # Checkpoint selection uses WINDOW balanced accuracy, not cell -- cell
         # metrics come from majority-voting a few hundred val cells, which is
@@ -364,28 +486,59 @@ def main(args):
         # selection is therefore not held out from the final reported test
         # metrics below. Accepted trade-off of the two-way split, in exchange
         # for both partitions getting the full 20% of held-out cells.
-        if window_val_metrics["balanced_accuracy"] > best_val_bacc:
-            best_val_bacc = window_val_metrics["balanced_accuracy"]
+        if window_val_metrics["macro_f1"] > best_val_f1:
+            best_val_f1 = window_val_metrics["macro_f1"]
             torch.save(
                 {
                     "model_state": model.state_dict(), "config": config,
-                    "epoch": epoch, "val_window_balanced_accuracy": best_val_bacc,
+                    "epoch": epoch, "val_window_macro_f1": best_val_f1,
                 },
                 ckpt_dir / "checkpoint_best.pt",
             )
-            tqdm.write(f"  new best val_window_bacc={best_val_bacc:.3f} at epoch {epoch} -> checkpoint_best.pt")
+            # Small, login-node-safe companion to checkpoint_best.pt. Analysis
+            # notebooks can show the best epoch's confusion matrix while this
+            # run is still training, without loading a checkpoint or inferring.
+            best_metrics_path = ckpt_dir / "best_metrics.json"
+            best_metrics_tmp = ckpt_dir / "best_metrics.json.tmp"
+            best_metrics_tmp.write_text(json.dumps({
+                "run": run_name, "epoch": epoch, "classes": classes,
+                "window_test_metrics": window_val_metrics,
+                "test_metrics": val_metrics, "complete": False,
+            }, indent=2))
+            os.replace(best_metrics_tmp, best_metrics_path)
+            tqdm.write(
+                f"  new best selection metric (window macro F1)={best_val_f1:.3f} "
+                f"at epoch {epoch} -> checkpoint_best.pt"
+            )
+        # Macro precision / recall / F1 at both granularities, rather than
+        # accuracy and balanced accuracy. `balanced_accuracy` IS macro recall
+        # (gnn/metrics.py::balanced_accuracy -- the mean of per-class recall),
+        # so printing it as R alongside P and F1 is a renaming plus two extra
+        # numbers, not three new metrics. The two extra numbers are the point:
+        # under this class imbalance recall and precision move in OPPOSITE
+        # directions as training proceeds -- an early, under-confident model
+        # over-predicts rare classes, scoring high recall and low precision --
+        # and a console showing only recall makes that look like the model
+        # simply peaking at epoch 0. Raw accuracy stays in epoch_metrics.csv,
+        # which logs all four at both granularities plus per-class recall and
+        # precision; nothing is lost from the record by leaving it out here.
+        def _macro(m: dict) -> str:
+            return (
+                f"P={m['macro_precision']:.3f} R={m['balanced_accuracy']:.3f} "
+                f"F1={m['macro_f1']:.3f}"
+            )
+
         epoch_bar.set_postfix(
             train_loss=f"{total_loss / max(1, n):.4f}",
-            val_cell_bacc=f"{val_metrics['balanced_accuracy']:.3f}",
-            val_cell_acc=f"{val_metrics['accuracy']:.3f}",
+            val_window_f1=f"{window_val_metrics['macro_f1']:.3f}",
+            val_cell_f1=f"{val_metrics['macro_f1']:.3f}",
         )
         # Every epoch, not throttled -- epochs are cheap (~1.5-3min with the
         # DataLoader worker settings), and per-epoch visibility into the val
         # curve makes convergence readable instead of guessed at.
         tqdm.write(
             f"epoch {epoch:4d}  train_loss={total_loss / max(1, n):.4f}  "
-            f"val_window_acc={window_val_acc:.3f}  val_window_bacc={window_val_metrics['balanced_accuracy']:.3f}  "
-            f"val_cell_bacc={val_metrics['balanced_accuracy']:.3f}  val_cell_acc={val_metrics['accuracy']:.3f}"
+            f"window[{_macro(window_val_metrics)}]  cell[{_macro(val_metrics)}]"
         )
         _append_csv_row(epoch, total_loss / max(1, n), window_val_metrics, val_metrics)
 
@@ -401,7 +554,9 @@ def main(args):
                 "optimizer_state": opt.state_dict(),
                 "config": config,
                 "epoch": epoch,
-                "best_val_bacc": best_val_bacc,
+                "best_val_f1": best_val_f1,
+                "class_balance": args.class_balance,
+                "freeze_aggregator": args.freeze_aggregator,
                 "cpu_rng_state": torch.get_rng_state(),
                 "cuda_rng_state": torch.cuda.get_rng_state() if torch.cuda.is_available() else None,
             },
@@ -420,7 +575,12 @@ def main(args):
     window_test_metrics = summarize(test_labels, test_preds, len(classes), classes)
     test_metrics = cell_level_metrics(test_labels, test_preds, test_root_ids, len(classes), classes)
     print("=== test metrics (GNN) ===")
-    print(f"window-level accuracy: {window_test_metrics['accuracy']:.4f}  balanced_accuracy: {window_test_metrics['balanced_accuracy']:.4f}")
+    print(
+        f"window-level  P={window_test_metrics['macro_precision']:.4f} "
+        f"R={window_test_metrics['balanced_accuracy']:.4f} "
+        f"F1={window_test_metrics['macro_f1']:.4f} "
+        f"acc={window_test_metrics['accuracy']:.4f}"
+    )
     print(json.dumps(test_metrics, indent=2))
 
     out_dir = Path(__file__).resolve().parent.parent / "results"
@@ -438,13 +598,16 @@ def main(args):
         )
     )
     print(f"wrote {out_path}")
+    publish_test_prediction_cache(
+        run_name, test_ds, test_preds, test_labels, args.num_embeddings,
+    )
 
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
     p.add_argument(
         "--architecture", default="graph_transformer",
-        choices=["graph_transformer", "mpnn", "mean"],
+        choices=["graph_transformer", "fully_connected", "mpnn", "mean"],
         help="graph_transformer (default): gnn/graph_transformer.py's AC-attention "
              "GraphTransformer. mpnn: gnn/encoder.py::MPNNEncoder, plain GraphSAGE message "
              "passing (no attention) + MeanReadout. mean: MeanReadout over the raw node "
@@ -458,11 +621,25 @@ if __name__ == "__main__":
     p.add_argument("--mpnn-hidden-dim", type=int, default=128)
     p.add_argument("--mpnn-dropout", type=float, default=0.1)
     p.add_argument(
+        "--spatial", action="store_true",
+        help="give --architecture mean/mpnn the same spatial node features the "
+             "GraphTransformer builds for itself: the center-relative offset (dx, dy, dz and "
+             "their norm) and the per-window Laplacian PE, concatenated onto the raw "
+             "embeddings. Off by default, so those two see raw embeddings alone; enabling it "
+             "tags the run _spatial. This is what makes a cross-architecture sweep compare "
+             "aggregation rather than node features. Rejected with --architecture "
+             "graph_transformer, which has --gt-no-lpe / --gt-no-rel-pos instead.",
+    )
+    p.add_argument("--position", action="store_true",
+                   help="concatenate center-relative xyz and distance for mean/MPNN/FC")
+    p.add_argument("--lpe", action="store_true",
+                   help="concatenate the window Laplacian positional encoding for mean/MPNN/FC")
+    p.add_argument(
         "--cls-hidden-dim", type=int, default=None,
         help="LCPN head hidden layer size; default None = plain Linear per node",
     )
     p.add_argument(
-        "--cls-resnet", action="store_true",
+        "--cls-resnet", action=argparse.BooleanOptionalAction, default=True,
         help="put a shared ResNet backbone (gnn/resnet.py::DeepResNetTrunk, ported from the "
              "lab's segCLR_cell_classification) between the readout and the per-node LCPN "
              "heads, instead of a linear probe. Reproduces their own "
@@ -475,9 +652,15 @@ if __name__ == "__main__":
                    help="ResNet trunk residual blocks (theirs: 4)")
     p.add_argument("--cls-resnet-dropout", type=float, default=0.0)
     p.add_argument(
-        "--no-class-weights", action="store_true",
-        help="disable per-node inverse-frequency class weighting (on by default -- see "
-             "gnn/lcpn.py::compute_node_class_weights)",
+        "--class-balance", default="sample", choices=["sample", "loss", "none"],
+        help="how to correct the class imbalance. sample (default): class-balanced "
+             "resampling of the training windows with a WeightedRandomSampler, which is what "
+             "segCLR_cell_classification's own LCPN config does "
+             "(weight_imbalanced_classes: sample) -- their LCPN loss is never weighted. "
+             "loss: leave sampling alone and weight the per-node CE instead "
+             "(gnn/lcpn.py::compute_node_class_weights); this project's earlier default, and "
+             "NOT what they do. none: neither, which under this imbalance collapses balanced "
+             "accuracy toward chance.",
     )
     p.add_argument("--gt-dim", type=int, default=128, help="GraphTransformer hidden width")
     p.add_argument("--gt-depth", type=int, default=4, help="number of AC-attention blocks")
@@ -515,14 +698,6 @@ if __name__ == "__main__":
              "dot-product attention (the learned per-node gamma_0 temperature goes with it)",
     )
     p.add_argument(
-        "--gt-dist-bias", action="store_true",
-        help="replace the binary adjacency in the attention bias term with a learned per-head "
-             "scalar indexed by binned edge length (gnn/graph_transformer.py's "
-             "DIST_BIAS_BOUNDARIES_NM). A strict generalization -- initialized to reproduce "
-             "binary adjacency exactly -- so it starts as a no-op and learns away. Requires "
-             "the adjacency bias, i.e. incompatible with --gt-no-adj-bias.",
-    )
-    p.add_argument(
         "--gt-use-thickness", action="store_true",
         help="concatenate the spine-corrected dendrite shaft radius (+ a measured flag) onto "
              "the node features. OFF by default, unlike the other switches, because it needs "
@@ -540,10 +715,52 @@ if __name__ == "__main__":
              "bias is nearly inert -- see gnn/graph_transformer.py's class docstring.",
     )
     p.add_argument(
+        "--no-embeddings", action="store_true",
+        help="drop the SegCLR embedding from the node input, leaving only morphology: the "
+             "graph, the center-relative offset and the Laplacian PE. The geometry-only "
+             "control for how much of a score comes from the embeddings vs. the shape they "
+             "sit on. Requires --spatial for --architecture mean/mpnn, which otherwise would "
+             "have no node input at all. Tags the run _noemb.",
+    )
+    p.add_argument(
+        "--freeze-aggregator", action="store_true",
+        help="hold the aggregation stage (GraphTransformer or MPNNEncoder) at its random "
+             "initialization and train only the classification head -- the random-features "
+             "control. Whatever such a run retains over mean pooling comes from the "
+             "aggregator's STRUCTURE rather than from anything it learned, and it restores "
+             "the mean-pool property that the head is the only thing training. Dropout in "
+             "the frozen stage is disabled too. Rejected for --architecture mean, which has "
+             "no aggregation parameters. Tags the run _frozenagg.",
+    )
+    p.add_argument(
+        "--num-embeddings", type=int, choices=[10, 20, 40], default=20,
+        help="fixed number of embeddings per neighborhood (default: 20); use "
+             "--radius-dataset to select the archived radius-based loader",
+    )
+    p.add_argument(
+        "--radius-dataset", dest="num_embeddings", action="store_const", const=None,
+        help=argparse.SUPPRESS,
+    )
+    p.add_argument(
+        "--neighborhood-root",
+        default="/orcd/scratch/orcd/013/jcbliao/embedding_paths/r5um",
+        help="root containing neighborhoods/n{10,20,40}; defaults to the new r5um dataset",
+    )
+    p.add_argument(
+        "--window-nm", type=float, default=DEFAULT_WINDOW_NM,
+        help="geodesic window RADIUS in nm. Default 10000 matches the baseline's 10um "
+             "aggregation window. 0 gives single-node windows -- the unaggregated case, "
+             "where 'mean' degenerates to a probe on one raw embedding and the two GNN "
+             "architectures have no neighbors to pass messages from. Each radius needs its "
+             "own membership cache (data/build_window_membership.py --window-nm ...), and "
+             "any non-default radius is tagged into the run name.",
+    )
+    p.add_argument(
         "--batch-size", type=int, default=4096,
         help="number of WINDOW subgraphs per batch (not whole cells)",
     )
-    p.add_argument("--epochs", type=int, default=100)
+    p.add_argument("--epochs", type=int, default=16,
+                   help="total epochs; default 16 means epoch indices 0 through 15")
     p.add_argument(
         "--resume", action="store_true",
         help="continue from results/<run>/checkpoint_last.pt if it exists, restoring model, "

@@ -1,5 +1,31 @@
 # CLAUDE.md
 
+## Current experiment (2026-08-28)
+
+Training now defaults to the soma-restricted fixed-node neighborhood dataset at
+`/orcd/scratch/orcd/013/jcbliao/embedding_paths/r5um/neighborhoods/n{10,20,40}`.
+The active sweep varies 10, 20, and 40 embeddings. The old training-curve
+notebook is preserved as `archive/geodesic_radius_20260828/training_curves.ipynb`.
+Results that do not use the current fixed node-count setup are under
+`archive/geodesic_radius_20260828/results/`; only `_n10`, `_n20`, and `_n40`
+runs remain in top-level `results/`. Other analysis artifacts remain in place.
+
+The sweep uses the ResNet classification trunk by default and compares mean,
+two-layer fully connected GraphSAGE, two-layer skeleton MPNN, and GraphTransformer.
+Position and LPE are independent features for FC/MPNN; GT retains the original
+skeleton adjacency bias in every GT ablation. Submit the complete 39-job grid
+with `scripts/sbatch/submit_embedding_sweep.sh`; its batch sizes are 4096/2048/1024
+for 10/20/40 nodes. Training jobs are
+submitted in two-hour segments for backfill eligibility, with checkpoint resume
+handling longer total runtimes.
+The active sweep trains for 16 total epochs, numbered 0 through 15.
+Mean jobs retain 32 CPUs/31 workers; learned graph models use 16 CPUs/15
+workers because their measured bottleneck is GPU graph computation. Sweep
+submission feeds four preemptable jobs for every two normal-GPU jobs. The
+normal partition's 32-CPU-per-user ceiling is shared across accounts, so its
+two 16-CPU slots use the higher-priority AMF association rather than treating
+AMF and `mit_general` as additive pools. Jobs request generic `gpu:1`.
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project goal
@@ -40,9 +66,8 @@ Two further principles, both load-bearing:
 prediction out. Trained end to end on the classification objective alone; there is no
 pretraining stage and no reconstruction path.
 
-`ModelConfig.architecture` picks the aggregation method, and it is the **only** thing that
-differs between the two configurations. Same windows, same raw embeddings, same head, same
-evaluation:
+`ModelConfig.architecture` picks the aggregation method. Same windows, same split, same head,
+same evaluation — but *not* the same node features, which is qualified below the table:
 
 | `architecture` | Aggregation | Role |
 |---|---|---|
@@ -56,6 +81,16 @@ deliberately SAGE-only — attention is what `graph_transformer` is for, and kee
 separate architectures rather than one `conv_type` flag is the point. Its default depth of 2
 is tied to window size: windows average 10.7 nodes and `window_nm` is a radius, so deeper
 stacks over-smooth a graph that small toward a constant vector.
+
+**Node features are not the same across the three architectures, and this qualifies the ladder
+above.** `mean` and `mpnn` consume the raw 64-dim embeddings alone; `pos_enc`, `rel_pos` and
+`thickness` are attached to every window by the dataset but reach only the GraphTransformer,
+and `SAGEConv` discards `edge_attr` too. So the MPNN sees geometry only as topology — which
+nodes are adjacent — while the GraphTransformer additionally sees the Laplacian PE and the
+4-channel center-relative offset. A GT-over-MPNN margin is therefore not attributable to
+attention alone; `--gt-no-lpe` and `--gt-no-rel-pos` are what separate the two causes.
+`scripts/smoke_test_model.py` asserts the MPNN's `conv0` input width equals the embedding dim
+and that its output is unchanged when `pos_enc`/`rel_pos` are supplied anyway.
 
 **GraphTransformer** takes the attention mechanism and transformer stack of Weis et al.'s
 GraphDINO (https://github.com/marissaweis/ssl_neuron, `ssl_neuron/graphdino.py`) — the
@@ -97,10 +132,6 @@ touching the others:
 | `gt_use_adj_bias` | `--gt-no-adj-bias` | plain scaled dot-product attention; `predict_gamma` isn't built |
 | `gt_attention_scope` | `--gt-attention-scope neighborhood` | hard `-inf` mask restricting attention to 1-hop neighbors, instead of global attention with adjacency as a soft bias |
 
-Two further switches are **on**-by-request rather than off-by-request:
-`gt_use_dist_bias` / `--gt-dist-bias` (below) and `gt_use_thickness` / `--gt-use-thickness`
-(see the dendrite-thickness section — parked, not recommended).
-
 One further switch is **on**-by-request rather than off-by-request, because it needs an extra
 ingested cache: `gt_use_thickness` / `--gt-use-thickness` concatenates the spine-corrected
 dendrite shaft radius (+ a measured flag) onto the node features, the same way `rel_pos` is
@@ -115,45 +146,11 @@ network can only tile with planes. Direction and distance are complementary: the
 keep orientation (apical trunks run pia-ward), the norm makes "how far out in the window"
 directly legible. One switch controls all four.
 
-
-#### Learned distance bias (`--gt-dist-bias`)
-
-Replaces the binary `adj` inside the bias term with a learned per-head scalar indexed by
-**binned edge length**: `attn = γ₀·QKᵀ/√d + γ₁·b_head[bucket(d_ij)]`. Off by default.
-
-Why this rather than a fixed `exp(-d/σ)` or Dwivedi & Bresson-style edge features
-(arXiv 2012.09699):
-
-- Today's `adj` is binary, so **every neighbor of a node gets the identical boost**. Measured
-  over 2.1M real edges, the within-window max/min edge-length ratio has median **4.73×** and
-  p90 **17.9×** (`scripts/check_edge_length_distribution.py`) — that whole spread is currently
-  invisible to attention.
-- `predict_gamma` broadcasts one γ across all heads, so heads can't specialize local vs.
-  global. A per-head bucket table is the only part of the bias term a single head can shape.
-- It's a **strict generalization**: set every distance bucket equal and the no-edge bucket to
-  0 and you recover binary adjacency exactly. That's the initialization, verified in
-  `scripts/smoke_test_model.py` to reproduce the base model bit-for-bit (max diff 0.0).
-- The shape is learned, not assumed — an exponential decay can't represent a non-monotonic
-  preference, a bucket table can.
-- D&B's mechanism is multiplicative, keeps a per-layer edge hidden state, and presupposes
-  neighbor-restricted attention. It's built for rich categorical edge attributes (bond type);
-  here the edge carries **one scalar**, and multiplicative gating has the wrong inductive bias
-  for distance — at zero content similarity it has no effect at all, whereas additive bias
-  shifts the logit regardless of content.
-
-Buckets: 0 = no edge, 1 = self-loop, 2+ = `DIST_BIAS_BOUNDARIES_NM` bins (chosen from the
-measured p5 529 / p50 1867 / p95 3865 / p99 6117 nm distribution). Requires `gt_use_adj_bias`
-— without a bias term there's nothing for it to occupy, and that combination raises rather
-than silently doing nothing.
-
-**This is the only consumer of `edge_attr` anywhere in `gnn/`.** The binary-adjacency bias and
-the MPNN's `SAGEConv` both discard it, so before this switch existed, edge lengths were
-computed, cached, sliced per window and shipped to the GPU entirely unused.
-
-Caveat worth holding: `edge_attr` is `‖coords[src] − coords[dst]‖`, and with `rel_pos` plus its
-norm as node features, `‖a−b‖² = ‖a‖² − 2a·b + ‖b‖²` means attention could in principle
-synthesize pairwise distance already. So this overlaps with a feature that measured inert, and
-a null result would not be surprising.
+**Nothing in `gnn/` reads `edge_attr`.** The adjacency bias is binary and `SAGEConv` discards
+edge weights, so skeleton edge lengths are computed, cached and sliced per window purely for
+the data layer's own use (geodesic window membership in `data/geodesic_window.py`) — they never
+reach the model. Note that `rel_pos` plus its norm already lets attention synthesize pairwise
+distance in principle, since `‖a−b‖² = ‖a‖² − 2a·b + ‖b‖²`.
 
 A disabled switch **drops its parameters**, it does not merely skip them at runtime — so an
 ablated run carries no dead weights for the optimizer to allocate state for, and the
@@ -237,7 +234,7 @@ is not a sufficient result.
 (`gnn/metrics.py::majority_vote_by_group`) — the same two-stage design the baseline uses, and
 the headline number. Window-level metrics are reported alongside as a diagnostic.
 
-Checkpoint selection uses **window** balanced accuracy: cell metrics majority-vote only a few
+Checkpoint selection uses **window macro F1**: cell metrics majority-vote only a few
 hundred val cells and are genuinely noisy epoch to epoch, whereas window metrics average over
 ~1.8M windows and are what the training loss is directly shaped by.
 
@@ -295,6 +292,268 @@ Keep `--num-workers` one below `--cpus-per-task`, leaving a core for the main pr
 single 32-CPU job there blocks every other GPU job; splitting the budget across two concurrent
 16-CPU jobs wins on total wall-clock for a side-by-side comparison sweep, precisely because
 worker scaling is already sublinear past 15.
+
+### Embedding path database
+
+A second view of the same embeddings: instead of a window subgraph around a node,
+a **1-D sequence of embeddings along a path through it**. Same per-point regime
+(one row per node, majority-voted per cell), so it stays comparable to both the
+baseline and the GNN — only the shape of the context changes.
+
+Built from the **CAVE skeletons in `data/graph_cache/*.pt`**, not the meshparty
+skeletons under `~/rotation/skeletonization`. Embeddings are keyed by
+`(root_id, node_id)` where `node_id` indexes the CAVE vertex array; the meshparty
+skeletons have an entirely different node set, so putting embeddings on them would
+need exactly the coordinate matching hard constraint #8 forbids.
+
+**Every node within 5 µm of the nucleus is dropped first**
+(`data/soma_restrict.py::DEFAULT_SOMA_RADIUS_NM`). The soma is shared by every
+neurite, so a path crossing it joins branches that are otherwise far apart
+geodesically and describes where the soma is rather than what the process looks
+like. Removing the ball **disconnects the skeleton on purpose** — median 8
+components per cell, and every path is confined to one of them. Distance is
+**Euclidean to the nucleus centroid**: the nucleus is a point in the volume, not a
+skeleton node, so there is no geodesic distance to it, and a geodesic cut would
+follow cable that on a coiled proximal dendrite reaches far past the radius in
+space.
+
+**The cut works by deleting one hub node, and that is why 5 µm suffices.** Measured,
+not assumed:
+
+- Before the cut every cell is **one connected component** — 400/400 across the
+  whole size range. Subsetting a CAVE skeleton to embedding-covered nodes does not
+  fragment it, so all fragmentation below is the cut's doing and none of it is a
+  pre-existing coverage gap.
+- At 5 µm the median cell loses **one node** and gains **eight components**, which
+  is only possible if that node has degree >= 8. The CAVE skeleton represents the
+  soma as a single high-degree hub every primary neurite attaches to; deleting it
+  disconnects them all at once. Checked directly on `864691135271970725`: 1 node
+  removed, degree 7, 7 components out.
+
+| radius | % nodes dropped | dropped/cell (median) | components (median) |
+|---|---|---|---|
+| 5 µm | **0.024%** | 1 | 8 |
+| 15 µm | 0.812% | 29 | 10 |
+
+A larger radius costs 34x the data for two more components. **The output directory
+is named after the radius** (`r5um/`, `r15um/`) and `DEFAULT_OUT` is derived from
+`DEFAULT_SOMA_RADIUS_NM`, so two radii can coexist and a half-finished rebuild can
+never mix them.
+
+Nucleus positions come from the store's own `cells` dimension (`soma_x_nm` /
+`soma_y_nm` / `soma_z_nm`, with `nucleus_id`) — an id join, no CAVE call, no token.
+**19 of 2,335 cells have no nucleus position** — exactly the 16 `oligo` and 3
+`OPC`; every neuron, astrocyte and microglia has one. Those are built **uncut**:
+every node kept, the cell enters the database whole. Guessing a centre would
+silently delete some other part of the cell and dropping them would shrink the
+dataset invisibly, so `cut_applied` records which treatment each cell got and the
+two populations are never pooled by accident. Component counts for uncut cells are
+not comparable to cut ones — an uncut skeleton is connected to begin with.
+Positions are cached once to `data/nucleus_positions.json` so the build array never
+touches the store.
+
+#### What a path is
+
+`data/embedding_paths.py`. For node *i*, **every distinct route through it** is
+enumerated — not one canonical route:
+
+    arms(e)   every maximal route leaving i through out-edge e, taking each
+              branch separately, until the budget is spent or a tip is reached
+    paths(i)  reverse(a) + [i] + b  for a in arms(e1), b in arms(e2),
+              over every unordered pair of distinct out-edges e1 < e2
+
+Pairs are unordered, so a route and its reverse are one path. Degree-1 nodes get
+one-sided paths; the same physical route reappears centred on each of its nodes,
+which is intended — a row is "the context of node *i*", not "a route". An arm is
+**maximal**: it stops only where no further step fits, so a branch whose own edge
+would overshoot is simply not a route rather than truncating the arm beside it.
+
+Enumeration is combinatorial, so `count_paths` sizes a config in one pass with no
+allocation before `centered_paths` materialises it. The fear was that dense
+interneuron axons would explode; measured, they do not — **median 1 path per node
+for neurons**, and the whole tail is glia (max 4,072 on an astrocyte at 40 nodes).
+
+The kernels assume a **forest**, which skeletons are and stay after nodes are
+dropped. `assert_forest` refuses a component carrying a cycle rather than looping
+and emitting routes that revisit nodes.
+
+#### The seven budgets, and which ones compare
+
+Config names are the **diameter**; a "half" is per arm.
+
+| config | budget | paths | median geodesic | median nodes |
+|---|---|---|---|---|
+| `10um` | 5 µm per arm | 12.9 M | 8.0 µm | 5 |
+| `20um` | 10 µm per arm | 14.8 M | 18.0 µm | 11 |
+| `40um` | 20 µm per arm | 21.0 M | 37.5 µm | 21 |
+| `80um` | 40 µm per arm | 44.5 M | 75.5 µm | 41 |
+| `10node` | 5 nodes per arm | 16.4 M | 19.0 µm | 11 |
+| `20node` | 10 nodes per arm | 24.7 M | 38.0 µm | 21 |
+| `40node` | 20 nodes per arm | 54.2 M | 72.0 µm | 41 |
+
+**Measured node spacing is ~2 µm, so k nodes spans about 2k µm.** That is why
+`80um` exists: each node budget needs a length budget of comparable extent to be
+compared against. The matched pairs, and how closely they line up:
+
+| pair | node budget | length budget | ratio |
+|---|---|---|---|
+| `10node` ↔ `20um` | 19.0 µm | 18.0 µm | 1.06x |
+| `20node` ↔ `40um` | 38.0 µm | 37.5 µm | 1.01x |
+| `40node` ↔ `80um` | 72.0 µm | 75.5 µm | 0.95x |
+
+**Never pair by the same number.** `10node` vs `10um` is 2.38x, `20node` vs `20um`
+2.08x, `40node` vs `40um` 1.95x — a two-fold difference in physical extent that
+would confound any model comparison built on it. `10um` is kept because it is the
+baseline's own 10 µm window, not because it pairs with `10node`.
+
+Matched medians are still not matched distributions: a node budget has a long right
+tail wherever spacing is coarse (`40node` p90 93.5 µm against `80um`'s 79.0 µm),
+while a length budget is bounded by construction. Length-budgeted paths also
+**under-fill their nominal diameter** by up to one edge per arm (10 µm → 8.0 µm
+median), which is the definition, not a bug.
+
+#### Layout and how to read one
+
+    /orcd/scratch/orcd/013/jcbliao/embedding_paths/r5um/
+      soma_restricted/<root_id>.npz   keep mask, cut_applied, dist_to_nucleus_nm,
+                                        component, edge_index/edge_attr, nucleus_xyz
+      paths/<config>/<root_id>.npz    path_offsets, path_nodes, center_at,
+                                        center_node, geodesic_nm, component,
+                                        cache_index, orig_node_ids, paths_per_node
+                                      configs: 10um 20um 40um 80um 10node 20node 40node
+
+`path_nodes` indexes the **restricted** node array. `cache_index` maps that to the
+row in `graph_cache/<root_id>.pt`; `orig_node_ids` is the CAVE skeleton vertex id,
+the real foreign key. Both are stored so neither is ever re-derived by matching
+coordinates:
+
+```python
+P = np.load(PATHS / "paths/10um/<root_id>.npz")
+d = torch.load("data/graph_cache/<root_id>.pt", weights_only=False)
+p = P["path_nodes"][P["path_offsets"][k]:P["path_offsets"][k + 1]]
+emb = d.x.numpy()[P["cache_index"][p]]        # (len(path), 64)
+```
+
+**All 2,335 cells** x 7 configs, 2.7 GB. Build with
+`NUM_TASKS=64 sbatch --array=0-63%64 scripts/sbatch/build_embedding_paths.sh`;
+resumable per (cell, config).
+
+> **numba's `cache=True` must not share a directory across array tasks.** The cache
+> sits on NFS beside the module, and 64 tasks writing it at once gave
+> `OSError: [Errno 116] Stale file handle`; worse, `mit_preemptable` nodes differ in
+> CPU generation, so a cached binary from one node is an `Illegal instruction` on
+> the next and the task core-dumps. Every sbatch wrapper here sets
+> `NUMBA_CACHE_DIR` to a per-job path under `$TMPDIR`.
+
+> **Never put a `root_id` in a float64 array.** A CAVE root_id needs ~60 bits and
+> float64 carries 53, so it round-trips to a *different and possibly real* cell —
+> `...807418` came back as `...807424`. Caught only because the notebook's example
+> then failed to open a file. Keep ids in their own int64 array.
+
+#### Analysis
+
+`analysis/embedding_path_geodesics.ipynb` — the geodesic measurement: the headline
+table, the two families side by side, full distributions, implied node spacing,
+per-cell-type breakdown, paths-per-node, and the embedding-join recipe.
+`analysis/soma_restriction.ipynb` — what the 15 µm cut removes and what it breaks
+each cell into, per cell type.
+
+Both read `analysis/embedding_paths_summary.npz` (gitignored, exact aggregates plus a
+per-config random subsample of raw lengths) rather than re-reading 14k files, so
+they open instantly. Regenerate everything with
+`sbatch scripts/sbatch/rebuild_path_analysis.sh`.
+
+#### The store is schema v4; the vendored clone reads v3
+
+`/orcd/compute/sdorkenw/001/segclr-db` has been migrated to **SCHEMA_VERSION 4**
+(new synapse tables). `segclr_db/` here is pinned 3 commits behind at v3, and
+`store.open_store` refuses a mismatch in both directions by design.
+
+The clone is installed **editable** into `~/.conda/envs/segclr`, which is what the
+embedding pipeline imports, so pulling it moves that pipeline at the same instant.
+`data/store_compat.py::use_v4()` points imports at a separate checkout instead —
+note the editable install is a PEP 660 **`sys.meta_path` finder**, so prepending to
+`sys.path` or setting PYTHONPATH does nothing and the finder has to be removed.
+Only `scripts/dump_nucleus_positions.py` and the diagnostics use it; the build
+array reads no store at all.
+
+**That shim is not the fix.** The fix is `git -C segclr_db pull` (fast-forward to
+`a7e5168`), taken deliberately when moving the embedding pipeline is acceptable.
+Delete `data/store_compat.py` then.
+
+### Mask volume — how much cell was in the SegCLR input
+
+Per node, the number of segmentation voxels that belonged to the cell inside **the exact box
+that node's embedding was computed from**. `data/mask_volume_cache/{root_id}.npz`, built by
+`data/build_mask_volume.py`.
+
+The window is reproduced from the inference run that produced the store's
+`resnet_860b_reshuffled` embeddings (`~/projects/segclr/src/inference/inference.py`,
+`src/data/crops.py`), not approximated:
+
+```
+resolution = (32, 32, 40) nm/voxel      # the 1718 segmentation's only scale
+center_vox = trunc(coords_nm / resolution)
+start_vox  = center_vox - 129 // 2
+end_vox    = start_vox + 129            # half-open; 4128 x 4128 x 5160 nm
+mask       = seg[start:end] == root_id
+```
+
+Three details are load-bearing:
+
+- **The center truncates, it does not round.** `crops.py::nm_to_voxel` documents that the model
+  was trained on truncated centers, and that rounding shifts most crops by up to a voxel per
+  axis — measured at cos 0.99 mean / 0.82 min against embeddings computed the old way.
+- **`mat_version` selects the segmentation volume.** A 1718 root_id masked against the 1300
+  volume finds nothing or finds a different cell, and does so silently. The manifest records
+  1718.
+- **Out-of-bounds windows zero-pad** (`oob="pad"`), as inference did. A clipped window really
+  was fed to the model with zeros, so the count is faithful — but it is over fewer real voxels
+  than an interior node's, which is why every row carries a `clipped` flag.
+
+`data/mask_volume.py` loads `crops.py` **by file path** rather than reimplementing the read.
+That module's own docstring records a masking bug that produced garbage embeddings for months
+while every pipeline involved kept running; one crop-loading implementation is the structural
+fix, and a second one here would recreate exactly what it prevents.
+
+**Nothing is stored but the count, and nothing is downloaded.** Each crop is read, reduced to
+an integer, and discarded — storing the masks would be ~25 TiB (~3 TiB bit-packed) against a
+1 TB scratch quota, versus ~50 MB for the counts. The segmentation is already on ORCD disk
+(`/orcd/compute/sdorkenw/001/collina/minnie_seg_1718_sharded`) and is read locally through
+TensorStore: no CAVE call, no token, no network on this path.
+
+**Alignment differs from the thickness cache, deliberately.** `voxel_count[i]` belongs to graph
+node `i` of `graph_cache/{root_id}.pt`, and `orig_node_ids[i]` is that node's index into the
+full skeleton vertex array; both are stored, so either join is available and neither has to be
+guessed. Thickness is indexed by skeleton vertex because it is defined on skeleton geometry; a
+mask volume is defined only where an embedding exists, since the window is the thing the
+embedding was computed from.
+
+Multiply `voxel_count` by `voxel_volume_nm3` (40960 = 32·32·40) for cubic nanometres.
+
+Validated by `scripts/check_mask_volume.py`, which exists because every way this can be wrong
+is silent. On the 5-cell pilot: 99.5% of sampled center voxels hold their own root_id (the
+check that catches a materialization mismatch), zero zero-count nodes, median occupancy 0.85%
+= 0.75 µm³, and Spearman +0.62 against the ray-cast dendrite radius — an independent estimate
+of the same physical quantity, from a different pipeline and a different data source.
+
+**The ~0.3% of center voxels that miss are sub-voxel centerline placements, not an error** —
+characterized over every node (not a sample) by `scripts/check_mask_center_misses.py`: 73 of
+24,916, of which 96% land in a *neighbouring* cell and 4% in background, and **every one is
+exactly one voxel from the cell** (median 32 nm, max 40 nm). That ratio is what quantization
+at an apposed membrane produces; a coordinate error would scatter distances broadly and hit
+background far more often. None had `count == 0` (median 14,435 voxels), so the window always
+contains the cell — which cell occupies the exact center voxel is not what is being measured.
+A rounded center would hit in 40/40 of these, and would still be the wrong change: it breaks
+parity with training, at the cos 0.99 mean / 0.82 min divergence `crops.py` documents. Don't
+re-litigate this by "fixing" the rounding.
+
+Throughput is ~225 nodes/s per rank at `--num-threads 16` once TensorStore's chunk cache warms
+(62/s on the first cold cell — a cold, tiny cell is not a throughput measurement). The work is
+local-disk I/O plus gzip decompression of 256×256×32 uint64 chunks, both of which release the
+GIL, so threads within a task and tasks within the array both scale. **CPU-only**: there is no
+model on this path, so a GPU allocation would sit idle and compete with training for the gpu=4
+QOS pool for nothing.
 
 ### Dendrite thickness
 
@@ -357,6 +616,55 @@ every mesh-hole miss, so a single channel would either poison the batch with NaN
 
 Measured radii themselves look biologically sane — median shaft radius ~250–310 nm per cell,
 p5–p95 roughly 140–490 nm.
+### Synapses
+
+Two databases over the manifest's cells, one row per synapse, from CAVE's `synapses_pni_2` at
+`minnie65_public` / mat_version 1718 — the manifest's own materialization, which the builder
+refuses to run against a mismatch. See **`data/SYNAPSES.md`** for schema and how to run it.
+
+| file (`data/synapse_cache/`) | our cell is | rows | cells |
+|---|---|---|---|
+| `presynaptic_sites.parquet` | presynaptic — its boutons | 2,464,794 | 2335/2335 |
+| `postsynaptic_sites.parquet` | postsynaptic, with the presynaptic partner's root_id | 8,421,816 | 2334/2335 |
+
+**Polarity is read, not inferred.** Every CAVE synapse row names both partners
+(`pre_pt_root_id`, `post_pt_root_id`); `outgoing` filters on the first, `incoming` on the
+second. Both files carry **identical columns** so they concatenate: `cell_*` is always our
+cell's side and `partner_*` the other's, which makes `partner_root_id` the postsynaptic target
+in one file and the presynaptic source in the other.
+
+`data/synapses.py` guards the three failures that are otherwise silent: positions come back in
+(4, 4, 40) nm voxels unless `desired_resolution=[1,1,1]` is passed and nothing in the column
+names records which you got (checked per chunk); a truncated query is announced only in a
+logged `Warning` header, so every fetch takes a `get_counts` first and refuses a frame whose
+length disagrees; and a materialization mismatch would rename cells outright.
+
+`partner_root_id == 0` is **kept, not dropped** — the synapse is still a real location on our
+cell. It is also nearly absent: 3 rows in 10.9M.
+
+**Validated end to end** by `scripts/check_synapses.py`: polarity re-queried from CAVE by
+`synapse_id` 200/200 in both directions with 0.0 nm position error, per-cell counts 0/10
+mismatched against a fresh CAVE count, and — the internal check that needs no CAVE call —
+**403,303/403,303** synapses between two of our own cells appear in both files with the roles
+exactly swapped. 35,461 rows have `partner == cell` (autapse or, more often, a merge artifact).
+
+**There is no synapse -> skeleton node join, deliberately.** Nearest-node-in-space is wrong
+exactly where it matters, since two branches of one cell often pass within a spine's length of
+each other near a synapse. `cell_supervoxel_id` is the honest key to build that join on.
+
+`analysis/synapse_inventory.ipynb` (built by `scripts/make_synapse_notebook.py`, executed in
+place) is the per-cell-type inventory: bouton and postsynaptic-site counts, and how each cell's
+presynaptic partners split into in-database / resolved-but-outside / unresolved. Two results
+that double as sanity checks: **thalamocortical cells come out as pure axon** (median 3,578
+boutons against 103 postsynaptic sites — their somata are outside the volume), and interneurons
+carry an order of magnitude more boutons than pyramidal cells. **4.79% of postsynaptic sites
+have a presynaptic partner that is also in this database**; the output-side figure is 12–30%
+for the same 403,303 synapses, purely because the denominators differ (2.46M vs 8.42M).
+
+**Spine vs. shaft is not in the synapse table** — it records partners, cleft centroid and cleft
+size, not the postsynaptic compartment. Postsynaptic counts pool the two, and no number here
+separates them.
+
 
 ### Deprecated data paths
 
@@ -387,11 +695,17 @@ gnn_classifier/
     build_dataset_from_store.py  segclr_db store -> manifest.json + graph_cache/*.pt
     build_window_membership.py   graph_cache -> window_membership/*.npz
     geodesic_window.py           window_membership() + extract_window_subgraph()
+    soma_restrict.py             drop the 15um perisomatic ball; components
+    embedding_paths.py           every centred path per node (count + emit)
+    build_embedding_paths.py     graph_cache -> soma_restricted/ + paths/<config>/
+    store_compat.py              read the v4 store without moving the v3 clone
     dataset_windowed.py          WindowedGraphDatasetLCPN (per-window; what training uses)
     dataset_lcpn.py              manifest/hierarchy loading + whole-cell dataset
     dataset.py, build_dataset.py, public_reader.py, cave_skeletons.py   (deprecated, above)
     dendrite_thickness.py, neuron_mesh.py, build_dendrite_thickness.py  (ray-cast shaft
       radius ingestion -- see DENDRITE_THICKNESS.md)
+    mask_volume.py               the SegCLR input window's geometry + voxel counting
+    build_mask_volume.py         graph_cache -> mask_volume_cache/*.npz (count per node)
 
   scripts/               entry points; scripts/sbatch/ has the matching .sh for each
     train_gnn.py           training + evaluation (--architecture graph_transformer | mean)
@@ -400,19 +714,20 @@ gnn_classifier/
     norm_diagnostic.py, norm_only_classifier.py    embedding diagnostics
     check_*.py, explore_*.py                       one-off data/CAVE diagnostics
 
-  analysis/              training_curves.ipynb -- reads results/<run>/epoch_metrics.csv
+  analysis/              training_curves.ipynb -- reads results/<run>/epoch_metrics.csv, plus
+                         results/<run>.json for the confusion matrices (section 5)
   results/               per-run checkpoint_{best,last}.pt + epoch_metrics.csv, plus a
-                         <run>.json summary alongside the directory. Holds 9 runs: meanpool,
-                         mpnn_L2, gt_L4_H4 and its ablations (nolpe, norelpos, noadjbias,
-                         nbhd, distbias, distbias_resnet4x128). Everything predating the
-                         current model (4-channel rel_pos, the mpnn architecture) was cleared
-                         deliberately as no longer comparable, so these are the only citable
-                         numbers -- don't cite figures from a conversation log, read the CSV.
-                         Epoch counts differ per run (100 down to 16); a preempted run keeps
-                         its best checkpoint and every completed epoch, so a short CSV is
-                         truncated, not a converged run. _archive_10epoch/ holds an earlier
-                         10-epoch distbias_resnet4x128 before it was rerun longer.
+                         <run>.json summary alongside the directory. Holds the current
+                         7-class track: meanpool, mpnn_L2, gt_L4_H4 and its ablations
+                         (nolpe, norelpos, noadjbias, nbhd). The <run>.json is written only
+                         at the end of a run, from checkpoint_best.pt reloaded -- so a run
+                         still training has a CSV but no summary and no confusion matrix.
+                         Results are cleared whenever they stop describing a model this code
+                         can build, so these are the only citable numbers: don't cite figures
+                         from a conversation log, read the CSV.
                          Only the .pt files are gitignored; metrics are committed.
+  20260811/              snapshot: the 24-class (level 5) suite + the notebook as it was
+  20260812_level4/       snapshot: the one completed 20-class (level 4) meanpool run
   logs/                  SLURM job output
 
   segclr_db/             git clone of dorkenwald-lab/segclr_db (branch main, upstream intact).
@@ -426,7 +741,8 @@ Prefer adding new code in a sibling directory under `gnn_classifier/` over editi
 say so explicitly rather than committing into someone else's repo silently.
 
 Run names encode the aggregation method so runs don't collide: `gnn_lcpn_scratch_meanpool`,
-`gnn_lcpn_scratch_mpnn_L{layers}`, `gnn_lcpn_scratch_gt_L{depth}_H{heads}`.
+`gnn_lcpn_scratch_mpnn_L{layers}`,
+`gnn_lcpn_scratch_gt_L{depth}_H{heads}`.
 
 ## Hard constraints on how work gets done
 
@@ -472,7 +788,7 @@ These are user requirements, not preferences:
    `mpnn_L2` with two SAGEConv layers ran at 131 s/epoch. A model doing essentially no GPU work
    is not faster, so both sit at a data-pipeline floor of ~130–175 s/epoch. Override those to
    `gpu:l40s:1` (far more numerous, shorter queue) rather than competing for H200s. For
-   reference on L40S, GraphTransformer runs cost ~340–354 s/epoch and `--gt-dist-bias` ~444.
+   reference on L40S, GraphTransformer runs cost ~340–354 s/epoch.
    Check availability with `sinfo -p mit_preemptable -o "%N %G %t"`.
 8. **Objects with different CAVE root IDs must NEVER be matched to each other.** A `root_id` is
    a real foreign key — two rows only refer to the same physical cell if their `root_id`s are
@@ -571,10 +887,26 @@ Writable space: `/orcd/home/002/jcbliao/...` and `/orcd/scratch/orcd/013/jcbliao
 `/orcd/home/002/jcbliao/rotation/...` and `/home/jcbliao/rotation/...` are the **same
 directory** (identical device+inode); the editable install records the `/home/jcbliao` form.
 
-`/orcd/compute/sdorkenw/001/collina/segclr-db` is the shared store and the `DEFAULT_DB_ROOT`
-baked into `schema.py` — the one every `SegCLRDatabase()`/`SegCLRWriter()` built without an
-explicit `root=` will silently use. It is readable now, but pass `root=` explicitly anyway
-rather than relying on the default.
+`/orcd/compute/sdorkenw/001/segclr-db` is the shared store — **schema v3**, and what every
+`STORE_ROOT` in this repo points at. It supersedes the v2 store at
+`/orcd/compute/sdorkenw/001/collina/segclr-db`, which is still on disk and is what
+`DEFAULT_DB_ROOT` in `schema.py` names, so every `SegCLRDatabase()`/`SegCLRWriter()` built
+without an explicit `root=` silently reads the *old* one. Always pass `root=` explicitly.
+
+v3 is a strict superset of v2: same `resnet_860b_reshuffled` experiment, same
+`mat_version=1718`, same root_ids, no labels lost. What it gains is `oligo` (26 cells) and
+`OPC` (6) in `cell_labels`, from a source table v2 lacked
+(`labeled_cell_m343_df_221011b.feather`) — so all four of `LAB_HIERARCHY_TREE`'s glia leaves
+finally exist. Regenerate this picture with `scripts/check_glia_label_coverage.py`.
+
+**The two versions are mutually unreadable.** `store.open_store` raises `SchemaVersionError`
+when the store's version doesn't match the package's, in both directions — there is no
+in-place migration by design (upstream ships `examples/migrate_v2_to_v3.py` instead). So
+reading the v3 store requires the vendored clone at upstream `main` (SCHEMA_VERSION 3), and
+that same clone is what the *embedding* pipeline uses: `~/.conda/envs/segclr`'s `segclr_db` is
+an editable install pointing at `gnn_classifier/segclr_db/src`. Moving the clone therefore
+moves `embed_cells.py` at the same instant, and its own `DEFAULT_DB_ROOT` still names the v2
+store — pass `--db-root` there too.
 
 ### Scale characteristics that affect job design
 
@@ -597,7 +929,6 @@ python -u scripts/train_gnn.py --architecture mpnn   # 2-layer GraphSAGE + mean 
 python -u scripts/train_gnn.py --architecture mean   # mean-pool baseline
 python -u scripts/train_gnn.py --gt-no-lpe           # -> results/gnn_lcpn_scratch_gt_L4_H4_nolpe/
 python -u scripts/train_gnn.py --gt-attention-scope neighborhood
-python -u scripts/train_gnn.py --gt-dist-bias        # -> ..._gt_L4_H4_distbias
 python -u scripts/train_gnn.py --cls-resnet          # -> ..._gt_L4_H4_resnet4x128
 python -u scripts/train_gnn.py --architecture mean --cls-resnet   # head choice is orthogonal
 

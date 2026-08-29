@@ -3,7 +3,7 @@ deprecated nearest-neighbor pipeline (data/DEPRECATED.md). Read-only:
 SegCLRDatabase + SkeletonCache(fetch_if_missing=False), never SegCLRWriter.
 
 Data sources:
-  - embeddings + skeletons: /orcd/compute/sdorkenw/001/collina/segclr-db,
+  - embeddings + skeletons: /orcd/compute/sdorkenw/001/segclr-db,
     dataset "microns", experiment "resnet_860b_reshuffled" (a model this lab
     trained/ran -- NOT Google's public SegCLR release; confirmed intentional,
     see data/DEPRECATED.md). node_id already indexes the same skeleton for
@@ -76,7 +76,7 @@ from segclr_db.skeletons import SkeletonCache  # noqa: E402
 from data import cave_skeletons as cs  # noqa: E402 -- shared pickle cache path/format only
 from data.build_dataset import stratified_split  # noqa: E402 -- pure fn, source-agnostic
 
-STORE_ROOT = "/orcd/compute/sdorkenw/001/collina/segclr-db"
+STORE_ROOT = "/orcd/compute/sdorkenw/001/segclr-db"
 STORE_DATASET = "microns"
 EXPERIMENT_ID = "resnet_860b_reshuffled"
 LABEL_SET = "cell_type"  # the only label_set currently in segclr_db's cell_labels table
