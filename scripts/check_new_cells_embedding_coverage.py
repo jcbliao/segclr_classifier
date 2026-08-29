@@ -19,7 +19,7 @@ from segclr_db import store as st  # noqa: E402
 from segclr_db.database import SegCLRDatabase  # noqa: E402
 from segclr_db.skeletons import SkeletonCache  # noqa: E402
 
-STORE_ROOT = "/orcd/compute/sdorkenw/001/collina/segclr-db"
+STORE_ROOT = "/orcd/compute/sdorkenw/001/segclr-db"
 STORE_DATASET = "microns"
 EXPERIMENT_ID = "resnet_860b_reshuffled"
 

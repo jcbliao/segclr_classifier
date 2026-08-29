@@ -25,7 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "segclr_db" / "s
 from segclr_db import store as st  # noqa: E402
 from segclr_db.database import SegCLRDatabase  # noqa: E402
 
-STORE_ROOT = "/orcd/compute/sdorkenw/001/collina/segclr-db"
+STORE_ROOT = "/orcd/compute/sdorkenw/001/segclr-db"
 STORE_DATASET = "microns"
 MANIFEST_PATH = Path(__file__).resolve().parent.parent / "data" / "manifest.json"
 

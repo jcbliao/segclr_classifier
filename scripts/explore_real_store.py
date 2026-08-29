@@ -1,5 +1,5 @@
 """First look at the now-accessible, populated segclr-db store at
-/orcd/compute/sdorkenw/001/collina/segclr-db -- what experiment(s), how many
+/orcd/compute/sdorkenw/001/segclr-db -- what experiment(s), how many
 cells, are labels/splits already registered, does node_embeddings already
 carry a clean (root_id, node_id) correspondence to skeleton_nodes. Read-only
 (SegCLRDatabase, never SegCLRWriter). Run via sbatch (mit_quicktest).
@@ -14,7 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "segclr_db" / "s
 
 from segclr_db.database import SegCLRDatabase  # noqa: E402
 
-ROOT = "/orcd/compute/sdorkenw/001/collina/segclr-db"
+ROOT = "/orcd/compute/sdorkenw/001/segclr-db"
 DATASET = "microns"
 
 
