@@ -30,18 +30,23 @@ from pathlib import Path
 import numpy as np
 import torch
 from torch.utils.data import Dataset as TorchDataset
+from torch.utils.data import WeightedRandomSampler
 
-from data.dataset_lcpn import load_hierarchy, load_manifest  # noqa: F401 -- re-exported
+from data.dataset_lcpn import load_hierarchy, load_manifest, split_cells  # noqa: F401 -- re-exported
 from data.geodesic_window import (
     DEFAULT_POS_DIM,
+    DEFAULT_WINDOW_NM,
     THICKNESS_DIM,
     THICKNESS_SCALE_NM,
     extract_window_subgraph,
+    membership_dir_name,
 )
 
 GRAPH_CACHE_DIR_NAME = "graph_cache"
-WINDOW_MEMBERSHIP_DIR_NAME = "window_membership"
 THICKNESS_CACHE_DIR_NAME = "dendrite_thickness_cache"
+DEFAULT_FIXED_NEIGHBORHOOD_ROOT = Path(
+    "/orcd/scratch/orcd/013/jcbliao/embedding_paths/r5um"
+)
 
 
 def load_thickness_features(
@@ -78,6 +83,57 @@ def load_thickness_features(
     return torch.from_numpy(feat), True
 
 
+def inverse_sqrt_class_weights(class_indices: np.ndarray, num_classes: int) -> torch.Tensor:
+    """Per-class sampling weight, ported from segCLR_cell_classification's
+    `HierarchyCellTypingDataset._class_weights`: `1/sqrt(count)`, rescaled so
+    the weights sum to `num_classes` (i.e. average 1.0).
+
+    The square root is theirs and is the whole character of the correction --
+    plain `1/count` equalizes the classes outright, while `1/sqrt(count)`
+    leaves a residual tilt toward the populous ones. Over a ~3100x spread
+    between pyramidal and OPC windows, that is the difference between
+    resampling OPC's 2562 windows ~3100x per epoch and ~56x. Their own commit
+    history shows `1/count` written first and then replaced, so this is a
+    deliberate choice, not an approximation.
+
+    Counts are clamped to 1 before the reciprocal. Theirs doesn't clamp, and
+    on a zero-count class produces `inf`, which then makes `w.sum()` infinite
+    and collapses EVERY weight to zero or NaN -- a silently degenerate
+    sampler rather than a loud failure. Where every class has support the two
+    agree exactly.
+    """
+    counts = torch.bincount(torch.as_tensor(class_indices), minlength=num_classes).float()
+    weights = 1.0 / torch.sqrt(counts.clamp(min=1.0))
+    return weights / weights.sum() * num_classes
+
+
+def balanced_sampler(dataset: "WindowedGraphDatasetLCPN") -> WeightedRandomSampler:
+    """Class-balanced resampling of `dataset`'s windows, the correction
+    segCLR_cell_classification's own LCPN config uses
+    (`weight_imbalanced_classes: sample`).
+
+    One epoch still draws `len(dataset)` windows, but WITH REPLACEMENT and in
+    proportion to each window's class weight -- so a rare class's windows
+    recur many times per epoch and a populous class's are subsampled, and the
+    loss itself stays unweighted. Weighting is by the finest level only, as
+    theirs is; the coarser levels rebalance implicitly, since every window's
+    whole path is determined by its finest-level class.
+    """
+    num_classes = len(dataset.hierarchy.level_classes[-1])
+    class_weights = inverse_sqrt_class_weights(dataset.index_labels, num_classes)
+    weights = class_weights[torch.from_numpy(dataset.index_labels)]
+    # torch.multinomial, which WeightedRandomSampler calls, refuses more than
+    # 2**24 categories. At one window per node this bites only at ~16.8M
+    # windows; failing here names the reason rather than surfacing as an
+    # opaque error from inside the sampler on the first epoch.
+    if len(weights) > 2**24:
+        raise ValueError(
+            f"{len(weights)} windows exceeds torch.multinomial's 2**24 category limit, so "
+            "WeightedRandomSampler cannot draw from them -- use --class-balance loss instead"
+        )
+    return WeightedRandomSampler(weights=weights, num_samples=len(weights), replacement=True)
+
+
 class WindowedGraphDatasetLCPN(TorchDataset):
     """One split's worth of (cell, node) windows. __len__ is the total node
     count across the split's cells -- the same order of magnitude as the
@@ -95,26 +151,44 @@ class WindowedGraphDatasetLCPN(TorchDataset):
         split: str,
         pos_dim: int = DEFAULT_POS_DIM,
         use_thickness: bool = False,
+        window_nm: float = DEFAULT_WINDOW_NM,
+        num_embeddings: int | None = 20,
+        neighborhood_root: str | Path = DEFAULT_FIXED_NEIGHBORHOOD_ROOT,
     ):
         repo_root = Path(__file__).resolve().parent.parent
         graph_cache_dir = repo_root / "data" / GRAPH_CACHE_DIR_NAME
-        membership_dir = repo_root / "data" / WINDOW_MEMBERSHIP_DIR_NAME
+        if num_embeddings is not None and num_embeddings not in (10, 20, 40):
+            raise ValueError("num_embeddings must be one of 10, 20, 40, or None")
+        membership_dir = (
+            Path(neighborhood_root) / "neighborhoods" / f"n{num_embeddings}"
+            if num_embeddings is not None
+            else repo_root / "data" / membership_dir_name(window_nm)
+        )
         thickness_dir = repo_root / "data" / THICKNESS_CACHE_DIR_NAME
+        self.window_nm = window_nm
+        self.num_embeddings = num_embeddings
+        if not membership_dir.is_dir():
+            # Every radius needs its own precomputed cache. Failing here names
+            # the exact command, rather than letting the per-cell "missing
+            # membership" warning below fire for all of them and yield an
+            # empty dataset.
+            raise FileNotFoundError(
+                f"no neighborhood membership cache at {membership_dir}"
+            )
         self.pos_dim = pos_dim  # width of GraphTransformer's per-window Laplacian PE
         self.use_thickness = use_thickness
 
         self.hierarchy = load_hierarchy(manifest)
         self.classes = self.hierarchy.level_classes[-1]
 
-        cells = [
-            (int(root_id), info) for root_id, info in manifest["cells"].items()
-            if info["split"] == split
-        ]
+        cells = split_cells(manifest, split, self.hierarchy)
 
         self.cell_data: dict[int, object] = {}
         self.cell_membership: dict[int, tuple[np.ndarray, np.ndarray]] = {}
         index_root_ids: list[int] = []
         index_centers: list[int] = []
+        index_membership_centers: list[int] = []
+        index_labels: list[int] = []
         n_missing_membership = 0
         n_missing_thickness = 0
         for root_id, info in cells:
@@ -140,11 +214,26 @@ class WindowedGraphDatasetLCPN(TorchDataset):
                 )
                 n_missing_thickness += not found
             npz = np.load(membership_path)
+            if num_embeddings is not None:
+                # Fixed-node neighborhoods are indexed in the soma-restricted
+                # graph. cache_index is the lossless mapping back to graph_cache.
+                cache_index = npz["cache_index"].astype(np.int64, copy=False)
+                offsets = npz["offsets"]
+                members = cache_index[npz["members"]]
+                centers = cache_index
+            else:
+                offsets = npz["mem_offsets"]
+                members = npz["members"]
+                centers = np.arange(data.x.shape[0], dtype=np.int64)
             self.cell_data[root_id] = data
-            self.cell_membership[root_id] = (npz["mem_offsets"], npz["members"])
-            n_nodes = data.x.shape[0]
+            self.cell_membership[root_id] = (offsets, members)
+            n_nodes = len(centers)
             index_root_ids.extend([root_id] * n_nodes)
-            index_centers.extend(range(n_nodes))
+            index_centers.extend(centers.tolist())
+            index_membership_centers.extend(range(n_nodes))
+            # Every window cut from one cell inherits that cell's label, so the
+            # finest-level class index is known here without touching a window.
+            index_labels.extend([int(data.y_levels[0, -1])] * n_nodes)
 
         if n_missing_membership:
             import logging
@@ -172,6 +261,10 @@ class WindowedGraphDatasetLCPN(TorchDataset):
 
         self.index_root_ids = np.array(index_root_ids, dtype=np.int64)
         self.index_centers = np.array(index_centers, dtype=np.int64)
+        self.index_membership_centers = np.array(index_membership_centers, dtype=np.int64)
+        #: Finest-level class index per window, parallel to the two arrays
+        #: above. Feeds balanced_sampler() without a pass over the windows.
+        self.index_labels = np.array(index_labels, dtype=np.int64)
 
     def _y_levels(self, cell_type: str) -> torch.Tensor:
         path = self.hierarchy.label_paths[cell_type]
@@ -186,6 +279,15 @@ class WindowedGraphDatasetLCPN(TorchDataset):
         center = int(self.index_centers[i])
         data = self.cell_data[root_id]
         mem_offsets, members = self.cell_membership[root_id]
-        window = extract_window_subgraph(data, center, mem_offsets, members, pos_dim=self.pos_dim)
+        # Fixed-node offsets are indexed by the restricted centre ordinal,
+        # whereas `center` is its graph_cache index. The dataset row ordinal
+        # within this cell recovers the former without a coordinate join.
+        if self.num_embeddings is not None:
+            membership_center = int(self.index_membership_centers[i])
+        else:
+            membership_center = center
+        window = extract_window_subgraph(
+            data, membership_center, mem_offsets, members, pos_dim=self.pos_dim
+        )
         window.y = window.y_levels[:, -1]  # finest-level alias
         return window

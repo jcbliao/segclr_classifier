@@ -239,6 +239,26 @@ def build_csr_from_edges(
     return offsets, neighbors, sorted_weights
 
 
+#: The window radius the project's headline runs use -- the baseline's own
+#: 10um aggregation window, which is what makes per-window classification
+#: comparable to it (see CLAUDE.md's project-goal section). Other radii are a
+#: deliberate sweep of that choice, not a free parameter to drift.
+DEFAULT_WINDOW_NM = 10_000.0
+
+
+def membership_dir_name(window_nm: float) -> str:
+    """Cache directory basename under data/ for a given window radius.
+
+    Every radius gets its own directory: membership is a pure function of
+    skeleton structure AND radius, so two radii sharing one directory would
+    silently serve windows of the wrong size. DEFAULT_WINDOW_NM keeps the
+    unsuffixed name it was built under, so the existing cache stays valid.
+    """
+    if window_nm == DEFAULT_WINDOW_NM:
+        return "window_membership"
+    return f"window_membership_{int(window_nm)}nm"
+
+
 def window_membership(
     edge_index: np.ndarray, edge_attr: np.ndarray, n_nodes: int, window_nm: float
 ) -> tuple[np.ndarray, np.ndarray]:

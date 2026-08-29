@@ -23,8 +23,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import torch  # noqa: E402
 from torch_geometric.data import Batch, Data  # noqa: E402
 
+from data.dataset_lcpn import HIERARCHY_LEVELS_DROPPED  # noqa: E402
 from data.geodesic_window import REL_POS_SCALE_NM, _window_laplacian_pos_enc  # noqa: E402
-from gnn.hierarchy import LAB_HIERARCHY_TREE, parse_hierarchy  # noqa: E402
+from gnn.hierarchy import (  # noqa: E402
+    LAB_HIERARCHY_TREE,
+    parse_hierarchy,
+    truncate_hierarchy,
+)
 from gnn.metrics import summarize  # noqa: E402
 from gnn.model import ModelConfig, WindowClassifier  # noqa: E402
 
@@ -40,9 +45,9 @@ def random_window(n_nodes: int, d: int, seed: int, pos_dim: int = GT_POS_DIM) ->
     src = torch.arange(n_nodes - 1)
     dst = torch.arange(1, n_nodes)
     edge_index = torch.cat([torch.stack([src, dst]), torch.stack([dst, src])], dim=1)
-    # Edge length in nm, spanning the buckets DIST_BIAS_BOUNDARIES_NM defines
-    # (real p5-p95 is ~530-3900nm) so the distance-bias lookup is exercised
-    # across several buckets rather than landing in one.
+    # Edge length in nm on a realistic scale (real p5-p95 is ~530-3900nm).
+    # Nothing in gnn/ reads it, but real cached windows carry it, so batching
+    # it here keeps the synthetic Data faithful to what the model is handed.
     half = torch.rand(n_nodes - 1, 1, generator=g) * 5000 + 200
     edge_attr = torch.cat([half, half], dim=0)
     data = Data(x=x, edge_index=edge_index, edge_attr=edge_attr)
@@ -70,7 +75,9 @@ def main() -> int:
     if device.type != "cuda":
         print("WARNING: no CUDA device visible -- this job was expected to run on mit_normal_gpu")
 
-    hierarchy = parse_hierarchy(LAB_HIERARCHY_TREE)
+    hierarchy = truncate_hierarchy(
+        parse_hierarchy(LAB_HIERARCHY_TREE), HIERARCHY_LEVELS_DROPPED
+    )
     print(f"hierarchy: depth={hierarchy.depth}, level sizes={[len(c) for c in hierarchy.level_classes]}")
     granular_labels = sorted(hierarchy.label_paths)
 
@@ -177,10 +184,6 @@ def main() -> int:
         "neighborhood + no adj bias": {
             "gt_attention_scope": "neighborhood", "gt_use_adj_bias": False,
         },
-        "dist bias": {"gt_use_dist_bias": True},
-        "dist bias + neighborhood": {
-            "gt_use_dist_bias": True, "gt_attention_scope": "neighborhood",
-        },
         "thickness on": {"gt_use_thickness": True},
         "thickness, no rel_pos": {"gt_use_thickness": True, "gt_use_rel_pos": False},
         "everything off": {
@@ -201,7 +204,6 @@ def main() -> int:
         assert (m.graph_transformer.to_pos_embedding is not None) == cfg.gt_use_lpe
         for blk in m.graph_transformer.blocks:
             assert (blk.attn.predict_gamma is not None) == cfg.gt_use_adj_bias
-            assert (blk.attn.dist_bias is not None) == cfg.gt_use_dist_bias
         # Input width must track exactly which node features are switched on.
         expected_in = (
             d
@@ -216,8 +218,7 @@ def main() -> int:
         # Pass both inputs regardless; a disabled switch must simply ignore its
         # input rather than depend on the caller withholding it.
         g = m(batch.x, batch.edge_index, batch.batch,
-              pos_enc=batch.pos_enc, rel_pos=batch.rel_pos, thickness=batch.thickness,
-              edge_attr=batch.edge_attr)
+              pos_enc=batch.pos_enc, rel_pos=batch.rel_pos, thickness=batch.thickness)
         assert g.shape == (batch.num_graphs, 32), g.shape
         assert torch.isfinite(g).all(), f"{name}: non-finite embedding (NaN from an all-masked row?)"
 
@@ -242,58 +243,99 @@ def main() -> int:
     assert g.shape == (batch.num_graphs, 32) and torch.isfinite(g).all()
     print("  LPE+rel_pos off runs with neither input supplied")
 
-    # --- MPNN's Laplacian PE switch -----------------------------------------
-    # Same two properties the GraphTransformer's switches are held to: with the
-    # switch off the encoder must be byte-identical in shape to the one the
-    # recorded mpnn_L2 runs used (no dead pos_dim columns), and with it on the
-    # input width must grow by exactly pos_dim.
-    print("\n--- mpnn: --mpnn-lpe ---")
-    for use_lpe in (False, True):
-        cfg = ModelConfig(
-            in_dim=d, architecture="mpnn", mpnn_hidden_dim=48, mpnn_out_dim=48,
-            mpnn_layers=2, mpnn_use_lpe=use_lpe, gt_pos_dim=GT_POS_DIM,
-        )
-        m = WindowClassifier(cfg, hierarchy=hierarchy).to(device)
-        expected_in = d + (GT_POS_DIM if use_lpe else 0)
-        conv0 = m.encoder.convs[0]
-        assert conv0.in_channels == expected_in, (
-            f"mpnn_use_lpe={use_lpe}: conv0 reads {conv0.in_channels}, want {expected_in}"
-        )
-        # Pass pos_enc regardless -- with the switch off it must be ignored, not
-        # silently concatenated.
-        g = m(batch.x, batch.edge_index, batch.batch, pos_enc=batch.pos_enc, rel_pos=batch.rel_pos)
-        assert g.shape == (batch.num_graphs, 48), g.shape
-        assert torch.isfinite(g).all(), f"mpnn_use_lpe={use_lpe}: non-finite embedding"
-        loss = m.cls_head.compute_loss(g, targets)
-        loss.backward()
-        assert any(
-            p.grad is not None and p.grad.abs().sum() > 0 for p in m.encoder.parameters()
-        ), f"mpnn_use_lpe={use_lpe}: encoder got no gradient"
-        n_params = sum(p.numel() for p in m.encoder.parameters())
-        print(f"  mpnn_use_lpe={str(use_lpe):<5} loss={loss.item():.4f}  encoder_params={n_params}")
-
-    # Off means the input is not merely ignored but not needed at all...
-    m = WindowClassifier(
-        ModelConfig(in_dim=d, architecture="mpnn", mpnn_hidden_dim=48, mpnn_out_dim=48),
-        hierarchy=hierarchy,
-    ).to(device)
-    g = m(batch.x, batch.edge_index, batch.batch)  # no pos_enc
-    assert g.shape == (batch.num_graphs, 48) and torch.isfinite(g).all()
-    print("  mpnn without LPE runs with no pos_enc supplied")
-
-    # ... and on means a missing pos_enc is an error, not a silent fallback to
-    # aggregating without it.
+    # --- MPNN reads the raw embeddings and the graph, nothing else ----------
+    # conv0's input width is exactly the embedding dim: no positional encoding,
+    # no relative geometry. Structure reaches it only through edge_index.
+    print("\n--- mpnn: inputs ---")
     m = WindowClassifier(
         ModelConfig(in_dim=d, architecture="mpnn", mpnn_hidden_dim=48, mpnn_out_dim=48,
-                    mpnn_use_lpe=True, gt_pos_dim=GT_POS_DIM),
+                    mpnn_layers=2),
         hierarchy=hierarchy,
     ).to(device)
+    conv0 = m.encoder.convs[0]
+    assert conv0.in_channels == d, f"conv0 reads {conv0.in_channels}, want {d}"
+    # Supplied anyway: they must be ignored, not silently consumed. Compared
+    # under eval(), since the encoder's dropout would otherwise make two
+    # forward passes differ for reasons that have nothing to do with the inputs.
+    m.eval()
+    with torch.no_grad():
+        g_with = m(batch.x, batch.edge_index, batch.batch,
+                   pos_enc=batch.pos_enc, rel_pos=batch.rel_pos)
+        g_bare = m(batch.x, batch.edge_index, batch.batch)
+    # Compared by magnitude, not bitwise: SAGEConv's scatter aggregation uses
+    # CUDA atomics, whose summation order varies between calls, so two runs of
+    # the same input differ in the last bits. A consumed pos_enc/rel_pos would
+    # move the output by O(0.1), not O(1e-7).
+    max_diff = (g_with - g_bare).abs().max().item()
+    assert max_diff < 1e-5, (
+        f"mpnn output changed by {max_diff:.2e} when pos_enc/rel_pos were supplied -- "
+        "that is far above scatter nondeterminism, so something is consuming them"
+    )
+    m.train()
+
+    g = m(batch.x, batch.edge_index, batch.batch)
+    assert g.shape == (batch.num_graphs, 48), g.shape
+    loss = m.cls_head.compute_loss(g, targets)
+    loss.backward()
+    assert any(
+        p.grad is not None and p.grad.abs().sum() > 0 for p in m.encoder.parameters()
+    ), "mpnn encoder got no gradient"
+    n_params = sum(p.numel() for p in m.encoder.parameters())
+    print(f"  conv0 in_channels={conv0.in_channels} (= embedding dim)  "
+          f"encoder_params={n_params}  loss={loss.item():.4f}")
+    print(f"  pos_enc / rel_pos are ignored: output unchanged with and without them "
+          f"(max diff {max_diff:.1e})")
+
+    # --- --spatial: matched node features for the cross-architecture sweep ---
+    # With it on, mean/mpnn must read exactly in_dim + 4 (rel_pos + its norm) +
+    # pos_dim, the same channels the GraphTransformer assembles internally.
+    print("\n--- mean / mpnn: --spatial ---")
+    spatial_dim = 4 + GT_POS_DIM
+    for architecture, readout_dim in (("mpnn", 48), ("mean", d + spatial_dim)):
+        cfg = ModelConfig(
+            in_dim=d, architecture=architecture, mpnn_hidden_dim=48, mpnn_out_dim=48,
+            mpnn_layers=2, gt_pos_dim=GT_POS_DIM, use_spatial_features=True,
+        )
+        m = WindowClassifier(cfg, hierarchy=hierarchy).to(device)
+        assert m.spatial_dim == spatial_dim, (architecture, m.spatial_dim)
+        if architecture == "mpnn":
+            got = m.encoder.convs[0].in_channels
+            assert got == d + spatial_dim, f"mpnn conv0 reads {got}, want {d + spatial_dim}"
+        for head in m.cls_head.heads:
+            first = head if isinstance(head, torch.nn.Linear) else head[0]
+            assert first.in_features == readout_dim, (
+                f"{architecture}: head reads {first.in_features}, want {readout_dim}"
+            )
+
+        g = m(batch.x, batch.edge_index, batch.batch,
+              pos_enc=batch.pos_enc, rel_pos=batch.rel_pos)
+        assert g.shape == (batch.num_graphs, readout_dim), g.shape
+        assert torch.isfinite(g).all(), f"{architecture} --spatial: non-finite embedding"
+        loss = m.cls_head.compute_loss(g, targets)
+        loss.backward()
+        print(f"  {architecture:<6} spatial_dim={m.spatial_dim}  readout={readout_dim}  "
+              f"loss={loss.item():.4f}")
+
+        # On means the inputs are required, not silently skipped.
+        try:
+            m(batch.x, batch.edge_index, batch.batch)
+        except ValueError as e:
+            print(f"    missing pos_enc/rel_pos correctly rejected: {e}")
+        else:
+            raise AssertionError(f"{architecture} --spatial should require pos_enc/rel_pos")
+
+    # The GraphTransformer builds these itself, so the combination is refused
+    # rather than silently double-counting the same channels.
     try:
-        m(batch.x, batch.edge_index, batch.batch)
+        WindowClassifier(
+            ModelConfig(in_dim=d, architecture="graph_transformer", gt_dim=32, gt_depth=1,
+                        gt_heads=1, use_spatial_features=True),
+            hierarchy=hierarchy,
+        )
     except ValueError as e:
-        print(f"  mpnn with LPE correctly rejects a missing pos_enc: {e}")
+        print(f"  --spatial with graph_transformer correctly rejected: {e}")
     else:
-        raise AssertionError("mpnn_use_lpe=True should require pos_enc")
+        raise AssertionError("use_spatial_features with graph_transformer should raise")
 
     # --- classification head: linear probe vs. the lab's ResNet trunk --------
     # Orthogonal to `architecture`, so check it composes with all three rather
@@ -321,7 +363,7 @@ def main() -> int:
             assert first.in_features == 24, f"{architecture}: head reads {first.in_features}, want 24"
 
         g = m(batch.x, batch.edge_index, batch.batch, pos_enc=batch.pos_enc,
-              rel_pos=batch.rel_pos, edge_attr=batch.edge_attr)
+              rel_pos=batch.rel_pos)
         loss = m.cls_head.compute_loss(g, targets)
         pr = m.cls_head.predict_top_down(g)
         assert pr.shape == targets.shape, (pr.shape, targets.shape)
@@ -339,49 +381,6 @@ def main() -> int:
         ModelConfig(in_dim=d, architecture="mean"), hierarchy=hierarchy
     ).cls_head.trunk is None, "linear probe should be the default head"
     print("  linear probe is still the default")
-
-    # The distance bias claims to be initialized as an EXACT reproduction of
-    # binary adjacency. That is the whole reason it is safe to switch on, so
-    # verify it rather than trusting the init code: same weights everywhere
-    # else, the two models must agree bit-for-bit at step 0.
-    base = WindowClassifier(
-        ModelConfig(in_dim=d, architecture="graph_transformer", gt_dim=32, gt_depth=2, gt_heads=2),
-        hierarchy=hierarchy,
-    ).to(device)
-    withbias = WindowClassifier(
-        ModelConfig(in_dim=d, architecture="graph_transformer", gt_dim=32, gt_depth=2,
-                    gt_heads=2, gt_use_dist_bias=True),
-        hierarchy=hierarchy,
-    ).to(device)
-    # Copy every shared weight across rather than reusing a seed. Building the
-    # dist_bias embedding consumes RNG, so two same-seeded constructions
-    # diverge in ALL their other parameters -- which makes a seeded comparison
-    # test nothing. strict=False leaves dist_bias.weight at its ones/zeros init
-    # (base's state_dict has no such key).
-    withbias.load_state_dict(base.state_dict(), strict=False)
-    kw = dict(pos_enc=batch.pos_enc, rel_pos=batch.rel_pos, edge_attr=batch.edge_attr)
-    with torch.no_grad():
-        g_base = base(batch.x, batch.edge_index, batch.batch, **kw)
-        g_bias = withbias(batch.x, batch.edge_index, batch.batch, **kw)
-    assert torch.allclose(g_base, g_bias, atol=1e-5), (
-        "dist bias is not a no-op at init -- max abs diff "
-        f"{(g_base - g_bias).abs().max().item():.2e}"
-    )
-    print(f"\n  dist bias reproduces binary adjacency at init "
-          f"(max diff {(g_base - g_bias).abs().max().item():.1e})")
-
-    # And it must fail loudly when combined with the switch that removes the
-    # bias term it lives in, rather than silently doing nothing.
-    try:
-        WindowClassifier(
-            ModelConfig(in_dim=d, architecture="graph_transformer", gt_dim=32, gt_depth=1,
-                        gt_heads=1, gt_use_dist_bias=True, gt_use_adj_bias=False),
-            hierarchy=hierarchy,
-        )
-    except ValueError as e:
-        print(f"  dist bias without adj bias correctly rejected: {e}")
-    else:
-        raise AssertionError("gt_use_dist_bias without gt_use_adj_bias should raise")
 
     # Thickness is off by default, so the common mistake is asking the model
     # for it while running a dataset that never attached it. That must fail
