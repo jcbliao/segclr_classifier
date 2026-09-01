@@ -1,2 +1,2 @@
 # segclr_classifier
-Making a new classifier for segclr
+Testing new aggregation methods for downstream segCLR classification
