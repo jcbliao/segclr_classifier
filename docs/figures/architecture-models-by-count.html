@@ -23,6 +23,6 @@ function val(s){return s.options[s.selectedIndex]._value}
 const config={responsive:true,displaylogo:false,toImageButtonOptions:{format:'png',scale:2}};
 
 function draw(){let traces=[];for(const n of [10,20,40]){const p=rows.filter(r=>r.n_embeddings===n).sort((a,b)=>b.window_macro_f1-a.window_macro_f1);
- traces.push({type:'bar',orientation:'h',x:p.map(r=>r.window_macro_f1),y:p.map(r=>r.model),name:`n=${n}`,
+ const i=[10,20,40].indexOf(n),axis=i?String(i+1):'';traces.push({type:'bar',orientation:'h',x:p.map(r=>r.window_macro_f1),y:p.map(r=>r.model),xaxis:'x'+axis,yaxis:'y'+axis,name:`n=${n}`,showlegend:false,
  customdata:p.map(r=>[r.architecture,r.folds]),hovertemplate:'%{y}<br>macro F1 %{x:.3f}<br>%{customdata[0]} · %{customdata[1]} fold(s)<extra></extra>'})}
- Plotly.react(gd,traces,{height:Math.max(650,rows.length*12),barmode:'group',xaxis:{title:'window macro F1'},yaxis:{automargin:true},margin:{l:210,t:35},legend:{orientation:'h'}},config)}draw();</script></body></html>
+ const layout={height:760,grid:{rows:1,columns:3,pattern:'independent'},margin:{l:210,r:25,t:65,b:65},annotations:[10,20,40].map((n,i)=>({text:`${n} embeddings`,xref:`x${i?i+1:''} domain`,yref:'paper',x:.5,y:1.06,showarrow:false,font:{size:16}}))};for(let i=1;i<=3;i++){layout['xaxis'+(i===1?'':i)]={title:'window macro F1',gridcolor:'#d9d9d9'};layout['yaxis'+(i===1?'':i)]={automargin:true,autorange:'reversed'}}Plotly.react(gd,traces,layout,config)}draw();</script></body></html>
