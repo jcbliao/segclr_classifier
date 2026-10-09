@@ -1,0 +1,20 @@
+{
+  "label_table": "/orcd/compute/sdorkenw/001/segclr-db/microns/dims/cell_labels.lance",
+  "sources": [
+    "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/data/synapse_cache/postsynaptic_sites.parquet"
+  ],
+  "datastack": "minnie65_public",
+  "materialization_version": 1718,
+  "synapse_table": "synapses_pni_2",
+  "coordinate_units": "nm",
+  "postsynaptic_coordinates": [
+    "cell_x_nm",
+    "cell_y_nm",
+    "cell_z_nm"
+  ],
+  "n_neurons": 2223,
+  "n_points": 8411016,
+  "n_neurons_with_points": 2222,
+  "multiple_labels": "cell_types list preserves all labels without duplicating synapses",
+  "coverage_note": "Cells without cached points are not confirmed to have zero synapses unless queried separately."
+}

@@ -1,6 +1,6 @@
 """Supervised classification training for gnn/model.py::WindowClassifier.
 
-Three aggregation methods, chosen with --architecture, and that choice is
+Five aggregation methods, chosen with --architecture, and that choice is
 the only thing that differs between a run of each:
 
   --architecture graph_transformer  (default) gnn/graph_transformer.py's
@@ -11,14 +11,24 @@ the only thing that differs between a run of each:
       run name, so they never overwrite the full run.
   --architecture mpnn  gnn/encoder.py::MPNNEncoder -- plain GraphSAGE message
       passing, no attention, 2 layers by default -- followed by MeanReadout.
+  --architecture mpnn_complete  the same encoder over a per-window clique:
+      message passing with the skeleton structure taken away.
+  --architecture pointwise_mlp  gnn/pointwise_mlp.py::PointwiseMLPEncoder -- a per-node MLP
+      (64 -> 128 -> 128), then the mean, then the ordinary head as rho. No
+      attention, no positional features, no graph.
+  --architecture linear  gnn/linear_encoder.py::LinearEncoder -- one per-node
+      Linear (64 -> 128), no nonlinearity, then the mean. Embeddings only.
+      The mean absorbs a node-wise linear map, so this is the control that
+      isolates the pointwise MLP's nonlinearity rather than a rung above it.
   --architecture mean  gnn/readout.py::MeanReadout straight over the raw
       per-node embeddings, no encoder -- the mean-pooling BASELINE.
 
-All three run through this exact same pipeline: same windows, same LCPNHead,
+All six run through this exact same pipeline: same windows, same LCPNHead,
 same eval, so a comparison isolates the aggregation method and nothing else.
 They form a ladder of how much learned mixing happens before the readout:
-none, fixed local neighbor averaging over a few hops, or adjacency-biased
-global attention.
+none, a learned per-node transform, fixed local neighbor averaging over a few
+hops, that same averaging over a clique, or adjacency-biased global
+attention.
 
 Every run trains from scratch on the classification objective alone: there is
 no pretraining stage and no checkpoint loading.
@@ -26,7 +36,7 @@ no pretraining stage and no checkpoint loading.
 --cls-resnet swaps the classification head from a linear probe to the lab's
 own shared ResNet backbone (gnn/resnet.py) feeding the per-node LCPN heads --
 their `local_classifier_resnet_sngp`, minus SNGP. Orthogonal to
---architecture, so it composes with all three aggregation methods.
+--architecture, so it composes with every aggregation method.
 
 Trains and evaluates on per-window local subgraphs (data/dataset_windowed.py),
 not whole cells -- see CLAUDE.md's project-goal section: the baseline
@@ -41,8 +51,10 @@ diagnostic, not the headline number.
 Run via sbatch (mit_normal_gpu):
     python scripts/train_gnn.py                          # GraphTransformer (default)
     python scripts/train_gnn.py --architecture mpnn      # 2-layer GraphSAGE + mean
+    python scripts/train_gnn.py --architecture pointwise_mlp  # per-node MLP + mean
+    python scripts/train_gnn.py --architecture linear    # one per-node Linear + mean
     python scripts/train_gnn.py --architecture mean      # mean-pool baseline
-    python scripts/train_gnn.py --gt-no-lpe              # -> gnn_lcpn_scratch_gt_L4_H4_nolpe
+    python scripts/train_gnn.py --gt-no-lpe              # -> ..._gt_L4_H4_nolpe_..._fold0
     python scripts/train_gnn.py --gt-attention-scope neighborhood
     python scripts/train_gnn.py --gt-use-thickness       # -> ..._gt_L4_H4_thick
 """
@@ -53,6 +65,7 @@ import argparse
 import csv
 import json
 import os
+import random
 import sys
 from pathlib import Path
 
@@ -66,18 +79,29 @@ from tqdm import tqdm  # noqa: E402
 from data.dataset_lcpn import (  # noqa: E402
     load_hierarchy,
     load_manifest,
-    train_window_counts_by_label,
 )
 from data.geodesic_window import DEFAULT_WINDOW_NM  # noqa: E402
 from data.dataset_windowed import WindowedGraphDatasetLCPN, balanced_sampler  # noqa: E402
+from data.dataset_presynaptic import (  # noqa: E402
+    AttentionBudgetBatchSampler,
+    PresynapticWindowDataset,
+)
+from data.mixed_cell_batch_sampler import MixedCellBatchSampler  # noqa: E402
 from data.window_prediction_cache import save_prediction_cache  # noqa: E402
-from gnn.lcpn import compute_node_class_weights  # noqa: E402
 from gnn.metrics import majority_vote_by_group, summarize  # noqa: E402
 from gnn.model import ModelConfig, WindowClassifier  # noqa: E402
 
 
+def _seed_loader_worker(worker_id: int) -> None:
+    """Give Python/NumPy augmentation draws the worker's PyTorch seed."""
+    del worker_id
+    seed = torch.initial_seed() % 2**32
+    random.seed(seed)
+    np.random.seed(seed)
+
+
 @torch.no_grad()
-def evaluate(model, loader, device):
+def evaluate(model, loader, device, amp: bool = False):
     """Returns (finest_level_labels, finest_level_preds, root_ids), all at
     WINDOW granularity -- one entry per window subgraph, not per cell.
     LCPNHead's top-down cascade gives predictions at every level; the finest
@@ -86,12 +110,18 @@ def evaluate(model, loader, device):
     preds, labels, root_ids = [], [], []
     for data in loader:
         data = data.to(device)
-        g = model(
-            data.x, data.edge_index, data.batch,
-            pos_enc=data.pos_enc, rel_pos=data.rel_pos,
-            thickness=getattr(data, "thickness", None),
-        )
-        level_preds = model.cls_head.predict_top_down(g)
+        with torch.autocast(
+            device_type=device.type, dtype=torch.bfloat16,
+            enabled=amp and device.type == "cuda",
+        ):
+            g = model(
+                data.x, data.edge_index, data.batch,
+                pos_enc=data.pos_enc, rel_pos=data.rel_pos,
+                thickness=getattr(data, "thickness", None),
+                has_segclr=getattr(data, "has_segclr", None),
+                postsynaptic_embedding=getattr(data, "postsynaptic_embedding", None),
+            )
+            level_preds = model.cls_head.predict_top_down(g)
         preds.append(level_preds[:, -1].cpu().numpy())
         labels.append(data.y_levels[:, -1].cpu().numpy())
         root_ids.append(data.root_id.cpu().numpy().reshape(-1))
@@ -135,7 +165,12 @@ def publish_test_prediction_cache(run_name, dataset, predictions, targets, num_e
 def main(args):
     torch.manual_seed(args.seed)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    manifest = load_manifest()
+    if args.manifest:
+        manifest = json.loads(Path(args.manifest).read_text())
+    elif args.dataset == 'presynaptic_dense':
+        manifest = json.loads((Path(args.presynaptic_database) / 'manifest.json').read_text())
+    else:
+        manifest = load_manifest()
     hierarchy = load_hierarchy(manifest)
 
     # There is no separate val fraction: "val" is an alias for the test split
@@ -147,17 +182,70 @@ def main(args):
     # One flag drives both the dataset and the model so they cannot drift:
     # the dataset attaches the feature iff the model is configured to read it.
     use_thickness = args.gt_use_thickness
-    train_ds = WindowedGraphDatasetLCPN(
-        manifest, "train", pos_dim=args.gt_pos_dim, use_thickness=use_thickness,
-        window_nm=args.window_nm, num_embeddings=args.num_embeddings,
-        neighborhood_root=args.neighborhood_root,
-    )
-    test_ds = WindowedGraphDatasetLCPN(
-        manifest, "test", pos_dim=args.gt_pos_dim, use_thickness=use_thickness,
-        window_nm=args.window_nm, num_embeddings=args.num_embeddings,
-        neighborhood_root=args.neighborhood_root,
-    )
+    if args.dataset == "all_windows":
+        if args.num_embeddings not in (10, 20, 40):
+            raise SystemExit("--dataset all_windows requires --num-embeddings 10, 20, or 40")
+        train_ds = WindowedGraphDatasetLCPN(
+            manifest, "train", pos_dim=args.gt_pos_dim, use_thickness=use_thickness,
+            window_nm=args.window_nm, num_embeddings=args.num_embeddings,
+            neighborhood_root=args.neighborhood_root,
+        )
+        test_ds = WindowedGraphDatasetLCPN(
+            manifest, "test", pos_dim=args.gt_pos_dim, use_thickness=use_thickness,
+            window_nm=args.window_nm, num_embeddings=args.num_embeddings,
+            neighborhood_root=args.neighborhood_root,
+        )
+    else:
+        allowed = {
+            "presynaptic_cave": {"graph_transformer", "mean", "pointwise_mlp"},
+            "presynaptic_new": {"graph_transformer_teasar"},
+            "presynaptic_dense": {"graph_transformer", "graph_transformer_teasar", "mean", "linear", "pointwise_mlp"},
+        }[args.dataset]
+        if args.architecture not in allowed:
+            raise SystemExit(
+                f"--dataset {args.dataset} allows --architecture "
+                f"{sorted(allowed)}, not {args.architecture}"
+            )
+        if args.dataset == 'presynaptic_dense':
+            metadata = json.loads((Path(args.presynaptic_database) / 'metadata.json').read_text())
+            if metadata['format'] != 'dense-presynaptic-v1' or metadata['missing_root_ids']:
+                raise SystemExit('Dense presynaptic database is not finalized/complete')
+            expected_k = 1 if args.single_presynaptic_embedding else metadata['k_observed']
+            if args.num_embeddings != expected_k:
+                raise SystemExit(f"Use --num-embeddings {expected_k} for this configuration")
+        elif args.num_embeddings != 10:
+            raise SystemExit("presynaptic databases were built with K=10; use --num-embeddings 10")
+        if args.gt_no_lpe or args.gt_no_rel_pos or args.gt_no_adj_bias:
+            raise SystemExit(
+                "presynaptic training requires the full model: LPE, relative position, "
+                "and adjacency bias must all remain enabled"
+            )
+        if use_thickness:
+            raise SystemExit("the presynaptic database does not contain thickness features")
+        variant = "cave" if args.dataset == "presynaptic_cave" else "new"
+        train_ds = PresynapticWindowDataset(
+            manifest, "train", variant, database=args.presynaptic_database,
+            cell_cache_size=args.presynaptic_cell_cache,
+            postsynaptic_cache=args.postsynaptic_cache,
+            use_postsynaptic=args.use_postsynaptic,
+            single_presynaptic_embedding=args.single_presynaptic_embedding,
+            memmap_root=args.presynaptic_memmap_root,
+            compartment_filter=args.presynaptic_compartment_filter,
+            embedding_augmentation=(None if args.embedding_augmentation in (None, "clean")
+                                    else args.embedding_augmentation),
+            augmentation_database=args.embedding_augmentation_database,
+        )
+        test_ds = PresynapticWindowDataset(
+            manifest, "test", variant, database=args.presynaptic_database,
+            cell_cache_size=args.presynaptic_cell_cache,
+            postsynaptic_cache=args.postsynaptic_cache,
+            use_postsynaptic=args.use_postsynaptic,
+            single_presynaptic_embedding=args.single_presynaptic_embedding,
+            memmap_root=args.presynaptic_memmap_root,
+            compartment_filter=args.presynaptic_compartment_filter,
+        )
     val_ds = test_ds
+    hierarchy = train_ds.hierarchy
     classes = train_ds.classes  # finest-level names, for summarize()'s per_class_recall keys
     print(f"train={len(train_ds)} val={len(val_ds)} test={len(test_ds)} windows, classes={classes}")
 
@@ -165,20 +253,43 @@ def main(args):
     # on one core and leaves the GPU idle waiting -- measured as the actual
     # bottleneck, not batch size. See CLAUDE.md's DataLoader-throughput note.
     loader_kwargs = dict(num_workers=args.num_workers, persistent_workers=args.num_workers > 0)
+    train_generator = torch.Generator().manual_seed(args.seed)
+    loader_kwargs.update(worker_init_fn=_seed_loader_worker, generator=train_generator)
     # --class-balance sample resamples the training windows instead of shuffling
     # them (see data/dataset_windowed.py::balanced_sampler); a sampler and
     # shuffle=True are mutually exclusive in DataLoader.
-    train_sampler = balanced_sampler(train_ds) if args.class_balance == "sample" else None
-    train_loader = DataLoader(
-        train_ds, batch_size=args.batch_size,
-        sampler=train_sampler, shuffle=train_sampler is None, **loader_kwargs,
-    )
-    test_loader = DataLoader(test_ds, batch_size=args.batch_size, shuffle=False, **loader_kwargs)
+    if args.dataset == "all_windows":
+        train_sampler = balanced_sampler(train_ds, power=1.0 if args.class_balance == "equal" else 0.5) if args.class_balance in ("sample", "equal") else None
+        train_loader = DataLoader(
+            train_ds, batch_size=args.batch_size,
+            sampler=train_sampler, shuffle=train_sampler is None, **loader_kwargs,
+        )
+        test_loader = DataLoader(test_ds, batch_size=args.batch_size, shuffle=False, **loader_kwargs)
+    else:
+        sampler_cls = MixedCellBatchSampler if args.mixed_cell_batch_size else AttentionBudgetBatchSampler
+        sampler_kwargs = ({"cells_per_batch": args.mixed_cell_batch_size}
+                          if args.mixed_cell_batch_size else {})
+        train_batch_sampler = sampler_cls(
+            train_ds, attention_budget=args.attention_budget,
+            max_windows=args.batch_size, shuffle=True, seed=args.seed,
+            balance_classes=args.class_balance in ("sample", "equal"),
+            class_balance_power=1.0 if args.class_balance == "equal" else 0.5,
+            **sampler_kwargs,
+        )
+        test_batch_sampler = AttentionBudgetBatchSampler(
+            test_ds, attention_budget=args.attention_budget,
+            max_windows=args.batch_size, shuffle=False, seed=args.seed,
+        )
+        train_loader = DataLoader(train_ds, batch_sampler=train_batch_sampler, **loader_kwargs)
+        test_loader = DataLoader(test_ds, batch_sampler=test_batch_sampler, **loader_kwargs)
     val_loader = test_loader  # val_ds is test_ds -- see the dataset construction comment above
 
     config = ModelConfig(
         in_dim=train_ds[0].x.shape[1],
+        postsynaptic_dim=64 if args.use_postsynaptic else 0,
+        append_presynaptic_mean=args.append_presynaptic_mean,
         architecture=args.architecture,
+        classifier=args.classifier,
         cls_head_hidden_dim=args.cls_hidden_dim,
         cls_head_resnet=args.cls_resnet,
         cls_resnet_hidden=args.cls_resnet_hidden,
@@ -192,6 +303,10 @@ def main(args):
         mpnn_out_dim=args.mpnn_hidden_dim,
         mpnn_layers=args.mpnn_layers,
         mpnn_dropout=args.mpnn_dropout,
+        pointwise_mlp_hidden_dim=args.pointwise_mlp_hidden_dim,
+        pointwise_mlp_out_dim=args.pointwise_mlp_hidden_dim,
+        pointwise_mlp_layers=args.pointwise_mlp_layers,
+        linear_out_dim=args.linear_out_dim,
         gt_dim=args.gt_dim,
         gt_depth=args.gt_depth,
         gt_heads=args.gt_heads,
@@ -215,23 +330,13 @@ def main(args):
             f"{n_train:,} trainable (the classification head only)"
         )
 
-    # Imbalance is severe enough that leaving it uncorrected drives the model
-    # to predict only populous classes -- balanced accuracy near chance while
-    # raw accuracy looks fine. Two ways to correct it, and they are exclusive:
-    # "sample" reweights which windows the model SEES (done at the loader
-    # above), "loss" reweights what it PAYS for them. Doing both would apply
-    # the correction twice.
-    if args.class_balance == "sample":
-        print("class balance: WeightedRandomSampler over train windows (1/sqrt(count), theirs)")
-    elif args.class_balance == "loss":
-        # Per-node inverse-frequency weights, computed from TRAIN-split
-        # window counts only (data/dataset_lcpn.py::train_window_counts_by_label)
-        # -- see gnn/lcpn.py::compute_node_class_weights.
-        node_weights = compute_node_class_weights(
-            hierarchy, train_window_counts_by_label(manifest, hierarchy)
-        )
-        model.cls_head.set_class_weights(node_weights)
-        print("class balance: per-node inverse-frequency loss weights (train-split window counts)")
+    # Correct imbalance by changing which windows the model sees.  The loss
+    # remains unweighted, matching segCLR_cell_classification's sampled local
+    # classifier configuration.
+    if args.class_balance == "equal":
+        print("class balance: equal expected class shares, sampling with replacement (1/count)")
+    elif args.class_balance == "sample":
+        print("class balance: resampling train windows with replacement (1/sqrt(count), theirs)")
     else:
         print("class balance: none")
 
@@ -252,11 +357,20 @@ def main(args):
     # checkpoint is written to disk as soon as a new best is found, not just
     # kept in memory until the loop ends -- a killed/preempted job before the
     # last epoch used to lose the best state entirely.
-    if args.architecture in ("mean", "mpnn", "fully_connected"):
+    if args.architecture == "pointwise_mlp":
+        # No _position / _lpe variants to disambiguate: the model refuses those
+        # switches for this architecture, so the depth is the only thing that
+        # can vary between two pointwise_mlp runs.
+        agg_tag = f"pointwise_mlp_L{args.pointwise_mlp_layers}"
+    elif args.architecture == "linear":
+        # No depth to record: it is one Linear by definition, and the same
+        # refusals as pointwise_mlp mean there are no feature variants either.
+        agg_tag = "linear"
+    elif args.architecture in ("mean", "mpnn", "mpnn_complete"):
         if args.architecture == "mean":
             agg_tag = "mean"
-        elif args.architecture == "fully_connected":
-            agg_tag = f"fc_L{args.mpnn_layers}"
+        elif args.architecture == "mpnn_complete":
+            agg_tag = f"mpnn_complete_L{args.mpnn_layers}"
         else:
             agg_tag = f"mpnn_L{args.mpnn_layers}"
         # Tagged for the same reason the GT ablations are: a --spatial run is a
@@ -270,7 +384,8 @@ def main(args):
         # Ablation switches go into the tag too -- without them, a full run
         # and any of its ablations would collide on one checkpoint dir and
         # silently overwrite each other's epoch_metrics.csv.
-        agg_tag = f"gt_L{args.gt_depth}_H{args.gt_heads}"
+        gt_name = "gt_teasar" if args.architecture == "graph_transformer_teasar" else "gt"
+        agg_tag = f"{gt_name}_L{args.gt_depth}_H{args.gt_heads}"
         if args.gt_attention_scope == "neighborhood":
             agg_tag += "_nbhd"
         for flag, suffix in (
@@ -305,8 +420,44 @@ def main(args):
     # the trained run's results.
     if args.freeze_aggregator:
         agg_tag += "_frozenagg"
-    run_name = f"gnn_lcpn_scratch_{agg_tag}"
-    ckpt_dir = Path(__file__).resolve().parent.parent / "results" / run_name
+    if args.mixed_cell_batch_size:
+        agg_tag += f"_mixed{args.mixed_cell_batch_size}"
+    if args.embedding_augmentation is not None:
+        agg_tag += f"_embaug_{args.embedding_augmentation}"
+    # Sampling changes the training distribution and therefore defines a
+    # distinct run.  Presynaptic runs historically omitted this tag while
+    # using loss weighting, so tag corrected runs to prevent --resume from
+    # attaching them to those checkpoints.
+    if args.dataset != "all_windows" and args.class_balance == "sample":
+        agg_tag += "_sampled"
+    elif args.class_balance == "equal":
+        agg_tag += "_equal_sampled"
+    elif args.class_balance == "none":
+        agg_tag += "_unbalanced"
+    # The fold goes LAST, after every other tag, and is never omitted -- not
+    # even for fold 0. Everything above distinguishes two models of the same
+    # data; this distinguishes the same model on two different splits, which
+    # would otherwise land on one results directory and overwrite each other's
+    # epoch_metrics.csv. Tagging it unconditionally is what makes that
+    # impossible rather than merely unlikely: an untagged name would be
+    # silently reused by whichever fold ran second.
+    fold_index = manifest.get("fold_index", manifest.get("split_seed", 0))
+    if args.postsynaptic_cache:
+        agg_tag += ("_pre_mean_control" if args.append_presynaptic_mean else
+                    "_pre_post" if args.use_postsynaptic else "_pre_only_matched")
+    agg_tag += f"_fold{fold_index}"
+    run_name = f"gnn_{args.classifier}_scratch_{agg_tag}"
+    result_subdir = {
+        "all_windows": Path("all_windows"),
+        "presynaptic_cave": Path("presynaptic/cave_skeletons"),
+        "presynaptic_new": Path("presynaptic/new_skeletons"),
+        "presynaptic_dense": Path("presynaptic/dense_teasar") / Path(args.presynaptic_database).parent.name / Path(args.presynaptic_database).name,
+    }[args.dataset]
+    result_root = (Path(args.results_dir) if args.results_dir else
+                   Path(__file__).resolve().parent.parent / "results" / result_subdir)
+    if args.presynaptic_compartment_filter and not args.results_dir:
+        result_root = result_root / 'compartment_filtered' / Path(args.presynaptic_compartment_filter).name
+    ckpt_dir = result_root / run_name
     ckpt_dir.mkdir(parents=True, exist_ok=True)
 
     # --- resume -----------------------------------------------------------
@@ -450,25 +601,35 @@ def main(args):
         desc="train", unit="epoch", initial=start_epoch, total=args.epochs,
     )
     for epoch in epoch_bar:
+        if args.dataset != "all_windows":
+            train_batch_sampler.set_epoch(epoch)
         model.train()
         total_loss, n = 0.0, 0
-        batch_bar = tqdm(train_loader, desc=f"epoch {epoch}", unit="batch", leave=False)
+        batch_bar = tqdm(
+            train_loader, desc=f"epoch {epoch}", unit="batch", leave=False,
+        )
         for data in batch_bar:
             data = data.to(device)
             opt.zero_grad()
-            g = model(
-                data.x, data.edge_index, data.batch,
-                pos_enc=data.pos_enc, rel_pos=data.rel_pos,
-                thickness=getattr(data, "thickness", None),
-            )
-            loss = model.cls_head.compute_loss(g, data.y_levels)
+            with torch.autocast(
+                device_type=device.type, dtype=torch.bfloat16,
+                enabled=args.amp and device.type == "cuda",
+            ):
+                g = model(
+                    data.x, data.edge_index, data.batch,
+                    pos_enc=data.pos_enc, rel_pos=data.rel_pos,
+                    thickness=getattr(data, "thickness", None),
+                    has_segclr=getattr(data, "has_segclr", None),
+                    postsynaptic_embedding=getattr(data, "postsynaptic_embedding", None),
+                )
+                loss = model.cls_head.compute_loss(g, data.y_levels)
             loss.backward()
             opt.step()
             total_loss += loss.item() * data.num_graphs
             n += data.num_graphs
             batch_bar.set_postfix(loss=f"{total_loss / max(1, n):.4f}")
 
-        val_labels, val_preds, val_root_ids = evaluate(model, val_loader, device)
+        val_labels, val_preds, val_root_ids = evaluate(model, val_loader, device, args.amp)
         # Window-level metrics via the SAME summarize() the cell-level ones
         # use -- lets us see whether imbalance bias shows up at the per-window
         # classification step itself, independent of what majority voting
@@ -533,9 +694,7 @@ def main(args):
             val_window_f1=f"{window_val_metrics['macro_f1']:.3f}",
             val_cell_f1=f"{val_metrics['macro_f1']:.3f}",
         )
-        # Every epoch, not throttled -- epochs are cheap (~1.5-3min with the
-        # DataLoader worker settings), and per-epoch visibility into the val
-        # curve makes convergence readable instead of guessed at.
+        # Log every epoch so the validation curve remains visible in batch logs.
         tqdm.write(
             f"epoch {epoch:4d}  train_loss={total_loss / max(1, n):.4f}  "
             f"window[{_macro(window_val_metrics)}]  cell[{_macro(val_metrics)}]"
@@ -571,9 +730,22 @@ def main(args):
         best_ckpt = torch.load(ckpt_dir / "checkpoint_best.pt", map_location=device, weights_only=False)
         model.load_state_dict(best_ckpt["model_state"])
         print(f"loaded best checkpoint from epoch {best_ckpt['epoch']} for final test evaluation")
-    test_labels, test_preds, test_root_ids = evaluate(model, test_loader, device)
+    test_labels, test_preds, test_root_ids = evaluate(model, test_loader, device, args.amp)
     window_test_metrics = summarize(test_labels, test_preds, len(classes), classes)
     test_metrics = cell_level_metrics(test_labels, test_preds, test_root_ids, len(classes), classes)
+    dataset_test_metrics = {}
+    if any('source_dataset' in info for info in manifest['cells'].values()):
+        domains = np.asarray([manifest['cells'][str(int(root))]['source_dataset']
+                              for root in test_root_ids])
+        for domain in sorted(set(domains)):
+            selected = domains == domain
+            dataset_test_metrics[domain] = {
+                'n_cells': int(np.unique(test_root_ids[selected]).size),
+                'n_windows': int(selected.sum()),
+                'cell': cell_level_metrics(test_labels[selected], test_preds[selected],
+                                          test_root_ids[selected], len(classes), classes),
+                'window': summarize(test_labels[selected], test_preds[selected], len(classes), classes),
+            }
     print("=== test metrics (GNN) ===")
     print(
         f"window-level  P={window_test_metrics['macro_precision']:.4f} "
@@ -583,8 +755,8 @@ def main(args):
     )
     print(json.dumps(test_metrics, indent=2))
 
-    out_dir = Path(__file__).resolve().parent.parent / "results"
-    out_dir.mkdir(exist_ok=True)
+    out_dir = result_root
+    out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"{run_name}.json"
     out_path.write_text(
         json.dumps(
@@ -592,27 +764,106 @@ def main(args):
                 "args": vars(args),
                 "window_test_metrics": window_test_metrics,
                 "test_metrics": test_metrics,
+                "dataset_test_metrics": dataset_test_metrics,
                 "classes": classes,
+                "best_epoch": best_ckpt.get("epoch") if "best_ckpt" in locals() else None,
+                # Which cell-held-out fold produced these numbers. A result
+                # file is one fold; cross-fold summaries are written separately.
+                "postsynaptic_cache": str(args.postsynaptic_cache) if args.postsynaptic_cache else None,
+                "use_postsynaptic": args.use_postsynaptic,
+                "append_presynaptic_mean": args.append_presynaptic_mean,
+                "single_presynaptic_embedding": args.single_presynaptic_embedding,
+                "dataset_counts": {"train_windows": len(train_ds), "test_windows": len(test_ds)},
+                "fold": f"fold_{fold_index}",
+                "fold_index": fold_index,
+                "split_seed": manifest.get("split_seed"),
+                "split_fracs": manifest.get("split_fracs"),
             },
             indent=2,
         )
     )
     print(f"wrote {out_path}")
-    publish_test_prediction_cache(
-        run_name, test_ds, test_preds, test_labels, args.num_embeddings,
-    )
+    if args.dataset == "all_windows":
+        publish_test_prediction_cache(
+            run_name, test_ds, test_preds, test_labels, args.num_embeddings,
+        )
 
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
+    p.add_argument('--postsynaptic-cache',
+                   help='Prepared native-site cache; applies the same eligibility filter to both groups')
+    p.add_argument('--append-presynaptic-mean', action='store_true',
+                   help='Matched-width control: append the raw 64-dimensional presynaptic mean after pooling')
+    p.add_argument('--single-presynaptic-embedding', action='store_true',
+                   help='Use only the nearest observed presynaptic node; preserve original window eligibility')
+    p.add_argument('--use-postsynaptic', action='store_true',
+                   help='Concatenate 64 postsynaptic dimensions after pooling, before classification')
     p.add_argument(
         "--architecture", default="graph_transformer",
-        choices=["graph_transformer", "fully_connected", "mpnn", "mean"],
+        choices=["graph_transformer", "graph_transformer_teasar", "mpnn_complete", "mpnn",
+                 "pointwise_mlp", "linear", "mean"],
         help="graph_transformer (default): gnn/graph_transformer.py's AC-attention "
-             "GraphTransformer. mpnn: gnn/encoder.py::MPNNEncoder, plain GraphSAGE message "
-             "passing (no attention) + MeanReadout. mean: MeanReadout over the raw node "
-             "embeddings, no encoder -- the mean-pooling baseline.",
+             "GraphTransformer. graph_transformer_teasar: mixed-node variant where "
+             "has_segclr gates only the SegCLR modality and every TEASAR node remains in "
+             "attention. mpnn: gnn/encoder.py::MPNNEncoder, plain GraphSAGE message "
+             "passing (no attention) + MeanReadout. mpnn_complete: that same encoder over "
+             "a per-window clique. pointwise_mlp: gnn/pointwise_mlp.py's "
+             "PointwiseMLPEncoder, a per-node MLP + mean, with no graph and no spatial "
+             "features. linear: that same shape with one Linear and no nonlinearity, which "
+             "the mean absorbs. mean: MeanReadout "
+             "over the raw node embeddings, no encoder -- the mean-pooling baseline.",
     )
+    p.add_argument(
+        "--dataset", default="all_windows",
+        choices=["all_windows", "presynaptic_cave", "presynaptic_new", "presynaptic_dense"],
+        help="dataset/result namespace; presynaptic_dense uses the finalized database's K",
+    )
+    p.add_argument(
+        "--presynaptic-database",
+        default="/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10",
+    )
+    p.add_argument("--manifest", help="explicit cohort/split manifest JSON")
+    p.add_argument(
+        "--embedding-augmentation", choices=("clean", "gray", "flip", "structured_low"),
+        help="training-only node embedding choice set; augmented policies sample clean plus draws 0-3",
+    )
+    p.add_argument(
+        "--embedding-augmentation-database",
+        default="/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/"
+                "cave_embedding_training_choices/conf0.7/fold0/cutoff5000_fp16",
+        help="packed per-cell (clean + four draws) embedding choice database",
+    )
+    p.add_argument("--results-dir", help="Override the result directory containing model run folders")
+    p.add_argument(
+        "--attention-budget", type=int, default=1_806_336,
+        help="maximum batch_windows * (largest_nodes + CLS)^2 for presynaptic dense attention",
+    )
+    p.add_argument(
+        "--mixed-cell-batch-size", type=int, default=0,
+        help="experimental: mix this many original single-cell batches into each batch "
+             "while preserving the number of steps and using each window once per epoch",
+    )
+    p.add_argument(
+        "--presynaptic-cell-cache", type=int, default=2,
+        help="decompressed per-worker cell records retained by the presynaptic loader",
+    )
+    p.add_argument(
+        "--presynaptic-memmap-root",
+        help="directory of predecoded .npy cell arrays; preserves sampler order and window values",
+    )
+    p.add_argument('--presynaptic-compartment-filter',
+                   help='completed majority-vote cache; exclude dendrite-majority windows before deduplication')
+    p.add_argument(
+        "--pointwise-mlp-layers", type=int, default=2,
+        help="Linear+GELU layers in phi for --architecture pointwise_mlp; 2 with the default "
+             "width is the 64 -> 128 -> 128 MLP it was specified as",
+    )
+    p.add_argument("--pointwise-mlp-hidden-dim", type=int, default=128,
+                   help="phi's hidden AND output width for --architecture pointwise_mlp")
+    p.add_argument("--linear-out-dim", type=int, default=128,
+                   help="output width for --architecture linear; matches the pointwise MLP's "
+                        "so the two hand the head the same number of channels")
     p.add_argument(
         "--mpnn-layers", type=int, default=2,
         help="message-passing hops for --architecture mpnn; 2 by default because windows "
@@ -631,12 +882,18 @@ if __name__ == "__main__":
              "graph_transformer, which has --gt-no-lpe / --gt-no-rel-pos instead.",
     )
     p.add_argument("--position", action="store_true",
-                   help="concatenate center-relative xyz and distance for mean/MPNN/FC")
+                   help="concatenate center-relative xyz and distance for mean/MPNN/MPNN complete")
     p.add_argument("--lpe", action="store_true",
-                   help="concatenate the window Laplacian positional encoding for mean/MPNN/FC")
+                   help="concatenate the window Laplacian positional encoding for "
+                        "mean/MPNN/MPNN complete")
     p.add_argument(
         "--cls-hidden-dim", type=int, default=None,
         help="LCPN head hidden layer size; default None = plain Linear per node",
+    )
+    p.add_argument(
+        "--classifier", choices=["lcpn", "flat"], default="lcpn",
+        help="lcpn (default) routes through local hierarchy heads; flat predicts the eight "
+             "active finest classes with one softmax and never uses a coarse decision",
     )
     p.add_argument(
         "--cls-resnet", action=argparse.BooleanOptionalAction, default=True,
@@ -652,14 +909,13 @@ if __name__ == "__main__":
                    help="ResNet trunk residual blocks (theirs: 4)")
     p.add_argument("--cls-resnet-dropout", type=float, default=0.0)
     p.add_argument(
-        "--class-balance", default="sample", choices=["sample", "loss", "none"],
+        "--class-balance", default="sample", choices=["sample", "equal", "none"],
         help="how to correct the class imbalance. sample (default): class-balanced "
-             "resampling of the training windows with a WeightedRandomSampler, which is what "
+             "resampling of the training windows with replacement, which is what "
              "segCLR_cell_classification's own LCPN config does "
              "(weight_imbalanced_classes: sample) -- their LCPN loss is never weighted. "
-             "loss: leave sampling alone and weight the per-node CE instead "
-             "(gnn/lcpn.py::compute_node_class_weights); this project's earlier default, and "
-             "NOT what they do. none: neither, which under this imbalance collapses balanced "
+             "equal: use inverse-count weights for equal expected shares across active finest classes. "
+             "none: disable resampling, which under this imbalance collapses balanced "
              "accuracy toward chance.",
     )
     p.add_argument("--gt-dim", type=int, default=128, help="GraphTransformer hidden width")
@@ -720,12 +976,15 @@ if __name__ == "__main__":
              "graph, the center-relative offset and the Laplacian PE. The geometry-only "
              "control for how much of a score comes from the embeddings vs. the shape they "
              "sit on. Requires --spatial for --architecture mean/mpnn, which otherwise would "
-             "have no node input at all. Tags the run _noemb.",
+             "have no node input at all, and is rejected outright for --architecture "
+             "pointwise_mlp / linear, whose only input is the embeddings. Tags the run "
+             "_noemb.",
     )
     p.add_argument(
         "--freeze-aggregator", action="store_true",
-        help="hold the aggregation stage (GraphTransformer or MPNNEncoder) at its random "
-             "initialization and train only the classification head -- the random-features "
+        help="hold the aggregation stage (GraphTransformer, MPNNEncoder, or the pointwise "
+             "MLP / linear phi) at its random initialization and train only the "
+             "classification head -- the random-features "
              "control. Whatever such a run retains over mean pooling comes from the "
              "aggregator's STRUCTURE rather than from anything it learned, and it restores "
              "the mean-pool property that the head is the only thing training. Dropout in "
@@ -733,9 +992,9 @@ if __name__ == "__main__":
              "no aggregation parameters. Tags the run _frozenagg.",
     )
     p.add_argument(
-        "--num-embeddings", type=int, choices=[10, 20, 40], default=20,
-        help="fixed number of embeddings per neighborhood (default: 20); use "
-             "--radius-dataset to select the archived radius-based loader",
+        "--num-embeddings", type=int, default=20,
+        help="fixed number of embeddings per neighborhood (default: 20); "
+             "all_windows supports 10, 20, or 40; presynaptic_dense uses its database K",
     )
     p.add_argument(
         "--radius-dataset", dest="num_embeddings", action="store_const", const=None,
@@ -763,13 +1022,13 @@ if __name__ == "__main__":
                    help="total epochs; default 16 means epoch indices 0 through 15")
     p.add_argument(
         "--resume", action="store_true",
-        help="continue from results/<run>/checkpoint_last.pt if it exists, restoring model, "
+        help="continue from results/all_windows/<run>/checkpoint_last.pt if it exists, restoring model, "
              "optimizer and RNG state and truncating epoch_metrics.csv to match. Starts from "
              "epoch 0 if no such file exists, so it is safe to leave on permanently -- which is "
              "what makes a preempted job recover on requeue instead of restarting. Refuses to "
              "resume across a changed ModelConfig.",
     )
-    p.add_argument("--lr", type=float, default=1e-3)
+    p.add_argument("--lr", type=float, default=1e-4)
     p.add_argument("--weight-decay", type=float, default=1e-5)
     p.add_argument(
         "--num-workers", type=int, default=15,
@@ -777,4 +1036,10 @@ if __name__ == "__main__":
              "--cpus-per-task, leaving a core for the main process (see CLAUDE.md)",
     )
     p.add_argument("--seed", type=int, default=0)
-    main(p.parse_args())
+    p.add_argument(
+        "--amp", action="store_true",
+        help="use BF16 autocast on CUDA (recommended for L40S presynaptic training)",
+    )
+    from scripts.training_config import parse_training_args
+
+    main(parse_training_args(p))

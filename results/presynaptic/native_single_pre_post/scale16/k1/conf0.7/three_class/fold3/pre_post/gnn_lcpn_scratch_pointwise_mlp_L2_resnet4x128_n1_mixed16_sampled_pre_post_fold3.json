@@ -1,0 +1,149 @@
+{
+  "args": {
+    "postsynaptic_cache": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/native_skeletons_pre_post/scale16/k17/conf0.7",
+    "append_presynaptic_mean": false,
+    "single_presynaptic_embedding": true,
+    "use_postsynaptic": true,
+    "architecture": "pointwise_mlp",
+    "dataset": "presynaptic_dense",
+    "presynaptic_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_coarse_confidence_with_tc_folds/scale16/k17/conf0.7/fold3",
+    "manifest": "analysis/presynaptic/native_single_pre_post/three_class/manifests/fold3.json",
+    "embedding_augmentation": null,
+    "embedding_augmentation_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/cave_embedding_training_choices/conf0.7/fold0/cutoff5000_fp16",
+    "results_dir": "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/three_class/fold3/pre_post",
+    "attention_budget": 14450688,
+    "mixed_cell_batch_size": 16,
+    "presynaptic_cell_cache": 16,
+    "presynaptic_memmap_root": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_k17_memmap/scale16/k17",
+    "presynaptic_compartment_filter": null,
+    "pointwise_mlp_layers": 2,
+    "pointwise_mlp_hidden_dim": 128,
+    "linear_out_dim": 128,
+    "mpnn_layers": 2,
+    "mpnn_hidden_dim": 128,
+    "mpnn_dropout": 0.1,
+    "spatial": false,
+    "position": false,
+    "lpe": false,
+    "cls_hidden_dim": null,
+    "classifier": "lcpn",
+    "cls_resnet": true,
+    "cls_resnet_hidden": 128,
+    "cls_resnet_layers": 4,
+    "cls_resnet_dropout": 0.0,
+    "class_balance": "sample",
+    "gt_dim": 128,
+    "gt_depth": 4,
+    "gt_heads": 4,
+    "gt_mlp_ratio": 4,
+    "gt_pos_dim": 8,
+    "gt_no_exp": false,
+    "gt_dropout": 0.0,
+    "gt_no_lpe": false,
+    "gt_no_rel_pos": false,
+    "gt_no_adj_bias": false,
+    "gt_use_thickness": false,
+    "gt_attention_scope": "global",
+    "no_embeddings": false,
+    "freeze_aggregator": false,
+    "num_embeddings": 1,
+    "neighborhood_root": "/orcd/scratch/orcd/013/jcbliao/embedding_paths/r5um",
+    "window_nm": 10000.0,
+    "batch_size": 4096,
+    "epochs": 30,
+    "resume": true,
+    "lr": 0.0001,
+    "weight_decay": 1e-05,
+    "num_workers": 8,
+    "seed": 0,
+    "amp": true
+  },
+  "window_test_metrics": {
+    "accuracy": 0.8088934955481547,
+    "balanced_accuracy": 0.8012522754280761,
+    "macro_precision": 0.8079544196445226,
+    "macro_f1": 0.8033137822522178,
+    "per_class_recall": {
+      "BasketFam": 0.8628754215358617,
+      "Excitatory": 0.8641419641564426,
+      "nonBasketInhibitory": 0.676739440591924
+    },
+    "per_class_precision": {
+      "BasketFam": 0.8789625360230547,
+      "Excitatory": 0.7900082871020464,
+      "nonBasketInhibitory": 0.7548924358084663
+    },
+    "confusion_matrix": [
+      [
+        114375,
+        8430,
+        9746
+      ],
+      [
+        4838,
+        137275,
+        16744
+      ],
+      [
+        10912,
+        28059,
+        81585
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9405099150141643,
+    "balanced_accuracy": 0.8827838827838828,
+    "macro_precision": 0.9297005765296634,
+    "macro_f1": 0.8927714970880439,
+    "per_class_recall": {
+      "BasketFam": 1.0,
+      "Excitatory": 0.9816849816849816,
+      "nonBasketInhibitory": 0.6666666666666666
+    },
+    "per_class_precision": {
+      "BasketFam": 0.8421052631578947,
+      "Excitatory": 0.9469964664310954,
+      "nonBasketInhibitory": 1.0
+    },
+    "confusion_matrix": [
+      [
+        32,
+        0,
+        0
+      ],
+      [
+        5,
+        268,
+        0
+      ],
+      [
+        1,
+        15,
+        32
+      ]
+    ]
+  },
+  "dataset_test_metrics": {},
+  "classes": [
+    "BasketFam",
+    "Excitatory",
+    "nonBasketInhibitory"
+  ],
+  "best_epoch": 23,
+  "postsynaptic_cache": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/native_skeletons_pre_post/scale16/k17/conf0.7",
+  "use_postsynaptic": true,
+  "append_presynaptic_mean": false,
+  "single_presynaptic_embedding": true,
+  "dataset_counts": {
+    "train_windows": 1636729,
+    "test_windows": 411964
+  },
+  "fold": "fold_3",
+  "fold_index": 3,
+  "split_seed": 0,
+  "split_fracs": [
+    0.8,
+    0.2
+  ]
+}

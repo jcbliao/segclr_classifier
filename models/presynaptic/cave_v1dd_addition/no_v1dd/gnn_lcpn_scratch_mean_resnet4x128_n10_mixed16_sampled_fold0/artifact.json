@@ -1,0 +1,7 @@
+{
+  "checkpoint_url": null,
+  "checkpoint_sha256": null,
+  "training_commit": null,
+  "source_report": "results/presynaptic/cave_v1dd_addition/no_v1dd/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0.json",
+  "source_report_sha256": "11798c2a5508665ae285145d4688134962f4d763cf3fd764fbe8a2bd9d3619f5"
+}

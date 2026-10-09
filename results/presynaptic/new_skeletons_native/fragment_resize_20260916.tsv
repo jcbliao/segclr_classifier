@@ -1,0 +1,8 @@
+stage	job_id	detail
+build_scale32_k10	22794358	afterok:22600108; updated Python node-count configuration
+finalize_scale32_k10	22794359	afterok:22794358
+train_mean_mlp_preemptable	22805426	afterok:22794359; replaces 22804326
+train_gt_normal	22805427	afterok:22794359; replaces 22804328
+fragment_length_checks	22805384	passed; windows longer than 25 microns remain valid
+fragment_measurements	22805399	full 2209-cell cohort; old k7 versus new k10
+fragment_histogram	22805400	afterok:22805399

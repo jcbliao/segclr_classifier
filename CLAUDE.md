@@ -8,12 +8,17 @@ The active sweep varies 10, 20, and 40 embeddings. The old training-curve
 notebook is preserved as `archive/geodesic_radius_20260828/training_curves.ipynb`.
 Results that do not use the current fixed node-count setup are under
 `archive/geodesic_radius_20260828/results/`; only `_n10`, `_n20`, and `_n40`
-runs remain in top-level `results/`. Other analysis artifacts remain in place.
+runs are filed under `results/all_windows/`. Their notebooks, helper modules, and derived
+caches are under `analysis/all_windows/`. Presynaptic work is separated into
+`results/presynaptic/{cave_skeletons,new_skeletons}/` and the matching analysis directories;
+analyses comparing both skeleton sources live directly under `analysis/presynaptic/`.
 
-The sweep uses the ResNet classification trunk by default and compares mean,
-two-layer fully connected GraphSAGE, two-layer skeleton MPNN, and GraphTransformer.
-Position and LPE are independent features for FC/MPNN; GT retains the original
-skeleton adjacency bias in every GT ablation. Submit the complete 39-job grid
+The sweep uses the ResNet classification trunk by default and compares mean, a
+per-node linear map (`linear`), a per-node MLP (`pointwise_mlp`), two-layer
+complete-graph GraphSAGE (`mpnn_complete`), two-layer skeleton MPNN, and
+GraphTransformer.
+Position and LPE are independent features for MPNN complete/MPNN; GT retains the original
+skeleton adjacency bias in every GT ablation. Submit the complete 42-job grid
 with `scripts/sbatch/submit_embedding_sweep.sh`; its batch sizes are 4096/2048/1024
 for 10/20/40 nodes. Training jobs are
 submitted in two-hour segments for backfill eligibility, with checkpoint resume
@@ -72,11 +77,37 @@ same evaluation — but *not* the same node features, which is qualified below t
 | `architecture` | Aggregation | Role |
 |---|---|---|
 | `graph_transformer` (default) | `gnn/graph_transformer.py::GraphTransformer` — AC-attention stack with an internal CLS token | the attention GNN |
+| `mpnn_complete` | `MPNNEncoder` over a per-window clique instead of the skeleton edges + `MeanReadout` | message passing with the structure removed |
 | `mpnn` | `gnn/encoder.py::MPNNEncoder` (GraphSAGE, 2 layers by default, no attention) + `MeanReadout` | the plain message-passing GNN |
+| `pointwise_mlp` | `gnn/pointwise_mlp.py::PointwiseMLPEncoder` — a per-node MLP φ, then `MeanReadout` | the learned per-node transform, no graph |
+| `linear` | `gnn/linear_encoder.py::LinearEncoder` — one per-node `Linear`, then `MeanReadout` | that same shape without the nonlinearity |
 | `mean` | `gnn/readout.py::MeanReadout` over raw node embeddings, no encoder, zero parameters | the mean-pool baseline |
 
-Read as a ladder of how much learned mixing happens before the readout: none, fixed local
-neighbor averaging over a few hops, or adjacency-biased global attention. `MPNNEncoder` is
+Read as a ladder of how much learned mixing happens before the readout: none, a per-node
+linear map the mean absorbs, a learned nonlinear per-node transform and nothing else, fixed
+local neighbor averaging over a few hops, that same averaging over a clique, or
+adjacency-biased global attention.
+
+**The pointwise MLP** is `z = (1/N) Σᵢ φ(xᵢ)`, `ŷ = ρ(z)`, with φ a 64 → 128 → 128 MLP
+(Linear + GELU each layer) and ρ the ordinary downstream classifier — the same `LCPNHead`,
+with the same ResNet trunk, every other architecture uses. It is **set-only by construction**:
+no attention, no positional features, no graph, and `edge_index` is never consulted.
+`use_spatial_features` and `use_embeddings=False` are refused for it at construction rather
+than quietly honoured, since a spatially-featured pointwise-MLP run would be neither. That
+makes it the control that isolates the two things separating `mean` from `mpnn`: the gap from
+`mean` to `pointwise_mlp` is the learned per-node feature map, and the gap from
+`pointwise_mlp` to `mpnn` is message passing.
+The final GELU is load-bearing — without a nonlinearity after φ's last Linear, that Linear
+would commute with the mean and collapse into the head.
+
+**`linear` is that collapse, run on purpose.** One per-node `Linear` (64 → 128), no
+activation, then the mean — the same set-only contract and the same refusals as
+`pointwise_mlp`. Because a node-wise linear map commutes with the mean, it is algebraically
+`mean` followed by a linear projection rather than a more expressive model: against the ResNet
+trunk it is a rank-≤64 factorization of the trunk's first layer. So it is not a rung above
+`mean` but the control under `pointwise_mlp` — whatever margin the pointwise MLP holds over
+mean pooling that `linear` also holds is width and optimization, not the learned nonlinear
+feature map. `MPNNEncoder` is
 deliberately SAGE-only — attention is what `graph_transformer` is for, and keeping them
 separate architectures rather than one `conv_type` flag is the point. Its default depth of 2
 is tied to window size: windows average 10.7 nodes and `window_nm` is a radius, so deeper
@@ -238,6 +269,9 @@ Checkpoint selection uses **window macro F1**: cell metrics majority-vote only a
 hundred val cells and are genuinely noisy epoch to epoch, whereas window metrics average over
 ~1.8M windows and are what the training loss is directly shaped by.
 
+All of it is measured on `fold_0` — the single `split_seed` 0 split described under **Data**
+below. Report it as such; there is no second fold to average with.
+
 ## Data
 
 `data/manifest.json` (labels + split) + `data/graph_cache/*.pt` (one `Data` per cell: raw
@@ -256,6 +290,14 @@ hundred val cells and are genuinely noisy epoch to epoch, whereas window metrics
 - **Chandelier cells (ChC) are excluded** (`EXCLUDED_LABELS`): n=1 in the store, too few to
   train or hold out on. `LAB_HIERARCHY_TREE`'s `putative_parvalbumin: [PV, ChC]` node is left
   structurally intact, so that branch is a permanent PV-only predictor.
+- **Every number in this repo is `fold_0`: ONE 80/20 split at `split_seed` 0.** There is no
+  cross-validation anywhere in this pipeline — no k-fold loop, no repeated splits, no fold
+  spread to average over or report a variance from. So a run's score is a single-fold estimate,
+  and a margin between two runs is a margin on that one split. Differences smaller than a run's
+  own epoch-to-epoch wobble are not resolvable without more folds or more seeds. The manifest
+  records `split_seed` and `split_fracs`, and `scripts/train_gnn.py` copies them plus a
+  `"fold"` key into every `results/all_windows/<run>.json`, so each artifact says which fold it is without
+  the reader having to know the convention. **Always label reported results `fold_0`.**
 - **Split is 80/20 train/test, per whole cell, with no separate val partition.**
   `data/build_dataset.py::stratified_split` assigns one split label per `root_id`, so no cell's
   nodes are ever split across partitions. "val" is an **alias for the test split** at the
@@ -684,6 +726,8 @@ gnn_classifier/
     model.py               WindowClassifier + ModelConfig -- picks the aggregation method
     graph_transformer.py   AC-attention GraphTransformer (encoder + CLS readout, fused)
     encoder.py             MPNNEncoder -- plain GraphSAGE message passing, no attention
+    pointwise_mlp.py       PointwiseMLPEncoder -- per-node MLP phi; set-only, reads no graph
+    linear_encoder.py      LinearEncoder -- one per-node Linear, no activation; set-only
     readout.py             MeanReadout -- pooling for the mpnn and mean architectures
     lcpn.py                LCPNHead: per-node heads, masked CE loss, top-down cascade
     resnet.py              DeepResNetTrunk -- ported from the lab, optional shared backbone
@@ -714,11 +758,12 @@ gnn_classifier/
     norm_diagnostic.py, norm_only_classifier.py    embedding diagnostics
     check_*.py, explore_*.py                       one-off data/CAVE diagnostics
 
-  analysis/              training_curves.ipynb -- reads results/<run>/epoch_metrics.csv, plus
-                         results/<run>.json for the confusion matrices (section 5)
-  results/               per-run checkpoint_{best,last}.pt + epoch_metrics.csv, plus a
+  analysis/all_windows/  result notebooks/helpers; reads results/all_windows/<run>/
+                         epoch_metrics.csv plus results/all_windows/<run>.json
+  results/all_windows/   per-run checkpoint_{best,last}.pt + epoch_metrics.csv, plus a
                          <run>.json summary alongside the directory. Holds the current
-                         7-class track: meanpool, mpnn_L2, gt_L4_H4 and its ablations
+                         7-class track: mean, linear, pointwise_mlp_L2, mpnn_L2,
+                         mpnn_complete_L2, gt_L4_H4 and its ablations
                          (nolpe, norelpos, noadjbias, nbhd). The <run>.json is written only
                          at the end of a run, from checkpoint_best.pt reloaded -- so a run
                          still training has a CSV but no summary and no confusion matrix.
@@ -741,8 +786,34 @@ Prefer adding new code in a sibling directory under `gnn_classifier/` over editi
 say so explicitly rather than committing into someone else's repo silently.
 
 Run names encode the aggregation method so runs don't collide: `gnn_lcpn_scratch_meanpool`,
-`gnn_lcpn_scratch_mpnn_L{layers}`,
+`gnn_lcpn_scratch_mpnn_L{layers}`, `gnn_lcpn_scratch_mpnn_complete_L{layers}`,
+`gnn_lcpn_scratch_pointwise_mlp_L{layers}`, `gnn_lcpn_scratch_linear`,
 `gnn_lcpn_scratch_gt_L{depth}_H{heads}`.
+
+> **Changing how a run name is built breaks every in-flight `--resume`.** A resumed job looks
+> for `checkpoint_last.pt` under the name the CURRENT code computes; change the naming and a
+> job that starts afterwards finds nothing, silently restarts at epoch 0, and creates a second
+> directory beside the real one. This happened once already, to two live sweep jobs. Check
+> `squeue -u $USER` before editing run-name construction, and hold the pending jobs
+> (`scontrol hold`, reversible) if a sweep is running.
+
+**Every name ends in `_fold{split_seed}`**, appended after every other tag and never omitted —
+not even for fold 0. The tags before it distinguish two models of the same data; this one
+distinguishes the same model on two different splits, which would otherwise land on one
+`results/all_windows/<run>/` and overwrite each other's `epoch_metrics.csv`. Tagging it unconditionally is
+what makes that impossible rather than merely unlikely, since an untagged name would just be
+reused by whichever fold ran second.
+
+Both analysis parsers therefore **require** a fold tag
+(`analysis/all_windows/architecture_comparison.py::RUN_RE`) and skip any name without one — that is
+deliberate, so a stray pre-migration directory is ignored rather than silently plotted as if
+it were on a known split. `scripts/migrate_run_names_to_fold.py` (one-off, idempotent,
+`scripts/sbatch/migrate_run_names_to_fold.sh`) is what renamed the pre-existing runs: results
+directories, `<run>.json`, `analysis/all_windows/feature_prediction_cache/*`, and the shared
+`window_prediction_cache/*.npz` on scratch, plus the run name embedded *inside*
+`best_metrics.json` and every row of each `.summary.json`. The dated snapshots (`20260811/`,
+`20260812_level4/`, `archive/`) are deliberately NOT renamed: no code reads them, so nothing
+there is orphaned, and renaming a frozen snapshot rewrites a record of what was.
 
 ## Hard constraints on how work gets done
 
@@ -927,7 +998,7 @@ for reference, not for direct invocation.
 python -u scripts/train_gnn.py                       # GraphTransformer (default)
 python -u scripts/train_gnn.py --architecture mpnn   # 2-layer GraphSAGE + mean readout
 python -u scripts/train_gnn.py --architecture mean   # mean-pool baseline
-python -u scripts/train_gnn.py --gt-no-lpe           # -> results/gnn_lcpn_scratch_gt_L4_H4_nolpe/
+python -u scripts/train_gnn.py --gt-no-lpe           # -> results/all_windows/gnn_lcpn_scratch_gt_L4_H4_nolpe_.../
 python -u scripts/train_gnn.py --gt-attention-scope neighborhood
 python -u scripts/train_gnn.py --cls-resnet          # -> ..._gt_L4_H4_resnet4x128
 python -u scripts/train_gnn.py --architecture mean --cls-resnet   # head choice is orthogonal

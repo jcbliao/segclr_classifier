@@ -1,0 +1,178 @@
+{
+  "args": {
+    "architecture": "mean",
+    "dataset": "presynaptic_dense",
+    "presynaptic_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/resampled_teasar_2209/training_local_center/scale16/k17",
+    "results_dir": "results/presynaptic/new_skeletons_native/local_center/scale16/k17",
+    "attention_budget": 14450688,
+    "presynaptic_cell_cache": 1,
+    "pointwise_mlp_layers": 2,
+    "pointwise_mlp_hidden_dim": 128,
+    "linear_out_dim": 128,
+    "mpnn_layers": 2,
+    "mpnn_hidden_dim": 128,
+    "mpnn_dropout": 0.1,
+    "spatial": false,
+    "position": false,
+    "lpe": false,
+    "cls_hidden_dim": null,
+    "classifier": "lcpn",
+    "cls_resnet": true,
+    "cls_resnet_hidden": 128,
+    "cls_resnet_layers": 4,
+    "cls_resnet_dropout": 0.0,
+    "class_balance": "loss",
+    "gt_dim": 128,
+    "gt_depth": 4,
+    "gt_heads": 4,
+    "gt_mlp_ratio": 4,
+    "gt_pos_dim": 8,
+    "gt_no_exp": false,
+    "gt_dropout": 0.0,
+    "gt_no_lpe": false,
+    "gt_no_rel_pos": false,
+    "gt_no_adj_bias": false,
+    "gt_use_thickness": false,
+    "gt_attention_scope": "global",
+    "no_embeddings": false,
+    "freeze_aggregator": false,
+    "num_embeddings": 17,
+    "neighborhood_root": "/orcd/scratch/orcd/013/jcbliao/embedding_paths/r5um",
+    "window_nm": 10000.0,
+    "batch_size": 4096,
+    "epochs": 30,
+    "resume": true,
+    "lr": 0.0001,
+    "weight_decay": 1e-05,
+    "num_workers": 4,
+    "seed": 0,
+    "amp": true
+  },
+  "window_test_metrics": {
+    "accuracy": 0.8169277690105617,
+    "balanced_accuracy": 0.7307281359622609,
+    "macro_precision": 0.7589687366960998,
+    "macro_f1": 0.7346648301375269,
+    "per_class_recall": {
+      "putative_cge": 0.4328454711103274,
+      "putative_parvalbumin": 0.9076372350339482,
+      "putative_somatostatin": 0.6097334769778444,
+      "pyramidal": 0.9522578100791571,
+      "thalamocortical": 0.7511666866100275
+    },
+    "per_class_precision": {
+      "putative_cge": 0.28176235388647625,
+      "putative_parvalbumin": 0.9699417488005944,
+      "putative_somatostatin": 0.9035580914303166,
+      "pyramidal": 0.8290585713514919,
+      "thalamocortical": 0.8105229180116204
+    },
+    "confusion_matrix": [
+      [
+        14728,
+        808,
+        3802,
+        14313,
+        375
+      ],
+      [
+        5458,
+        122718,
+        999,
+        5268,
+        763
+      ],
+      [
+        25826,
+        1231,
+        65086,
+        13943,
+        659
+      ],
+      [
+        5425,
+        1019,
+        892,
+        169021,
+        1138
+      ],
+      [
+        834,
+        745,
+        1254,
+        1326,
+        12555
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9343891402714932,
+    "balanced_accuracy": 0.7982382834556747,
+    "macro_precision": 0.9233153638814017,
+    "macro_f1": 0.8444517622986488,
+    "per_class_recall": {
+      "putative_cge": 0.45454545454545453,
+      "putative_parvalbumin": 0.9714285714285714,
+      "putative_somatostatin": 0.5652173913043478,
+      "pyramidal": 1.0,
+      "thalamocortical": 1.0
+    },
+    "per_class_precision": {
+      "putative_cge": 0.75,
+      "putative_parvalbumin": 1.0,
+      "putative_somatostatin": 0.9285714285714286,
+      "pyramidal": 0.9380053908355795,
+      "thalamocortical": 1.0
+    },
+    "confusion_matrix": [
+      [
+        15,
+        0,
+        1,
+        17,
+        0
+      ],
+      [
+        0,
+        34,
+        0,
+        1,
+        0
+      ],
+      [
+        5,
+        0,
+        13,
+        5,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        348,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        3
+      ]
+    ]
+  },
+  "classes": [
+    "putative_cge",
+    "putative_parvalbumin",
+    "putative_somatostatin",
+    "pyramidal",
+    "thalamocortical"
+  ],
+  "fold": "fold_0",
+  "split_seed": 0,
+  "split_fracs": [
+    0.8,
+    0.2
+  ]
+}

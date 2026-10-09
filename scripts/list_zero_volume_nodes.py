@@ -37,7 +37,7 @@ REPO = Path(__file__).resolve().parent.parent
 CACHE_DIR = REPO / "data" / "mask_volume_cache"
 GRAPH_CACHE_DIR = REPO / "data" / "graph_cache"
 MANIFEST_PATH = REPO / "data" / "manifest.json"
-OUT_PATH = REPO / "results" / "zero_volume_nodes.csv"
+OUT_PATH = REPO / "results" / "all_windows" / "zero_volume_nodes.csv"
 
 #: MICrONS Neuroglancer's coordinate space, for pasteable positions.
 NG_RESOLUTION_NM = np.array([4.0, 4.0, 40.0])

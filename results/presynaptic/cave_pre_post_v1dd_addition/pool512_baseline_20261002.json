@@ -1,0 +1,18 @@
+{
+  "time": 1790951920.2939246,
+  "added_jobs": {
+    "preemptable": "24660106",
+    "normal": "24660108"
+  },
+  "added_workers": 448,
+  "total_workers": 512,
+  "preparation_jobs": [
+    "24621186",
+    "24621311",
+    "24660106",
+    "24660108"
+  ],
+  "inputs": 623746,
+  "batches": 4874,
+  "completed_shards": 152
+}

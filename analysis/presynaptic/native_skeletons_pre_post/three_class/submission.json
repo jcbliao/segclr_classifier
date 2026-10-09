@@ -1,0 +1,40 @@
+{
+  "prepare_job": "25175952",
+  "training_array": "25175953",
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "classes": [
+    "BasketFam",
+    "nonBasketInhibitory",
+    "Excitatory"
+  ],
+  "task_mapping": "fold = task / 3; task % 3: 0 = single MLP, 1 = k17 MLP, 2 = k17 GT",
+  "condition": "pre_post",
+  "epochs": 30,
+  "status": "native k17 tasks canceled; single-embedding tasks continue",
+  "retained_tasks": [
+    0,
+    3,
+    6,
+    9,
+    12
+  ],
+  "canceled_tasks": [
+    1,
+    2,
+    4,
+    5,
+    7,
+    8,
+    10,
+    11,
+    13,
+    14
+  ],
+  "replacement_experiment": "cave_skeletons_pre_post"
+}

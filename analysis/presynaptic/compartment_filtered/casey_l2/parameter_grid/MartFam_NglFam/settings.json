@@ -1,0 +1,32 @@
+{
+  "source": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/compartment_filtered/casey_l2",
+  "dimensions": 2,
+  "n_neighbors": [
+    2,
+    4,
+    15
+  ],
+  "min_dist": [
+    0.001,
+    0.01,
+    0.1
+  ],
+  "metric": "euclidean",
+  "n_epochs": 500,
+  "seed": 0,
+  "n_points": 4000,
+  "classes": [
+    "MartFam",
+    "NglFam"
+  ],
+  "palette": {
+    "BasketFam": "#1f77b4",
+    "BipFam": "#ff7f0e",
+    "MartFam": "#2ca02c",
+    "NglFam": "#d62728",
+    "pyramidal": "#9467bd",
+    "thalamocortical": "#8c564b"
+  },
+  "umap_version": "0.5.9.post2",
+  "baseline_reused": false
+}

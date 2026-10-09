@@ -1,0 +1,14 @@
+{
+  "elapsed": 150.0,
+  "thread_seconds": {
+    "lock.other": 0.05,
+    "lock.queue": 129.19
+  },
+  "calls": {
+    "lock.queue": 3,
+    "lock.other": 976
+  },
+  "inflight": {
+    "lock.queue": 1
+  }
+}

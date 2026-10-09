@@ -1,0 +1,28 @@
+{
+  "samples": [
+    {
+      "time": 1790912297.5859373,
+      "inputs": 26882,
+      "batches": 211,
+      "prepared_shards": 7,
+      "committed_shards": 7,
+      "running_workers": 490
+    },
+    {
+      "time": 1790912416.4772239,
+      "inputs": 26882,
+      "batches": 211,
+      "running_workers": 492,
+      "committed_shards": 7
+    },
+    {
+      "time": 1790912486.0527525,
+      "inputs": 26882,
+      "batches": 211,
+      "running_workers": 492,
+      "committed_shards": 7
+    }
+  ],
+  "elapsed_seconds": 188.4668152332306,
+  "inputs_per_minute": 0.0
+}

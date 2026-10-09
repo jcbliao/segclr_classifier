@@ -1,0 +1,18 @@
+stage	job_id	dependency	factor	window_k	architecture
+priority_verify	local	passed 2209/2209			
+build_scale32	22822539	priority verification passed	32	9	
+finalize_scale32	22822541	afterok:22822539	32	9	
+train_scale32_mean_mlp	22822551	afterok:22822541	32	9	mean,pointwise_mlp
+train_scale32_gt	22822552	afterok:22822541	32	9	graph_transformer
+build_remaining_scales	22822568	afterok:22822539	16,8,4,2,1	17,33,65,129,257	
+finalize_remaining_scales	22822570	afterok:22822568	16,8,4,2,1	17,33,65,129,257	
+train_scale16_mean_mlp	22822573	afterok:22822570	16	17	mean,pointwise_mlp
+train_scale16_gt	22822574	afterok:22822570	16	17	graph_transformer
+train_scale8_mean_mlp	22822575	afterok:22822570	8	33	mean,pointwise_mlp
+train_scale8_gt	22822576	afterok:22822570	8	33	graph_transformer
+train_scale4_mean_mlp	22822577	afterok:22822570	4	65	mean,pointwise_mlp
+train_scale4_gt	22822578	afterok:22822570	4	65	graph_transformer
+train_scale2_mean_mlp	22822579	afterok:22822570	2	129	mean,pointwise_mlp
+train_scale2_gt	22822580	afterok:22822570	2	129	graph_transformer
+train_scale1_mean_mlp	22822581	afterok:22822570	1	257	mean,pointwise_mlp
+train_scale1_gt	22822582	afterok:22822570	1	257	graph_transformer

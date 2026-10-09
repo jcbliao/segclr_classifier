@@ -1,0 +1,21 @@
+{
+  "n_cells": 2209,
+  "totals": {
+    "nodes": 308414517,
+    "edges": 308397752,
+    "retained_nodes": 269139372,
+    "retained_edges": 269133542,
+    "components": 16765,
+    "retained_components": 5830,
+    "unique_accepted_sites": 2370963,
+    "retained_unique_accepted_sites": 2353866,
+    "presynaptic_rows": 2458914,
+    "rows_nearest_retained_component": 2436742,
+    "retained_rows_within_2um": 2353866
+  },
+  "cached_edges": 269133542,
+  "notebooks": [
+    "skeleton_stats.ipynb",
+    "presynaptic_axon_database_figures.ipynb"
+  ]
+}

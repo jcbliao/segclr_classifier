@@ -1,0 +1,10 @@
+{
+  "time": 1790919069.5895913,
+  "inputs": 26882,
+  "batches": 211,
+  "shards": 7,
+  "preparation_job": "24621186",
+  "dispatcher_job": "24621187",
+  "preemptable_job": "24621311",
+  "moved_pending_workers": 46
+}

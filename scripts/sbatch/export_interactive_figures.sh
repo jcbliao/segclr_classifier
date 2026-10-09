@@ -1,6 +1,6 @@
 #!/bin/bash
-# Render every notebook widget state from the real Matplotlib figures.
-# CPU-only, but deliberately scheduled because the full state space is large.
+# Export the compact Plotly pages from notebook summary data.
+# CPU-only and scheduled so figure publishing never runs on the login node.
 # Usage: sbatch scripts/sbatch/export_interactive_figures.sh
 # Set PUBLISH_FIGURES=1 to commit and push generated pages after a successful export.
 #SBATCH --job-name=export_figures
@@ -20,8 +20,7 @@ PY="$REPO/segclr_db/.venv/bin/python"
 cd "$REPO"
 mkdir -p logs
 
-MPLBACKEND=Agg PYTHONPATH="$REPO" uv run --python "$PY" --with mpld3 \
-  python -u scripts/export_mpld3_figures.py
+MPLBACKEND=Agg PYTHONPATH="$REPO" "$PY" -u scripts/export_interactive_figures.py
 
 if [ "${PUBLISH_FIGURES:-0}" = "1" ]; then
   git add docs/figures

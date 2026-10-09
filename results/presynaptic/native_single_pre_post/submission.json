@@ -1,0 +1,67 @@
+{
+  "preemptable_array": 24970387,
+  "normal_array": 24970388,
+  "conditions": [
+    "pre_only",
+    "pre_post",
+    "pre_mean_control"
+  ],
+  "architectures": [
+    "mean",
+    "pointwise_mlp",
+    "graph_transformer"
+  ],
+  "presynaptic_selection": "nearest observed node to synapse",
+  "n_presynaptic_embeddings": 1,
+  "source_k": 17,
+  "epochs": 30,
+  "fold": 0,
+  "summary_job": 24970409,
+  "validation": "Loader equality at three real sites; forward passes for all nine architecture/condition combinations",
+  "partition_moves": {
+    "24970387_4": {
+      "partition": "mit_normal_gpu",
+      "account": "mit_amf_advanced_gpu",
+      "qos": "mit_amf_advanced_gpu",
+      "condition": "pre_post",
+      "architecture": "pointwise_mlp"
+    },
+    "24970387_0": {
+      "partition": "mit_normal_gpu",
+      "account": "mit_amf_advanced_gpu",
+      "qos": "mit_amf_advanced_gpu"
+    },
+    "24970387_1": {
+      "partition": "mit_normal_gpu",
+      "account": "mit_amf_advanced_gpu",
+      "qos": "mit_amf_advanced_gpu"
+    },
+    "24970387_3": {
+      "partition": "mit_normal_gpu",
+      "account": "mit_amf_advanced_gpu",
+      "qos": "mit_amf_advanced_gpu"
+    },
+    "24970387_6": {
+      "partition": "mit_normal_gpu",
+      "account": "mit_amf_advanced_gpu",
+      "qos": "mit_amf_advanced_gpu"
+    },
+    "24970387_7": {
+      "partition": "mit_normal_gpu",
+      "account": "mit_amf_advanced_gpu",
+      "qos": "mit_amf_advanced_gpu"
+    }
+  },
+  "additional_pointwise_pre_post_folds": {
+    "job_id": 24976671,
+    "folds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "architecture": "pointwise_mlp",
+    "condition": "pre_post",
+    "partition": "mit_normal_gpu"
+  }
+}

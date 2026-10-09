@@ -1,0 +1,179 @@
+{
+  "args": {
+    "architecture": "mean",
+    "dataset": "presynaptic_dense",
+    "presynaptic_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/resampled_teasar_2209/training_local_center/scale32/k9",
+    "results_dir": "results/presynaptic/new_skeletons_native/mixed_cell_b32/scale32/k9",
+    "attention_budget": 14450688,
+    "mixed_cell_batch_size": 16,
+    "presynaptic_cell_cache": 16,
+    "pointwise_mlp_layers": 2,
+    "pointwise_mlp_hidden_dim": 128,
+    "linear_out_dim": 128,
+    "mpnn_layers": 2,
+    "mpnn_hidden_dim": 128,
+    "mpnn_dropout": 0.1,
+    "spatial": false,
+    "position": false,
+    "lpe": false,
+    "cls_hidden_dim": null,
+    "classifier": "lcpn",
+    "cls_resnet": true,
+    "cls_resnet_hidden": 128,
+    "cls_resnet_layers": 4,
+    "cls_resnet_dropout": 0.0,
+    "class_balance": "loss",
+    "gt_dim": 128,
+    "gt_depth": 4,
+    "gt_heads": 4,
+    "gt_mlp_ratio": 4,
+    "gt_pos_dim": 8,
+    "gt_no_exp": false,
+    "gt_dropout": 0.0,
+    "gt_no_lpe": false,
+    "gt_no_rel_pos": false,
+    "gt_no_adj_bias": false,
+    "gt_use_thickness": false,
+    "gt_attention_scope": "global",
+    "no_embeddings": false,
+    "freeze_aggregator": false,
+    "num_embeddings": 9,
+    "neighborhood_root": "/orcd/scratch/orcd/013/jcbliao/embedding_paths/r5um",
+    "window_nm": 10000.0,
+    "batch_size": 4096,
+    "epochs": 30,
+    "resume": true,
+    "lr": 0.0001,
+    "weight_decay": 1e-05,
+    "num_workers": 4,
+    "seed": 0,
+    "amp": true
+  },
+  "window_test_metrics": {
+    "accuracy": 0.8459567470409393,
+    "balanced_accuracy": 0.7323187854081612,
+    "macro_precision": 0.7466072063622702,
+    "macro_f1": 0.7378637894430402,
+    "per_class_recall": {
+      "putative_cge": 0.28624295112781956,
+      "putative_parvalbumin": 0.9467205245979117,
+      "putative_somatostatin": 0.7916596524699325,
+      "pyramidal": 0.9214210887955213,
+      "thalamocortical": 0.7155497100496204
+    },
+    "per_class_precision": {
+      "putative_cge": 0.3820612332902113,
+      "putative_parvalbumin": 0.9516962363595872,
+      "putative_somatostatin": 0.8115293170226636,
+      "pyramidal": 0.8627068414558263,
+      "thalamocortical": 0.7250424036830627
+    },
+    "confusion_matrix": [
+      [
+        9746,
+        1139,
+        9801,
+        12524,
+        838
+      ],
+      [
+        1906,
+        128203,
+        2642,
+        2339,
+        328
+      ],
+      [
+        9496,
+        1451,
+        84649,
+        10615,
+        715
+      ],
+      [
+        4120,
+        2256,
+        4918,
+        163602,
+        2658
+      ],
+      [
+        241,
+        1661,
+        2298,
+        558,
+        11969
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9276018099547512,
+    "balanced_accuracy": 0.8123244222044821,
+    "macro_precision": 0.903794682966345,
+    "macro_f1": 0.8239501454617735,
+    "per_class_recall": {
+      "putative_cge": 0.2727272727272727,
+      "putative_parvalbumin": 0.9714285714285714,
+      "putative_somatostatin": 0.8260869565217391,
+      "pyramidal": 0.9913793103448276,
+      "thalamocortical": 1.0
+    },
+    "per_class_precision": {
+      "putative_cge": 0.9,
+      "putative_parvalbumin": 0.918918918918919,
+      "putative_somatostatin": 0.76,
+      "pyramidal": 0.9400544959128065,
+      "thalamocortical": 1.0
+    },
+    "confusion_matrix": [
+      [
+        9,
+        0,
+        6,
+        18,
+        0
+      ],
+      [
+        0,
+        34,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        19,
+        3,
+        0
+      ],
+      [
+        0,
+        3,
+        0,
+        345,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        3
+      ]
+    ]
+  },
+  "classes": [
+    "putative_cge",
+    "putative_parvalbumin",
+    "putative_somatostatin",
+    "pyramidal",
+    "thalamocortical"
+  ],
+  "fold": "fold_0",
+  "split_seed": 0,
+  "split_fracs": [
+    0.8,
+    0.2
+  ]
+}

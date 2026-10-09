@@ -1,0 +1,354 @@
+{
+  "position": [
+    203244.0,
+    256578.0,
+    25118.0
+  ],
+  "layout": "xy-3d",
+  "dimensions": {
+    "x": [
+      4e-09,
+      "m"
+    ],
+    "y": [
+      4e-09,
+      "m"
+    ],
+    "z": [
+      4e-08,
+      "m"
+    ]
+  },
+  "crossSectionScale": 1.0,
+  "projectionScale": 50000.0,
+  "showSlices": true,
+  "layers": [
+    {
+      "type": "image",
+      "source": [
+        {
+          "url": "precomputed://https://bossdb-open-data.s3.amazonaws.com/iarpa_microns/minnie/minnie65/em",
+          "transform": {
+            "outputDimensions": {
+              "x": [
+                4e-09,
+                "m"
+              ],
+              "y": [
+                4e-09,
+                "m"
+              ],
+              "z": [
+                4e-08,
+                "m"
+              ]
+            }
+          },
+          "subsources": {},
+          "enableDefaultSubsources": true
+        }
+      ],
+      "name": "imagery"
+    },
+    {
+      "type": "segmentation",
+      "source": [
+        {
+          "url": "graphene://middleauth+https://minnie.microns-daf.com/segmentation/table/minnie65_public",
+          "transform": {
+            "outputDimensions": {
+              "x": [
+                4e-09,
+                "m"
+              ],
+              "y": [
+                4e-09,
+                "m"
+              ],
+              "z": [
+                4e-08,
+                "m"
+              ]
+            }
+          },
+          "subsources": {},
+          "enableDefaultSubsources": true
+        },
+        {
+          "url": "precomputed://middleauth+https://minnie.microns-daf.com/skeletoncache/api/v1/minnie65_public/precomputed/skeleton/",
+          "transform": {
+            "outputDimensions": {
+              "x": [
+                4e-09,
+                "m"
+              ],
+              "y": [
+                4e-09,
+                "m"
+              ],
+              "z": [
+                4e-08,
+                "m"
+              ]
+            }
+          },
+          "subsources": {},
+          "enableDefaultSubsources": true
+        }
+      ],
+      "segments": [
+        "864691135801393250"
+      ],
+      "selectedAlpha": 0.5,
+      "notSelectedAlpha": 0.0,
+      "objectAlpha": 1.0,
+      "segmentColors": {},
+      "meshSilhouetteRendering": 0,
+      "pick": true,
+      "name": "segmentation",
+      "timestamp": 1772871001
+    },
+    {
+      "type": "annotation",
+      "source": [
+        {
+          "url": "local://annotations",
+          "transform": {
+            "outputDimensions": {
+              "x": [
+                1e-09,
+                "m"
+              ],
+              "y": [
+                1e-09,
+                "m"
+              ],
+              "z": [
+                1e-09,
+                "m"
+              ]
+            }
+          }
+        }
+      ],
+      "annotations": [
+        {
+          "type": "point",
+          "id": "8f46431bdbba7af5ebe016578f87657067c068df",
+          "description": "Synapse 204346905 | nearest CAVE SegCLR: 10.542691 um",
+          "segments": [
+            [
+              864691135801393250
+            ]
+          ],
+          "props": [],
+          "point": [
+            812976.0,
+            1026312.0,
+            1004720.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "aee40a8389f1a06f23ecfc586344e8ac01b24661",
+          "description": "Synapse 204346824 | nearest CAVE SegCLR: 9.914363 um",
+          "segments": [
+            [
+              864691135801393250
+            ]
+          ],
+          "props": [],
+          "point": [
+            812432.0,
+            1021600.0,
+            1010520.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "3a0d923472feb986c4306fb8c32cb6c74d966c8f",
+          "description": "Synapse 204346882 | nearest CAVE SegCLR: 9.726147 um",
+          "segments": [
+            [
+              864691135801393250
+            ]
+          ],
+          "props": [],
+          "point": [
+            812512.0,
+            1022912.0,
+            1011840.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "0c332f02cf56027df338acba2a9e3b26e3b3c18f",
+          "description": "Synapse 201869901 | nearest CAVE SegCLR: 8.399181 um",
+          "segments": [
+            [
+              864691135801393250
+            ]
+          ],
+          "props": [],
+          "point": [
+            811744.0,
+            1024832.0,
+            1013600.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "912a45b53d833d53c34065a89df0aebb816ff527",
+          "description": "Synapse 204347072 | nearest CAVE SegCLR: 6.840486 um",
+          "segments": [
+            [
+              864691135801393250
+            ]
+          ],
+          "props": [],
+          "point": [
+            815608.0,
+            1022376.0,
+            1004840.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "423077c06c865d6cd2ac3495ac2babc9745eec55",
+          "description": "Synapse 204346691 | nearest CAVE SegCLR: 6.039179 um",
+          "segments": [
+            [
+              864691135801393250
+            ]
+          ],
+          "props": [],
+          "point": [
+            809568.0,
+            1020368.0,
+            1005840.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "364d4fbd81825af238b07d6d8b968ae58c1b8de3",
+          "description": "Synapse 204346606 | nearest CAVE SegCLR: 5.050598 um",
+          "segments": [
+            [
+              864691135801393250
+            ]
+          ],
+          "props": [],
+          "point": [
+            808728.0,
+            1026840.0,
+            1009760.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "70e05219c426cd78f2f7d23a9425f1f88e68973b",
+          "description": "Synapse 204346578 | nearest CAVE SegCLR: 4.827879 um",
+          "segments": [
+            [
+              864691135801393250
+            ]
+          ],
+          "props": [],
+          "point": [
+            808408.0,
+            1026856.0,
+            1010760.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "1cebbcc49692db4774be594b86862ff138474f25",
+          "description": "Synapse 204274962 | nearest CAVE SegCLR: 4.450740 um",
+          "segments": [
+            [
+              864691135801393250
+            ]
+          ],
+          "props": [],
+          "point": [
+            808000.0,
+            1028104.0,
+            1008680.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "e3b60a82f53bd9fbc267d13211683c7af5f86fc0",
+          "description": "Synapse 204346789 | nearest CAVE SegCLR: 3.309032 um",
+          "segments": [
+            [
+              864691135801393250
+            ]
+          ],
+          "props": [],
+          "point": [
+            811352.0,
+            1017984.0,
+            1004480.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "2777ad33d545e40a4367fe9583639364cd26c03b",
+          "description": "Synapse 202419718 | nearest CAVE SegCLR: 2.855428 um",
+          "segments": [
+            [
+              864691135801393250
+            ]
+          ],
+          "props": [],
+          "point": [
+            803736.0,
+            1031952.0,
+            1081920.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "f41905125163a9906af5d3ddb751db7e5a545091",
+          "description": "Synapse 205206116 | nearest CAVE SegCLR: 2.623683 um",
+          "segments": [
+            [
+              864691135801393250
+            ]
+          ],
+          "props": [],
+          "point": [
+            810816.0,
+            1038032.0,
+            962280.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "1624bd1557846805101039c0ab4cafbf2077eb96",
+          "description": "Synapse 202218984 | nearest CAVE SegCLR: 2.129413 um",
+          "segments": [
+            [
+              864691135801393250
+            ]
+          ],
+          "props": [],
+          "point": [
+            807176.0,
+            1036016.0,
+            954720.0
+          ]
+        }
+      ],
+      "linkedSegmentationLayer": {
+        "segments": "segmentation"
+      },
+      "shader": "\n#uicontrol vec3 markerColor color(default=\"#ff3333\");\n#uicontrol float markerSize slider(min=0, max=20, default=12.0);\n\nvoid main() {\n\n\nsetPointMarkerSize(markerSize);\nsetColor(markerColor);\n}\n",
+      "annotationProperties": [],
+      "toolBindings": {},
+      "swapVisbleSegmentsOnMove": true,
+      "name": "ROIs: presynaptic points >2 um"
+    }
+  ]
+}

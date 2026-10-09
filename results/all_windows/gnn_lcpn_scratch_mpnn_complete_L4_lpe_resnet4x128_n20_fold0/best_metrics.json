@@ -1,0 +1,231 @@
+{
+  "run": "gnn_lcpn_scratch_mpnn_complete_L4_lpe_resnet4x128_n20_fold0",
+  "epoch": 5,
+  "classes": [
+    "astrocyte",
+    "microglia",
+    "oligo",
+    "putative_cge",
+    "putative_parvalbumin",
+    "putative_somatostatin",
+    "pyramidal",
+    "thalamocortical"
+  ],
+  "window_test_metrics": {
+    "accuracy": 0.9236217320430019,
+    "balanced_accuracy": 0.8711341552284854,
+    "macro_precision": 0.8678611420016666,
+    "macro_f1": 0.8664728625811905,
+    "per_class_recall": {
+      "astrocyte": 0.9994763343403826,
+      "microglia": 0.8550331525015069,
+      "oligo": 0.8607181719260065,
+      "putative_cge": 0.6236649228924854,
+      "putative_parvalbumin": 0.9441656599832812,
+      "putative_somatostatin": 0.8304585565969956,
+      "pyramidal": 0.9555418471779413,
+      "thalamocortical": 0.9000145964092833
+    },
+    "per_class_precision": {
+      "astrocyte": 0.9997582399871061,
+      "microglia": 0.9847275251648733,
+      "oligo": 0.9813895781637717,
+      "putative_cge": 0.6047410205941798,
+      "putative_parvalbumin": 0.9572587236718013,
+      "putative_somatostatin": 0.74765709094141,
+      "pyramidal": 0.9727842222298673,
+      "thalamocortical": 0.6945727352603239
+    },
+    "confusion_matrix": [
+      [
+        24812,
+        0,
+        0,
+        0,
+        0,
+        0,
+        13,
+        0
+      ],
+      [
+        0,
+        2837,
+        0,
+        122,
+        1,
+        34,
+        324,
+        0
+      ],
+      [
+        0,
+        0,
+        791,
+        0,
+        0,
+        0,
+        128,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        91559,
+        6356,
+        23521,
+        24133,
+        1237
+      ],
+      [
+        0,
+        26,
+        0,
+        4908,
+        380630,
+        8185,
+        6724,
+        2666
+      ],
+      [
+        2,
+        11,
+        0,
+        17606,
+        2071,
+        151420,
+        10254,
+        969
+      ],
+      [
+        4,
+        5,
+        15,
+        36982,
+        8142,
+        18525,
+        1555195,
+        8685
+      ],
+      [
+        0,
+        0,
+        0,
+        225,
+        425,
+        841,
+        1934,
+        30830
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9871244635193133,
+    "balanced_accuracy": 0.9741953698475437,
+    "macro_precision": 0.9774086322298606,
+    "macro_f1": 0.9757758641873794,
+    "per_class_recall": {
+      "astrocyte": 1.0,
+      "microglia": 1.0,
+      "oligo": 1.0,
+      "putative_cge": 0.9090909090909091,
+      "putative_parvalbumin": 0.9714285714285714,
+      "putative_somatostatin": 0.9130434782608695,
+      "pyramidal": 1.0,
+      "thalamocortical": 1.0
+    },
+    "per_class_precision": {
+      "astrocyte": 1.0,
+      "microglia": 1.0,
+      "oligo": 1.0,
+      "putative_cge": 0.9090909090909091,
+      "putative_parvalbumin": 1.0,
+      "putative_somatostatin": 0.9130434782608695,
+      "pyramidal": 0.997134670487106,
+      "thalamocortical": 1.0
+    },
+    "confusion_matrix": [
+      [
+        15,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        30,
+        0,
+        2,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        34,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        0,
+        21,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        348,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3
+      ]
+    ]
+  },
+  "complete": false
+}

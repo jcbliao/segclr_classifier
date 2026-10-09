@@ -1,0 +1,92 @@
+[
+  {
+    "fold": 0,
+    "split": "train",
+    "cell_counts": {
+      "nonBasketInhibitory": 185,
+      "Excitatory": 1099,
+      "BasketFam": 130
+    }
+  },
+  {
+    "fold": 0,
+    "split": "test",
+    "cell_counts": {
+      "nonBasketInhibitory": 47,
+      "Excitatory": 279,
+      "BasketFam": 33
+    }
+  },
+  {
+    "fold": 1,
+    "split": "train",
+    "cell_counts": {
+      "nonBasketInhibitory": 184,
+      "Excitatory": 1101,
+      "BasketFam": 131
+    }
+  },
+  {
+    "fold": 1,
+    "split": "test",
+    "cell_counts": {
+      "Excitatory": 277,
+      "BasketFam": 32,
+      "nonBasketInhibitory": 48
+    }
+  },
+  {
+    "fold": 2,
+    "split": "train",
+    "cell_counts": {
+      "Excitatory": 1102,
+      "nonBasketInhibitory": 187,
+      "BasketFam": 130
+    }
+  },
+  {
+    "fold": 2,
+    "split": "test",
+    "cell_counts": {
+      "nonBasketInhibitory": 45,
+      "Excitatory": 276,
+      "BasketFam": 33
+    }
+  },
+  {
+    "fold": 3,
+    "split": "train",
+    "cell_counts": {
+      "nonBasketInhibitory": 184,
+      "Excitatory": 1105,
+      "BasketFam": 131
+    }
+  },
+  {
+    "fold": 3,
+    "split": "test",
+    "cell_counts": {
+      "Excitatory": 273,
+      "nonBasketInhibitory": 48,
+      "BasketFam": 32
+    }
+  },
+  {
+    "fold": 4,
+    "split": "train",
+    "cell_counts": {
+      "nonBasketInhibitory": 188,
+      "Excitatory": 1105,
+      "BasketFam": 130
+    }
+  },
+  {
+    "fold": 4,
+    "split": "test",
+    "cell_counts": {
+      "Excitatory": 273,
+      "nonBasketInhibitory": 44,
+      "BasketFam": 33
+    }
+  }
+]

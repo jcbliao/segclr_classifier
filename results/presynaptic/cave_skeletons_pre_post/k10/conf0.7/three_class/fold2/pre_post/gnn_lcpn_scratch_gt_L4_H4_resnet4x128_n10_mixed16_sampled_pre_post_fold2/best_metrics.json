@@ -1,0 +1,76 @@
+{
+  "run": "gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_pre_post_fold2",
+  "epoch": 27,
+  "classes": [
+    "BasketFam",
+    "Excitatory",
+    "nonBasketInhibitory"
+  ],
+  "window_test_metrics": {
+    "accuracy": 0.901952757762984,
+    "balanced_accuracy": 0.8889968150322196,
+    "macro_precision": 0.8992437208131207,
+    "macro_f1": 0.8930562957471727,
+    "per_class_recall": {
+      "BasketFam": 0.941257432283638,
+      "Excitatory": 0.9469243860928762,
+      "nonBasketInhibitory": 0.7788086267201447
+    },
+    "per_class_precision": {
+      "BasketFam": 0.9271390301833997,
+      "Excitatory": 0.9001409828740476,
+      "nonBasketInhibitory": 0.8704511493819148
+    },
+    "confusion_matrix": [
+      [
+        85485,
+        2230,
+        3105
+      ],
+      [
+        1071,
+        116841,
+        5478
+      ],
+      [
+        5647,
+        10732,
+        57670
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9689265536723164,
+    "balanced_accuracy": 0.9158249158249158,
+    "macro_precision": 0.9617432262419835,
+    "macro_f1": 0.9350452323918329,
+    "per_class_recall": {
+      "BasketFam": 0.9696969696969697,
+      "Excitatory": 1.0,
+      "nonBasketInhibitory": 0.7777777777777778
+    },
+    "per_class_precision": {
+      "BasketFam": 0.9411764705882353,
+      "Excitatory": 0.971830985915493,
+      "nonBasketInhibitory": 0.9722222222222222
+    },
+    "confusion_matrix": [
+      [
+        32,
+        0,
+        1
+      ],
+      [
+        0,
+        276,
+        0
+      ],
+      [
+        2,
+        8,
+        35
+      ]
+    ]
+  },
+  "complete": false
+}

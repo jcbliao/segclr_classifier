@@ -32,7 +32,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-REPO_ROOT = Path.cwd().parent if Path.cwd().name == "analysis" else Path.cwd()
+REPO_ROOT = next(p for p in (Path.cwd(), *Path.cwd().parents) if (p / "gnn").is_dir())
 sys.path.insert(0, str(REPO_ROOT))
 
 from gnn.hierarchy import LAB_HIERARCHY_TREE

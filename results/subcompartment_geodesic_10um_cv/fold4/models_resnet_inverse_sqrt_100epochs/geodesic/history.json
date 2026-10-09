@@ -1,0 +1,1502 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 0.1820654571056366,
+    "seconds": 1.4658626541495323,
+    "test_macro_f1": 0.9528646994800558,
+    "test_f1_per_class": {
+      "soma": 0.8597562476917395,
+      "dendrite": 0.9746918233969575,
+      "axon": 0.9902832987483592,
+      "astrocytic_process": 0.9867274280831672
+    },
+    "test_cell_class_balanced_macro_f1": 0.9778378514446263,
+    "best_epoch": 1,
+    "best_macro_f1": 0.9528646994800558
+  },
+  {
+    "epoch": 2,
+    "train_loss": 0.05290279537439346,
+    "seconds": 0.8714724965393543,
+    "test_macro_f1": 0.9630676093250314,
+    "test_f1_per_class": {
+      "soma": 0.8954131219549137,
+      "dendrite": 0.9767702792849042,
+      "axon": 0.990945645930043,
+      "astrocytic_process": 0.9891413901302653
+    },
+    "test_cell_class_balanced_macro_f1": 0.9832439624151135,
+    "best_epoch": 2,
+    "best_macro_f1": 0.9630676093250314
+  },
+  {
+    "epoch": 3,
+    "train_loss": 0.04679330065846443,
+    "seconds": 0.8737907595932484,
+    "test_macro_f1": 0.9704203334847274,
+    "test_f1_per_class": {
+      "soma": 0.9219452178980768,
+      "dendrite": 0.9780837595476146,
+      "axon": 0.9913186045428434,
+      "astrocytic_process": 0.9903337519503749
+    },
+    "test_cell_class_balanced_macro_f1": 0.9849666937815074,
+    "best_epoch": 3,
+    "best_macro_f1": 0.9704203334847274
+  },
+  {
+    "epoch": 4,
+    "train_loss": 0.043443478643894196,
+    "seconds": 0.8750807689502835,
+    "test_macro_f1": 0.9743568207523751,
+    "test_f1_per_class": {
+      "soma": 0.935301211136161,
+      "dendrite": 0.9786888933195871,
+      "axon": 0.9914432784393793,
+      "astrocytic_process": 0.9919939001143728
+    },
+    "test_cell_class_balanced_macro_f1": 0.9861004942427409,
+    "best_epoch": 4,
+    "best_macro_f1": 0.9743568207523751
+  },
+  {
+    "epoch": 5,
+    "train_loss": 0.041243210434913635,
+    "seconds": 0.8765266155824065,
+    "test_macro_f1": 0.9776208879444626,
+    "test_f1_per_class": {
+      "soma": 0.9494399273707961,
+      "dendrite": 0.979340223700977,
+      "axon": 0.9914556962025316,
+      "astrocytic_process": 0.9902477045035454
+    },
+    "test_cell_class_balanced_macro_f1": 0.9860445301403424,
+    "best_epoch": 5,
+    "best_macro_f1": 0.9776208879444626
+  },
+  {
+    "epoch": 6,
+    "train_loss": 0.03952177241444588,
+    "seconds": 0.8794608265161514,
+    "test_macro_f1": 0.9771915709984955,
+    "test_f1_per_class": {
+      "soma": 0.9457519788918206,
+      "dendrite": 0.9800974820110626,
+      "axon": 0.9919714169659323,
+      "astrocytic_process": 0.9909454061251665
+    },
+    "test_cell_class_balanced_macro_f1": 0.9876316359393845,
+    "best_epoch": 5,
+    "best_macro_f1": 0.9776208879444626
+  },
+  {
+    "epoch": 7,
+    "train_loss": 0.03816070407629013,
+    "seconds": 0.8785762516781688,
+    "test_macro_f1": 0.9792500355440066,
+    "test_f1_per_class": {
+      "soma": 0.9517364013960216,
+      "dendrite": 0.9802477159780779,
+      "axon": 0.9919570262892843,
+      "astrocytic_process": 0.9930589985126426
+    },
+    "test_cell_class_balanced_macro_f1": 0.9880367115952705,
+    "best_epoch": 7,
+    "best_macro_f1": 0.9792500355440066
+  },
+  {
+    "epoch": 8,
+    "train_loss": 0.037268202751874924,
+    "seconds": 0.8762573264539242,
+    "test_macro_f1": 0.9808115515785938,
+    "test_f1_per_class": {
+      "soma": 0.9594696156323813,
+      "dendrite": 0.980431319804037,
+      "axon": 0.9918919540415619,
+      "astrocytic_process": 0.9914533168363948
+    },
+    "test_cell_class_balanced_macro_f1": 0.987684258763063,
+    "best_epoch": 8,
+    "best_macro_f1": 0.9808115515785938
+  },
+  {
+    "epoch": 9,
+    "train_loss": 0.03632967546582222,
+    "seconds": 0.8769959127530456,
+    "test_macro_f1": 0.9815473456342183,
+    "test_f1_per_class": {
+      "soma": 0.9606541993431195,
+      "dendrite": 0.9807332831647584,
+      "axon": 0.9920455142112297,
+      "astrocytic_process": 0.9927563858177659
+    },
+    "test_cell_class_balanced_macro_f1": 0.9882698547463398,
+    "best_epoch": 9,
+    "best_macro_f1": 0.9815473456342183
+  },
+  {
+    "epoch": 10,
+    "train_loss": 0.03585094213485718,
+    "seconds": 0.8773268023505807,
+    "test_macro_f1": 0.9831210332140017,
+    "test_f1_per_class": {
+      "soma": 0.9683511579176531,
+      "dendrite": 0.9809215733848486,
+      "axon": 0.9919838321447398,
+      "astrocytic_process": 0.9912275694087648
+    },
+    "test_cell_class_balanced_macro_f1": 0.9870167093134166,
+    "best_epoch": 10,
+    "best_macro_f1": 0.9831210332140017
+  },
+  {
+    "epoch": 11,
+    "train_loss": 0.035253752022981644,
+    "seconds": 0.8769145216792822,
+    "test_macro_f1": 0.98030502978377,
+    "test_f1_per_class": {
+      "soma": 0.9546051671288863,
+      "dendrite": 0.9810956751757675,
+      "axon": 0.9923842653887787,
+      "astrocytic_process": 0.9931350114416476
+    },
+    "test_cell_class_balanced_macro_f1": 0.9889729717822722,
+    "best_epoch": 10,
+    "best_macro_f1": 0.9831210332140017
+  },
+  {
+    "epoch": 12,
+    "train_loss": 0.03465950861573219,
+    "seconds": 0.8766501769423485,
+    "test_macro_f1": 0.9842696277440086,
+    "test_f1_per_class": {
+      "soma": 0.9705401873230233,
+      "dendrite": 0.9812533642865379,
+      "axon": 0.9921118090995017,
+      "astrocytic_process": 0.9931731502669717
+    },
+    "test_cell_class_balanced_macro_f1": 0.9875276661323322,
+    "best_epoch": 12,
+    "best_macro_f1": 0.9842696277440086
+  },
+  {
+    "epoch": 13,
+    "train_loss": 0.03420008346438408,
+    "seconds": 0.8776195151731372,
+    "test_macro_f1": 0.9816399984950664,
+    "test_f1_per_class": {
+      "soma": 0.9610854889379052,
+      "dendrite": 0.9811236563061975,
+      "axon": 0.9922173655644142,
+      "astrocytic_process": 0.9921334831717491
+    },
+    "test_cell_class_balanced_macro_f1": 0.9893563623525298,
+    "best_epoch": 12,
+    "best_macro_f1": 0.9842696277440086
+  },
+  {
+    "epoch": 14,
+    "train_loss": 0.033824872225522995,
+    "seconds": 0.8777270363643765,
+    "test_macro_f1": 0.9818415566445016,
+    "test_f1_per_class": {
+      "soma": 0.9597993971243365,
+      "dendrite": 0.9815704667599179,
+      "axon": 0.9925011411306975,
+      "astrocytic_process": 0.9934952215630544
+    },
+    "test_cell_class_balanced_macro_f1": 0.9894277295906966,
+    "best_epoch": 12,
+    "best_macro_f1": 0.9842696277440086
+  },
+  {
+    "epoch": 15,
+    "train_loss": 0.033607400953769684,
+    "seconds": 0.8754877056926489,
+    "test_macro_f1": 0.9835078963482129,
+    "test_f1_per_class": {
+      "soma": 0.9664228857731626,
+      "dendrite": 0.9818466932795121,
+      "axon": 0.992475719862969,
+      "astrocytic_process": 0.9932862864772077
+    },
+    "test_cell_class_balanced_macro_f1": 0.989117092997119,
+    "best_epoch": 12,
+    "best_macro_f1": 0.9842696277440086
+  },
+  {
+    "epoch": 16,
+    "train_loss": 0.033305421471595764,
+    "seconds": 0.8767829770222306,
+    "test_macro_f1": 0.9841255285560708,
+    "test_f1_per_class": {
+      "soma": 0.9683079581038765,
+      "dendrite": 0.9820460966521656,
+      "axon": 0.992557826732644,
+      "astrocytic_process": 0.9935902327355971
+    },
+    "test_cell_class_balanced_macro_f1": 0.988992628606958,
+    "best_epoch": 12,
+    "best_macro_f1": 0.9842696277440086
+  },
+  {
+    "epoch": 17,
+    "train_loss": 0.03285200893878937,
+    "seconds": 0.8740637255832553,
+    "test_macro_f1": 0.9829114805870571,
+    "test_f1_per_class": {
+      "soma": 0.9649739653228837,
+      "dendrite": 0.9812268784971881,
+      "axon": 0.9922532483319209,
+      "astrocytic_process": 0.9931918301962355
+    },
+    "test_cell_class_balanced_macro_f1": 0.9893504679121212,
+    "best_epoch": 12,
+    "best_macro_f1": 0.9842696277440086
+  },
+  {
+    "epoch": 18,
+    "train_loss": 0.03269024193286896,
+    "seconds": 0.8741231951862574,
+    "test_macro_f1": 0.9842641704040456,
+    "test_f1_per_class": {
+      "soma": 0.9685959343553725,
+      "dendrite": 0.9819293028699853,
+      "axon": 0.9925064372322868,
+      "astrocytic_process": 0.9940250071585377
+    },
+    "test_cell_class_balanced_macro_f1": 0.9890734508468139,
+    "best_epoch": 12,
+    "best_macro_f1": 0.9842696277440086
+  },
+  {
+    "epoch": 19,
+    "train_loss": 0.03243447095155716,
+    "seconds": 0.8710120338946581,
+    "test_macro_f1": 0.9845473642744581,
+    "test_f1_per_class": {
+      "soma": 0.9697599978390351,
+      "dendrite": 0.9821671425544295,
+      "axon": 0.9925590652923695,
+      "astrocytic_process": 0.9937032514119982
+    },
+    "test_cell_class_balanced_macro_f1": 0.9892615331362935,
+    "best_epoch": 19,
+    "best_macro_f1": 0.9845473642744581
+  },
+  {
+    "epoch": 20,
+    "train_loss": 0.03221883997321129,
+    "seconds": 0.8713241182267666,
+    "test_macro_f1": 0.9810979435489675,
+    "test_f1_per_class": {
+      "soma": 0.9564594444002229,
+      "dendrite": 0.9817209645809072,
+      "axon": 0.9926226001407052,
+      "astrocytic_process": 0.9935887650740345
+    },
+    "test_cell_class_balanced_macro_f1": 0.9898979702935174,
+    "best_epoch": 19,
+    "best_macro_f1": 0.9845473642744581
+  },
+  {
+    "epoch": 21,
+    "train_loss": 0.03206341713666916,
+    "seconds": 0.8727995399385691,
+    "test_macro_f1": 0.9851412273051667,
+    "test_f1_per_class": {
+      "soma": 0.9712119160460393,
+      "dendrite": 0.9821861832088099,
+      "axon": 0.9925548645342006,
+      "astrocytic_process": 0.9946119454316176
+    },
+    "test_cell_class_balanced_macro_f1": 0.9889602971641511,
+    "best_epoch": 21,
+    "best_macro_f1": 0.9851412273051667
+  },
+  {
+    "epoch": 22,
+    "train_loss": 0.031896691769361496,
+    "seconds": 0.8709405288100243,
+    "test_macro_f1": 0.9840440542567539,
+    "test_f1_per_class": {
+      "soma": 0.967725458040407,
+      "dendrite": 0.981817847062006,
+      "axon": 0.9924752824760003,
+      "astrocytic_process": 0.9941576294486024
+    },
+    "test_cell_class_balanced_macro_f1": 0.98985109158668,
+    "best_epoch": 21,
+    "best_macro_f1": 0.9851412273051667
+  },
+  {
+    "epoch": 23,
+    "train_loss": 0.03156890720129013,
+    "seconds": 0.8729323064908385,
+    "test_macro_f1": 0.9839836977349498,
+    "test_f1_per_class": {
+      "soma": 0.9668548387096774,
+      "dendrite": 0.9820392209106383,
+      "axon": 0.9925987273849572,
+      "astrocytic_process": 0.9944420039345264
+    },
+    "test_cell_class_balanced_macro_f1": 0.9895931264748469,
+    "best_epoch": 21,
+    "best_macro_f1": 0.9851412273051667
+  },
+  {
+    "epoch": 24,
+    "train_loss": 0.03157540783286095,
+    "seconds": 0.8739920062944293,
+    "test_macro_f1": 0.9828770649512276,
+    "test_f1_per_class": {
+      "soma": 0.9641237003037643,
+      "dendrite": 0.9815067760809547,
+      "axon": 0.9924207130503157,
+      "astrocytic_process": 0.9934570703698758
+    },
+    "test_cell_class_balanced_macro_f1": 0.989960506877146,
+    "best_epoch": 21,
+    "best_macro_f1": 0.9851412273051667
+  },
+  {
+    "epoch": 25,
+    "train_loss": 0.03140920028090477,
+    "seconds": 0.8718784200027585,
+    "test_macro_f1": 0.9844767804391632,
+    "test_f1_per_class": {
+      "soma": 0.9704527338314171,
+      "dendrite": 0.9820976286936567,
+      "axon": 0.9925427760434272,
+      "astrocytic_process": 0.9928139831881516
+    },
+    "test_cell_class_balanced_macro_f1": 0.9896462377278301,
+    "best_epoch": 21,
+    "best_macro_f1": 0.9851412273051667
+  },
+  {
+    "epoch": 26,
+    "train_loss": 0.031247790902853012,
+    "seconds": 0.8713675951585174,
+    "test_macro_f1": 0.9849963102827917,
+    "test_f1_per_class": {
+      "soma": 0.9711583924349881,
+      "dendrite": 0.9822852313644983,
+      "axon": 0.9926105512604562,
+      "astrocytic_process": 0.9939310660712241
+    },
+    "test_cell_class_balanced_macro_f1": 0.9896877733344681,
+    "best_epoch": 21,
+    "best_macro_f1": 0.9851412273051667
+  },
+  {
+    "epoch": 27,
+    "train_loss": 0.031088102608919144,
+    "seconds": 0.8726136209443212,
+    "test_macro_f1": 0.9855850052317379,
+    "test_f1_per_class": {
+      "soma": 0.9751163867033296,
+      "dendrite": 0.982095765061813,
+      "axon": 0.9924455000787996,
+      "astrocytic_process": 0.9926823690830093
+    },
+    "test_cell_class_balanced_macro_f1": 0.989175699947454,
+    "best_epoch": 27,
+    "best_macro_f1": 0.9855850052317379
+  },
+  {
+    "epoch": 28,
+    "train_loss": 0.030889583751559258,
+    "seconds": 0.871041520498693,
+    "test_macro_f1": 0.9862031130611607,
+    "test_f1_per_class": {
+      "soma": 0.975573205454818,
+      "dendrite": 0.9824435960080224,
+      "axon": 0.9926183727611462,
+      "astrocytic_process": 0.9941772780206564
+    },
+    "test_cell_class_balanced_macro_f1": 0.988811294022605,
+    "best_epoch": 28,
+    "best_macro_f1": 0.9862031130611607
+  },
+  {
+    "epoch": 29,
+    "train_loss": 0.030911853536963463,
+    "seconds": 0.8740549478679895,
+    "test_macro_f1": 0.9862637876511147,
+    "test_f1_per_class": {
+      "soma": 0.9753820611570023,
+      "dendrite": 0.9825570940478331,
+      "axon": 0.9926556324578854,
+      "astrocytic_process": 0.9944603629417383
+    },
+    "test_cell_class_balanced_macro_f1": 0.9892243422674045,
+    "best_epoch": 29,
+    "best_macro_f1": 0.9862637876511147
+  },
+  {
+    "epoch": 30,
+    "train_loss": 0.030550876632332802,
+    "seconds": 0.8744631409645081,
+    "test_macro_f1": 0.9855916555159996,
+    "test_f1_per_class": {
+      "soma": 0.9733374944029092,
+      "dendrite": 0.982392922905058,
+      "axon": 0.9926486878160988,
+      "astrocytic_process": 0.9939875169399325
+    },
+    "test_cell_class_balanced_macro_f1": 0.989314401068365,
+    "best_epoch": 29,
+    "best_macro_f1": 0.9862637876511147
+  },
+  {
+    "epoch": 31,
+    "train_loss": 0.030504386872053146,
+    "seconds": 0.8756207982078195,
+    "test_macro_f1": 0.9864993234021491,
+    "test_f1_per_class": {
+      "soma": 0.9766503550836253,
+      "dendrite": 0.9826819808329786,
+      "axon": 0.9926954920431375,
+      "astrocytic_process": 0.9939694656488549
+    },
+    "test_cell_class_balanced_macro_f1": 0.9890278903165428,
+    "best_epoch": 31,
+    "best_macro_f1": 0.9864993234021491
+  },
+  {
+    "epoch": 32,
+    "train_loss": 0.030251367017626762,
+    "seconds": 0.8733557490631938,
+    "test_macro_f1": 0.9857963013052213,
+    "test_f1_per_class": {
+      "soma": 0.9736752970504952,
+      "dendrite": 0.9826701662688987,
+      "axon": 0.9927571275623304,
+      "astrocytic_process": 0.9940826143391617
+    },
+    "test_cell_class_balanced_macro_f1": 0.9898125160812077,
+    "best_epoch": 31,
+    "best_macro_f1": 0.9864993234021491
+  },
+  {
+    "epoch": 33,
+    "train_loss": 0.030390985310077667,
+    "seconds": 0.8745527798309922,
+    "test_macro_f1": 0.9841726663037034,
+    "test_f1_per_class": {
+      "soma": 0.9675374387213753,
+      "dendrite": 0.9823442227991945,
+      "axon": 0.9927270671511561,
+      "astrocytic_process": 0.9940819365430873
+    },
+    "test_cell_class_balanced_macro_f1": 0.9899858648128761,
+    "best_epoch": 31,
+    "best_macro_f1": 0.9864993234021491
+  },
+  {
+    "epoch": 34,
+    "train_loss": 0.030227795243263245,
+    "seconds": 0.8727377988398075,
+    "test_macro_f1": 0.985099364353912,
+    "test_f1_per_class": {
+      "soma": 0.9737282031069492,
+      "dendrite": 0.9825106901141223,
+      "axon": 0.9926083034706391,
+      "astrocytic_process": 0.9915502607239371
+    },
+    "test_cell_class_balanced_macro_f1": 0.9892951026813603,
+    "best_epoch": 31,
+    "best_macro_f1": 0.9864993234021491
+  },
+  {
+    "epoch": 35,
+    "train_loss": 0.029947131872177124,
+    "seconds": 0.8723514685407281,
+    "test_macro_f1": 0.986267774070067,
+    "test_f1_per_class": {
+      "soma": 0.9753158617688259,
+      "dendrite": 0.982018059686302,
+      "axon": 0.9924792299706525,
+      "astrocytic_process": 0.9952579448544877
+    },
+    "test_cell_class_balanced_macro_f1": 0.9893588313376019,
+    "best_epoch": 31,
+    "best_macro_f1": 0.9864993234021491
+  },
+  {
+    "epoch": 36,
+    "train_loss": 0.030032917857170105,
+    "seconds": 0.8741574184969068,
+    "test_macro_f1": 0.9869555358539928,
+    "test_f1_per_class": {
+      "soma": 0.9796428228252961,
+      "dendrite": 0.9829290639236106,
+      "axon": 0.9927558763569336,
+      "astrocytic_process": 0.9924943803101307
+    },
+    "test_cell_class_balanced_macro_f1": 0.9883338158032146,
+    "best_epoch": 36,
+    "best_macro_f1": 0.9869555358539928
+  },
+  {
+    "epoch": 37,
+    "train_loss": 0.029841644689440727,
+    "seconds": 0.8733847243711352,
+    "test_macro_f1": 0.9851298520290616,
+    "test_f1_per_class": {
+      "soma": 0.970210359037897,
+      "dendrite": 0.9826360436713256,
+      "axon": 0.9928509865675794,
+      "astrocytic_process": 0.9948220188394443
+    },
+    "test_cell_class_balanced_macro_f1": 0.9901841371067479,
+    "best_epoch": 36,
+    "best_macro_f1": 0.9869555358539928
+  },
+  {
+    "epoch": 38,
+    "train_loss": 0.029737601056694984,
+    "seconds": 0.8714438863098621,
+    "test_macro_f1": 0.985721053776355,
+    "test_f1_per_class": {
+      "soma": 0.9733620141510072,
+      "dendrite": 0.9826786073713724,
+      "axon": 0.9927788213545626,
+      "astrocytic_process": 0.9940647722284777
+    },
+    "test_cell_class_balanced_macro_f1": 0.9900989341139618,
+    "best_epoch": 36,
+    "best_macro_f1": 0.9869555358539928
+  },
+  {
+    "epoch": 39,
+    "train_loss": 0.02981729805469513,
+    "seconds": 0.8709110300987959,
+    "test_macro_f1": 0.9860350116399915,
+    "test_f1_per_class": {
+      "soma": 0.9749755461362896,
+      "dendrite": 0.9828827315028498,
+      "axon": 0.9928613436323744,
+      "astrocytic_process": 0.9934204252884524
+    },
+    "test_cell_class_balanced_macro_f1": 0.989447099841216,
+    "best_epoch": 36,
+    "best_macro_f1": 0.9869555358539928
+  },
+  {
+    "epoch": 40,
+    "train_loss": 0.02963924966752529,
+    "seconds": 0.8722916739061475,
+    "test_macro_f1": 0.9865706240482643,
+    "test_f1_per_class": {
+      "soma": 0.9759923871669386,
+      "dendrite": 0.982928639442364,
+      "axon": 0.9928797907920569,
+      "astrocytic_process": 0.9944816787916977
+    },
+    "test_cell_class_balanced_macro_f1": 0.9894326837345604,
+    "best_epoch": 36,
+    "best_macro_f1": 0.9869555358539928
+  },
+  {
+    "epoch": 41,
+    "train_loss": 0.02967037446796894,
+    "seconds": 0.8715293174609542,
+    "test_macro_f1": 0.9857272101410451,
+    "test_f1_per_class": {
+      "soma": 0.9747846727704307,
+      "dendrite": 0.9824547990743553,
+      "axon": 0.992646112905441,
+      "astrocytic_process": 0.9930232558139535
+    },
+    "test_cell_class_balanced_macro_f1": 0.9897111680222548,
+    "best_epoch": 36,
+    "best_macro_f1": 0.9869555358539928
+  },
+  {
+    "epoch": 42,
+    "train_loss": 0.029415380209684372,
+    "seconds": 0.8711259914562106,
+    "test_macro_f1": 0.9863922690625682,
+    "test_f1_per_class": {
+      "soma": 0.9754217390714276,
+      "dendrite": 0.9829558502087994,
+      "axon": 0.9928614818155054,
+      "astrocytic_process": 0.9943300051545407
+    },
+    "test_cell_class_balanced_macro_f1": 0.9898212186613821,
+    "best_epoch": 36,
+    "best_macro_f1": 0.9869555358539928
+  },
+  {
+    "epoch": 43,
+    "train_loss": 0.029432520270347595,
+    "seconds": 0.8723113881424069,
+    "test_macro_f1": 0.9873680934642498,
+    "test_f1_per_class": {
+      "soma": 0.9785410068799826,
+      "dendrite": 0.9829454027769027,
+      "axon": 0.9928026620861189,
+      "astrocytic_process": 0.9951833021139952
+    },
+    "test_cell_class_balanced_macro_f1": 0.9894608049012782,
+    "best_epoch": 43,
+    "best_macro_f1": 0.9873680934642498
+  },
+  {
+    "epoch": 44,
+    "train_loss": 0.029150936752557755,
+    "seconds": 0.8714752895757556,
+    "test_macro_f1": 0.9862651622801969,
+    "test_f1_per_class": {
+      "soma": 0.9747650751894993,
+      "dendrite": 0.9828510713653267,
+      "axon": 0.9928110922032874,
+      "astrocytic_process": 0.9946334103626745
+    },
+    "test_cell_class_balanced_macro_f1": 0.9901033650641883,
+    "best_epoch": 43,
+    "best_macro_f1": 0.9873680934642498
+  },
+  {
+    "epoch": 45,
+    "train_loss": 0.029275767505168915,
+    "seconds": 0.8727250695228577,
+    "test_macro_f1": 0.9866051422621305,
+    "test_f1_per_class": {
+      "soma": 0.97581181839171,
+      "dendrite": 0.9830286095232692,
+      "axon": 0.992928551891489,
+      "astrocytic_process": 0.9946515892420538
+    },
+    "test_cell_class_balanced_macro_f1": 0.9897134215346151,
+    "best_epoch": 43,
+    "best_macro_f1": 0.9873680934642498
+  },
+  {
+    "epoch": 46,
+    "train_loss": 0.0290965773165226,
+    "seconds": 0.8730338998138905,
+    "test_macro_f1": 0.9877140721392133,
+    "test_f1_per_class": {
+      "soma": 0.9793603061782394,
+      "dendrite": 0.9833173535149805,
+      "axon": 0.9929761211704438,
+      "astrocytic_process": 0.9952025076931899
+    },
+    "test_cell_class_balanced_macro_f1": 0.9890360368689242,
+    "best_epoch": 46,
+    "best_macro_f1": 0.9877140721392133
+  },
+  {
+    "epoch": 47,
+    "train_loss": 0.029026800766587257,
+    "seconds": 0.871600454673171,
+    "test_macro_f1": 0.9857181948282261,
+    "test_f1_per_class": {
+      "soma": 0.974329086473299,
+      "dendrite": 0.9821764232245878,
+      "axon": 0.9925113697524011,
+      "astrocytic_process": 0.9938558998626164
+    },
+    "test_cell_class_balanced_macro_f1": 0.9899328178223702,
+    "best_epoch": 46,
+    "best_macro_f1": 0.9877140721392133
+  },
+  {
+    "epoch": 48,
+    "train_loss": 0.028806602582335472,
+    "seconds": 0.8725756350904703,
+    "test_macro_f1": 0.9866199445358617,
+    "test_f1_per_class": {
+      "soma": 0.9785869283364951,
+      "dendrite": 0.9827121866212524,
+      "axon": 0.9926487523455394,
+      "astrocytic_process": 0.99253191084016
+    },
+    "test_cell_class_balanced_macro_f1": 0.9896659590108634,
+    "best_epoch": 46,
+    "best_macro_f1": 0.9877140721392133
+  },
+  {
+    "epoch": 49,
+    "train_loss": 0.02890077233314514,
+    "seconds": 0.872672138735652,
+    "test_macro_f1": 0.9868629980296659,
+    "test_f1_per_class": {
+      "soma": 0.9774378689351492,
+      "dendrite": 0.9831066162268064,
+      "axon": 0.9929193015250998,
+      "astrocytic_process": 0.9939882054316087
+    },
+    "test_cell_class_balanced_macro_f1": 0.9892150720840718,
+    "best_epoch": 46,
+    "best_macro_f1": 0.9877140721392133
+  },
+  {
+    "epoch": 50,
+    "train_loss": 0.028855325654149055,
+    "seconds": 0.8710803063586354,
+    "test_macro_f1": 0.9875641295741112,
+    "test_f1_per_class": {
+      "soma": 0.9813859424656404,
+      "dendrite": 0.9831785545152022,
+      "axon": 0.9928388262173576,
+      "astrocytic_process": 0.9928531950982448
+    },
+    "test_cell_class_balanced_macro_f1": 0.988296079097869,
+    "best_epoch": 46,
+    "best_macro_f1": 0.9877140721392133
+  },
+  {
+    "epoch": 51,
+    "train_loss": 0.02880215086042881,
+    "seconds": 0.8729529874399304,
+    "test_macro_f1": 0.9869952582919961,
+    "test_f1_per_class": {
+      "soma": 0.9776991150442478,
+      "dendrite": 0.983161671758884,
+      "axon": 0.9929036824512033,
+      "astrocytic_process": 0.9942165639136493
+    },
+    "test_cell_class_balanced_macro_f1": 0.989769411145285,
+    "best_epoch": 46,
+    "best_macro_f1": 0.9877140721392133
+  },
+  {
+    "epoch": 52,
+    "train_loss": 0.028630362823605537,
+    "seconds": 0.8711828887462616,
+    "test_macro_f1": 0.9873509235469303,
+    "test_f1_per_class": {
+      "soma": 0.979748880642997,
+      "dendrite": 0.9830910813965092,
+      "axon": 0.9928211246469749,
+      "astrocytic_process": 0.99374260750124
+    },
+    "test_cell_class_balanced_macro_f1": 0.9890657582809064,
+    "best_epoch": 46,
+    "best_macro_f1": 0.9877140721392133
+  },
+  {
+    "epoch": 53,
+    "train_loss": 0.028562545776367188,
+    "seconds": 0.8731208648532629,
+    "test_macro_f1": 0.9867446954922829,
+    "test_f1_per_class": {
+      "soma": 0.979867792573939,
+      "dendrite": 0.981315133382318,
+      "axon": 0.9919966077347757,
+      "astrocytic_process": 0.993799248278099
+    },
+    "test_cell_class_balanced_macro_f1": 0.9891969926527391,
+    "best_epoch": 46,
+    "best_macro_f1": 0.9877140721392133
+  },
+  {
+    "epoch": 54,
+    "train_loss": 0.028410926461219788,
+    "seconds": 0.8730462873354554,
+    "test_macro_f1": 0.9850910231852854,
+    "test_f1_per_class": {
+      "soma": 0.9698421456351182,
+      "dendrite": 0.9829019503227834,
+      "axon": 0.9930055817494366,
+      "astrocytic_process": 0.9946144150338031
+    },
+    "test_cell_class_balanced_macro_f1": 0.9903682072508277,
+    "best_epoch": 46,
+    "best_macro_f1": 0.9877140721392133
+  },
+  {
+    "epoch": 55,
+    "train_loss": 0.028404653072357178,
+    "seconds": 0.8752096546813846,
+    "test_macro_f1": 0.9875301794772219,
+    "test_f1_per_class": {
+      "soma": 0.9798122001558165,
+      "dendrite": 0.9824616445635338,
+      "axon": 0.9925691750727226,
+      "astrocytic_process": 0.9952776981168149
+    },
+    "test_cell_class_balanced_macro_f1": 0.9893828652002336,
+    "best_epoch": 46,
+    "best_macro_f1": 0.9877140721392133
+  },
+  {
+    "epoch": 56,
+    "train_loss": 0.028330164030194283,
+    "seconds": 0.8725059777498245,
+    "test_macro_f1": 0.9878345266106839,
+    "test_f1_per_class": {
+      "soma": 0.9805443202851855,
+      "dendrite": 0.9835019366921581,
+      "axon": 0.9930373303869598,
+      "astrocytic_process": 0.9942545190784325
+    },
+    "test_cell_class_balanced_macro_f1": 0.988723230704369,
+    "best_epoch": 56,
+    "best_macro_f1": 0.9878345266106839
+  },
+  {
+    "epoch": 57,
+    "train_loss": 0.028134871274232864,
+    "seconds": 0.8728301860392094,
+    "test_macro_f1": 0.9868119139296972,
+    "test_f1_per_class": {
+      "soma": 0.97743256294805,
+      "dendrite": 0.9831993214252055,
+      "axon": 0.9929487486078561,
+      "astrocytic_process": 0.9936670227376774
+    },
+    "test_cell_class_balanced_macro_f1": 0.9899519669166701,
+    "best_epoch": 56,
+    "best_macro_f1": 0.9878345266106839
+  },
+  {
+    "epoch": 58,
+    "train_loss": 0.028191013261675835,
+    "seconds": 0.8759319977834821,
+    "test_macro_f1": 0.9848272850654676,
+    "test_f1_per_class": {
+      "soma": 0.9697694416079969,
+      "dendrite": 0.9830413112294482,
+      "axon": 0.9930208728346552,
+      "astrocytic_process": 0.99347751458977
+    },
+    "test_cell_class_balanced_macro_f1": 0.9907057377786891,
+    "best_epoch": 56,
+    "best_macro_f1": 0.9878345266106839
+  },
+  {
+    "epoch": 59,
+    "train_loss": 0.028107689693570137,
+    "seconds": 0.8761640852317214,
+    "test_macro_f1": 0.9882222918147047,
+    "test_f1_per_class": {
+      "soma": 0.9809525115532822,
+      "dendrite": 0.983231501252347,
+      "axon": 0.9929142307522634,
+      "astrocytic_process": 0.995790923700926
+    },
+    "test_cell_class_balanced_macro_f1": 0.989053259440765,
+    "best_epoch": 59,
+    "best_macro_f1": 0.9882222918147047
+  },
+  {
+    "epoch": 60,
+    "train_loss": 0.028081726282835007,
+    "seconds": 0.8750809468328953,
+    "test_macro_f1": 0.9878778574304878,
+    "test_f1_per_class": {
+      "soma": 0.9796642554933807,
+      "dendrite": 0.9836424605761569,
+      "axon": 0.9931360948214187,
+      "astrocytic_process": 0.9950686188309951
+    },
+    "test_cell_class_balanced_macro_f1": 0.9894456433074235,
+    "best_epoch": 59,
+    "best_macro_f1": 0.9882222918147047
+  },
+  {
+    "epoch": 61,
+    "train_loss": 0.028049306944012642,
+    "seconds": 0.874180112965405,
+    "test_macro_f1": 0.9875186613186481,
+    "test_f1_per_class": {
+      "soma": 0.9791345405914382,
+      "dendrite": 0.9831746510440891,
+      "axon": 0.9928867989476837,
+      "astrocytic_process": 0.9948786546913816
+    },
+    "test_cell_class_balanced_macro_f1": 0.9896291738201652,
+    "best_epoch": 59,
+    "best_macro_f1": 0.9882222918147047
+  },
+  {
+    "epoch": 62,
+    "train_loss": 0.027885179966688156,
+    "seconds": 0.8750120243057609,
+    "test_macro_f1": 0.9864341767180606,
+    "test_f1_per_class": {
+      "soma": 0.9757181571815718,
+      "dendrite": 0.9827660750310819,
+      "axon": 0.9927893617834621,
+      "astrocytic_process": 0.9944631128761264
+    },
+    "test_cell_class_balanced_macro_f1": 0.9904353951615947,
+    "best_epoch": 59,
+    "best_macro_f1": 0.9882222918147047
+  },
+  {
+    "epoch": 63,
+    "train_loss": 0.027864651754498482,
+    "seconds": 0.8769709775224328,
+    "test_macro_f1": 0.9872335314968352,
+    "test_f1_per_class": {
+      "soma": 0.9791365138316175,
+      "dendrite": 0.9828583963712788,
+      "axon": 0.9927608263664146,
+      "astrocytic_process": 0.9941783894180298
+    },
+    "test_cell_class_balanced_macro_f1": 0.9897104321301042,
+    "best_epoch": 59,
+    "best_macro_f1": 0.9882222918147047
+  },
+  {
+    "epoch": 64,
+    "train_loss": 0.027837056666612625,
+    "seconds": 0.8746655397117138,
+    "test_macro_f1": 0.9851932618091027,
+    "test_f1_per_class": {
+      "soma": 0.9735288156205661,
+      "dendrite": 0.9819194502541275,
+      "axon": 0.992414817193081,
+      "astrocytic_process": 0.9929099641686361
+    },
+    "test_cell_class_balanced_macro_f1": 0.9904275619418476,
+    "best_epoch": 59,
+    "best_macro_f1": 0.9882222918147047
+  },
+  {
+    "epoch": 65,
+    "train_loss": 0.027894331142306328,
+    "seconds": 0.873022124171257,
+    "test_macro_f1": 0.9844696195391375,
+    "test_f1_per_class": {
+      "soma": 0.9673888255416192,
+      "dendrite": 0.9829662914641002,
+      "axon": 0.993079871433239,
+      "astrocytic_process": 0.9944434897175918
+    },
+    "test_cell_class_balanced_macro_f1": 0.990336092934748,
+    "best_epoch": 59,
+    "best_macro_f1": 0.9882222918147047
+  },
+  {
+    "epoch": 66,
+    "train_loss": 0.02788056805729866,
+    "seconds": 0.8740414418280125,
+    "test_macro_f1": 0.9872629997503912,
+    "test_f1_per_class": {
+      "soma": 0.9787413692137984,
+      "dendrite": 0.9826000035321336,
+      "axon": 0.9926416304221407,
+      "astrocytic_process": 0.9950689958334926
+    },
+    "test_cell_class_balanced_macro_f1": 0.990012037082481,
+    "best_epoch": 59,
+    "best_macro_f1": 0.9882222918147047
+  },
+  {
+    "epoch": 67,
+    "train_loss": 0.02778971940279007,
+    "seconds": 0.8735339166596532,
+    "test_macro_f1": 0.9863824401425255,
+    "test_f1_per_class": {
+      "soma": 0.9761856354789303,
+      "dendrite": 0.982984466416561,
+      "axon": 0.9928447429807066,
+      "astrocytic_process": 0.993514915693904
+    },
+    "test_cell_class_balanced_macro_f1": 0.9906077095532123,
+    "best_epoch": 59,
+    "best_macro_f1": 0.9882222918147047
+  },
+  {
+    "epoch": 68,
+    "train_loss": 0.027533207088708878,
+    "seconds": 0.8726562010124326,
+    "test_macro_f1": 0.9875132171851299,
+    "test_f1_per_class": {
+      "soma": 0.9785867820313988,
+      "dendrite": 0.9830856587986918,
+      "axon": 0.9928926836559069,
+      "astrocytic_process": 0.9954877442545218
+    },
+    "test_cell_class_balanced_macro_f1": 0.9901496066595445,
+    "best_epoch": 59,
+    "best_macro_f1": 0.9882222918147047
+  },
+  {
+    "epoch": 69,
+    "train_loss": 0.027441611513495445,
+    "seconds": 0.8737100381404161,
+    "test_macro_f1": 0.9859727631074882,
+    "test_f1_per_class": {
+      "soma": 0.9738018996662748,
+      "dendrite": 0.9828549821667173,
+      "axon": 0.9928668439210018,
+      "astrocytic_process": 0.994367326675959
+    },
+    "test_cell_class_balanced_macro_f1": 0.9905500436598216,
+    "best_epoch": 59,
+    "best_macro_f1": 0.9882222918147047
+  },
+  {
+    "epoch": 70,
+    "train_loss": 0.027672050520777702,
+    "seconds": 0.8734447304159403,
+    "test_macro_f1": 0.9877056921252109,
+    "test_f1_per_class": {
+      "soma": 0.9818734426768161,
+      "dendrite": 0.9831934912615207,
+      "axon": 0.9928264068786432,
+      "astrocytic_process": 0.9929294276838635
+    },
+    "test_cell_class_balanced_macro_f1": 0.9898256254576349,
+    "best_epoch": 59,
+    "best_macro_f1": 0.9882222918147047
+  },
+  {
+    "epoch": 71,
+    "train_loss": 0.027449777349829674,
+    "seconds": 0.8729294929653406,
+    "test_macro_f1": 0.9873331826301809,
+    "test_f1_per_class": {
+      "soma": 0.9801219695212628,
+      "dendrite": 0.9826845850919173,
+      "axon": 0.9926328130587976,
+      "astrocytic_process": 0.9938933628487462
+    },
+    "test_cell_class_balanced_macro_f1": 0.9900126452828085,
+    "best_epoch": 59,
+    "best_macro_f1": 0.9882222918147047
+  },
+  {
+    "epoch": 72,
+    "train_loss": 0.027393924072384834,
+    "seconds": 0.8698016246780753,
+    "test_macro_f1": 0.9882866550480689,
+    "test_f1_per_class": {
+      "soma": 0.9804446386628066,
+      "dendrite": 0.9835982340268924,
+      "axon": 0.9931030586260196,
+      "astrocytic_process": 0.9960006888765571
+    },
+    "test_cell_class_balanced_macro_f1": 0.9896953419559459,
+    "best_epoch": 72,
+    "best_macro_f1": 0.9882866550480689
+  },
+  {
+    "epoch": 73,
+    "train_loss": 0.027393830940127373,
+    "seconds": 0.8711865907534957,
+    "test_macro_f1": 0.9885737297914851,
+    "test_f1_per_class": {
+      "soma": 0.9821053354391266,
+      "dendrite": 0.9836921883717781,
+      "axon": 0.9931049854515845,
+      "astrocytic_process": 0.9953924099034509
+    },
+    "test_cell_class_balanced_macro_f1": 0.9888514160968686,
+    "best_epoch": 73,
+    "best_macro_f1": 0.9885737297914851
+  },
+  {
+    "epoch": 74,
+    "train_loss": 0.027483968064188957,
+    "seconds": 0.8709488287568092,
+    "test_macro_f1": 0.9872419679178654,
+    "test_f1_per_class": {
+      "soma": 0.978696196332372,
+      "dendrite": 0.9830901091996881,
+      "axon": 0.992851777483643,
+      "astrocytic_process": 0.9943297886557589
+    },
+    "test_cell_class_balanced_macro_f1": 0.990469725664782,
+    "best_epoch": 73,
+    "best_macro_f1": 0.9885737297914851
+  },
+  {
+    "epoch": 75,
+    "train_loss": 0.027342509478330612,
+    "seconds": 0.869203825481236,
+    "test_macro_f1": 0.988496816503837,
+    "test_f1_per_class": {
+      "soma": 0.9820823908424156,
+      "dendrite": 0.9833172802347314,
+      "axon": 0.9929298487018069,
+      "astrocytic_process": 0.9956577462363946
+    },
+    "test_cell_class_balanced_macro_f1": 0.9892824618549172,
+    "best_epoch": 73,
+    "best_macro_f1": 0.9885737297914851
+  },
+  {
+    "epoch": 76,
+    "train_loss": 0.027111662551760674,
+    "seconds": 0.8710689218714833,
+    "test_macro_f1": 0.9887524041795321,
+    "test_f1_per_class": {
+      "soma": 0.9822726271746312,
+      "dendrite": 0.983634017605282,
+      "axon": 0.9930833761023301,
+      "astrocytic_process": 0.9960195958358848
+    },
+    "test_cell_class_balanced_macro_f1": 0.9884891227161215,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 77,
+    "train_loss": 0.026923779398202896,
+    "seconds": 0.8710571927949786,
+    "test_macro_f1": 0.988226258008716,
+    "test_f1_per_class": {
+      "soma": 0.9820568086654494,
+      "dendrite": 0.9834845556498361,
+      "axon": 0.9929773544223964,
+      "astrocytic_process": 0.9943863132971817
+    },
+    "test_cell_class_balanced_macro_f1": 0.9891092189833361,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 78,
+    "train_loss": 0.027054188773036003,
+    "seconds": 0.8716959990561008,
+    "test_macro_f1": 0.9876267490419942,
+    "test_f1_per_class": {
+      "soma": 0.9812347840358892,
+      "dendrite": 0.9833397370445139,
+      "axon": 0.9929086873474091,
+      "astrocytic_process": 0.9930237877401646
+    },
+    "test_cell_class_balanced_macro_f1": 0.9898005810031643,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 79,
+    "train_loss": 0.027116745710372925,
+    "seconds": 0.8708957079797983,
+    "test_macro_f1": 0.9878428020462247,
+    "test_f1_per_class": {
+      "soma": 0.9791195927367762,
+      "dendrite": 0.983376057811567,
+      "axon": 0.9930274757461887,
+      "astrocytic_process": 0.9958480818903664
+    },
+    "test_cell_class_balanced_macro_f1": 0.9901568012529326,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 80,
+    "train_loss": 0.02703612670302391,
+    "seconds": 0.8705899743363261,
+    "test_macro_f1": 0.9876879953232189,
+    "test_f1_per_class": {
+      "soma": 0.9810037169622406,
+      "dendrite": 0.9832481562647398,
+      "axon": 0.9928532512500983,
+      "astrocytic_process": 0.993646856815797
+    },
+    "test_cell_class_balanced_macro_f1": 0.9891182586200588,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 81,
+    "train_loss": 0.026949239894747734,
+    "seconds": 0.8698708871379495,
+    "test_macro_f1": 0.9860168692408791,
+    "test_f1_per_class": {
+      "soma": 0.9732719888824426,
+      "dendrite": 0.9831906269512715,
+      "axon": 0.9930490912010546,
+      "astrocytic_process": 0.9945557699287474
+    },
+    "test_cell_class_balanced_macro_f1": 0.9907712947740668,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 82,
+    "train_loss": 0.0272159893065691,
+    "seconds": 0.8694327771663666,
+    "test_macro_f1": 0.987736299223646,
+    "test_f1_per_class": {
+      "soma": 0.9800065462877093,
+      "dendrite": 0.9836946577878007,
+      "axon": 0.9931236507298864,
+      "astrocytic_process": 0.9941203420891875
+    },
+    "test_cell_class_balanced_macro_f1": 0.990054152805053,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 83,
+    "train_loss": 0.027000533416867256,
+    "seconds": 0.8692898657172918,
+    "test_macro_f1": 0.9873849281975562,
+    "test_f1_per_class": {
+      "soma": 0.9793745656706045,
+      "dendrite": 0.9829887682206423,
+      "axon": 0.9928284697907099,
+      "astrocytic_process": 0.9943479091082681
+    },
+    "test_cell_class_balanced_macro_f1": 0.9856379996744066,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 84,
+    "train_loss": 0.026965975761413574,
+    "seconds": 0.8693767227232456,
+    "test_macro_f1": 0.9886356901689668,
+    "test_f1_per_class": {
+      "soma": 0.9818450669514499,
+      "dendrite": 0.9836357855934585,
+      "axon": 0.9930816623517006,
+      "astrocytic_process": 0.995980245779258
+    },
+    "test_cell_class_balanced_macro_f1": 0.9895096046264081,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 85,
+    "train_loss": 0.02666240558028221,
+    "seconds": 0.8704052641987801,
+    "test_macro_f1": 0.9880949423792553,
+    "test_f1_per_class": {
+      "soma": 0.9822807065739952,
+      "dendrite": 0.9833972914758238,
+      "axon": 0.9929202973332177,
+      "astrocytic_process": 0.9937814741339844
+    },
+    "test_cell_class_balanced_macro_f1": 0.9892604838398378,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 86,
+    "train_loss": 0.026774821802973747,
+    "seconds": 0.8706830982118845,
+    "test_macro_f1": 0.9871588784410008,
+    "test_f1_per_class": {
+      "soma": 0.9821170843012467,
+      "dendrite": 0.983303049371107,
+      "axon": 0.9928307647070342,
+      "astrocytic_process": 0.9903846153846154
+    },
+    "test_cell_class_balanced_macro_f1": 0.9891773729385523,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 87,
+    "train_loss": 0.02679869346320629,
+    "seconds": 0.8707979153841734,
+    "test_macro_f1": 0.9874442833500948,
+    "test_f1_per_class": {
+      "soma": 0.9790764201062525,
+      "dendrite": 0.9833322714240204,
+      "axon": 0.9929840586329136,
+      "astrocytic_process": 0.9943843832371929
+    },
+    "test_cell_class_balanced_macro_f1": 0.9899651407884807,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 88,
+    "train_loss": 0.026697006076574326,
+    "seconds": 0.8732095193117857,
+    "test_macro_f1": 0.9886072211199447,
+    "test_f1_per_class": {
+      "soma": 0.9812027505502467,
+      "dendrite": 0.983848027166584,
+      "axon": 0.9932071770646786,
+      "astrocytic_process": 0.9961709296982693
+    },
+    "test_cell_class_balanced_macro_f1": 0.9896581737826152,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 89,
+    "train_loss": 0.026697983965277672,
+    "seconds": 0.8703505331650376,
+    "test_macro_f1": 0.9873919834332177,
+    "test_f1_per_class": {
+      "soma": 0.9781222380855259,
+      "dendrite": 0.9834638816362054,
+      "axon": 0.9930841473253631,
+      "astrocytic_process": 0.9948976666857765
+    },
+    "test_cell_class_balanced_macro_f1": 0.9903446579566962,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 90,
+    "train_loss": 0.026432491838932037,
+    "seconds": 0.872736188583076,
+    "test_macro_f1": 0.988184064153901,
+    "test_f1_per_class": {
+      "soma": 0.9816352757472329,
+      "dendrite": 0.9834976820917981,
+      "axon": 0.9930099434090934,
+      "astrocytic_process": 0.99459335536748
+    },
+    "test_cell_class_balanced_macro_f1": 0.9877512045467131,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 91,
+    "train_loss": 0.026635456830263138,
+    "seconds": 0.8721641395241022,
+    "test_macro_f1": 0.9882032186343866,
+    "test_f1_per_class": {
+      "soma": 0.9817326624371034,
+      "dendrite": 0.9828316721177144,
+      "axon": 0.9927053964642986,
+      "astrocytic_process": 0.99554314351843
+    },
+    "test_cell_class_balanced_macro_f1": 0.9900290145187254,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 92,
+    "train_loss": 0.02650579623878002,
+    "seconds": 0.8725780136883259,
+    "test_macro_f1": 0.9881069540608703,
+    "test_f1_per_class": {
+      "soma": 0.9807949368469869,
+      "dendrite": 0.9837061205514633,
+      "axon": 0.9931241448655913,
+      "astrocytic_process": 0.9948026139794397
+    },
+    "test_cell_class_balanced_macro_f1": 0.9901992559900707,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 93,
+    "train_loss": 0.02644346095621586,
+    "seconds": 0.8714728625491261,
+    "test_macro_f1": 0.9877027819267626,
+    "test_f1_per_class": {
+      "soma": 0.9791411377066144,
+      "dendrite": 0.983878485941299,
+      "axon": 0.9932163206850538,
+      "astrocytic_process": 0.9945751833740831
+    },
+    "test_cell_class_balanced_macro_f1": 0.9900777385428554,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 94,
+    "train_loss": 0.026351377367973328,
+    "seconds": 0.8711841572076082,
+    "test_macro_f1": 0.9882108799219383,
+    "test_f1_per_class": {
+      "soma": 0.9823225753447167,
+      "dendrite": 0.9837385126767907,
+      "axon": 0.9930962132589973,
+      "astrocytic_process": 0.9936862184072485
+    },
+    "test_cell_class_balanced_macro_f1": 0.9899469502991055,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 95,
+    "train_loss": 0.026549706235527992,
+    "seconds": 0.8707941314205527,
+    "test_macro_f1": 0.9863429761004794,
+    "test_f1_per_class": {
+      "soma": 0.9746552820665485,
+      "dendrite": 0.9829999200345904,
+      "axon": 0.9929311039816112,
+      "astrocytic_process": 0.9947855983191672
+    },
+    "test_cell_class_balanced_macro_f1": 0.990639551568334,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 96,
+    "train_loss": 0.02625621296465397,
+    "seconds": 0.8703289972618222,
+    "test_macro_f1": 0.9864767713199264,
+    "test_f1_per_class": {
+      "soma": 0.9760944817756058,
+      "dendrite": 0.9832667369818359,
+      "axon": 0.9930115070784236,
+      "astrocytic_process": 0.9935343594438405
+    },
+    "test_cell_class_balanced_macro_f1": 0.9901338029955111,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 97,
+    "train_loss": 0.02620803564786911,
+    "seconds": 0.8719709720462561,
+    "test_macro_f1": 0.9880879413018854,
+    "test_f1_per_class": {
+      "soma": 0.982805778138186,
+      "dendrite": 0.9829226003394301,
+      "axon": 0.992693479117495,
+      "astrocytic_process": 0.9939299076124303
+    },
+    "test_cell_class_balanced_macro_f1": 0.9889947160302803,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 98,
+    "train_loss": 0.02638385444879532,
+    "seconds": 0.8734331149607897,
+    "test_macro_f1": 0.9871767623804475,
+    "test_f1_per_class": {
+      "soma": 0.9789659863945578,
+      "dendrite": 0.983531718762619,
+      "axon": 0.9930538277872358,
+      "astrocytic_process": 0.993155516577377
+    },
+    "test_cell_class_balanced_macro_f1": 0.9905154340425008,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 99,
+    "train_loss": 0.026314999908208847,
+    "seconds": 0.8707676054909825,
+    "test_macro_f1": 0.988582049156015,
+    "test_f1_per_class": {
+      "soma": 0.9815133863866328,
+      "dendrite": 0.9835840712975336,
+      "axon": 0.9930631844233571,
+      "astrocytic_process": 0.996167554516537
+    },
+    "test_cell_class_balanced_macro_f1": 0.98953906601568,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  },
+  {
+    "epoch": 100,
+    "train_loss": 0.026297619566321373,
+    "seconds": 0.8718684259802103,
+    "test_macro_f1": 0.9872373105511011,
+    "test_f1_per_class": {
+      "soma": 0.9798555267820636,
+      "dendrite": 0.9832148911177886,
+      "axon": 0.9928736972723227,
+      "astrocytic_process": 0.9930051270322298
+    },
+    "test_cell_class_balanced_macro_f1": 0.9904160376805682,
+    "best_epoch": 76,
+    "best_macro_f1": 0.9887524041795321
+  }
+]

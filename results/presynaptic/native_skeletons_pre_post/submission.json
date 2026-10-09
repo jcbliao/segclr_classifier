@@ -1,0 +1,99 @@
+{
+  "embedding_verification": 24474328,
+  "prepare": 24484536,
+  "mean_mlp_array": 24484705,
+  "gt_array": 24484542,
+  "comparison": 24493860,
+  "tasks": {
+    "0": "mean/pre_only",
+    "1": "pointwise_mlp/pre_only",
+    "2": "graph_transformer/pre_only",
+    "3": "mean/pre_post",
+    "4": "pointwise_mlp/pre_post",
+    "5": "graph_transformer/pre_post",
+    "6": "mean/pre_mean_control",
+    "7": "pointwise_mlp/pre_mean_control",
+    "8": "graph_transformer/pre_mean_control"
+  },
+  "scale": 16,
+  "k": 17,
+  "confidence": 0.7,
+  "fold": 0,
+  "epochs": 30,
+  "classification": "LCPN with shared ResNet 4x128",
+  "fusion": "64-dimensional matched postsynaptic vector concatenated after pooling, before ResNet",
+  "uniqueness": "sorted presynaptic node set within root; different postsynaptic points do not make duplicates unique",
+  "excluded_sites": "unresolved roots and empty postsynaptic masks, excluded before deduplication in both groups",
+  "previous_submission": {
+    "prepare": 24477342,
+    "mean_mlp_array": 24477387,
+    "gt_array": 24477388,
+    "comparison": 24477401
+  },
+  "empty_mask_csv": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/native_skeletons_pre_post/empty_mask_sites.csv",
+  "scheduling_replacement": {
+    "mean_mlp_array": 24484541,
+    "comparison": 24484551
+  },
+  "training_partition": "mit_normal_gpu",
+  "training_account": "mit_amf_advanced_gpu",
+  "training_qos": "mit_amf_advanced_gpu",
+  "pre_mean_control_array": 24493856,
+  "previous_control_submission": {
+    "array": 24493482,
+    "comparison": 24493533
+  },
+  "control_partition": "mit_preemptable",
+  "control_account": "mit_general",
+  "control_qos": "normal",
+  "additional_pre_post_folds": {
+    "job_id": 24978587,
+    "folds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "architectures": [
+      "pointwise_mlp",
+      "graph_transformer"
+    ],
+    "condition": "pre_post",
+    "num_presynaptic_embeddings": 17,
+    "partition": "mit_normal_gpu",
+    "tasks": {
+      "0": {
+        "fold": 1,
+        "architecture": "pointwise_mlp"
+      },
+      "1": {
+        "fold": 1,
+        "architecture": "graph_transformer"
+      },
+      "2": {
+        "fold": 2,
+        "architecture": "pointwise_mlp"
+      },
+      "3": {
+        "fold": 2,
+        "architecture": "graph_transformer"
+      },
+      "4": {
+        "fold": 3,
+        "architecture": "pointwise_mlp"
+      },
+      "5": {
+        "fold": 3,
+        "architecture": "graph_transformer"
+      },
+      "6": {
+        "fold": 4,
+        "architecture": "pointwise_mlp"
+      },
+      "7": {
+        "fold": 4,
+        "architecture": "graph_transformer"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "pilot_job": "25193097",
+  "array_jobs": [
+    "25193105"
+  ],
+  "n_points": 8411016,
+  "output": "/orcd/scratch/orcd/013/jcbliao/postsynaptic_point_embeddings",
+  "note": "Pilot gates inference. Array covers ranks 0-31; remaining job runs ranks 32-63 sequentially. Validation depends on both.",
+  "remaining_shards_job": "25193281",
+  "validation_job": "25193118",
+  "partition": "mit_normal_gpu",
+  "account": "mit_amf_advanced_gpu",
+  "array_concurrency": 3,
+  "remaining_job_concurrency": 1,
+  "max_total_concurrency": 4
+}

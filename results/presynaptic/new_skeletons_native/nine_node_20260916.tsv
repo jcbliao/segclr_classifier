@@ -1,0 +1,9 @@
+stage	job_id	detail
+build_scale32_k9	22794358	afterok:22600108; training_local_center/scale32/k9
+finalize_scale32_k9	22794359	afterok:22794358
+train_mean_mlp_preemptable	22807296	afterok:22794359; replaces 22806676
+train_gt_normal	22807297	afterok:22794359; replaces 22806677
+regression_checks	22807236	passed; node counts 9/17/33/65/129/257
+real_cell_loader_check	22807237	passed; exact full-resolution center retained
+fragment_measurements	22807278	2209 cells; local center; K9
+fragment_histogram	22807298	afterok:22807278

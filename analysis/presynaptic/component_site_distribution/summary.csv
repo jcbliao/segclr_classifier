@@ -1,0 +1,3 @@
+dataset,cells,components,zero_site_components,one_to_five_components,components_gt5,median_sites,p90_sites,p99_sites,max_sites
+Non-native,2209,16657,4402,6816,5439,2.0,280.0,3352.399999999954,14557
+Native resampled,2209,16765,3682,7253,5830,3.0,284.60000000000036,3413.960000000021,14999

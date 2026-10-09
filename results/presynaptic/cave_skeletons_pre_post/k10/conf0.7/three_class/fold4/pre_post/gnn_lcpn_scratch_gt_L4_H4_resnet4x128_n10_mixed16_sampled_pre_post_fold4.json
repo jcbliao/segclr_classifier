@@ -1,0 +1,149 @@
+{
+  "args": {
+    "postsynaptic_cache": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/cave_skeletons_pre_post/k10/conf0.7/postsynaptic",
+    "append_presynaptic_mean": false,
+    "single_presynaptic_embedding": false,
+    "use_postsynaptic": true,
+    "architecture": "graph_transformer",
+    "dataset": "presynaptic_cave",
+    "presynaptic_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_confidence_cave/k10/conf0.7/fold4",
+    "manifest": "analysis/presynaptic/cave_skeletons_pre_post/three_class/manifests/fold4.json",
+    "embedding_augmentation": null,
+    "embedding_augmentation_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/cave_embedding_training_choices/conf0.7/fold0/cutoff5000_fp16",
+    "results_dir": "results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/three_class/fold4/pre_post",
+    "attention_budget": 14450688,
+    "mixed_cell_batch_size": 16,
+    "presynaptic_cell_cache": 16,
+    "presynaptic_memmap_root": null,
+    "presynaptic_compartment_filter": null,
+    "pointwise_mlp_layers": 2,
+    "pointwise_mlp_hidden_dim": 128,
+    "linear_out_dim": 128,
+    "mpnn_layers": 2,
+    "mpnn_hidden_dim": 128,
+    "mpnn_dropout": 0.1,
+    "spatial": false,
+    "position": false,
+    "lpe": false,
+    "cls_hidden_dim": null,
+    "classifier": "lcpn",
+    "cls_resnet": true,
+    "cls_resnet_hidden": 128,
+    "cls_resnet_layers": 4,
+    "cls_resnet_dropout": 0.0,
+    "class_balance": "sample",
+    "gt_dim": 128,
+    "gt_depth": 4,
+    "gt_heads": 4,
+    "gt_mlp_ratio": 4,
+    "gt_pos_dim": 8,
+    "gt_no_exp": false,
+    "gt_dropout": 0.0,
+    "gt_no_lpe": false,
+    "gt_no_rel_pos": false,
+    "gt_no_adj_bias": false,
+    "gt_use_thickness": false,
+    "gt_attention_scope": "global",
+    "no_embeddings": false,
+    "freeze_aggregator": false,
+    "num_embeddings": 10,
+    "neighborhood_root": "/orcd/scratch/orcd/013/jcbliao/embedding_paths/r5um",
+    "window_nm": 10000.0,
+    "batch_size": 4096,
+    "epochs": 30,
+    "resume": true,
+    "lr": 0.0001,
+    "weight_decay": 1e-05,
+    "num_workers": 8,
+    "seed": 0,
+    "amp": true
+  },
+  "window_test_metrics": {
+    "accuracy": 0.9098135284875548,
+    "balanced_accuracy": 0.8889140565068875,
+    "macro_precision": 0.9111605617305899,
+    "macro_f1": 0.8978325429452951,
+    "per_class_recall": {
+      "BasketFam": 0.9515665688422271,
+      "Excitatory": 0.9553539275704959,
+      "nonBasketInhibitory": 0.7598216731079395
+    },
+    "per_class_precision": {
+      "BasketFam": 0.9613116054744183,
+      "Excitatory": 0.882201980770621,
+      "nonBasketInhibitory": 0.8899680989467306
+    },
+    "confusion_matrix": [
+      [
+        92085,
+        2952,
+        1735
+      ],
+      [
+        1264,
+        122035,
+        4439
+      ],
+      [
+        2442,
+        13343,
+        49937
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9542857142857143,
+    "balanced_accuracy": 0.8787878787878788,
+    "macro_precision": 0.9728349673202614,
+    "macro_f1": 0.912038145576337,
+    "per_class_recall": {
+      "BasketFam": 1.0,
+      "Excitatory": 1.0,
+      "nonBasketInhibitory": 0.6363636363636364
+    },
+    "per_class_precision": {
+      "BasketFam": 0.9705882352941176,
+      "Excitatory": 0.9479166666666666,
+      "nonBasketInhibitory": 1.0
+    },
+    "confusion_matrix": [
+      [
+        33,
+        0,
+        0
+      ],
+      [
+        0,
+        273,
+        0
+      ],
+      [
+        1,
+        15,
+        28
+      ]
+    ]
+  },
+  "dataset_test_metrics": {},
+  "classes": [
+    "BasketFam",
+    "Excitatory",
+    "nonBasketInhibitory"
+  ],
+  "best_epoch": 29,
+  "postsynaptic_cache": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/cave_skeletons_pre_post/k10/conf0.7/postsynaptic",
+  "use_postsynaptic": true,
+  "append_presynaptic_mean": false,
+  "single_presynaptic_embedding": false,
+  "dataset_counts": {
+    "train_windows": 1182756,
+    "test_windows": 290232
+  },
+  "fold": "fold_4",
+  "fold_index": 4,
+  "split_seed": 0,
+  "split_fracs": [
+    0.8,
+    0.2
+  ]
+}

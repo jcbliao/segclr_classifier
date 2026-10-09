@@ -1,0 +1,7 @@
+{
+  "checkpoint_url": null,
+  "checkpoint_sha256": null,
+  "training_commit": null,
+  "source_report": "results/presynaptic/new_skeletons_native/local_center/scale32/k9/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n9_fold0.json",
+  "source_report_sha256": "b1f7a5dab3f53a61346131a78014d79bc1e1abf0f9187eeb39334eeb1e7e03cd"
+}

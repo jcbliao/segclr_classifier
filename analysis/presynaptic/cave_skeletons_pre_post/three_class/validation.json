@@ -1,0 +1,11 @@
+{
+  "format": "postsynaptic-native-site-cache-v1",
+  "variant": "cave",
+  "database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_confidence_cave/k10/conf0.7",
+  "embeddings": "/orcd/scratch/orcd/013/jcbliao/segclr/postsynaptic_site_embeddings_v1718",
+  "embedding_dim": 64,
+  "checkpoint_sha256": "fc2b2715c9facd31eccf863054fecdd584827409fcc0679d47baa45986847c2d",
+  "n_cells": 1773,
+  "n_site_rows": 2197243,
+  "n_eligible_valid_sites": 2073050
+}

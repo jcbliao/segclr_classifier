@@ -107,8 +107,10 @@ def load_hierarchy(manifest: dict | None = None) -> ParsedHierarchy:
         if manifest and "hierarchy_tree" in manifest
         else ACTIVE_HIERARCHY_TREE
     )
-    hierarchy = truncate_hierarchy(parse_hierarchy(tree), HIERARCHY_LEVELS_DROPPED)
-    return with_dropped_labels(hierarchy, DROP_LABELS)
+    levels_dropped = (manifest or {}).get("hierarchy_levels_dropped", HIERARCHY_LEVELS_DROPPED)
+    hierarchy = truncate_hierarchy(parse_hierarchy(tree), levels_dropped)
+    drop_labels = (manifest or {}).get("drop_labels", DROP_LABELS)
+    return with_dropped_labels(hierarchy, drop_labels)
 
 
 def split_cells(manifest: dict, split: str, hierarchy: ParsedHierarchy) -> list[tuple[int, dict]]:

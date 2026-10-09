@@ -1,0 +1,54 @@
+targets (325574,)
+cached volumes (14849,)
+skeleton versions [1, 2, 3, 4]
+skeleton 1 0 325574
+skeleton 1 10000 325574
+Traceback (most recent call last):
+  File "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/scripts/build_postsynaptic_target_inventory.py", line 43, in <module>
+    result=client.skeleton.skeletons_exist(root_ids=batch,skeleton_version=version)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/segclr_db/.venv/lib/python3.11/site-packages/caveclient/base.py", line 526, in wrapper
+    out = method(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/segclr_db/.venv/lib/python3.11/site-packages/caveclient/skeletonservice.py", line 464, in skeletons_exist
+    response = self.session.post(url, json=data)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/segclr_db/.venv/lib/python3.11/site-packages/requests/sessions.py", line 712, in post
+    return self.request("POST", url, data=data, json=json, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/segclr_db/.venv/lib/python3.11/site-packages/requests/sessions.py", line 651, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/segclr_db/.venv/lib/python3.11/site-packages/requests/sessions.py", line 784, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/segclr_db/.venv/lib/python3.11/site-packages/requests/adapters.py", line 696, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/segclr_db/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 788, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/segclr_db/.venv/lib/python3.11/site-packages/urllib3/connectionpool.py", line 534, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/segclr_db/.venv/lib/python3.11/site-packages/urllib3/connection.py", line 571, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/jcbliao/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/http/client.py", line 1415, in getresponse
+    response.begin()
+  File "/orcd/home/002/jcbliao/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/http/client.py", line 330, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/jcbliao/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/http/client.py", line 291, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/jcbliao/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/socket.py", line 718, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/jcbliao/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/ssl.py", line 1326, in recv_into
+    return self.read(nbytes, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/orcd/home/002/jcbliao/.local/share/uv/python/cpython-3.11.15-linux-x86_64-gnu/lib/python3.11/ssl.py", line 1178, in read
+    return self._sslobj.read(len, buffer)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

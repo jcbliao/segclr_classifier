@@ -1,0 +1,33 @@
+[
+  {
+    "path": "/orcd/scratch/orcd/013/jcbliao/segclr/v1dd_candidates_v1196/chunks_v1196_v1/image_mip3",
+    "repeat": 0,
+    "files": 128,
+    "bytes": 33554432,
+    "seconds": 0.08444440364837646
+  },
+  {
+    "path": "/orcd/scratch/orcd/013/jcbliao/segclr/v1dd_candidates_v1196/chunks_v1196_v1/image_mip3",
+    "repeat": 1,
+    "files": 128,
+    "bytes": 33554432,
+    "seconds": 0.018009336665272713
+  },
+  {
+    "path": "/orcd/scratch/orcd/013/jcbliao/segclr/v1dd_candidates_v1196/chunks_v1196_v1/mask_mip2/864691132557909513",
+    "repeat": 0,
+    "files": 128,
+    "bytes": 33554432,
+    "seconds": 0.10027367062866688
+  },
+  {
+    "path": "/orcd/scratch/orcd/013/jcbliao/segclr/v1dd_candidates_v1196/chunks_v1196_v1/mask_mip2/864691132557909513",
+    "repeat": 1,
+    "files": 128,
+    "bytes": 33554432,
+    "seconds": 0.017197709530591965
+  },
+  {
+    "write_error": "[Errno 122] Disk quota exceeded: '/orcd/scratch/orcd/013/jcbliao/segclr/v1dd_candidates_v1196/profile_io_probe_2778317.npy'"
+  }
+]

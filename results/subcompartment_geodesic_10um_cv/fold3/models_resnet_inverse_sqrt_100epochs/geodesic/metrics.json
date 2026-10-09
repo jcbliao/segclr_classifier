@@ -1,0 +1,80 @@
+{
+  "accuracy": 0.9907033314679614,
+  "balanced_accuracy": 0.9897532371009875,
+  "macro_f1": 0.9889488624734721,
+  "cell_class_balanced_accuracy": 0.9883664749835712,
+  "cell_class_balanced_macro_f1": 0.9883942538831825,
+  "log_loss": 0.02852819301187992,
+  "confusion_matrix": [
+    [
+      35708,
+      354,
+      35,
+      0
+    ],
+    [
+      730,
+      697515,
+      10814,
+      8
+    ],
+    [
+      91,
+      10699,
+      1691002,
+      64
+    ],
+    [
+      0,
+      9,
+      188,
+      25927
+    ]
+  ],
+  "classification_report": {
+    "soma": {
+      "precision": 0.9775247063976567,
+      "recall": 0.989223481175721,
+      "f1-score": 0.9833392999752155,
+      "support": 36097.0
+    },
+    "dendrite": {
+      "precision": 0.9843884292038833,
+      "recall": 0.9837081686215831,
+      "f1-score": 0.984048181348773,
+      "support": 709067.0
+    },
+    "axon": {
+      "precision": 0.9935154247346859,
+      "recall": 0.9936222571122351,
+      "f1-score": 0.9935688380517025,
+      "support": 1701856.0
+    },
+    "astrocytic_process": {
+      "precision": 0.9972306627177968,
+      "recall": 0.9924590414944112,
+      "f1-score": 0.9948391305181974,
+      "support": 26124.0
+    },
+    "accuracy": 0.9907033314679614,
+    "macro avg": {
+      "precision": 0.9881648057635056,
+      "recall": 0.9897532371009875,
+      "f1-score": 0.9889488624734721,
+      "support": 2473144.0
+    },
+    "weighted avg": {
+      "precision": 0.9907045041320923,
+      "recall": 0.9907033314679614,
+      "f1-score": 0.9907033138436789,
+      "support": 2473144.0
+    }
+  },
+  "best_epoch": 96,
+  "selection_split": "held-out cell fold 3",
+  "selection_metric": "macro_f1",
+  "fold": 3,
+  "n_folds": 5,
+  "fold_plan": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/subcompartment_geodesic_10um_cv/folds.json",
+  "test_policy": "Match existing model: best macro F1 on held-out fold over 100 epochs. Fold metrics are used for checkpoint selection, not independent final evaluation."
+}

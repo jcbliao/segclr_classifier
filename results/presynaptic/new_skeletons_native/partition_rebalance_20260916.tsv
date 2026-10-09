@@ -1,0 +1,4 @@
+stage	job_id	partition	dependency
+train_mean_mlp_preemptable	22804326	mit_preemptable	afterok:22794359
+train_gt_normal	22804328	mit_normal_gpu	afterok:22794359
+superseded_training	22794360	mit_normal_gpu	cancelled before start

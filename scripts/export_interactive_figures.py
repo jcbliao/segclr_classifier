@@ -64,10 +64,11 @@ def page(slug: str, title: str, subtitle: str, data: str, script: str):
 
 
 def architecture_pages():
-    from analysis import architecture_comparison as ac
+    from analysis.all_windows import architecture_comparison as ac
+    import matplotlib.pyplot as plt
     from matplotlib import colormaps, colors
-    payloads = ac.load_confusions(ROOT / "results")
-    frame = ac.load_best_epochs(ROOT / "results", payloads)
+    payloads = ac.load_confusions(ROOT / "results" / "all_windows")
+    frame = ac.load_best_epochs(ROOT / "results" / "all_windows", payloads)
     avg = ac.mean_over_folds(frame)
     cols = ["architecture", "model", "n_embeddings", "folds"] + [c for c in avg if c.startswith(("window_", "cell_"))]
     data = records(avg, cols)
@@ -80,12 +81,14 @@ function draw(){let traces=[];for(const n of [10,20,40]){const p=rows.filter(r=>
 
     classes = [None] + ac.class_names(payloads)
     page("architecture-across-counts", "Architecture comparison across node counts",
-         "architecture_comparison.ipynb · class, level, and metric controls", data, r"""
+         "architecture_comparison.ipynb · class, level, and metric controls", data,
+         "const mplCycle=" + json.dumps(plt.rcParams["axes.prop_cycle"].by_key()["color"]) + ";"
+         "const architectureOrder=" + json.dumps(ac.architectures_in(avg)) + ";" + r"""
 const cs=control('class','Class',""" + json.dumps(classes) + r""",x=>x===null?'All classes (macro)':x);
 const level=control('level','Level',['window','cell']);const metric=control('metric','Metric',['f1','recall','precision','accuracy']);
 function draw(){const c=val(cs),scope=val(level),m=val(metric);let col;if(c===null){col=scope+'_'+({f1:'macro_f1',recall:'balanced_accuracy',precision:'macro_precision',accuracy:'accuracy'}[m])}else col=scope+'_'+(m==='accuracy'?'recall':m)+'_'+c;
- const architectures=uniq(rows.map(r=>r.architecture)),traces=[];architectures.forEach((a,ai)=>{uniq(rows.filter(r=>r.architecture===a).map(r=>r.model)).forEach((model,mi)=>{const p=rows.filter(r=>r.architecture===a&&r.model===model&&r[col]!=null).sort((x,y)=>x.n_embeddings-y.n_embeddings),axis=ai?String(ai+1):'';if(p.length)traces.push({x:p.map(r=>r.n_embeddings),y:p.map(r=>r[col]),xaxis:'x'+axis,yaxis:'y'+axis,mode:'lines+markers',name:model,legendgroup:model,showlegend:true,hovertemplate:`${model}<br>n=%{x}<br>${m}=%{y:.3f}<extra></extra>`})})});
- const ncols=3,nrows=Math.ceil(architectures.length/ncols),layout={width:1500,height:500*nrows,grid:{rows:nrows,columns:ncols,pattern:'independent'},margin:{l:75,r:25,t:75,b:110},legend:{orientation:'h',y:-.08},annotations:architectures.map((a,i)=>({text:a,xref:`x${i?i+1:''} domain`,yref:`y${i?i+1:''} domain`,x:.5,y:1.13,showarrow:false,font:{size:15}}))};architectures.forEach((_,i)=>{const k=i?'axis'+(i+1):'axis';layout['x'+k]={title:'Number of embeddings',tickvals:[10,20,40],gridcolor:'#d9d9d9'};layout['y'+k]={title:(c||'macro')+' '+m,gridcolor:'#d9d9d9'}});Plotly.react(gd,traces,layout,config)}draw();""")
+ const architectures=architectureOrder,traces=[];architectures.forEach((a,ai)=>{uniq(rows.filter(r=>r.architecture===a).map(r=>r.model)).sort().forEach((model,mi)=>{const p=rows.filter(r=>r.architecture===a&&r.model===model&&r[col]!=null).sort((x,y)=>x.n_embeddings-y.n_embeddings),axis=ai?String(ai+1):'',spread=col+'_std';if(p.length)traces.push({x:p.map(r=>r.n_embeddings),y:p.map(r=>r[col]),error_y:{type:'data',array:p.map(r=>r[spread]||0),visible:p.some(r=>r[spread]!=null)},xaxis:'x'+axis,yaxis:'y'+axis,mode:'lines+markers',line:{color:mplCycle[mi%mplCycle.length]},marker:{color:mplCycle[mi%mplCycle.length]},name:model,legend:'legend'+axis,legendgroup:`${ai}-${model}`,showlegend:true,hovertemplate:`${model}<br>n=%{x}<br>${m}=%{y:.3f}<extra></extra>`})})});
+ const ncols=3,nrows=Math.ceil(architectures.length/ncols),xgap=.045,ygap=.09,panelW=(1-xgap*(ncols-1))/ncols,panelH=(1-ygap*(nrows-1))/nrows,label=c===null?`${scope} ${m==='f1'?'macro f1':m}`:`${scope} ${m} · ${c}`,layout={width:1500,height:500*nrows,title:{text:`${label} across embedding counts (fold_0)`,font:{size:17}},margin:{l:75,r:25,t:75,b:70},annotations:[]};architectures.forEach((a,i)=>{const axis=i?String(i+1):'',key=i?'axis'+(i+1):'axis',colIndex=i%ncols,row=Math.floor(i/ncols),x0=colIndex*(panelW+xgap),x1=x0+panelW,y1=1-row*(panelH+ygap),y0=y1-panelH;layout['x'+key]={domain:[x0,x1],anchor:'y'+axis,title:'Number of embeddings',tickvals:[10,20,40],gridcolor:'#d9d9d9'};layout['y'+key]={domain:[y0,y1],anchor:'x'+axis,title:label,gridcolor:'#d9d9d9',matches:'y'};layout['legend'+axis]={x:x1-.01,y:y1-.01,xanchor:'right',yanchor:'top',font:{size:10},bgcolor:'rgba(255,255,255,.82)',bordercolor:'#cccccc',borderwidth:1};layout.annotations.push({text:a,xref:'paper',yref:'paper',x:(x0+x1)/2,y:y1+.025,showarrow:false,font:{size:15}})});Plotly.react(gd,traces,layout,config)}draw();""")
 
     packed=[]
     for run,p in payloads.items():
@@ -110,7 +113,7 @@ arch.addEventListener('change',()=>{sync();draw()});model.addEventListener('chan
 
 
 def feature_pages():
-    from analysis import feature_prediction_correlation as fp
+    from analysis.all_windows import feature_prediction_correlation as fp
     runs=fp.cached_runs(fp.usable_runs())
     frames=fp.load_frames(runs)
     bins,quant,overall,cells=frames["bins"],frames["quantiles"],frames["overall"],frames["cells"]

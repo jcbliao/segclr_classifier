@@ -1,0 +1,126 @@
+{
+  "run": "gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n33_fold0",
+  "epoch": 20,
+  "classes": [
+    "putative_cge",
+    "putative_parvalbumin",
+    "putative_somatostatin",
+    "pyramidal",
+    "thalamocortical"
+  ],
+  "window_test_metrics": {
+    "accuracy": 0.8325492521016647,
+    "balanced_accuracy": 0.7382173829534524,
+    "macro_precision": 0.7421269938059887,
+    "macro_f1": 0.7365342243728756,
+    "per_class_recall": {
+      "putative_cge": 0.31387097723993757,
+      "putative_parvalbumin": 0.9104258116268188,
+      "putative_somatostatin": 0.6979793798916315,
+      "pyramidal": 0.955200568380454,
+      "thalamocortical": 0.8136101776284206
+    },
+    "per_class_precision": {
+      "putative_cge": 0.315823778627085,
+      "putative_parvalbumin": 0.9725786103639523,
+      "putative_somatostatin": 0.87327723180133,
+      "pyramidal": 0.8245484236810466,
+      "thalamocortical": 0.7244069245565292
+    },
+    "confusion_matrix": [
+      [
+        10660,
+        720,
+        6635,
+        15052,
+        896
+      ],
+      [
+        3267,
+        122577,
+        1632,
+        6068,
+        1093
+      ],
+      [
+        15985,
+        1023,
+        74198,
+        14002,
+        1096
+      ],
+      [
+        3476,
+        964,
+        1432,
+        169401,
+        2073
+      ],
+      [
+        365,
+        749,
+        1068,
+        924,
+        13558
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9298642533936652,
+    "balanced_accuracy": 0.7966572557876905,
+    "macro_precision": 0.9356,
+    "macro_f1": 0.8314930347235915,
+    "per_class_recall": {
+      "putative_cge": 0.2727272727272727,
+      "putative_parvalbumin": 0.9714285714285714,
+      "putative_somatostatin": 0.7391304347826086,
+      "pyramidal": 1.0,
+      "thalamocortical": 1.0
+    },
+    "per_class_precision": {
+      "putative_cge": 0.9,
+      "putative_parvalbumin": 1.0,
+      "putative_somatostatin": 0.85,
+      "pyramidal": 0.928,
+      "thalamocortical": 1.0
+    },
+    "confusion_matrix": [
+      [
+        9,
+        0,
+        3,
+        21,
+        0
+      ],
+      [
+        0,
+        34,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        17,
+        5,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        348,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        3
+      ]
+    ]
+  },
+  "complete": false
+}

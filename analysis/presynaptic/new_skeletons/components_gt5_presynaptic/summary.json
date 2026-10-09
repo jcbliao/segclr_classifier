@@ -1,0 +1,19 @@
+{
+  "database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10",
+  "cells": 2209,
+  "cells_with_retained_edges": 2209,
+  "total_nodes": 149942215,
+  "kept_nodes": 136246456,
+  "total_edges": 149925558,
+  "kept_edges": 136241017,
+  "total_components": 16657,
+  "kept_components": 5439,
+  "mapped_unique_sites": 2299836,
+  "kept_unique_sites": 2284028,
+  "percentile_bounds_nm": [
+    77.62317608011449,
+    531.713178759419
+  ],
+  "rule": "Connected components after 5 um soma cut; >5 distinct presynaptic IDs mapped within 2 um; all edges within retained components",
+  "plot": "Same shared helper; central 99% of positive finite retained edge lengths; 3-component Gaussian fits separately in log10 and linear space"
+}

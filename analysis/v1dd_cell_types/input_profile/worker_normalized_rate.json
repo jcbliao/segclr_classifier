@@ -1,0 +1,191 @@
+{
+  "samples": [
+    {
+      "time": 1790871538.9371095,
+      "workers": 559,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 437
+      }
+    },
+    {
+      "time": 1790871548.9371128,
+      "workers": 559,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 437
+      }
+    },
+    {
+      "time": 1790871558.9371114,
+      "workers": 559,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 437
+      }
+    },
+    {
+      "time": 1790871568.9371128,
+      "workers": 566,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 444
+      }
+    },
+    {
+      "time": 1790871578.9371245,
+      "workers": 566,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 444
+      }
+    },
+    {
+      "time": 1790871588.9371111,
+      "workers": 550,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 428
+      }
+    },
+    {
+      "time": 1790871598.9371157,
+      "workers": 550,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 428
+      }
+    },
+    {
+      "time": 1790871608.9371166,
+      "workers": 550,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 428
+      }
+    },
+    {
+      "time": 1790871618.9371104,
+      "workers": 550,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 428
+      }
+    },
+    {
+      "time": 1790871628.9371152,
+      "workers": 550,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 428
+      }
+    },
+    {
+      "time": 1790871638.9371133,
+      "workers": 550,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 428
+      }
+    },
+    {
+      "time": 1790871648.9371097,
+      "workers": 550,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 428
+      }
+    },
+    {
+      "time": 1790871658.9371126,
+      "workers": 550,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 428
+      }
+    },
+    {
+      "time": 1790871668.9371119,
+      "workers": 550,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 428
+      }
+    },
+    {
+      "time": 1790871678.9371119,
+      "workers": 550,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 428
+      }
+    },
+    {
+      "time": 1790871688.9371214,
+      "workers": 550,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 428
+      }
+    },
+    {
+      "time": 1790871698.9371178,
+      "workers": 550,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 428
+      }
+    },
+    {
+      "time": 1790871708.9371161,
+      "workers": 550,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 428
+      }
+    },
+    {
+      "time": 1790871718.9371126,
+      "workers": 550,
+      "partitions": {
+        "mit_normal": 122,
+        "mit_preemptable": 428
+      }
+    }
+  ],
+  "reports": [
+    {
+      "elapsed_seconds": 60.9,
+      "inputs": 12390,
+      "inputs_per_minute": 12205.2,
+      "average_running_workers": 559.1,
+      "inputs_per_worker_minute": 22.2,
+      "running_now": {
+        "mit_normal": 122,
+        "mit_preemptable": 428
+      }
+    },
+    {
+      "elapsed_seconds": 121.4,
+      "inputs": 37223,
+      "inputs_per_minute": 36397.3,
+      "average_running_workers": 550.0,
+      "inputs_per_worker_minute": 67.7,
+      "running_now": {
+        "mit_normal": 122,
+        "mit_preemptable": 428
+      }
+    },
+    {
+      "elapsed_seconds": 180.9,
+      "inputs": 14357,
+      "inputs_per_minute": 14145.5,
+      "average_running_workers": 550.0,
+      "inputs_per_worker_minute": 26.1,
+      "running_now": {
+        "mit_normal": 122,
+        "mit_preemptable": 428
+      }
+    }
+  ]
+}

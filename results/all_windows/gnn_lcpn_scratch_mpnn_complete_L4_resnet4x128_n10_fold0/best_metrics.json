@@ -1,0 +1,231 @@
+{
+  "run": "gnn_lcpn_scratch_mpnn_complete_L4_resnet4x128_n10_fold0",
+  "epoch": 7,
+  "classes": [
+    "astrocyte",
+    "microglia",
+    "oligo",
+    "putative_cge",
+    "putative_parvalbumin",
+    "putative_somatostatin",
+    "pyramidal",
+    "thalamocortical"
+  ],
+  "window_test_metrics": {
+    "accuracy": 0.9029643232981862,
+    "balanced_accuracy": 0.8479862849446267,
+    "macro_precision": 0.8191571863613432,
+    "macro_f1": 0.8307605403640261,
+    "per_class_recall": {
+      "astrocyte": 0.9995166163141994,
+      "microglia": 0.8592525617842074,
+      "oligo": 0.8998911860718172,
+      "putative_cge": 0.5413942019508474,
+      "putative_parvalbumin": 0.9302697084628379,
+      "putative_somatostatin": 0.7744127502975325,
+      "pyramidal": 0.9432460878386142,
+      "thalamocortical": 0.8359071668369581
+    },
+    "per_class_precision": {
+      "astrocyte": 0.9991141534125226,
+      "microglia": 0.9760356042451215,
+      "oligo": 0.817193675889328,
+      "putative_cge": 0.5494673386288377,
+      "putative_parvalbumin": 0.9321263819295316,
+      "putative_somatostatin": 0.6820118240306033,
+      "pyramidal": 0.9623378951697024,
+      "thalamocortical": 0.6349706175850981
+    },
+    "confusion_matrix": [
+      [
+        24813,
+        0,
+        0,
+        0,
+        0,
+        0,
+        12,
+        0
+      ],
+      [
+        0,
+        2851,
+        0,
+        99,
+        4,
+        19,
+        345,
+        0
+      ],
+      [
+        0,
+        0,
+        827,
+        0,
+        0,
+        0,
+        92,
+        0
+      ],
+      [
+        0,
+        8,
+        6,
+        79481,
+        7991,
+        25644,
+        31741,
+        1937
+      ],
+      [
+        1,
+        18,
+        0,
+        6095,
+        375028,
+        9316,
+        10017,
+        2664
+      ],
+      [
+        0,
+        9,
+        0,
+        20099,
+        3643,
+        141201,
+        15769,
+        1612
+      ],
+      [
+        21,
+        28,
+        179,
+        38473,
+        14020,
+        29401,
+        1535183,
+        10248
+      ],
+      [
+        0,
+        7,
+        0,
+        404,
+        1650,
+        1455,
+        2105,
+        28634
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9763948497854077,
+    "balanced_accuracy": 0.9552559759081498,
+    "macro_precision": 0.973618933571955,
+    "macro_f1": 0.9637094809047767,
+    "per_class_recall": {
+      "astrocyte": 1.0,
+      "microglia": 1.0,
+      "oligo": 1.0,
+      "putative_cge": 0.7575757575757576,
+      "putative_parvalbumin": 0.9714285714285714,
+      "putative_somatostatin": 0.9130434782608695,
+      "pyramidal": 1.0,
+      "thalamocortical": 1.0
+    },
+    "per_class_precision": {
+      "astrocyte": 1.0,
+      "microglia": 1.0,
+      "oligo": 1.0,
+      "putative_cge": 0.8928571428571429,
+      "putative_parvalbumin": 1.0,
+      "putative_somatostatin": 0.9130434782608695,
+      "pyramidal": 0.9830508474576272,
+      "thalamocortical": 1.0
+    },
+    "confusion_matrix": [
+      [
+        15,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        25,
+        0,
+        2,
+        6,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        34,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        2,
+        0,
+        21,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        348,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3
+      ]
+    ]
+  },
+  "complete": false
+}

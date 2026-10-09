@@ -1,0 +1,73 @@
+{
+  "cache": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/compartment_filtered/scale16/k17/conf0.7/fold0/geodesic_exclusion20um",
+  "classifier": "/orcd/scratch/orcd/013/jcbliao/segclr/subcompartment_geodesic_exclusion20um_v1/models_resnet_inverse_sqrt_100epochs/geodesic/model.pt",
+  "classifier_sha256": "b22e9088468a355423205837b4d2e837edf31fcb3a7f4c6844629ebf18f638a4",
+  "voting_rule": "drop iff dendrite votes > half of observed window embeddings; retain ties",
+  "unit": "one raw 64-dimensional mean per unique retained presynaptic window",
+  "sampling": "uniform without replacement within cell type; exactly equal counts across classes",
+  "per_class": 2000,
+  "available_per_class": {
+    "BasketFam": 656072,
+    "BipFam": 81988,
+    "MartFam": 502695,
+    "NglFam": 10048,
+    "pyramidal": 655509,
+    "thalamocortical": 102624
+  },
+  "n_points": 12000,
+  "seed": 0,
+  "n_neighbors": 15,
+  "min_dist": 0.1,
+  "metric": "euclidean",
+  "n_epochs": 500,
+  "standardization": false,
+  "supervised": false,
+  "umap_version": "0.5.9.post2",
+  "hierarchy_level": 2,
+  "source_to_class": {
+    "MartFam": "MartFam",
+    "L4IT": "pyramidal",
+    "NglFam": "NglFam",
+    "L3IT": "pyramidal",
+    "L2IT": "pyramidal",
+    "L6CT": "pyramidal",
+    "BasketFam": "BasketFam",
+    "L5ET": "pyramidal",
+    "L5IT": "pyramidal",
+    "thalamocortical": "thalamocortical",
+    "L6IT": "pyramidal",
+    "L5NP": "pyramidal",
+    "BipFam": "BipFam"
+  },
+  "label_source": "source database Casey hierarchy_tree, zero-based L2",
+  "dimensions": [
+    2,
+    3
+  ],
+  "colors": {
+    "BasketFam": "#1f77b4",
+    "BipFam": "#ff7f0e",
+    "MartFam": "#2ca02c",
+    "NglFam": "#d62728",
+    "pyramidal": "#9467bd",
+    "thalamocortical": "#8c564b"
+  },
+  "palette_source": "tab10; labels from the source manifest Casey hierarchy at L2",
+  "comparison": [
+    {
+      "dimensions": 2,
+      "n_points": 12000,
+      "trustworthiness_15": 0.9133023300596957,
+      "trustworthiness_evaluation_points": 600,
+      "cell_type_neighbor_agreement_15": 0.45590555555555556
+    },
+    {
+      "dimensions": 3,
+      "n_points": 12000,
+      "trustworthiness_15": 0.9448867706528018,
+      "trustworthiness_evaluation_points": 600,
+      "cell_type_neighbor_agreement_15": 0.4859888888888889
+    }
+  ],
+  "comparison_note": "Trustworthiness on the same 100 windows per class; neighbor agreement is descriptive, not a held-out classification score"
+}

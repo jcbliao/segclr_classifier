@@ -1,0 +1,4 @@
+stage	job_id	tasks	partition
+training	24558222	0,1,3	mit_preemptable
+training	24558223	2,4,5	mit_normal_gpu
+summary	24552376		mit_normal

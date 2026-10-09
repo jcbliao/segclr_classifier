@@ -1,0 +1,21 @@
+{
+  "database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_coarse_confidence_with_tc_folds/scale16/k17/conf0.7/fold0",
+  "variant": "new",
+  "model": "/orcd/scratch/orcd/013/jcbliao/segclr/subcompartment_geodesic_exclusion20um_v1/models_resnet_inverse_sqrt_100epochs/geodesic/model.pt",
+  "model_sha256": "b22e9088468a355423205837b4d2e837edf31fcb3a7f4c6844629ebf18f638a4",
+  "classes": [
+    "soma",
+    "dendrite",
+    "axon",
+    "astrocytic_process"
+  ],
+  "rule": "drop iff dendrite votes > half of observed window embeddings; retain ties",
+  "averaging": "raw SegCLR mean per unique retained window",
+  "deduplication": "complete sorted node set within root",
+  "n_cells": 1773,
+  "valid_sites": 2121834,
+  "removed_sites": 40198,
+  "unique_before": 2048716,
+  "unique_removed": 39780,
+  "unique_retained": 2008936
+}

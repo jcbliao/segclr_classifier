@@ -1,0 +1,16 @@
+{
+  "n_points": 2504093,
+  "n_cells_with_points": 2223,
+  "n_neurons": 2223,
+  "materialization_version": 1718,
+  "mode": "outgoing",
+  "coordinates": "cell_x_nm,cell_y_nm,cell_z_nm",
+  "sources": [
+    "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/data/synapse_cache/presynaptic_sites.parquet",
+    "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/neuron_incoming_points/thalamocortical_additional_outgoing.parquet",
+    "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/neuron_presynaptic_points/additional_outgoing.parquet"
+  ],
+  "additional_queried_roots": [
+    864691136196262102
+  ]
+}

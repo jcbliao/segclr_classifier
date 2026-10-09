@@ -23,7 +23,7 @@ from data.build_embedding_paths import DEFAULT_OUT as PATHS  # noqa: E402
 
 # Derived from the perisomatic radius, so the summary always describes the
 # database the current settings build rather than whatever ran last.
-OUT = ROOT / "analysis" / "embedding_paths_summary.npz"
+OUT = ROOT / "analysis" / "all_windows" / "embedding_paths_summary.npz"
 from data.build_embedding_paths import CONFIGS as _CFG  # noqa: E402
 from data.build_embedding_paths import NEIGHBORHOOD_CONFIGS as _NCFG  # noqa: E402
 
