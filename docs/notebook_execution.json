@@ -60,12 +60,12 @@
     "seconds": 11.36
   },
   {
-    "notebook": "analysis/presynaptic/cave_skeletons_pre_post/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_pre_post_three_class_5folds.ipynb",
+    "notebook": "analysis/presynaptic/cave_skeletons_pre_post/three_class/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_pre_post_three_class_5folds.ipynb",
     "status": "passed",
     "seconds": 3.87
   },
   {
-    "notebook": "analysis/presynaptic/cave_skeletons_pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_three_class_5folds.ipynb",
+    "notebook": "analysis/presynaptic/cave_skeletons_pre_post/three_class/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_three_class_5folds.ipynb",
     "status": "passed",
     "seconds": 3.97
   },
