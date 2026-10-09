@@ -147,10 +147,10 @@ class GraphAttention(nn.Module):
         attn = (query @ key.transpose(-2, -1)) * self.scale  # (B, H, N, N)
 
         if self.use_adj_bias:
-            gamma = self.predict_gamma(x)[:, None].repeat(1, self.num_heads, 1, 1)  # (B, H, N, 2)
+            gamma = self.predict_gamma(x)[:, None]  # (B, 1, N, 2), broadcast over heads
             if self.use_exp:
                 gamma = torch.exp(gamma)
-            adj_b = adj[:, None].repeat(1, self.num_heads, 1, 1)  # (B, H, N, N)
+            adj_b = adj[:, None]  # (B, 1, N, N), broadcast over heads
             attn = gamma[:, :, :, 0:1] * attn + gamma[:, :, :, 1:2] * adj_b
 
         pad = ~key_padding_mask[:, None, None, :]  # (B, 1, 1, N), True at padding
@@ -293,6 +293,7 @@ class GraphTransformer(nn.Module):
         self.use_lpe = use_lpe
         self.use_rel_pos = use_rel_pos
         self.use_thickness = use_thickness
+        self.feat_dim = feat_dim
         self.attention_scope = attention_scope
         # False drops the SegCLR embedding from the node input, leaving the
         # model nothing but morphology: adjacency, the center-relative offset
@@ -342,6 +343,7 @@ class GraphTransformer(nn.Module):
         pos_enc: torch.Tensor | None = None,
         rel_pos: torch.Tensor | None = None,
         thickness: torch.Tensor | None = None,
+        has_segclr: torch.Tensor | None = None,
     ) -> torch.Tensor:
         """
         x: (N_total, feat_dim) -- raw node features, PyG-batched (concatenated
@@ -369,6 +371,10 @@ class GraphTransformer(nn.Module):
             onto `x` alongside rel_pos, for the same reason: it is a physical
             property of the node, not a positional signal. Required iff
             `use_thickness`; ignored otherwise.
+        has_segclr: (N_total,) bool -- embedding-availability modality mask.
+            Ignored by the ordinary GraphTransformer and consumed by
+            GraphTransformerTEASAR. It is deliberately independent of the
+            real-node/padding mask produced by ``to_dense_batch``.
 
         Returns g: (B, dim), one embedding per window.
         """
@@ -381,7 +387,7 @@ class GraphTransformer(nn.Module):
         self_loops = torch.diag_embed(node_mask.to(adj_raw.dtype))
         adj = torch.maximum(adj_raw, self_loops)  # self-loops on real nodes only
 
-        node_parts = [x_dense] if self.use_features else []
+        rel_pos_dense = None
         if self.use_rel_pos:
             if rel_pos is None:
                 raise ValueError("use_rel_pos=True but rel_pos was not provided")
@@ -390,8 +396,7 @@ class GraphTransformer(nn.Module):
             # the same O(1) scale -- no second constant needed. Padding rows
             # are all-zero and stay at distance 0; they are masked out below
             # regardless.
-            node_parts.append(rel_pos_dense)
-            node_parts.append(torch.linalg.norm(rel_pos_dense, dim=-1, keepdim=True))
+        thickness_dense = None
         if self.use_thickness:
             if thickness is None:
                 raise ValueError(
@@ -399,10 +404,15 @@ class GraphTransformer(nn.Module):
                     "with WindowedGraphDatasetLCPN(..., use_thickness=True)"
                 )
             thickness_dense, _ = to_dense_batch(thickness, batch_index)  # (B, N, 2)
-            node_parts.append(thickness_dense)
-        node_input = torch.cat(node_parts, dim=-1) if len(node_parts) > 1 else x_dense
+        has_segclr_dense = None
+        if has_segclr is not None:
+            has_segclr_dense, _ = to_dense_batch(
+                has_segclr.to(dtype=torch.bool), batch_index
+            )
 
-        node_emb = self.to_node_embedding(node_input)
+        node_emb = self._embed_nodes(
+            x_dense, rel_pos_dense, thickness_dense, has_segclr_dense
+        )
         if self.use_lpe:
             if pos_enc is None:
                 raise ValueError("use_lpe=True but pos_enc was not provided")
@@ -432,6 +442,31 @@ class GraphTransformer(nn.Module):
             h = block(h, adj_full, full_mask, attn_mask)
 
         return self.mlp_head(h[:, 0])
+
+    def _embed_nodes(
+        self,
+        x_dense: torch.Tensor,
+        rel_pos_dense: torch.Tensor | None,
+        thickness_dense: torch.Tensor | None,
+        has_segclr_dense: torch.Tensor | None,
+    ) -> torch.Tensor:
+        """Build initial node states; the ordinary GT ignores availability.
+
+        ``GraphTransformerTEASAR`` overrides this hook so missing SegCLR is a
+        feature-modality state, while the shared forward path continues to
+        treat every skeleton node as a real attention token.
+        """
+        del has_segclr_dense
+        node_parts = [x_dense] if self.use_features else []
+        if self.use_rel_pos:
+            node_parts.extend([
+                rel_pos_dense,
+                torch.linalg.norm(rel_pos_dense, dim=-1, keepdim=True),
+            ])
+        if self.use_thickness:
+            node_parts.append(thickness_dense)
+        node_input = torch.cat(node_parts, dim=-1) if len(node_parts) > 1 else node_parts[0]
+        return self.to_node_embedding(node_input)
 
     @staticmethod
     def _neighborhood_mask(adj_full: torch.Tensor, N: int, B: int) -> torch.Tensor:

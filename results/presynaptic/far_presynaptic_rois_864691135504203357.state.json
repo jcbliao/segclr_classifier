@@ -1,0 +1,2050 @@
+{
+  "position": [
+    192182.0,
+    168376.0,
+    22546.0
+  ],
+  "layout": "xy-3d",
+  "dimensions": {
+    "x": [
+      4e-09,
+      "m"
+    ],
+    "y": [
+      4e-09,
+      "m"
+    ],
+    "z": [
+      4e-08,
+      "m"
+    ]
+  },
+  "crossSectionScale": 1.0,
+  "projectionScale": 50000.0,
+  "showSlices": true,
+  "layers": [
+    {
+      "type": "image",
+      "source": [
+        {
+          "url": "precomputed://https://bossdb-open-data.s3.amazonaws.com/iarpa_microns/minnie/minnie65/em",
+          "transform": {
+            "outputDimensions": {
+              "x": [
+                4e-09,
+                "m"
+              ],
+              "y": [
+                4e-09,
+                "m"
+              ],
+              "z": [
+                4e-08,
+                "m"
+              ]
+            }
+          },
+          "subsources": {},
+          "enableDefaultSubsources": true
+        }
+      ],
+      "name": "imagery"
+    },
+    {
+      "type": "segmentation",
+      "source": [
+        {
+          "url": "graphene://middleauth+https://minnie.microns-daf.com/segmentation/table/minnie65_public",
+          "transform": {
+            "outputDimensions": {
+              "x": [
+                4e-09,
+                "m"
+              ],
+              "y": [
+                4e-09,
+                "m"
+              ],
+              "z": [
+                4e-08,
+                "m"
+              ]
+            }
+          },
+          "subsources": {},
+          "enableDefaultSubsources": true
+        },
+        {
+          "url": "precomputed://middleauth+https://minnie.microns-daf.com/skeletoncache/api/v1/minnie65_public/precomputed/skeleton/",
+          "transform": {
+            "outputDimensions": {
+              "x": [
+                4e-09,
+                "m"
+              ],
+              "y": [
+                4e-09,
+                "m"
+              ],
+              "z": [
+                4e-08,
+                "m"
+              ]
+            }
+          },
+          "subsources": {},
+          "enableDefaultSubsources": true
+        }
+      ],
+      "segments": [
+        "864691135504203357"
+      ],
+      "selectedAlpha": 0.5,
+      "notSelectedAlpha": 0.0,
+      "objectAlpha": 1.0,
+      "segmentColors": {},
+      "meshSilhouetteRendering": 0,
+      "pick": true,
+      "name": "segmentation",
+      "timestamp": 1772871001
+    },
+    {
+      "type": "annotation",
+      "source": [
+        {
+          "url": "local://annotations",
+          "transform": {
+            "outputDimensions": {
+              "x": [
+                1e-09,
+                "m"
+              ],
+              "y": [
+                1e-09,
+                "m"
+              ],
+              "z": [
+                1e-09,
+                "m"
+              ]
+            }
+          }
+        }
+      ],
+      "annotations": [
+        {
+          "type": "point",
+          "id": "11471462cd9654eae293827dfb7fe26fc0af5842",
+          "description": "Synapse 189614850 | nearest CAVE SegCLR: 7.100792 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            768728.0,
+            673504.0,
+            901840.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "646148a47e0c0f8d4fcbb7fe3dbea6ad670cbe7c",
+          "description": "Synapse 178462643 | nearest CAVE SegCLR: 6.335944 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            765640.0,
+            674856.0,
+            904960.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "0b437197e42e195ccebd50b60aecf88668a29e41",
+          "description": "Synapse 132604699 | nearest CAVE SegCLR: 5.846161 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            649136.0,
+            697424.0,
+            944680.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "4bbe66136de1c6f93e903a1b01e8b774b3984321",
+          "description": "Synapse 132604662 | nearest CAVE SegCLR: 5.794883 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            648952.0,
+            697184.0,
+            944520.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "e685de67c1505653f3b10ee8ace0de6d658e56f1",
+          "description": "Synapse 125919916 | nearest CAVE SegCLR: 5.183568 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            629256.0,
+            661368.0,
+            1012440.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "83baeb1700a0008c1d16fbecaef0e155ca2fa06f",
+          "description": "Synapse 138822852 | nearest CAVE SegCLR: 4.779999 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            652944.0,
+            617928.0,
+            1090520.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "c64bde55e0cd61d14961695a7d18c96ac77bf9a9",
+          "description": "Synapse 146422015 | nearest CAVE SegCLR: 4.733310 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            677576.0,
+            615128.0,
+            662280.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "78f05677be1e0268d87eac2e0b9765a17814e0d9",
+          "description": "Synapse 209898988 | nearest CAVE SegCLR: 4.629042 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            827072.0,
+            733920.0,
+            920960.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "9dc5f9cfb581d0cafa01b70e9857f41fbe68a1af",
+          "description": "Synapse 185155499 | nearest CAVE SegCLR: 4.400036 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            783400.0,
+            497112.0,
+            668520.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "1e1690b7a193fa681e2a24a19cf4fe68db05e648",
+          "description": "Synapse 286716158 | nearest CAVE SegCLR: 4.037029 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            1005168.0,
+            767472.0,
+            832800.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "8ff601c737fb09ace1f43925ba398fc05e17609a",
+          "description": "Synapse 201290909 | nearest CAVE SegCLR: 3.966887 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            800464.0,
+            659656.0,
+            1092160.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "a5c1183e89775d6358e951385307dcf8dce38773",
+          "description": "Synapse 132082135 | nearest CAVE SegCLR: 3.920041 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            641528.0,
+            658704.0,
+            1069320.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "1eb11e6c2d604e97b1c6593df521e36d289b3c6c",
+          "description": "Synapse 239214836 | nearest CAVE SegCLR: 3.733567 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            893992.0,
+            792760.0,
+            943280.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "7178819ef8163752299263b481e39d6db91ad5f5",
+          "description": "Synapse 74098150 | nearest CAVE SegCLR: 3.720387 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            519192.0,
+            701216.0,
+            914560.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "42cb2ca3f4edc5c14e077d0ecff1b1fc3716aaba",
+          "description": "Synapse 171567517 | nearest CAVE SegCLR: 3.658844 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            740296.0,
+            646168.0,
+            852080.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "f9ddf34b3dba7564689b545f0f42d9948b6a3694",
+          "description": "Synapse 221711111 | nearest CAVE SegCLR: 3.643699 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            857304.0,
+            551136.0,
+            630880.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "58d20bbb244b94e823e157ddd0744d5a4f3b4481",
+          "description": "Synapse 172226542 | nearest CAVE SegCLR: 3.559712 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            747392.0,
+            611256.0,
+            831840.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "cf35e0b91cd45ff0c7eed4a57de91431457ec2bd",
+          "description": "Synapse 214954823 | nearest CAVE SegCLR: 3.514632 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            834512.0,
+            603488.0,
+            849680.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "5e0e9ceb0a35864f01386c9d930e69be4673af47",
+          "description": "Synapse 180205276 | nearest CAVE SegCLR: 3.513039 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            759696.0,
+            694400.0,
+            924560.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "eb689aea9642b69da16cd98fa60f60ff72d38176",
+          "description": "Synapse 240663102 | nearest CAVE SegCLR: 3.506237 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            908520.0,
+            591064.0,
+            738560.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "1afe948fd306ca3e0e3c7947c5440da3b752a366",
+          "description": "Synapse 145266072 | nearest CAVE SegCLR: 3.497272 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            682584.0,
+            627056.0,
+            674880.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "f5789eb9d55be4fb6f3cd1d0aecd6da159887f8c",
+          "description": "Synapse 193663491 | nearest CAVE SegCLR: 3.485972 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            796824.0,
+            730680.0,
+            914720.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "8c5da5551e38fbddae607329dd48350660b2c2ca",
+          "description": "Synapse 146802658 | nearest CAVE SegCLR: 3.473594 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            672848.0,
+            679896.0,
+            690920.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "9c6ef103da6c800ff68a30120dd4e5d39659c94b",
+          "description": "Synapse 222385331 | nearest CAVE SegCLR: 3.445865 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            849704.0,
+            549000.0,
+            639520.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "8610564f988dc841b003e2d986f54d96c7353d2c",
+          "description": "Synapse 212687268 | nearest CAVE SegCLR: 3.418650 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            842016.0,
+            620624.0,
+            801320.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "1c19744df69546f05b8e022589bf354bbea795f4",
+          "description": "Synapse 286714862 | nearest CAVE SegCLR: 3.377886 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            996848.0,
+            767760.0,
+            838360.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "a742afb74feda221b5e7098a254d9dca6988d6e3",
+          "description": "Synapse 209798966 | nearest CAVE SegCLR: 3.339001 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            817368.0,
+            634480.0,
+            1028280.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "4a4397d62b0921b9750e4120cc851d6e080f0cb8",
+          "description": "Synapse 123765521 | nearest CAVE SegCLR: 3.334187 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            631304.0,
+            537472.0,
+            629360.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "209d6815715d7b6a18550110d8565774a67b0f51",
+          "description": "Synapse 192793240 | nearest CAVE SegCLR: 3.310193 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            787616.0,
+            622744.0,
+            820640.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "cd1e5dcf73328966f9e3101d7bb09135f77fe381",
+          "description": "Synapse 252827635 | nearest CAVE SegCLR: 3.300230 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            920800.0,
+            850112.0,
+            938160.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "1e4e2fc82e25524a9866d38449f4e8c9cc2bb845",
+          "description": "Synapse 228254156 | nearest CAVE SegCLR: 3.231792 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            874344.0,
+            483744.0,
+            797840.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "0cd8d9612fba2055cb05ba78b5b1c3f4190a7fd7",
+          "description": "Synapse 187806958 | nearest CAVE SegCLR: 3.174397 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            781088.0,
+            480296.0,
+            604800.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "1369d9f256bbc45e86b3d55a197e0a7eab6a9751",
+          "description": "Synapse 184617295 | nearest CAVE SegCLR: 3.168293 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            779784.0,
+            476312.0,
+            743360.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "21a3a707420f97017e731eed64d7c203965b2368",
+          "description": "Synapse 153461253 | nearest CAVE SegCLR: 3.159838 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            695920.0,
+            628776.0,
+            872360.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "965509db72f24ecf40dadaacfbd471b4efa8fda1",
+          "description": "Synapse 175211936 | nearest CAVE SegCLR: 3.157974 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            736240.0,
+            698056.0,
+            906600.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "7f1061ecfba43e081a602cfb8ac7c9c59142f468",
+          "description": "Synapse 286715828 | nearest CAVE SegCLR: 3.068769 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            1002992.0,
+            769152.0,
+            835800.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "0157a77dc08d7a3ee26763b7c643428226be28d7",
+          "description": "Synapse 165019766 | nearest CAVE SegCLR: 3.009680 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            731504.0,
+            680584.0,
+            906120.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "f3556380e45263967b8abf1966630ae4d3c60bc3",
+          "description": "Synapse 174685807 | nearest CAVE SegCLR: 3.005563 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            746064.0,
+            600776.0,
+            819680.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "a0408b56a21f97fc187cbbbb065f57088f98e182",
+          "description": "Synapse 146726950 | nearest CAVE SegCLR: 3.001792 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            684984.0,
+            656440.0,
+            696360.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "0eb36b6a758e9981553fe20f5a67d25643a17153",
+          "description": "Synapse 192793296 | nearest CAVE SegCLR: 2.965940 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            788336.0,
+            622568.0,
+            820600.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "506ba5cf3b723ce015d7150b67fc043a73c3dd05",
+          "description": "Synapse 228471707 | nearest CAVE SegCLR: 2.964796 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            878872.0,
+            557552.0,
+            652840.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "5f44537595b00c13d6fe37e3fd74fa2cf18f27c0",
+          "description": "Synapse 210570952 | nearest CAVE SegCLR: 2.955218 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            827832.0,
+            731664.0,
+            919160.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "e8aa90e5e6240c604fcc3a3923ddbf53326f1233",
+          "description": "Synapse 125362713 | nearest CAVE SegCLR: 2.953940 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            628208.0,
+            669184.0,
+            1002400.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "58b251ee7b975bc366af58f9b699775027d9027f",
+          "description": "Synapse 105844934 | nearest CAVE SegCLR: 2.940400 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            575824.0,
+            619192.0,
+            791720.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "6fba9eefd8f02a6ec065fa49b6393d8007870bd6",
+          "description": "Synapse 205920660 | nearest CAVE SegCLR: 2.900438 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            824192.0,
+            607952.0,
+            1001120.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "008a0346823eb35746e01df24c51187d8d457b0a",
+          "description": "Synapse 125920340 | nearest CAVE SegCLR: 2.880911 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            631168.0,
+            665816.0,
+            1012240.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "d7d9681b5d63752afd22b8aa30d7231f8b6ae5f5",
+          "description": "Synapse 168804844 | nearest CAVE SegCLR: 2.854677 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            731072.0,
+            671976.0,
+            884840.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "2dd5262a830a269d666b6d937ea295e7fea0b515",
+          "description": "Synapse 205365981 | nearest CAVE SegCLR: 2.836403 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            801704.0,
+            884816.0,
+            939680.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "76dbafc05af731c0e0f4ed9bd6b40004224dcb7c",
+          "description": "Synapse 198921877 | nearest CAVE SegCLR: 2.821234 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            810176.0,
+            659936.0,
+            1047040.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "6c3663137bcedda2533ada75a990b65d3870d603",
+          "description": "Synapse 189340310 | nearest CAVE SegCLR: 2.810278 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            775504.0,
+            753224.0,
+            878880.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "24df8677e11e30781f8319eb5c0609dd29468c71",
+          "description": "Synapse 168998537 | nearest CAVE SegCLR: 2.803997 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            719768.0,
+            739608.0,
+            822600.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "81a51c727b8564de24098f7f2cc5535464cda3f8",
+          "description": "Synapse 125470825 | nearest CAVE SegCLR: 2.797542 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            627584.0,
+            613944.0,
+            832800.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "06e71d56c59a5bfe55b9dbcaf6e623545bcda663",
+          "description": "Synapse 136148095 | nearest CAVE SegCLR: 2.794589 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            669152.0,
+            608784.0,
+            662640.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "2d381c28c35d099dcc28452e979b23d8e4043ae0",
+          "description": "Synapse 88860232 | nearest CAVE SegCLR: 2.780929 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            551176.0,
+            690152.0,
+            917440.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "2affc8ae00d1ffdff9b22d0cd31cd62dc5db2d34",
+          "description": "Synapse 239020131 | nearest CAVE SegCLR: 2.772355 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            893880.0,
+            774728.0,
+            951080.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "ed2cfa088f65bc06192c85d4496ae59f88e73951",
+          "description": "Synapse 145264797 | nearest CAVE SegCLR: 2.760510 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            677584.0,
+            626024.0,
+            670800.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "b039665812ca06837f07a6bc7489b19e184df995",
+          "description": "Synapse 206406235 | nearest CAVE SegCLR: 2.749510 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            818664.0,
+            693976.0,
+            872240.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "42a1ec5255d5da76ddf2d3628fcfe8f2ffa42174",
+          "description": "Synapse 214954955 | nearest CAVE SegCLR: 2.736246 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            835264.0,
+            602888.0,
+            851000.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "3774ab3addec3990c6cf861331e59d7c9a17bb71",
+          "description": "Synapse 187207588 | nearest CAVE SegCLR: 2.727449 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            778728.0,
+            482864.0,
+            600200.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "dc964f93fb67a9154f74eed424b0be0fb4361b3f",
+          "description": "Synapse 292830012 | nearest CAVE SegCLR: 2.726404 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            1023168.0,
+            750376.0,
+            813600.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "c333e41be5c4c5977df6b32793c2c9e28b3c797e",
+          "description": "Synapse 226503982 | nearest CAVE SegCLR: 2.692235 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            876376.0,
+            551200.0,
+            641640.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "f0e1978901eca2e53d8c3dffb4fd9eedfc0947ce",
+          "description": "Synapse 168802712 | nearest CAVE SegCLR: 2.690201 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            724232.0,
+            672560.0,
+            887200.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "ade588f537f7f092207a9b320088a8c235ca5959",
+          "description": "Synapse 172226540 | nearest CAVE SegCLR: 2.684498 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            747760.0,
+            613296.0,
+            834400.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "d38502f96935d745de722be476b8d8701becb242",
+          "description": "Synapse 195057899 | nearest CAVE SegCLR: 2.680287 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            796216.0,
+            494296.0,
+            705320.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "976a2bea36415a2903309f60bfb7ea8108ae522e",
+          "description": "Synapse 146259613 | nearest CAVE SegCLR: 2.647577 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            678536.0,
+            702968.0,
+            746880.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "f001b430b89e64e88ee2c9bd95d5d354f98f994f",
+          "description": "Synapse 119709757 | nearest CAVE SegCLR: 2.615645 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            617472.0,
+            700648.0,
+            935840.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "ec6f8aea230c0f98164e6e5a097ddfcaf10526ea",
+          "description": "Synapse 224221529 | nearest CAVE SegCLR: 2.608908 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            855680.0,
+            736424.0,
+            926160.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "5c63d2b247e6b91805862d9d61600b179900df68",
+          "description": "Synapse 146582645 | nearest CAVE SegCLR: 2.585288 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            671952.0,
+            614064.0,
+            864840.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "88caf23db254f469a7083023f1f6774d5f5a27f7",
+          "description": "Synapse 189340181 | nearest CAVE SegCLR: 2.575764 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            775168.0,
+            753040.0,
+            878120.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "6619560429c4bcab5194be0a7e484bdd507f5607",
+          "description": "Synapse 194697632 | nearest CAVE SegCLR: 2.572694 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            798936.0,
+            636656.0,
+            838120.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "a816241eccddaa3665613ac5d839dba00d69d202",
+          "description": "Synapse 72320778 | nearest CAVE SegCLR: 2.554845 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            509744.0,
+            700144.0,
+            921800.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "1084b83b9a64ef7bcf1f3d0d9784ab0910a6ca9a",
+          "description": "Synapse 145264671 | nearest CAVE SegCLR: 2.504473 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            677144.0,
+            627856.0,
+            672360.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "dda96b49aab9ec055e4785bec6d67a35181b62f9",
+          "description": "Synapse 238068668 | nearest CAVE SegCLR: 2.480129 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            889128.0,
+            607872.0,
+            751040.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "edb945387c9f0746e2fb1926a66bbcfdd95a2ab6",
+          "description": "Synapse 132050357 | nearest CAVE SegCLR: 2.479548 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            643048.0,
+            663552.0,
+            1064040.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "4a283053a42969230b9bd8b1b2049fc8f9dc92dd",
+          "description": "Synapse 215984454 | nearest CAVE SegCLR: 2.471599 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            845192.0,
+            613968.0,
+            780000.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "8f215b35650514ccdc6c9dfc8a12a89fb80bd3c8",
+          "description": "Synapse 105845168 | nearest CAVE SegCLR: 2.459854 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            576904.0,
+            618656.0,
+            792120.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "8ea4978885b5acd14d4ad1876d0bc0fef3c27c26",
+          "description": "Synapse 212686404 | nearest CAVE SegCLR: 2.443630 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            838136.0,
+            624320.0,
+            799280.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "d98d51ae696df7f18088b5ca599838efc9539230",
+          "description": "Synapse 187806130 | nearest CAVE SegCLR: 2.437861 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            778784.0,
+            482464.0,
+            607440.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "ff5e8dced7d6a6eb5baae56b01152c23c5c9da8a",
+          "description": "Synapse 205366034 | nearest CAVE SegCLR: 2.433960 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            802112.0,
+            887152.0,
+            940320.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "cff0e5ff2e01e6bfc67b4829627be924e9cf79ad",
+          "description": "Synapse 226461931 | nearest CAVE SegCLR: 2.409448 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            867696.0,
+            614416.0,
+            761400.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "e6337908831bb4e82fd1b1f138f559751432833e",
+          "description": "Synapse 72124912 | nearest CAVE SegCLR: 2.365688 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            511176.0,
+            697040.0,
+            920080.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "f1377404e98cdcfd0bdaa3e776cc9d20b5e28a16",
+          "description": "Synapse 193214012 | nearest CAVE SegCLR: 2.339915 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            794408.0,
+            496320.0,
+            726600.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "806b774d30442e1b988d5aca5567899ab1c99aff",
+          "description": "Synapse 171618915 | nearest CAVE SegCLR: 2.328618 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            743944.0,
+            656648.0,
+            883000.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "142166523f0b077e8d4b5387fd30a0ede2b47200",
+          "description": "Synapse 134086574 | nearest CAVE SegCLR: 2.325167 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            639016.0,
+            686656.0,
+            968800.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "1eda9b85f893139e037beaa42e7742fa39273b48",
+          "description": "Synapse 224177956 | nearest CAVE SegCLR: 2.321448 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            851832.0,
+            542664.0,
+            1011720.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "8348452875081a4106555434cfd65ee34f85e187",
+          "description": "Synapse 187207899 | nearest CAVE SegCLR: 2.319766 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            779368.0,
+            479328.0,
+            602400.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "30e539cbb7cc5a3278061a1c1e4f86a8e7d6c545",
+          "description": "Synapse 128991249 | nearest CAVE SegCLR: 2.288084 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            650400.0,
+            555088.0,
+            635960.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "8a007469a8fcc00278bcc0607a12d875132f3277",
+          "description": "Synapse 217675917 | nearest CAVE SegCLR: 2.277767 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            836800.0,
+            630168.0,
+            836720.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "29be6f07960de53584d758a382244c3171a25ce9",
+          "description": "Synapse 72124940 | nearest CAVE SegCLR: 2.277542 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            511248.0,
+            696824.0,
+            919880.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "2a63ad2889b8f483288a6fe9208778d6c92dbbe7",
+          "description": "Synapse 199405495 | nearest CAVE SegCLR: 2.269097 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            813376.0,
+            649920.0,
+            847360.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "01e3eaed41e9e92cac86bbd6b57648df0381bdb3",
+          "description": "Synapse 237738672 | nearest CAVE SegCLR: 2.226660 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            883880.0,
+            561024.0,
+            661200.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "acb159b9d3a4b5470207cdbd3c36a5988c414c4b",
+          "description": "Synapse 187805507 | nearest CAVE SegCLR: 2.212373 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            776608.0,
+            481568.0,
+            606640.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "19746b82c6342620a46c2270e97b01375f82c1f3",
+          "description": "Synapse 194697661 | nearest CAVE SegCLR: 2.206115 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            799000.0,
+            637360.0,
+            838040.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "50ee4d55dc470326b0423daa38cb1db66718ec8d",
+          "description": "Synapse 240662769 | nearest CAVE SegCLR: 2.193270 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            907464.0,
+            592000.0,
+            738360.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "2c3bc26671638026f6c8bc1005f823ffd1960759",
+          "description": "Synapse 237739052 | nearest CAVE SegCLR: 2.177793 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            885104.0,
+            563184.0,
+            659520.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "7824abae4531d19411b25936574f5445749d277b",
+          "description": "Synapse 94619281 | nearest CAVE SegCLR: 2.172969 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            558616.0,
+            496440.0,
+            600240.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "63d1345c9e4c8473d35c48a678aa850d7530335d",
+          "description": "Synapse 237707302 | nearest CAVE SegCLR: 2.172969 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            885848.0,
+            761544.0,
+            944360.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "71f645864a41a4258987fc3d3d0b3a6009183c8e",
+          "description": "Synapse 146374625 | nearest CAVE SegCLR: 2.170552 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            681896.0,
+            661928.0,
+            695160.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "c963dcd61d364a80cbcee751c3e5c03cdde66256",
+          "description": "Synapse 237739009 | nearest CAVE SegCLR: 2.155328 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            884968.0,
+            563448.0,
+            659400.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "e6a1d27ea5cbe58691dc0eeab340a4ed3235b365",
+          "description": "Synapse 146726688 | nearest CAVE SegCLR: 2.149441 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            684040.0,
+            656448.0,
+            695920.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "04df90ecee69b16f57b712e7a9ecbcd670fd3d6e",
+          "description": "Synapse 210248110 | nearest CAVE SegCLR: 2.148011 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            818032.0,
+            619920.0,
+            1040400.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "88f75b23ac494edf01628d6c8ac72e3ecec852ef",
+          "description": "Synapse 195382230 | nearest CAVE SegCLR: 2.146118 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            787608.0,
+            701728.0,
+            1001000.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "a39be34991a03c6c89c56dc51e99613422dfd5b2",
+          "description": "Synapse 171976040 | nearest CAVE SegCLR: 2.121826 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            744568.0,
+            700872.0,
+            915040.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "83e7d88f48923c380479b9e6469916228561660f",
+          "description": "Synapse 226461925 | nearest CAVE SegCLR: 2.119517 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            867560.0,
+            614136.0,
+            761280.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "efa7c0c08221f858160d197267b6d71f4c5d982a",
+          "description": "Synapse 280358939 | nearest CAVE SegCLR: 2.107480 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            992856.0,
+            771440.0,
+            834760.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "f61979792dfaaccfc6641aa9a0d4c1d8fdaae0cb",
+          "description": "Synapse 186539998 | nearest CAVE SegCLR: 2.087525 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            778464.0,
+            690896.0,
+            1019200.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "f11941fc0f327d2cb70a1ed4a52faade8f9c264a",
+          "description": "Synapse 216864050 | nearest CAVE SegCLR: 2.087050 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            841600.0,
+            585208.0,
+            881320.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "edc0c54dc98c9c02ba0ced0b0d1065525a848048",
+          "description": "Synapse 237481655 | nearest CAVE SegCLR: 2.086053 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            894696.0,
+            776120.0,
+            879480.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "1adbb9afbc7a9a5a92ab83852bd53c3513342633",
+          "description": "Synapse 196470579 | nearest CAVE SegCLR: 2.082383 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            788424.0,
+            707520.0,
+            983200.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "5b27364a14a6d26ab5c5575afe341090d357d02c",
+          "description": "Synapse 114998065 | nearest CAVE SegCLR: 2.078230 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            616768.0,
+            602280.0,
+            824240.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "8429ec043e4bf565f833e884775db97e26e13447",
+          "description": "Synapse 171276933 | nearest CAVE SegCLR: 2.074053 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            748904.0,
+            580776.0,
+            810520.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "865d36384345e8d786f3e62d275ae1e305bb6938",
+          "description": "Synapse 143197361 | nearest CAVE SegCLR: 2.049156 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            672688.0,
+            600840.0,
+            657760.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "010682ece65f19f2cee886ab837197688fd11ce6",
+          "description": "Synapse 129169479 | nearest CAVE SegCLR: 2.040957 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            641536.0,
+            658400.0,
+            983440.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "9ba2cb4e0fe96e32978d8977112098ebb38ef386",
+          "description": "Synapse 198963817 | nearest CAVE SegCLR: 2.038823 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            803480.0,
+            588272.0,
+            816640.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "0e83f2ce8050cf4cbf7c9069d7f2829ef060ae33",
+          "description": "Synapse 130911112 | nearest CAVE SegCLR: 2.037175 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            637624.0,
+            545960.0,
+            629160.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "d69ad3deb3451834fd190e6add979852df88904f",
+          "description": "Synapse 129169627 | nearest CAVE SegCLR: 2.032362 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            641648.0,
+            658120.0,
+            983520.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "b27325b7b973233deb31376c989cb22a99e26f37",
+          "description": "Synapse 138352053 | nearest CAVE SegCLR: 2.018427 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            665360.0,
+            594328.0,
+            654560.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "b3e729dca2850f29fa1c1acd693c6a2beacca188",
+          "description": "Synapse 237707283 | nearest CAVE SegCLR: 2.010166 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            885800.0,
+            761576.0,
+            944560.0
+          ]
+        },
+        {
+          "type": "point",
+          "id": "f0afa681711ba1beb0593338a6e283f7aee17944",
+          "description": "Synapse 199058662 | nearest CAVE SegCLR: 2.008000 um",
+          "segments": [
+            [
+              864691135504203357
+            ]
+          ],
+          "props": [],
+          "point": [
+            814448.0,
+            620016.0,
+            1019720.0
+          ]
+        }
+      ],
+      "linkedSegmentationLayer": {
+        "segments": "segmentation"
+      },
+      "shader": "\n#uicontrol vec3 markerColor color(default=\"#ff3333\");\n#uicontrol float markerSize slider(min=0, max=20, default=12.0);\n\nvoid main() {\n\n\nsetPointMarkerSize(markerSize);\nsetColor(markerColor);\n}\n",
+      "annotationProperties": [],
+      "toolBindings": {},
+      "swapVisbleSegmentsOnMove": true,
+      "name": "ROIs: presynaptic points >2 um"
+    }
+  ]
+}

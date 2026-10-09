@@ -1,0 +1,374 @@
+{
+  "note": "Nested concurrent timings overlap; do not sum. Warm disk may include OS page cache. Fresh node-local cache; production shared-filesystem I/O differs.",
+  "results": [
+    {
+      "root_id": 864691132536286810,
+      "phase": "cold_remote",
+      "nodes": 128,
+      "elapsed_s": 34.102255682460964,
+      "assembly_wall_s": 32.51386214885861,
+      "inputs_per_min": 225.20504425019251,
+      "cpu_s": 52.464802999999996,
+      "phases": {
+        "remote_fetch_including_transport_decompression": {
+          "calls": 1727,
+          "summed_thread_wall_s": 392.47661877050996,
+          "summed_thread_cpu_s": 4.994413350000006
+        },
+        "file_lock": {
+          "calls": 1599,
+          "summed_thread_wall_s": 1.4449713882058859,
+          "summed_thread_cpu_s": 0.016042877999996086
+        },
+        "chunk_decode": {
+          "calls": 1599,
+          "summed_thread_wall_s": 8.70053921174258,
+          "summed_thread_cpu_s": 4.375858871000007
+        },
+        "volume_download_total": {
+          "calls": 1599,
+          "summed_thread_wall_s": 379.81054613925517,
+          "summed_thread_cpu_s": 14.717178010999977
+        },
+        "disk_numpy_write": {
+          "calls": 1601,
+          "summed_thread_wall_s": 6.311147520318627,
+          "summed_thread_cpu_s": 0.6708444339999968
+        },
+        "crop_assembly_including_wait": {
+          "calls": 256,
+          "summed_thread_wall_s": 485.678035505116,
+          "summed_thread_cpu_s": 1.6354421540000004
+        },
+        "root_membership_mask": {
+          "calls": 394,
+          "summed_thread_wall_s": 76.60223304573447,
+          "summed_thread_cpu_s": 31.061899541000013
+        },
+        "mask_pack": {
+          "calls": 522,
+          "summed_thread_wall_s": 1.9263511085882783,
+          "summed_thread_cpu_s": 0.09620231399999865
+        }
+      }
+    },
+    {
+      "root_id": 864691132536286810,
+      "phase": "warm_disk",
+      "nodes": 128,
+      "elapsed_s": 2.9839525865390897,
+      "assembly_wall_s": 2.806300817988813,
+      "inputs_per_min": 2573.7674367365125,
+      "cpu_s": 4.632799000000004,
+      "phases": {
+        "remote_fetch_including_transport_decompression": {
+          "calls": 64,
+          "summed_thread_wall_s": 17.00565344002098,
+          "summed_thread_cpu_s": 0.15048728000000006
+        },
+        "disk_numpy_read": {
+          "calls": 1599,
+          "summed_thread_wall_s": 16.059081541374326,
+          "summed_thread_cpu_s": 0.731132981
+        },
+        "crop_assembly_including_wait": {
+          "calls": 256,
+          "summed_thread_wall_s": 19.044007319957018,
+          "summed_thread_cpu_s": 1.5678108759999994
+        },
+        "mask_unpack": {
+          "calls": 394,
+          "summed_thread_wall_s": 1.472620340064168,
+          "summed_thread_cpu_s": 0.529053891000002
+        },
+        "mask_pack": {
+          "calls": 128,
+          "summed_thread_wall_s": 0.5931095527485013,
+          "summed_thread_cpu_s": 0.04497305100000018
+        },
+        "disk_numpy_write": {
+          "calls": 2,
+          "summed_thread_wall_s": 0.13843407575041056,
+          "summed_thread_cpu_s": 0.13703004499999993
+        }
+      }
+    },
+    {
+      "root_id": 864691132536286810,
+      "phase": "warm_ram",
+      "nodes": 128,
+      "elapsed_s": 1.7377893598750234,
+      "assembly_wall_s": 1.5088900858536363,
+      "inputs_per_min": 4419.407885287273,
+      "cpu_s": 2.8131910000000033,
+      "phases": {
+        "remote_fetch_including_transport_decompression": {
+          "calls": 64,
+          "summed_thread_wall_s": 11.936627274379134,
+          "summed_thread_cpu_s": 0.14994994199999995
+        },
+        "crop_assembly_including_wait": {
+          "calls": 256,
+          "summed_thread_wall_s": 6.275004746392369,
+          "summed_thread_cpu_s": 1.3682661560000002
+        },
+        "mask_pack": {
+          "calls": 128,
+          "summed_thread_wall_s": 0.1659576054662466,
+          "summed_thread_cpu_s": 0.029921550000000057
+        },
+        "disk_numpy_write": {
+          "calls": 2,
+          "summed_thread_wall_s": 0.1392253926023841,
+          "summed_thread_cpu_s": 0.13785775300000003
+        }
+      }
+    },
+    {
+      "root_id": 864691132536904794,
+      "phase": "cold_remote",
+      "nodes": 128,
+      "elapsed_s": 24.23157118819654,
+      "assembly_wall_s": 23.74985254742205,
+      "inputs_per_min": 316.9418912357202,
+      "cpu_s": 42.976842999999995,
+      "phases": {
+        "remote_fetch_including_transport_decompression": {
+          "calls": 1562,
+          "summed_thread_wall_s": 319.14468758553267,
+          "summed_thread_cpu_s": 4.28629950400001
+        },
+        "file_lock": {
+          "calls": 1498,
+          "summed_thread_wall_s": 1.1982930367812514,
+          "summed_thread_cpu_s": 0.013642523999993106
+        },
+        "chunk_decode": {
+          "calls": 1498,
+          "summed_thread_wall_s": 3.224699511192739,
+          "summed_thread_cpu_s": 2.3203542149999934
+        },
+        "volume_download_total": {
+          "calls": 1498,
+          "summed_thread_wall_s": 312.4423638107255,
+          "summed_thread_cpu_s": 10.839091731999973
+        },
+        "disk_numpy_write": {
+          "calls": 1500,
+          "summed_thread_wall_s": 2.97522134706378,
+          "summed_thread_cpu_s": 0.644736033000012
+        },
+        "crop_assembly_including_wait": {
+          "calls": 256,
+          "summed_thread_wall_s": 343.42901427764446,
+          "summed_thread_cpu_s": 1.559737453000001
+        },
+        "root_membership_mask": {
+          "calls": 331,
+          "summed_thread_wall_s": 41.33354963362217,
+          "summed_thread_cpu_s": 27.13539774300001
+        },
+        "mask_pack": {
+          "calls": 459,
+          "summed_thread_wall_s": 0.6030938876792789,
+          "summed_thread_cpu_s": 0.07976892100001062
+        }
+      }
+    },
+    {
+      "root_id": 864691132536904794,
+      "phase": "warm_disk",
+      "nodes": 128,
+      "elapsed_s": 2.6494001019746065,
+      "assembly_wall_s": 2.4560189368203282,
+      "inputs_per_min": 2898.76942115163,
+      "cpu_s": 4.1119330000000005,
+      "phases": {
+        "remote_fetch_including_transport_decompression": {
+          "calls": 64,
+          "summed_thread_wall_s": 16.64605914801359,
+          "summed_thread_cpu_s": 0.16613465299999997
+        },
+        "disk_numpy_read": {
+          "calls": 1498,
+          "summed_thread_wall_s": 13.271345609799027,
+          "summed_thread_cpu_s": 0.5690471629999827
+        },
+        "crop_assembly_including_wait": {
+          "calls": 256,
+          "summed_thread_wall_s": 15.693048840388656,
+          "summed_thread_cpu_s": 1.4676213319999998
+        },
+        "mask_unpack": {
+          "calls": 331,
+          "summed_thread_wall_s": 0.8429359998553991,
+          "summed_thread_cpu_s": 0.23267305600000032
+        },
+        "mask_pack": {
+          "calls": 128,
+          "summed_thread_wall_s": 0.2965680258348584,
+          "summed_thread_cpu_s": 0.026818016999999916
+        },
+        "disk_numpy_write": {
+          "calls": 2,
+          "summed_thread_wall_s": 0.13968908693641424,
+          "summed_thread_cpu_s": 0.13777936600000018
+        }
+      }
+    },
+    {
+      "root_id": 864691132536904794,
+      "phase": "warm_ram",
+      "nodes": 128,
+      "elapsed_s": 1.7156569948419929,
+      "assembly_wall_s": 1.5027077086269855,
+      "inputs_per_min": 4476.419251102873,
+      "cpu_s": 3.125064999999992,
+      "phases": {
+        "remote_fetch_including_transport_decompression": {
+          "calls": 64,
+          "summed_thread_wall_s": 12.013820258900523,
+          "summed_thread_cpu_s": 0.321598591
+        },
+        "crop_assembly_including_wait": {
+          "calls": 256,
+          "summed_thread_wall_s": 4.970648875460029,
+          "summed_thread_cpu_s": 1.4008094790000005
+        },
+        "mask_pack": {
+          "calls": 128,
+          "summed_thread_wall_s": 0.1576482756063342,
+          "summed_thread_cpu_s": 0.041508721999999935
+        },
+        "disk_numpy_write": {
+          "calls": 2,
+          "summed_thread_wall_s": 0.14342810213565826,
+          "summed_thread_cpu_s": 0.1416664479999996
+        }
+      }
+    },
+    {
+      "root_id": 864691132544823185,
+      "phase": "cold_remote",
+      "nodes": 128,
+      "elapsed_s": 29.538401316851377,
+      "assembly_wall_s": 28.36070294585079,
+      "inputs_per_min": 260.0005300767118,
+      "cpu_s": 61.798928000000004,
+      "phases": {
+        "remote_fetch_including_transport_decompression": {
+          "calls": 1770,
+          "summed_thread_wall_s": 366.3105573831126,
+          "summed_thread_cpu_s": 4.853601169000001
+        },
+        "file_lock": {
+          "calls": 1706,
+          "summed_thread_wall_s": 0.7290629306808114,
+          "summed_thread_cpu_s": 0.016844282000007205
+        },
+        "chunk_decode": {
+          "calls": 1706,
+          "summed_thread_wall_s": 4.426012698560953,
+          "summed_thread_cpu_s": 2.7911740199999997
+        },
+        "volume_download_total": {
+          "calls": 1706,
+          "summed_thread_wall_s": 362.8363985279575,
+          "summed_thread_cpu_s": 12.410035239999976
+        },
+        "disk_numpy_write": {
+          "calls": 1708,
+          "summed_thread_wall_s": 4.719537917524576,
+          "summed_thread_cpu_s": 0.7303125639999859
+        },
+        "crop_assembly_including_wait": {
+          "calls": 256,
+          "summed_thread_wall_s": 422.279982204549,
+          "summed_thread_cpu_s": 1.8255090219999994
+        },
+        "root_membership_mask": {
+          "calls": 397,
+          "summed_thread_wall_s": 64.36816685367376,
+          "summed_thread_cpu_s": 43.447354529
+        },
+        "mask_pack": {
+          "calls": 525,
+          "summed_thread_wall_s": 0.7524769809097052,
+          "summed_thread_cpu_s": 0.0918318809999893
+        }
+      }
+    },
+    {
+      "root_id": 864691132544823185,
+      "phase": "warm_disk",
+      "nodes": 128,
+      "elapsed_s": 2.4379214895889163,
+      "assembly_wall_s": 2.216536804102361,
+      "inputs_per_min": 3150.2244977113705,
+      "cpu_s": 4.1041360000000076,
+      "phases": {
+        "remote_fetch_including_transport_decompression": {
+          "calls": 64,
+          "summed_thread_wall_s": 13.417452986352146,
+          "summed_thread_cpu_s": 0.14035507200000003
+        },
+        "disk_numpy_read": {
+          "calls": 1706,
+          "summed_thread_wall_s": 13.679469676688313,
+          "summed_thread_cpu_s": 0.6520192370000117
+        },
+        "crop_assembly_including_wait": {
+          "calls": 256,
+          "summed_thread_wall_s": 15.729106104932725,
+          "summed_thread_cpu_s": 1.3794075679999995
+        },
+        "mask_unpack": {
+          "calls": 397,
+          "summed_thread_wall_s": 1.1799780679866672,
+          "summed_thread_cpu_s": 0.35136821300000065
+        },
+        "mask_pack": {
+          "calls": 128,
+          "summed_thread_wall_s": 0.2702048886567354,
+          "summed_thread_cpu_s": 0.02618207800000002
+        },
+        "disk_numpy_write": {
+          "calls": 2,
+          "summed_thread_wall_s": 0.13791820034384727,
+          "summed_thread_cpu_s": 0.13661987700000022
+        }
+      }
+    },
+    {
+      "root_id": 864691132544823185,
+      "phase": "warm_ram",
+      "nodes": 128,
+      "elapsed_s": 1.7258483599871397,
+      "assembly_wall_s": 1.5557444207370281,
+      "inputs_per_min": 4449.985397359724,
+      "cpu_s": 2.829175999999997,
+      "phases": {
+        "remote_fetch_including_transport_decompression": {
+          "calls": 64,
+          "summed_thread_wall_s": 12.954902218654752,
+          "summed_thread_cpu_s": 0.13014859299999998
+        },
+        "crop_assembly_including_wait": {
+          "calls": 256,
+          "summed_thread_wall_s": 6.025111169554293,
+          "summed_thread_cpu_s": 1.429415797999999
+        },
+        "mask_pack": {
+          "calls": 128,
+          "summed_thread_wall_s": 0.1480827024206519,
+          "summed_thread_cpu_s": 0.031116083999999877
+        },
+        "disk_numpy_write": {
+          "calls": 2,
+          "summed_thread_wall_s": 0.13328512851148844,
+          "summed_thread_cpu_s": 0.1319829239999999
+        }
+      }
+    }
+  ]
+}

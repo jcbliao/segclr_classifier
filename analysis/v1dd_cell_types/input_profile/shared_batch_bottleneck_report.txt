@@ -1,0 +1,9 @@
+Shared batch bottleneck profile, 2026-10-01
+
+Global queue sample: 129.2 of 150.0 wall seconds spent waiting for queue flock; no batch started during that sample. Queue claim scans hundreds of per-batch file locks and repeatedly attempts denied storage reservations while holding the global lock.
+
+Direct claimed production batch sample: 178.6 seconds elapsed in preparation. Chunk tasks accumulated 2693.3 thread-seconds; 2487.0 (92.3%) in shard/chunk file locks, 195.9 (7.3%) in remote image/segmentation downloads, 6.4 in mask computation. SQLite timings are small in comparison. Thread-seconds aggregate concurrent tasks; inclusive crop/chunk/connection categories overlap and must not be added to leaf timings. This is a partial batch, not a completed-batch throughput benchmark.
+
+The exclusive per-shard cache lock is held across remote downloads and duplicate-chunk locks, forcing unrelated chunks in the same shard to wait for network requests. At high worker counts this produces severe convoying. Safe improvement: keep per-chunk duplicate-download ownership, limit per-shard locking to short database operations, and move downloads/mask computation outside that shard lock. Separately shorten global queue critical sections by tracking active claims and avoiding repeated full-root scans/unchanged budget writes under the global lock.
+
+The temporary diagnostic worker was stopped after obtaining these timings, releasing its unfinished claim for normal workers. The temporarily held production worker was released. No production cache/queue implementation was changed during this diagnostic.

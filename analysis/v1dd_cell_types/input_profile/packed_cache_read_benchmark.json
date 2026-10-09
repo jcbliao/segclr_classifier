@@ -1,0 +1,7 @@
+{
+  "chunks": 120,
+  "reads": 480,
+  "packed_seconds": 0.1209349287673831,
+  "sqlite_seconds": 65.37846043799073,
+  "read_speedup": 540.6085826845396
+}

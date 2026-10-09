@@ -1,0 +1,182 @@
+[
+  {
+    "notebook": "20260811/training_curves.ipynb",
+    "status": "passed",
+    "seconds": 6.25
+  },
+  {
+    "notebook": "analysis/all_windows/architecture_comparison.ipynb",
+    "status": "passed",
+    "seconds": 19.7
+  },
+  {
+    "notebook": "analysis/all_windows/embedding_path_geodesics.ipynb",
+    "status": "passed",
+    "seconds": 12.53
+  },
+  {
+    "notebook": "analysis/all_windows/feature_prediction_correlation.ipynb",
+    "status": "passed",
+    "seconds": 19.22
+  },
+  {
+    "notebook": "analysis/all_windows/neighborhood_cable.ipynb",
+    "status": "passed",
+    "seconds": 7.83
+  },
+  {
+    "notebook": "analysis/all_windows/skeleton stats.ipynb",
+    "status": "passed",
+    "seconds": 1344.7
+  },
+  {
+    "notebook": "analysis/casey_coarse_vs_hierarchy.ipynb",
+    "status": "passed",
+    "seconds": 5.01
+  },
+  {
+    "notebook": "analysis/presynaptic/casey_confidence_cave/casey_confidence_comparison.ipynb",
+    "status": "passed",
+    "seconds": 5.22
+  },
+  {
+    "notebook": "analysis/presynaptic/casey_confidence_native/casey_confidence_comparison.ipynb",
+    "status": "passed",
+    "seconds": 4.48
+  },
+  {
+    "notebook": "analysis/presynaptic/cave_embedding_augmentation_conf0.7/embedding_augmentation_comparison.ipynb",
+    "status": "passed",
+    "seconds": 4.17
+  },
+  {
+    "notebook": "analysis/presynaptic/cave_pre_post_v1dd_addition/pre_post_comparison.ipynb",
+    "status": "passed",
+    "seconds": 2.02
+  },
+  {
+    "notebook": "analysis/presynaptic/cave_skeletons/presynaptic_axon_database_figures.ipynb",
+    "status": "passed",
+    "seconds": 11.36
+  },
+  {
+    "notebook": "analysis/presynaptic/cave_skeletons_pre_post/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_pre_post_three_class_5folds.ipynb",
+    "status": "passed",
+    "seconds": 3.87
+  },
+  {
+    "notebook": "analysis/presynaptic/cave_skeletons_pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_three_class_5folds.ipynb",
+    "status": "passed",
+    "seconds": 3.97
+  },
+  {
+    "notebook": "analysis/presynaptic/cave_v1dd_addition/embedding_augmentation_comparison.ipynb",
+    "status": "passed",
+    "seconds": 3.04
+  },
+  {
+    "notebook": "analysis/presynaptic/distance_evaluation/evaluating_presynaptic.ipynb",
+    "status": "passed",
+    "seconds": 2.11
+  },
+  {
+    "notebook": "analysis/presynaptic/native_pre_post_axon_filtered/pre_post_comparison.ipynb",
+    "status": "passed",
+    "seconds": 3.22
+  },
+  {
+    "notebook": "analysis/presynaptic/native_pre_post_axon_filtered_equal_sampling/pre_post_comparison.ipynb",
+    "status": "passed",
+    "seconds": 3.28
+  },
+  {
+    "notebook": "analysis/presynaptic/native_single_pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_5folds.ipynb",
+    "status": "passed",
+    "seconds": 4.78
+  },
+  {
+    "notebook": "analysis/presynaptic/native_single_pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_three_class_5folds.ipynb",
+    "status": "passed",
+    "seconds": 3.8
+  },
+  {
+    "notebook": "analysis/presynaptic/native_single_pre_post/pre_post_comparison.ipynb",
+    "status": "passed",
+    "seconds": 5.81
+  },
+  {
+    "notebook": "analysis/presynaptic/native_skeletons_pre_post/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_post_5folds.ipynb",
+    "status": "passed",
+    "seconds": 4.72
+  },
+  {
+    "notebook": "analysis/presynaptic/native_skeletons_pre_post/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_post_three_class_5folds.ipynb",
+    "status": "passed",
+    "seconds": 3.59
+  },
+  {
+    "notebook": "analysis/presynaptic/native_skeletons_pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_pre_post_5folds.ipynb",
+    "status": "passed",
+    "seconds": 4.84
+  },
+  {
+    "notebook": "analysis/presynaptic/native_skeletons_pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_pre_post_three_class_5folds.ipynb",
+    "status": "passed",
+    "seconds": 3.93
+  },
+  {
+    "notebook": "analysis/presynaptic/native_skeletons_pre_post/pre_post_comparison.ipynb",
+    "status": "passed",
+    "seconds": 5.23
+  },
+  {
+    "notebook": "analysis/presynaptic/new_skeletons/skeleton_stats.ipynb",
+    "status": "passed",
+    "seconds": 29.82
+  },
+  {
+    "notebook": "analysis/presynaptic/new_skeletons_native/native_trajectory_diagnostics.ipynb",
+    "status": "passed",
+    "seconds": 155.05
+  },
+  {
+    "notebook": "analysis/presynaptic/new_skeletons_native/presynaptic_axon_database_figures.ipynb",
+    "status": "passed",
+    "seconds": 4.97
+  },
+  {
+    "notebook": "analysis/presynaptic/new_skeletons_native/skeleton_comparison_native.ipynb",
+    "status": "passed",
+    "seconds": 4.62
+  },
+  {
+    "notebook": "analysis/presynaptic/new_skeletons_native/skeleton_stats.ipynb",
+    "status": "passed",
+    "seconds": 35.52
+  },
+  {
+    "notebook": "analysis/presynaptic/skeleton_comparison/geometry_vs_confidence.ipynb",
+    "status": "passed",
+    "seconds": 19.28
+  },
+  {
+    "notebook": "analysis/presynaptic/skeleton_comparison/skeleton_comparison.ipynb",
+    "status": "passed",
+    "seconds": 2.77
+  },
+  {
+    "notebook": "analysis/soma_restriction.ipynb",
+    "status": "passed",
+    "seconds": 62.31
+  },
+  {
+    "notebook": "analysis/synapse_inventory.ipynb",
+    "status": "passed",
+    "seconds": 5.34
+  },
+  {
+    "notebook": "archive/geodesic_radius_20260828/training_curves.ipynb",
+    "status": "passed",
+    "seconds": 8.2
+  }
+]

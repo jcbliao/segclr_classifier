@@ -1,0 +1,1852 @@
+{
+  "dimensions": {
+    "x": [
+      8e-09,
+      "m"
+    ],
+    "y": [
+      8e-09,
+      "m"
+    ],
+    "z": [
+      4e-08,
+      "m"
+    ]
+  },
+  "position": [
+    90865.5,
+    76574.5,
+    21375.0
+  ],
+  "crossSectionScale": 0.25,
+  "projectionOrientation": [
+    -0.756763219833374,
+    0.17967496812343597,
+    0.10323526710271835,
+    0.6199748516082764
+  ],
+  "projectionScale": 1156694.743568933,
+  "layers": [
+    {
+      "type": "image",
+      "source": "precomputed://https://bossdb-open-data.s3.amazonaws.com/iarpa_microns/minnie/minnie65/em",
+      "tab": "source",
+      "shader": "#uicontrol float black slider(min=0, max=1, default=0.0)\n#uicontrol float white slider(min=0, max=1, default=1.0)\nfloat rescale(float value) {\n  return (value - black) / (white - black);\n}\nvoid main() {\n  float val = toNormalized(getDataValue());\n  if (val < black) {\n    emitRGB(vec3(0, 0, 0));\n  } else if (val > white) {\n    emitRGB(vec3(1.0, 1.0, 1.0));\n  } else {\n    emitGrayscale(rescale(val));\n  }\n}\n",
+      "name": "img"
+    },
+    {
+      "type": "segmentation",
+      "source": [
+        {
+          "url": "graphene://middleauth+https://minnie.microns-daf.com/segmentation/table/minnie3_v1",
+          "subsources": {
+            "default": true,
+            "graph": true,
+            "bounds": true,
+            "mesh": true
+          },
+          "enableDefaultSubsources": false
+        },
+        {
+          "url": "precomputed://middleauth+https://minnie.microns-daf.com/skeletoncache/api/v1/minnie65_phase3_v1/precomputed/skeleton",
+          "subsources": {
+            "default": true
+          },
+          "enableDefaultSubsources": false
+        }
+      ],
+      "tab": "source",
+      "segments": [
+        "864691135464991645"
+      ],
+      "name": "seg",
+      "selectedAlpha": 0.4,
+      "notSelectedAlpha": 0,
+      "objectAlpha": 0.5
+    },
+    {
+      "type": "annotation",
+      "name": "Incoming postsynaptic points (177)",
+      "annotationColor": "#ff3300",
+      "annotations": [
+        {
+          "type": "point",
+          "id": "34159296",
+          "point": [
+            52212.0,
+            86941.0,
+            24193.0
+          ],
+          "description": "Incoming synapse 34159296; presynaptic root 864691133839803952; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "39837526",
+          "point": [
+            54182.0,
+            87924.0,
+            24002.0
+          ],
+          "description": "Incoming synapse 39837526; presynaptic root 864691136955541454; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "39838166",
+          "point": [
+            54615.0,
+            88053.0,
+            23977.0
+          ],
+          "description": "Incoming synapse 39838166; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "39838221",
+          "point": [
+            54539.0,
+            87979.0,
+            23969.0
+          ],
+          "description": "Incoming synapse 39838221; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "58198253",
+          "point": [
+            60105.0,
+            61031.0,
+            18133.0
+          ],
+          "description": "Incoming synapse 58198253; presynaptic root 864691136724720356; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "59266672",
+          "point": [
+            60254.0,
+            91987.0,
+            23390.0
+          ],
+          "description": "Incoming synapse 59266672; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "60727663",
+          "point": [
+            60246.0,
+            91000.0,
+            24760.0
+          ],
+          "description": "Incoming synapse 60727663; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "82724602",
+          "point": [
+            65875.0,
+            94574.0,
+            22915.0
+          ],
+          "description": "Incoming synapse 82724602; presynaptic root 864691133417746253; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "87694210",
+          "point": [
+            69315.0,
+            69055.0,
+            19526.0
+          ],
+          "description": "Incoming synapse 87694210; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "91266229",
+          "point": [
+            67913.0,
+            94726.0,
+            22779.0
+          ],
+          "description": "Incoming synapse 91266229; presynaptic root 864691134525738973; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "95611521",
+          "point": [
+            70491.0,
+            60028.0,
+            19707.0
+          ],
+          "description": "Incoming synapse 95611521; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "97116408",
+          "point": [
+            69875.0,
+            89602.0,
+            27274.0
+          ],
+          "description": "Incoming synapse 97116408; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "97118397",
+          "point": [
+            71334.0,
+            88921.0,
+            27140.0
+          ],
+          "description": "Incoming synapse 97118397; presynaptic root 864691135452045143; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "97290371",
+          "point": [
+            70504.0,
+            83588.0,
+            19710.0
+          ],
+          "description": "Incoming synapse 97290371; presynaptic root 864691132147514237; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "98924012",
+          "point": [
+            70019.0,
+            82679.0,
+            19656.0
+          ],
+          "description": "Incoming synapse 98924012; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "105751419",
+          "point": [
+            72640.0,
+            78431.0,
+            20026.0
+          ],
+          "description": "Incoming synapse 105751419; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "112537343",
+          "point": [
+            74122.0,
+            79212.0,
+            21872.0
+          ],
+          "description": "Incoming synapse 112537343; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "117623038",
+          "point": [
+            76338.0,
+            82104.0,
+            20160.0
+          ],
+          "description": "Incoming synapse 117623038; presynaptic root 864691136131895933; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "123899590",
+          "point": [
+            79293.0,
+            64225.0,
+            19853.0
+          ],
+          "description": "Incoming synapse 123899590; presynaptic root 864691136032457403; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "124826935",
+          "point": [
+            77908.0,
+            81523.0,
+            20317.0
+          ],
+          "description": "Incoming synapse 124826935; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "129227946",
+          "point": [
+            81089.0,
+            79471.0,
+            20460.0
+          ],
+          "description": "Incoming synapse 129227946; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "133468718",
+          "point": [
+            81181.0,
+            83793.0,
+            22162.0
+          ],
+          "description": "Incoming synapse 133468718; presynaptic root 864691135619128689; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "133469723",
+          "point": [
+            81444.0,
+            83942.0,
+            22140.0
+          ],
+          "description": "Incoming synapse 133469723; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "133477102",
+          "point": [
+            79906.0,
+            97664.0,
+            21964.0
+          ],
+          "description": "Incoming synapse 133477102; presynaptic root 864691136787461998; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "134082590",
+          "point": [
+            81455.0,
+            85553.0,
+            23837.0
+          ],
+          "description": "Incoming synapse 134082590; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "136273536",
+          "point": [
+            82212.0,
+            84662.0,
+            20607.0
+          ],
+          "description": "Incoming synapse 136273536; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "138570989",
+          "point": [
+            82579.0,
+            78336.0,
+            23000.0
+          ],
+          "description": "Incoming synapse 138570989; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "140399207",
+          "point": [
+            82735.0,
+            83248.0,
+            27741.0
+          ],
+          "description": "Incoming synapse 140399207; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "140907034",
+          "point": [
+            82449.0,
+            104890.0,
+            25667.0
+          ],
+          "description": "Incoming synapse 140907034; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "143215164",
+          "point": [
+            84246.0,
+            79783.0,
+            20831.0
+          ],
+          "description": "Incoming synapse 143215164; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "146116049",
+          "point": [
+            84842.0,
+            66939.0,
+            27469.0
+          ],
+          "description": "Incoming synapse 146116049; presynaptic root 864691135976580376; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "146665560",
+          "point": [
+            84384.0,
+            75525.0,
+            25065.0
+          ],
+          "description": "Incoming synapse 146665560; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "147589145",
+          "point": [
+            85631.0,
+            84801.0,
+            22229.0
+          ],
+          "description": "Incoming synapse 147589145; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "148163556",
+          "point": [
+            85316.0,
+            97739.0,
+            21530.0
+          ],
+          "description": "Incoming synapse 148163556; presynaptic root 864691134313820765; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "150648066",
+          "point": [
+            85853.0,
+            77414.0,
+            20524.0
+          ],
+          "description": "Incoming synapse 150648066; presynaptic root 864691135619778412; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "151499556",
+          "point": [
+            87220.0,
+            84953.0,
+            27190.0
+          ],
+          "description": "Incoming synapse 151499556; presynaptic root 864691135448713458; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "151500455",
+          "point": [
+            87789.0,
+            85098.0,
+            27173.0
+          ],
+          "description": "Incoming synapse 151500455; presynaptic root 864691135368954361; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "152854233",
+          "point": [
+            85880.0,
+            66339.0,
+            22398.0
+          ],
+          "description": "Incoming synapse 152854233; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "154058124",
+          "point": [
+            86939.0,
+            97732.0,
+            21476.0
+          ],
+          "description": "Incoming synapse 154058124; presynaptic root 864691136620192653; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "154075265",
+          "point": [
+            87098.0,
+            75321.0,
+            18715.0
+          ],
+          "description": "Incoming synapse 154075265; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "154719511",
+          "point": [
+            87143.0,
+            82108.0,
+            21127.0
+          ],
+          "description": "Incoming synapse 154719511; presynaptic root 864691136817139310; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "154953349",
+          "point": [
+            86699.0,
+            85870.0,
+            22197.0
+          ],
+          "description": "Incoming synapse 154953349; presynaptic root 864691135196004650; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "154957150",
+          "point": [
+            86752.0,
+            89944.0,
+            23029.0
+          ],
+          "description": "Incoming synapse 154957150; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "159170956",
+          "point": [
+            87895.0,
+            76521.0,
+            18964.0
+          ],
+          "description": "Incoming synapse 159170956; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "160101985",
+          "point": [
+            88254.0,
+            90998.0,
+            22897.0
+          ],
+          "description": "Incoming synapse 160101985; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "160348097",
+          "point": [
+            88192.0,
+            69261.0,
+            27775.0
+          ],
+          "description": "Incoming synapse 160348097; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "160553682",
+          "point": [
+            88311.0,
+            63955.0,
+            26839.0
+          ],
+          "description": "Incoming synapse 160553682; presynaptic root 864691134247474464; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "161915830",
+          "point": [
+            89016.0,
+            96762.0,
+            20422.0
+          ],
+          "description": "Incoming synapse 161915830; presynaptic root 864691135505220292; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "164182064",
+          "point": [
+            91526.0,
+            49382.0,
+            25610.0
+          ],
+          "description": "Incoming synapse 164182064; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "164182175",
+          "point": [
+            91578.0,
+            49302.0,
+            25624.0
+          ],
+          "description": "Incoming synapse 164182175; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "166319388",
+          "point": [
+            90212.0,
+            52916.0,
+            24353.0
+          ],
+          "description": "Incoming synapse 166319388; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "166593473",
+          "point": [
+            91747.0,
+            78517.0,
+            21998.0
+          ],
+          "description": "Incoming synapse 166593473; presynaptic root 864691135575665348; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "168362957",
+          "point": [
+            89958.0,
+            93596.0,
+            23156.0
+          ],
+          "description": "Incoming synapse 168362957; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "168437231",
+          "point": [
+            90306.0,
+            85277.0,
+            26938.0
+          ],
+          "description": "Incoming synapse 168437231; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "168437266",
+          "point": [
+            90305.0,
+            85295.0,
+            26908.0
+          ],
+          "description": "Incoming synapse 168437266; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "169052137",
+          "point": [
+            91665.0,
+            95665.0,
+            25056.0
+          ],
+          "description": "Incoming synapse 169052137; presynaptic root 864691135584449645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "170835319",
+          "point": [
+            91943.0,
+            62594.0,
+            22999.0
+          ],
+          "description": "Incoming synapse 170835319; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "171490875",
+          "point": [
+            93158.0,
+            65017.0,
+            22764.0
+          ],
+          "description": "Incoming synapse 171490875; presynaptic root 864691135221322562; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "171617365",
+          "point": [
+            92261.0,
+            83407.0,
+            22105.0
+          ],
+          "description": "Incoming synapse 171617365; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "172404249",
+          "point": [
+            93762.0,
+            96009.0,
+            22373.0
+          ],
+          "description": "Incoming synapse 172404249; presynaptic root 864691135492886514; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "172687380",
+          "point": [
+            92357.0,
+            67490.0,
+            25362.0
+          ],
+          "description": "Incoming synapse 172687380; presynaptic root 864691133876467868; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "172689057",
+          "point": [
+            93246.0,
+            68593.0,
+            25435.0
+          ],
+          "description": "Incoming synapse 172689057; presynaptic root 864691136424463919; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "173627289",
+          "point": [
+            93299.0,
+            80630.0,
+            22864.0
+          ],
+          "description": "Incoming synapse 173627289; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "174294190",
+          "point": [
+            92263.0,
+            58264.0,
+            24687.0
+          ],
+          "description": "Incoming synapse 174294190; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "174324648",
+          "point": [
+            93814.0,
+            63988.0,
+            24398.0
+          ],
+          "description": "Incoming synapse 174324648; presynaptic root 864691134925634128; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "174390961",
+          "point": [
+            93707.0,
+            65099.0,
+            21216.0
+          ],
+          "description": "Incoming synapse 174390961; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "174650116",
+          "point": [
+            93115.0,
+            70851.0,
+            21575.0
+          ],
+          "description": "Incoming synapse 174650116; presynaptic root 864691136620199821; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "174869549",
+          "point": [
+            91869.0,
+            83987.0,
+            20262.0
+          ],
+          "description": "Incoming synapse 174869549; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "175535207",
+          "point": [
+            93673.0,
+            84873.0,
+            20942.0
+          ],
+          "description": "Incoming synapse 175535207; presynaptic root 864691135561076164; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "176213801",
+          "point": [
+            92579.0,
+            89870.0,
+            22552.0
+          ],
+          "description": "Incoming synapse 176213801; presynaptic root 864691134806138329; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "178129864",
+          "point": [
+            94623.0,
+            80055.0,
+            23605.0
+          ],
+          "description": "Incoming synapse 178129864; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "178654738",
+          "point": [
+            95735.0,
+            83241.0,
+            16879.0
+          ],
+          "description": "Incoming synapse 178654738; presynaptic root 864691136703194478; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "178940908",
+          "point": [
+            95189.0,
+            72489.0,
+            25865.0
+          ],
+          "description": "Incoming synapse 178940908; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "180254464",
+          "point": [
+            94142.0,
+            70931.0,
+            24938.0
+          ],
+          "description": "Incoming synapse 180254464; presynaptic root 864691135841748707; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "180390602",
+          "point": [
+            95059.0,
+            78228.0,
+            24451.0
+          ],
+          "description": "Incoming synapse 180390602; presynaptic root 864691136480989831; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "181186821",
+          "point": [
+            95849.0,
+            96428.0,
+            22162.0
+          ],
+          "description": "Incoming synapse 181186821; presynaptic root 864691135777916861; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "182017554",
+          "point": [
+            95162.0,
+            93115.0,
+            23242.0
+          ],
+          "description": "Incoming synapse 182017554; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "182829201",
+          "point": [
+            94626.0,
+            88031.0,
+            22670.0
+          ],
+          "description": "Incoming synapse 182829201; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "182857511",
+          "point": [
+            94952.0,
+            91233.0,
+            21024.0
+          ],
+          "description": "Incoming synapse 182857511; presynaptic root 864691135170244778; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "185240702",
+          "point": [
+            97058.0,
+            80386.0,
+            22551.0
+          ],
+          "description": "Incoming synapse 185240702; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "185815715",
+          "point": [
+            97595.0,
+            84287.0,
+            21265.0
+          ],
+          "description": "Incoming synapse 185815715; presynaptic root 864691135335950057; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "188129069",
+          "point": [
+            96777.0,
+            68715.0,
+            26009.0
+          ],
+          "description": "Incoming synapse 188129069; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "189246697",
+          "point": [
+            96172.0,
+            85485.0,
+            23931.0
+          ],
+          "description": "Incoming synapse 189246697; presynaptic root 864691135928887214; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "189286000",
+          "point": [
+            96371.0,
+            80882.0,
+            22076.0
+          ],
+          "description": "Incoming synapse 189286000; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "189315110",
+          "point": [
+            96050.0,
+            83394.0,
+            24042.0
+          ],
+          "description": "Incoming synapse 189315110; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "189320228",
+          "point": [
+            96419.0,
+            88371.0,
+            23614.0
+          ],
+          "description": "Incoming synapse 189320228; presynaptic root 864691134120662661; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "191407743",
+          "point": [
+            98222.0,
+            65765.0,
+            24915.0
+          ],
+          "description": "Incoming synapse 191407743; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "191556682",
+          "point": [
+            99299.0,
+            47821.0,
+            20748.0
+          ],
+          "description": "Incoming synapse 191556682; presynaptic root 864691134350134524; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "192128835",
+          "point": [
+            98714.0,
+            90606.0,
+            22363.0
+          ],
+          "description": "Incoming synapse 192128835; presynaptic root 864691136906083250; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "192199062",
+          "point": [
+            99544.0,
+            91526.0,
+            22204.0
+          ],
+          "description": "Incoming synapse 192199062; presynaptic root 864691134117065511; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "192691200",
+          "point": [
+            99753.0,
+            98677.0,
+            21602.0
+          ],
+          "description": "Incoming synapse 192691200; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "192691350",
+          "point": [
+            99843.0,
+            98950.0,
+            21586.0
+          ],
+          "description": "Incoming synapse 192691350; presynaptic root 864691135572982258; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "193097280",
+          "point": [
+            98322.0,
+            84966.0,
+            21363.0
+          ],
+          "description": "Incoming synapse 193097280; presynaptic root 864691135430991242; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "193874485",
+          "point": [
+            99333.0,
+            98064.0,
+            24300.0
+          ],
+          "description": "Incoming synapse 193874485; presynaptic root 864691135521281031; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "195381048",
+          "point": [
+            99869.0,
+            70937.0,
+            23534.0
+          ],
+          "description": "Incoming synapse 195381048; presynaptic root 864691136924414948; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "195843297",
+          "point": [
+            98710.0,
+            83166.0,
+            22197.0
+          ],
+          "description": "Incoming synapse 195843297; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "195886927",
+          "point": [
+            98273.0,
+            76876.0,
+            23789.0
+          ],
+          "description": "Incoming synapse 195886927; presynaptic root 864691133402793165; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "195886938",
+          "point": [
+            98286.0,
+            76881.0,
+            23787.0
+          ],
+          "description": "Incoming synapse 195886938; presynaptic root 864691136053342195; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "196549426",
+          "point": [
+            98232.0,
+            86600.0,
+            24744.0
+          ],
+          "description": "Incoming synapse 196549426; presynaptic root 864691136549178222; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "196830695",
+          "point": [
+            98738.0,
+            89866.0,
+            25142.0
+          ],
+          "description": "Incoming synapse 196830695; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "198491582",
+          "point": [
+            100299.0,
+            64469.0,
+            24569.0
+          ],
+          "description": "Incoming synapse 198491582; presynaptic root 864691135990102408; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "199423822",
+          "point": [
+            100047.0,
+            87015.0,
+            24578.0
+          ],
+          "description": "Incoming synapse 199423822; presynaptic root 864691135431488650; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "202266742",
+          "point": [
+            101847.0,
+            68828.0,
+            21613.0
+          ],
+          "description": "Incoming synapse 202266742; presynaptic root 864691137056347766; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "202686867",
+          "point": [
+            101293.0,
+            92415.0,
+            21281.0
+          ],
+          "description": "Incoming synapse 202686867; presynaptic root 864691135455117418; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "203066360",
+          "point": [
+            100117.0,
+            99240.0,
+            21552.0
+          ],
+          "description": "Incoming synapse 203066360; presynaptic root 864691134876870989; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "203227400",
+          "point": [
+            101586.0,
+            84262.0,
+            22115.0
+          ],
+          "description": "Incoming synapse 203227400; presynaptic root 864691135927804942; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "203720453",
+          "point": [
+            100914.0,
+            94428.0,
+            23264.0
+          ],
+          "description": "Incoming synapse 203720453; presynaptic root 864691135701935483; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "203736198",
+          "point": [
+            101301.0,
+            91958.0,
+            19739.0
+          ],
+          "description": "Incoming synapse 203736198; presynaptic root 864691133696447771; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "206058422",
+          "point": [
+            103308.0,
+            82914.0,
+            21328.0
+          ],
+          "description": "Incoming synapse 206058422; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "206396348",
+          "point": [
+            102956.0,
+            81171.0,
+            24055.0
+          ],
+          "description": "Incoming synapse 206396348; presynaptic root 864691134684686290; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "206495599",
+          "point": [
+            103678.0,
+            91240.0,
+            23324.0
+          ],
+          "description": "Incoming synapse 206495599; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "206902515",
+          "point": [
+            103359.0,
+            93840.0,
+            22633.0
+          ],
+          "description": "Incoming synapse 206902515; presynaptic root 864691135083318007; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "209638350",
+          "point": [
+            102900.0,
+            83756.0,
+            22042.0
+          ],
+          "description": "Incoming synapse 209638350; presynaptic root 864691136966319566; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "210284543",
+          "point": [
+            104018.0,
+            99081.0,
+            23970.0
+          ],
+          "description": "Incoming synapse 210284543; presynaptic root 864691136021764856; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "216516713",
+          "point": [
+            105384.0,
+            93932.0,
+            21556.0
+          ],
+          "description": "Incoming synapse 216516713; presynaptic root 864691133388202499; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "216916736",
+          "point": [
+            105822.0,
+            100456.0,
+            21363.0
+          ],
+          "description": "Incoming synapse 216916736; presynaptic root 864691135424903233; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "224360402",
+          "point": [
+            107849.0,
+            98091.0,
+            23102.0
+          ],
+          "description": "Incoming synapse 224360402; presynaptic root 864691136301804844; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "230909561",
+          "point": [
+            109208.0,
+            89185.0,
+            23713.0
+          ],
+          "description": "Incoming synapse 230909561; presynaptic root 864691135573456120; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "230991954",
+          "point": [
+            109452.0,
+            100774.0,
+            23837.0
+          ],
+          "description": "Incoming synapse 230991954; presynaptic root 864691134262473443; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "231639745",
+          "point": [
+            109883.0,
+            90403.0,
+            23651.0
+          ],
+          "description": "Incoming synapse 231639745; presynaptic root 864691136259195154; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "234178099",
+          "point": [
+            110537.0,
+            90818.0,
+            23592.0
+          ],
+          "description": "Incoming synapse 234178099; presynaptic root 864691135401822162; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "234178488",
+          "point": [
+            110891.0,
+            91074.0,
+            23603.0
+          ],
+          "description": "Incoming synapse 234178488; presynaptic root 864691135662625776; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "235243627",
+          "point": [
+            112078.0,
+            54883.0,
+            23371.0
+          ],
+          "description": "Incoming synapse 235243627; presynaptic root 864691136156011014; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "237183478",
+          "point": [
+            110568.0,
+            86958.0,
+            24569.0
+          ],
+          "description": "Incoming synapse 237183478; presynaptic root 864691136183443414; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "237317689",
+          "point": [
+            110368.0,
+            62433.0,
+            19936.0
+          ],
+          "description": "Incoming synapse 237317689; presynaptic root 864691136042736008; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "237319524",
+          "point": [
+            111718.0,
+            61011.0,
+            19719.0
+          ],
+          "description": "Incoming synapse 237319524; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "237510868",
+          "point": [
+            111158.0,
+            87607.0,
+            24473.0
+          ],
+          "description": "Incoming synapse 237510868; presynaptic root 864691135549093618; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "237511576",
+          "point": [
+            111447.0,
+            87851.0,
+            24464.0
+          ],
+          "description": "Incoming synapse 237511576; presynaptic root 864691135669612996; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "237933347",
+          "point": [
+            110288.0,
+            102103.0,
+            23345.0
+          ],
+          "description": "Incoming synapse 237933347; presynaptic root 864691136126231590; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "238081219",
+          "point": [
+            110949.0,
+            101187.0,
+            23807.0
+          ],
+          "description": "Incoming synapse 238081219; presynaptic root 864691136847213422; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "238081561",
+          "point": [
+            111254.0,
+            101245.0,
+            23814.0
+          ],
+          "description": "Incoming synapse 238081561; presynaptic root 864691134936663429; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "239658055",
+          "point": [
+            112085.0,
+            103997.0,
+            23564.0
+          ],
+          "description": "Incoming synapse 239658055; presynaptic root 864691136116149412; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "240974553",
+          "point": [
+            113652.0,
+            80987.0,
+            20801.0
+          ],
+          "description": "Incoming synapse 240974553; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "242908516",
+          "point": [
+            113634.0,
+            63148.0,
+            24303.0
+          ],
+          "description": "Incoming synapse 242908516; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "244687410",
+          "point": [
+            113631.0,
+            74526.0,
+            22316.0
+          ],
+          "description": "Incoming synapse 244687410; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "245245485",
+          "point": [
+            112899.0,
+            92167.0,
+            23511.0
+          ],
+          "description": "Incoming synapse 245245485; presynaptic root 864691135583547634; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "245246439",
+          "point": [
+            113380.0,
+            92486.0,
+            23485.0
+          ],
+          "description": "Incoming synapse 245246439; presynaptic root 864691135398736594; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "245247682",
+          "point": [
+            114135.0,
+            92881.0,
+            23477.0
+          ],
+          "description": "Incoming synapse 245247682; presynaptic root 864691132073405877; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "245263050",
+          "point": [
+            114336.0,
+            90680.0,
+            23956.0
+          ],
+          "description": "Incoming synapse 245263050; presynaptic root 864691134286941713; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "245788157",
+          "point": [
+            112467.0,
+            101389.0,
+            23829.0
+          ],
+          "description": "Incoming synapse 245788157; presynaptic root 864691135387284620; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "245788189",
+          "point": [
+            112546.0,
+            101427.0,
+            23826.0
+          ],
+          "description": "Incoming synapse 245788189; presynaptic root 864691135104441933; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "249802557",
+          "point": [
+            115193.0,
+            53767.0,
+            22160.0
+          ],
+          "description": "Incoming synapse 249802557; presynaptic root 864691134721925969; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "249802772",
+          "point": [
+            115319.0,
+            54581.0,
+            22141.0
+          ],
+          "description": "Incoming synapse 249802772; presynaptic root 864691136137664637; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "251846508",
+          "point": [
+            116343.0,
+            94522.0,
+            23617.0
+          ],
+          "description": "Incoming synapse 251846508; presynaptic root 864691135636474052; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "253747906",
+          "point": [
+            115858.0,
+            104872.0,
+            23476.0
+          ],
+          "description": "Incoming synapse 253747906; presynaptic root 864691135804728436; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "258611930",
+          "point": [
+            117679.0,
+            102246.0,
+            23772.0
+          ],
+          "description": "Incoming synapse 258611930; presynaptic root 864691136877393774; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "258612315",
+          "point": [
+            118100.0,
+            102322.0,
+            23733.0
+          ],
+          "description": "Incoming synapse 258612315; presynaptic root 864691135482426037; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "259441487",
+          "point": [
+            117754.0,
+            104541.0,
+            23349.0
+          ],
+          "description": "Incoming synapse 259441487; presynaptic root 864691134278180246; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "259441883",
+          "point": [
+            118096.0,
+            104468.0,
+            23343.0
+          ],
+          "description": "Incoming synapse 259441883; presynaptic root 864691134278180246; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "260447681",
+          "point": [
+            117348.0,
+            76368.0,
+            26660.0
+          ],
+          "description": "Incoming synapse 260447681; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "261916336",
+          "point": [
+            119100.0,
+            83471.0,
+            23166.0
+          ],
+          "description": "Incoming synapse 261916336; presynaptic root 864691135416652474; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "262059884",
+          "point": [
+            119742.0,
+            95945.0,
+            23499.0
+          ],
+          "description": "Incoming synapse 262059884; presynaptic root 864691135492946674; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "265872221",
+          "point": [
+            119253.0,
+            80925.0,
+            23027.0
+          ],
+          "description": "Incoming synapse 265872221; presynaptic root 864691135831602313; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "265976600",
+          "point": [
+            118834.0,
+            98727.0,
+            22875.0
+          ],
+          "description": "Incoming synapse 265976600; presynaptic root 864691135184087554; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "266186423",
+          "point": [
+            119737.0,
+            100103.0,
+            22829.0
+          ],
+          "description": "Incoming synapse 266186423; presynaptic root 864691135369327097; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "266186787",
+          "point": [
+            119945.0,
+            100459.0,
+            22804.0
+          ],
+          "description": "Incoming synapse 266186787; presynaptic root 864691135571116395; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "266187100",
+          "point": [
+            120128.0,
+            100736.0,
+            22778.0
+          ],
+          "description": "Incoming synapse 266187100; presynaptic root 864691135584176370; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "266260501",
+          "point": [
+            118894.0,
+            102519.0,
+            21346.0
+          ],
+          "description": "Incoming synapse 266260501; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "267089441",
+          "point": [
+            118956.0,
+            102512.0,
+            23717.0
+          ],
+          "description": "Incoming synapse 267089441; presynaptic root 864691136909374574; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "267089595",
+          "point": [
+            118999.0,
+            102487.0,
+            23713.0
+          ],
+          "description": "Incoming synapse 267089595; presynaptic root 864691135666931396; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "267089774",
+          "point": [
+            119118.0,
+            102454.0,
+            23719.0
+          ],
+          "description": "Incoming synapse 267089774; presynaptic root 864691136909374574; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "268454287",
+          "point": [
+            121525.0,
+            83724.0,
+            20605.0
+          ],
+          "description": "Incoming synapse 268454287; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "269198827",
+          "point": [
+            122481.0,
+            98492.0,
+            23197.0
+          ],
+          "description": "Incoming synapse 269198827; presynaptic root 864691135447795858; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "272810644",
+          "point": [
+            121932.0,
+            87717.0,
+            20462.0
+          ],
+          "description": "Incoming synapse 272810644; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "273145338",
+          "point": [
+            122204.0,
+            103053.0,
+            15505.0
+          ],
+          "description": "Incoming synapse 273145338; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "273454620",
+          "point": [
+            122600.0,
+            102972.0,
+            15620.0
+          ],
+          "description": "Incoming synapse 273454620; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "273576356",
+          "point": [
+            120727.0,
+            104070.0,
+            14975.0
+          ],
+          "description": "Incoming synapse 273576356; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "275182186",
+          "point": [
+            123301.0,
+            60033.0,
+            19946.0
+          ],
+          "description": "Incoming synapse 275182186; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "275602403",
+          "point": [
+            123147.0,
+            94224.0,
+            20350.0
+          ],
+          "description": "Incoming synapse 275602403; presynaptic root 864691135582204914; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "277472758",
+          "point": [
+            123210.0,
+            100838.0,
+            19930.0
+          ],
+          "description": "Incoming synapse 277472758; presynaptic root 864691135641014468; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "277472765",
+          "point": [
+            123205.0,
+            100923.0,
+            19933.0
+          ],
+          "description": "Incoming synapse 277472765; presynaptic root 864691135527479282; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "282714094",
+          "point": [
+            124724.0,
+            102674.0,
+            16515.0
+          ],
+          "description": "Incoming synapse 282714094; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "283716546",
+          "point": [
+            126036.0,
+            105187.0,
+            21078.0
+          ],
+          "description": "Incoming synapse 283716546; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "285737732",
+          "point": [
+            125316.0,
+            103256.0,
+            17125.0
+          ],
+          "description": "Incoming synapse 285737732; presynaptic root 864691135464991645; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "287012652",
+          "point": [
+            124991.0,
+            101974.0,
+            22833.0
+          ],
+          "description": "Incoming synapse 287012652; presynaptic root 864691135725779092; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "293516600",
+          "point": [
+            127342.0,
+            105328.0,
+            21026.0
+          ],
+          "description": "Incoming synapse 293516600; presynaptic root 864691135953624867; mat 1718"
+        },
+        {
+          "type": "point",
+          "id": "300551651",
+          "point": [
+            129519.0,
+            103561.0,
+            22712.0
+          ],
+          "description": "Incoming synapse 300551651; presynaptic root 864691136488643346; mat 1718"
+        }
+      ],
+      "visible": true
+    }
+  ],
+  "selectedLayer": {
+    "layer": "Incoming postsynaptic points (177)",
+    "visible": true
+  },
+  "showSlices": true,
+  "layout": "xy-3d"
+}

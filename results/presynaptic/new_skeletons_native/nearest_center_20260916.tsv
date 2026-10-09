@@ -1,0 +1,9 @@
+stage	job_id	detail
+build_scale32_k10	22794358	afterok:22600108; training_local_center output; preserves full-resolution centers
+finalize_scale32_k10	22794359	afterok:22794358
+train_mean_mlp_preemptable	22806676	afterok:22794359; replaces 22806344
+train_gt_normal	22806677	afterok:22794359; replaces 22806345
+regression_checks	22806597	passed; exact center IDs at every scale; local replacement and anchor-edge insertion
+real_cell_loader_check	22806599	passed; 543 unique windows; first 100 checked through loader
+fragment_measurements	22806601	2209 cells; asserts full-resolution center is first member
+fragment_histogram	22806629	afterok:22806601

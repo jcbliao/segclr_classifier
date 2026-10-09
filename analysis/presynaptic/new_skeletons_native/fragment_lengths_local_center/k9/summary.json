@@ -1,0 +1,37 @@
+{
+  "cells": 2209,
+  "presynaptic_sites": 2458914,
+  "factor": 32,
+  "cable_length_cutoff": null,
+  "center_policy": "nearest-full-resolution-window-local-v2",
+  "weighting": "one count per unique root-scoped node membership, matching training deduplication",
+  "centered_k7": {
+    "n": 2303966,
+    "mean_um": 15.779523164630792,
+    "median_um": 15.68826125717163,
+    "p5_um": 13.779185096740722,
+    "p95_um": 18.08651918411255,
+    "max_um": 23.52011122894287,
+    "fraction_above_25": 0.0,
+    "mode_1um_bin_left": 15.0
+  },
+  "selected_k": 9,
+  "selected": {
+    "n": 2303295,
+    "mean_um": 21.03545674179987,
+    "median_um": 20.928834354400635,
+    "p5_um": 18.620432178497314,
+    "p95_um": 23.762014068603516,
+    "max_um": 31.613760475158692,
+    "fraction_above_25": 0.01183738947898554,
+    "mode_1um_bin_left": 20.0
+  },
+  "site_counts": {
+    "7": {
+      "valid": 2370558
+    },
+    "9": {
+      "valid": 2370538
+    }
+  }
+}

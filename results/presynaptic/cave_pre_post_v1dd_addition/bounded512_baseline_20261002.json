@@ -1,0 +1,11 @@
+{
+  "time": 1790956654.2738264,
+  "inputs": 712834,
+  "batches": 5570,
+  "completed_shards": 171,
+  "added_jobs": {
+    "preemptable": "24668388",
+    "normal": "24668389"
+  },
+  "total_workers": 512
+}

@@ -362,7 +362,7 @@ def main(args) -> int:
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     torch.manual_seed(args.seed)
     repo_root = Path(__file__).resolve().parent.parent
-    results_dir = repo_root / "results"
+    results_dir = repo_root / "results" / "all_windows"
     specs = discover_runs(results_dir, args.runs, args.window_nm)
     manifest = load_manifest()
     hierarchy = load_hierarchy(manifest)

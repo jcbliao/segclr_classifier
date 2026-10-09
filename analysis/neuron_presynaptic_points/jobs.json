@@ -1,0 +1,16 @@
+{
+  "pilot_job": "25310938",
+  "inference_array": "25310954",
+  "import_job": "25310957",
+  "import_held": true,
+  "n_points": 2504093,
+  "n_cells": 2223,
+  "point_set_name": "presynaptic_sites",
+  "output": "/orcd/scratch/orcd/013/jcbliao/presynaptic_point_embeddings",
+  "permission_blockers": [
+    "/orcd/compute/sdorkenw/001/segclr-db/microns/registry/runs.lance/_deletions/1161-2853-13500878025392154883.arrow",
+    "/orcd/compute/sdorkenw/001/segclr-db/microns/registry/runs.lance/_deletions/1454-2925-5567623443117799157.arrow"
+  ],
+  "blocker_owner": "collina",
+  "release_after_fix": "scontrol release 25310957"
+}

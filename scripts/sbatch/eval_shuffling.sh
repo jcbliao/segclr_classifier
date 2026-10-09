@@ -20,7 +20,7 @@ ARGS=(
   --num-workers "${NUM_WORKERS:-31}"
   --batch-size "${BATCH_SIZE:-4096}"
   --window-nm "${WINDOW_NM:-10000}"
-  --output "${OUTPUT:-results/shuffling_ablations.json}"
+  --output "${OUTPUT:-results/all_windows/shuffling_ablations.json}"
 )
 
 # Both variables are deliberately word-split lists of argparse values.

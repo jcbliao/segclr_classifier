@@ -1,0 +1,7 @@
+{
+  "checkpoint_url": null,
+  "checkpoint_sha256": null,
+  "training_commit": null,
+  "source_report": "results/all_windows/gnn_lcpn_scratch_mpnn_L4_position_lpe_resnet4x128_n10_fold0.json",
+  "source_report_sha256": "88b32e64004a25495827407f06907254b7524c132100d0303c7462c9e0a4ef30"
+}

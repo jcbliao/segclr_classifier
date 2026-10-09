@@ -1,0 +1,8 @@
+stage	job_id	dependency
+verified_inference	24492783	
+topology_synapses	24492796	
+windows	24492797	afterok:24492796:24492783
+finalize	24492798	afterok:24492797
+mean_mlp	24492799	afterok:24492798
+gt	24492800	afterok:24492798
+summary	24492801	afterok:24492799:24492800

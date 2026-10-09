@@ -1,0 +1,129 @@
+{
+  "window_test_metrics": {
+    "accuracy": 0.8531715871687422,
+    "balanced_accuracy": 0.7297727850392113,
+    "macro_precision": 0.7849790085532945,
+    "macro_f1": 0.753472212669756,
+    "per_class_recall": {
+      "putative_cge": 0.3386648122392211,
+      "putative_parvalbumin": 0.9130131041344709,
+      "putative_somatostatin": 0.7138842700365813,
+      "pyramidal": 0.9659329705264292,
+      "thalamocortical": 0.7173687682593535
+    },
+    "per_class_precision": {
+      "putative_cge": 0.4146964536165097,
+      "putative_parvalbumin": 0.9688746110730453,
+      "putative_somatostatin": 0.8404721819819114,
+      "pyramidal": 0.847871069963227,
+      "thalamocortical": 0.8529807261317794
+    },
+    "confusion_matrix": [
+      [
+        8279,
+        468,
+        4324,
+        11217,
+        158
+      ],
+      [
+        2625,
+        86256,
+        1728,
+        3652,
+        213
+      ],
+      [
+        6563,
+        630,
+        42933,
+        9823,
+        191
+      ],
+      [
+        2127,
+        873,
+        1308,
+        143414,
+        750
+      ],
+      [
+        370,
+        800,
+        789,
+        1040,
+        7612
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9366515837104072,
+    "balanced_accuracy": 0.8201091661961227,
+    "macro_precision": 0.941642228739003,
+    "macro_f1": 0.8502327624066754,
+    "per_class_recall": {
+      "putative_cge": 0.30303030303030304,
+      "putative_parvalbumin": 0.9714285714285714,
+      "putative_somatostatin": 0.8260869565217391,
+      "pyramidal": 1.0,
+      "thalamocortical": 1.0
+    },
+    "per_class_precision": {
+      "putative_cge": 0.9090909090909091,
+      "putative_parvalbumin": 1.0,
+      "putative_somatostatin": 0.8636363636363636,
+      "pyramidal": 0.9354838709677419,
+      "thalamocortical": 1.0
+    },
+    "confusion_matrix": [
+      [
+        10,
+        0,
+        3,
+        20,
+        0
+      ],
+      [
+        0,
+        34,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        19,
+        3,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        348,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        3
+      ]
+    ]
+  },
+  "classes": [
+    "putative_cge",
+    "putative_parvalbumin",
+    "putative_somatostatin",
+    "pyramidal",
+    "thalamocortical"
+  ],
+  "fold": "fold_0",
+  "split_seed": 0,
+  "split_fracs": [
+    0.8,
+    0.2
+  ]
+}

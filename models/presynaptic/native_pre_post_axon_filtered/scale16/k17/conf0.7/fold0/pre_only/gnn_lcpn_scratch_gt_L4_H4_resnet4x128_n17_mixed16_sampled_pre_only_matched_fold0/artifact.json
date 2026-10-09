@@ -1,0 +1,7 @@
+{
+  "checkpoint_url": null,
+  "checkpoint_sha256": null,
+  "training_commit": null,
+  "source_report": "results/presynaptic/native_pre_post_axon_filtered/scale16/k17/conf0.7/fold0/pre_only/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_only_matched_fold0.json",
+  "source_report_sha256": "6600c90bc6ce49770f9876f6324697c3c0f7622fbd9e0c7100b144b4d4e71cec"
+}

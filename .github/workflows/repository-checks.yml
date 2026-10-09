@@ -1,0 +1,31 @@
+name: Repository checks
+
+on:
+  pull_request:
+    paths:
+      - '**/*.py'
+      - '**/*.ipynb'
+      - '**/*.md'
+      - 'models/**'
+      - 'configs/**'
+      - 'results/**'
+      - '.github/workflows/repository-checks.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install notebook syntax transformer
+        run: python -m pip install ipython
+      - name: Check syntax, catalog consistency, and documentation links
+        run: python scripts/check_repository.py
+      - name: Check training configuration parsing
+        run: python -m unittest scripts.test_training_config scripts.test_model_catalog

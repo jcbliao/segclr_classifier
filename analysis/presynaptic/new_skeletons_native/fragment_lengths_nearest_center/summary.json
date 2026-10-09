@@ -1,0 +1,36 @@
+{
+  "cells": 2209,
+  "presynaptic_sites": 2458914,
+  "factor": 32,
+  "cable_length_cutoff": null,
+  "center_policy": "nearest-post-soma-full-resolution-node-v1",
+  "weighting": "one count per unique root-scoped node membership, matching training deduplication",
+  "centered_k7": {
+    "n": 1810091,
+    "mean_um": 13.191438898517523,
+    "median_um": 12.97217419052124,
+    "p5_um": 7.783367630004883,
+    "p95_um": 18.986755840301512,
+    "max_um": 337.0246735076904,
+    "fraction_above_25": 0.008755360918318472,
+    "mode_1um_bin_left": 13.0
+  },
+  "new_k10": {
+    "n": 1763714,
+    "mean_um": 20.330494413448132,
+    "median_um": 20.004938478469846,
+    "p5_um": 13.025569771385193,
+    "p95_um": 28.133688647079467,
+    "max_um": 530.6824386482239,
+    "fraction_above_25": 0.1256649320694852,
+    "mode_1um_bin_left": 20.0
+  },
+  "site_counts": {
+    "7": {
+      "valid": 2370548
+    },
+    "10": {
+      "valid": 2370432
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "checkpoint_url": null,
+  "checkpoint_sha256": null,
+  "training_commit": null,
+  "source_report": "results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/three_class/fold3/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold3.json",
+  "source_report_sha256": "7bd0c1c2ee84d66660958e733d4ccdff85136e7594017fc026b0a7fb88a87cb9"
+}

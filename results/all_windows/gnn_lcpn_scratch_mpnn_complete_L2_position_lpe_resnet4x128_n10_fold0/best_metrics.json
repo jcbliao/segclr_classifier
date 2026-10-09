@@ -1,0 +1,231 @@
+{
+  "run": "gnn_lcpn_scratch_mpnn_complete_L2_position_lpe_resnet4x128_n10_fold0",
+  "epoch": 11,
+  "classes": [
+    "astrocyte",
+    "microglia",
+    "oligo",
+    "putative_cge",
+    "putative_parvalbumin",
+    "putative_somatostatin",
+    "pyramidal",
+    "thalamocortical"
+  ],
+  "window_test_metrics": {
+    "accuracy": 0.9088252893960341,
+    "balanced_accuracy": 0.8449214969630203,
+    "macro_precision": 0.8302881629734173,
+    "macro_f1": 0.8340395121538509,
+    "per_class_recall": {
+      "astrocyte": 0.9995166163141994,
+      "microglia": 0.8559373116335142,
+      "oligo": 0.8781284004352558,
+      "putative_cge": 0.4980859353713694,
+      "putative_parvalbumin": 0.9269309096862373,
+      "putative_somatostatin": 0.7930215594544049,
+      "pyramidal": 0.9542699991951107,
+      "thalamocortical": 0.853481243614071
+    },
+    "per_class_precision": {
+      "astrocyte": 0.9989934777357276,
+      "microglia": 0.9786354238456237,
+      "oligo": 0.8362694300518134,
+      "putative_cge": 0.602986773097602,
+      "putative_parvalbumin": 0.9365487131546696,
+      "putative_somatostatin": 0.6894489901012759,
+      "pyramidal": 0.9594470125792963,
+      "thalamocortical": 0.6399754832213296
+    },
+    "confusion_matrix": [
+      [
+        24813,
+        0,
+        0,
+        0,
+        0,
+        0,
+        12,
+        0
+      ],
+      [
+        0,
+        2840,
+        0,
+        113,
+        7,
+        35,
+        323,
+        0
+      ],
+      [
+        0,
+        0,
+        807,
+        7,
+        0,
+        0,
+        105,
+        0
+      ],
+      [
+        0,
+        11,
+        8,
+        73123,
+        7996,
+        28513,
+        35237,
+        1920
+      ],
+      [
+        0,
+        13,
+        6,
+        5204,
+        373682,
+        10591,
+        10358,
+        3285
+      ],
+      [
+        0,
+        12,
+        0,
+        15377,
+        3460,
+        144594,
+        17313,
+        1577
+      ],
+      [
+        25,
+        22,
+        144,
+        27135,
+        12720,
+        24717,
+        1553125,
+        9665
+      ],
+      [
+        0,
+        4,
+        0,
+        309,
+        1134,
+        1274,
+        2298,
+        29236
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9763948497854077,
+    "balanced_accuracy": 0.9569028797289667,
+    "macro_precision": 0.9775031599855544,
+    "macro_f1": 0.9656599319287336,
+    "per_class_recall": {
+      "astrocyte": 1.0,
+      "microglia": 1.0,
+      "oligo": 1.0,
+      "putative_cge": 0.7272727272727273,
+      "putative_parvalbumin": 0.9714285714285714,
+      "putative_somatostatin": 0.9565217391304348,
+      "pyramidal": 1.0,
+      "thalamocortical": 1.0
+    },
+    "per_class_precision": {
+      "astrocyte": 1.0,
+      "microglia": 1.0,
+      "oligo": 1.0,
+      "putative_cge": 0.9230769230769231,
+      "putative_parvalbumin": 1.0,
+      "putative_somatostatin": 0.9166666666666666,
+      "pyramidal": 0.9802816901408451,
+      "thalamocortical": 1.0
+    },
+    "confusion_matrix": [
+      [
+        15,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        24,
+        0,
+        2,
+        7,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        34,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        22,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        348,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3
+      ]
+    ]
+  },
+  "complete": false
+}

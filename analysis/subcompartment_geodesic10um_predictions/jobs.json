@@ -1,0 +1,76 @@
+{
+  "pilot_job": "25316208",
+  "inference_array": "25332174",
+  "import_job": "25332176",
+  "import_held": true,
+  "dependency_embedding_array": "25310954",
+  "partition": "mit_normal_gpu",
+  "max_simultaneous_gpu_tasks": 4,
+  "cohort_cells": 2350,
+  "folds": 5,
+  "counts": {
+    "cave": {
+      "cells": 2350,
+      "points": 12314837
+    },
+    "teasar": {
+      "cells": 2350,
+      "points": 155033983
+    },
+    "presynaptic": {
+      "cells": 2223,
+      "points": 2504093
+    }
+  },
+  "predictions_across_folds": 849264565,
+  "original_teasar_only": true,
+  "astrocyte_presynaptic_points": false,
+  "agg_spec_id": null,
+  "output": "/orcd/scratch/orcd/013/jcbliao/subcompartment_geodesic10um_predictions_v1",
+  "registry_blocker": "runs table: permission denied reading Lance deletion files owned by collina",
+  "release_after_registry_fix": "scontrol release 25332176",
+  "source_sha256": "2e27ebea236d72177e90619f9c5a830d55c972037fccf857c2bfc40a0036b3ab",
+  "previous_inference_array": "25316210",
+  "completed_previous_shards": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "replaced_pending_shards": [
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "fast_benchmark_job": "25324056",
+  "fast_source_sha256": "e0a2247b1ab41a14ab6278928f1963bc6498f4cea6dddd2db410ec87693e6f7a",
+  "fast_benchmark": {
+    "rank": 0,
+    "benchmark": true,
+    "device": "cuda",
+    "nodes": 518058,
+    "checked_files": 24,
+    "seconds": 14.039421322755516,
+    "load_seconds": 25.72870031837374,
+    "gpu_seconds": 0.5970477052032948,
+    "batches": 2
+  },
+  "failed_fast_array": "25324240",
+  "gap_pilot_job": "25332160",
+  "cancelled_import_job": "25316213",
+  "failure_cause": "fast path omitted generation/reuse of missing original TEASAR embeddings for astrocytes",
+  "original_teasar_missing_cache_cells": 107,
+  "reused_astrocyte_backfill_cells": 51,
+  "remaining_astrocyte_backfill_cells": 56,
+  "remaining_astrocyte_backfill_nodes": 1541774,
+  "missing_neuronal_teasar_cache_cells": 0
+}

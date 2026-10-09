@@ -1,0 +1,115 @@
+{
+  "dimensions": {
+    "x": [
+      1e-09,
+      "m"
+    ],
+    "y": [
+      1e-09,
+      "m"
+    ],
+    "z": [
+      1e-09,
+      "m"
+    ]
+  },
+  "position": [
+    792976.0,
+    829360.0,
+    780760.0
+  ],
+  "crossSectionScale": 25,
+  "projectionScale": 45000,
+  "showSlices": false,
+  "layout": "3d",
+  "layers": [
+    {
+      "type": "segmentation",
+      "name": "Cell mesh",
+      "source": "precomputed://https://g-ffa18e.d1c26e.5898.data.globus.org/microns/neurons/864691134886828794/mesh",
+      "segments": [
+        "864691134886828794"
+      ],
+      "segmentColors": {
+        "864691134886828794": "#a6bddb"
+      },
+      "skeletonRendering": {
+        "shader": "void main() { emitDefault(); }",
+        "mode2d": "lines_and_points",
+        "mode3d": "lines",
+        "lineWidth3d": 1
+      },
+      "objectAlpha": 0.15
+    },
+    {
+      "type": "segmentation",
+      "name": "Your native TEASAR skeleton",
+      "source": "precomputed://https://g-ffa18e.d1c26e.5898.data.globus.org/microns/presynaptic_windows/864691134886828794/synapse_194506043_scale32_k9/skeleton",
+      "segments": [
+        "864691134886828794"
+      ],
+      "segmentColors": {
+        "864691134886828794": "#5599ff"
+      },
+      "skeletonRendering": {
+        "shader": "void main() { emitDefault(); }",
+        "mode2d": "lines_and_points",
+        "mode3d": "lines",
+        "lineWidth3d": 1
+      }
+    },
+    {
+      "type": "segmentation",
+      "name": "Presynaptic window \u2014 scale32 k9",
+      "source": "precomputed://https://g-ffa18e.d1c26e.5898.data.globus.org/microns/presynaptic_windows/864691134886828794/synapse_194506043_scale32_k9/window",
+      "segments": [
+        "864691134886828794"
+      ],
+      "segmentColors": {
+        "864691134886828794": "#ff5500"
+      },
+      "skeletonRendering": {
+        "shader": "void main() { emitDefault(); }",
+        "mode2d": "lines_and_points",
+        "mode3d": "lines",
+        "lineWidth3d": 5
+      }
+    },
+    {
+      "type": "annotation",
+      "name": "Presynaptic point 194506043",
+      "source": {
+        "url": "local://annotations",
+        "transform": {
+          "outputDimensions": {
+            "x": [
+              1e-09,
+              "m"
+            ],
+            "y": [
+              1e-09,
+              "m"
+            ],
+            "z": [
+              1e-09,
+              "m"
+            ]
+          }
+        }
+      },
+      "annotationColor": "#ffff00",
+      "annotations": [
+        {
+          "type": "point",
+          "id": "194506043",
+          "point": [
+            792976.0,
+            829360.0,
+            780760.0
+          ],
+          "description": "Presynaptic site 194506043; root 864691134886828794"
+        }
+      ]
+    }
+  ]
+}

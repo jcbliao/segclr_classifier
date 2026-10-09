@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "synapses": 8125826,
+  "targets": 2223,
+  "partners": 3282796,
+  "model_folds": 20,
+  "prediction_records": 160190532,
+  "parts": 1664,
+  "all_source_fragment_fields_preserved": true,
+  "all_postsynaptic_fields_preserved": true,
+  "score_columns_validated": true,
+  "model_hashes_verified": true,
+  "part_metadata_verified": true,
+  "missing_selected_node_synapses_excluded": 394,
+  "shared_view_paths_verified": true,
+  "casey_hierarchies_verified": 3,
+  "shared_hierarchy_registry_version": 40,
+  "k_nearest_specs_staged": true,
+  "storage_move_verified": true,
+  "shared_database_predictions_written": false
+}

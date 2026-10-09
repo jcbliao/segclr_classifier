@@ -2,6 +2,8 @@ name: Deploy interactive figures
 
 on:
   push:
+    branches:
+      - main
     paths:
       - "docs/figures/**"
       - ".github/workflows/pages.yml"

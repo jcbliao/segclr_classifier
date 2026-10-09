@@ -5,7 +5,7 @@ from pathlib import Path
 import nbformat as nbf
 
 ROOT = Path(__file__).resolve().parent.parent
-AN = ROOT / "analysis"
+AN = ROOT / "analysis" / "all_windows"
 KERNEL = {"display_name": "segclr_db (.venv)", "language": "python", "name": "segclr_db"}
 
 PREAMBLE = '''import sys
@@ -15,14 +15,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-REPO_ROOT = Path.cwd().parent if Path.cwd().name == "analysis" else Path.cwd()
+REPO_ROOT = next(p for p in (Path.cwd(), *Path.cwd().parents) if (p / "gnn").is_dir())
 sys.path.insert(0, str(REPO_ROOT))
 
 # Root of the database, holding BOTH units: paths/ and neighborhoods/.
 from data.build_embedding_paths import DEFAULT_OUT as DB_ROOT
 from data.soma_restrict import DEFAULT_SOMA_RADIUS_NM
 RADIUS_UM = DEFAULT_SOMA_RADIUS_NM / 1000
-S = np.load(REPO_ROOT / "analysis" / "embedding_paths_summary.npz", allow_pickle=False)
+S = np.load(REPO_ROOT / "analysis" / "all_windows" / "embedding_paths_summary.npz", allow_pickle=False)
 CONFIGS = [str(c) for c in S["configs"]]
 NCONFIGS = [str(c) for c in S["nconfigs"]]
 CABLE = [c for c in NCONFIGS if c.startswith("cable")]

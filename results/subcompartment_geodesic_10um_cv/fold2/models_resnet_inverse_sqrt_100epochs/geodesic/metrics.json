@@ -1,0 +1,80 @@
+{
+  "accuracy": 0.9906268891118604,
+  "balanced_accuracy": 0.9905952268455307,
+  "macro_f1": 0.9886087478944234,
+  "cell_class_balanced_accuracy": 0.9888032224886866,
+  "cell_class_balanced_macro_f1": 0.9888258353040313,
+  "log_loss": 0.02927960827946663,
+  "confusion_matrix": [
+    [
+      36507,
+      389,
+      27,
+      0
+    ],
+    [
+      877,
+      705477,
+      10496,
+      12
+    ],
+    [
+      133,
+      10405,
+      1615915,
+      117
+    ],
+    [
+      0,
+      4,
+      100,
+      26426
+    ]
+  ],
+  "classification_report": {
+    "soma": {
+      "precision": 0.9730788709118533,
+      "recall": 0.9887333098610622,
+      "f1-score": 0.980843632455669,
+      "support": 36923.0
+    },
+    "dendrite": {
+      "precision": 0.9849247844752365,
+      "recall": 0.9841182821798338,
+      "f1-score": 0.9845213681594991,
+      "support": 716862.0
+    },
+    "axon": {
+      "precision": 0.9934689506178153,
+      "recall": 0.9934494058048532,
+      "f1-score": 0.9934591781152056,
+      "support": 1626570.0
+    },
+    "astrocytic_process": {
+      "precision": 0.9951421577857278,
+      "recall": 0.9960799095363739,
+      "f1-score": 0.9956108128473203,
+      "support": 26530.0
+    },
+    "accuracy": 0.9906268891118604,
+    "macro avg": {
+      "precision": 0.9866536909476582,
+      "recall": 0.9905952268455307,
+      "f1-score": 0.9886087478944234,
+      "support": 2406885.0
+    },
+    "weighted avg": {
+      "precision": 0.9906298200585573,
+      "recall": 0.9906268891118604,
+      "f1-score": 0.9906273447524101,
+      "support": 2406885.0
+    }
+  },
+  "best_epoch": 98,
+  "selection_split": "held-out cell fold 2",
+  "selection_metric": "macro_f1",
+  "fold": 2,
+  "n_folds": 5,
+  "fold_plan": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/subcompartment_geodesic_10um_cv/folds.json",
+  "test_policy": "Match existing model: best macro F1 on held-out fold over 100 epochs. Fold metrics are used for checkpoint selection, not independent final evaluation."
+}

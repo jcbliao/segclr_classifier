@@ -1,0 +1,3 @@
+configuration,total_cpus,ready_inputs_per_minute,sample_seconds,new_ready_inputs
+32x8,256,1584.1749776509396,300.5728576183319,7936
+64x4,256,1816.5890076582655,300.1669600009918,9088

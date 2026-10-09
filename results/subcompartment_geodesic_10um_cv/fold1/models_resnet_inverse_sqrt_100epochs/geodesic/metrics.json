@@ -1,0 +1,80 @@
+{
+  "accuracy": 0.9902189164408822,
+  "balanced_accuracy": 0.9895000685922974,
+  "macro_f1": 0.9883757760549496,
+  "cell_class_balanced_accuracy": 0.9892188560803472,
+  "cell_class_balanced_macro_f1": 0.9892361117333193,
+  "log_loss": 0.030643511563539505,
+  "confusion_matrix": [
+    [
+      35602,
+      515,
+      40,
+      0
+    ],
+    [
+      749,
+      696780,
+      11540,
+      12
+    ],
+    [
+      116,
+      10592,
+      1645456,
+      102
+    ],
+    [
+      0,
+      3,
+      67,
+      25151
+    ]
+  ],
+  "classification_report": {
+    "soma": {
+      "precision": 0.9762799243151342,
+      "recall": 0.9846502751887601,
+      "f1-score": 0.9804472350738048,
+      "support": 36157.0
+    },
+    "dendrite": {
+      "precision": 0.9843054711890266,
+      "recall": 0.9826521934729601,
+      "f1-score": 0.9834781375201045,
+      "support": 709081.0
+    },
+    "axon": {
+      "precision": 0.9929714688827429,
+      "recall": 0.9934732705978387,
+      "f1-score": 0.9932223063594788,
+      "support": 1656266.0
+    },
+    "astrocytic_process": {
+      "precision": 0.9954878290124678,
+      "recall": 0.9972245351096308,
+      "f1-score": 0.9963554252664105,
+      "support": 25221.0
+    },
+    "accuracy": 0.9902189164408822,
+    "macro avg": {
+      "precision": 0.9872611733498429,
+      "recall": 0.9895000685922974,
+      "f1-score": 0.9883757760549496,
+      "support": 2426725.0
+    },
+    "weighted avg": {
+      "precision": 0.9902167499225156,
+      "recall": 0.9902189164408822,
+      "f1-score": 0.9902173128619393,
+      "support": 2426725.0
+    }
+  },
+  "best_epoch": 97,
+  "selection_split": "held-out cell fold 1",
+  "selection_metric": "macro_f1",
+  "fold": 1,
+  "n_folds": 5,
+  "fold_plan": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/subcompartment_geodesic_10um_cv/folds.json",
+  "test_policy": "Match existing model: best macro F1 on held-out fold over 100 epochs. Fold metrics are used for checkpoint selection, not independent final evaluation."
+}

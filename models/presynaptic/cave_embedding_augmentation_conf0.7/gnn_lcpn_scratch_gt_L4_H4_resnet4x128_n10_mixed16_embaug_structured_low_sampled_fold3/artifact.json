@@ -1,0 +1,7 @@
+{
+  "checkpoint_url": null,
+  "checkpoint_sha256": null,
+  "training_commit": null,
+  "source_report": "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_structured_low_sampled_fold3.json",
+  "source_report_sha256": "1af1fca3aa11eec0aad6714f11895426cbf02614e1776367f3325aec4b8a1f93"
+}

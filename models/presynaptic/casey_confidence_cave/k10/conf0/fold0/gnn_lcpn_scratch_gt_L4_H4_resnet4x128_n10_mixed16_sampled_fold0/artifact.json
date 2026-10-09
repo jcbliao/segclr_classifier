@@ -1,0 +1,7 @@
+{
+  "checkpoint_url": null,
+  "checkpoint_sha256": null,
+  "training_commit": null,
+  "source_report": "results/presynaptic/casey_confidence_cave/k10/conf0/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0.json",
+  "source_report_sha256": "06cb724b1684f7492cab9326500e1eed4ee9733c4711fc859790e0a3361ef9b3"
+}

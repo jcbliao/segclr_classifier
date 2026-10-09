@@ -18,5 +18,9 @@ set -euo pipefail
 REPO=/home/jcbliao/rotation/segclr/gnn_classifier
 PY="$REPO/segclr_db/.venv/bin/python"
 cd "$REPO"
-mkdir -p logs analysis/feature_prediction_cache
-"$PY" -u analysis/feature_prediction_correlation.py --num-workers 15 "$@"
+mkdir -p logs analysis/all_windows/feature_prediction_cache
+# PYTHONPATH="$REPO", as every other wrapper here sets: sys.path[0] is the
+# SCRIPT's directory (analysis/), not the repo root, so the module's own
+# `from data.dataset_lcpn import ...` has nothing to resolve against.
+PYTHONPATH="$REPO" "$PY" -u analysis/all_windows/feature_prediction_correlation.py \
+  --num-workers 15 "$@"

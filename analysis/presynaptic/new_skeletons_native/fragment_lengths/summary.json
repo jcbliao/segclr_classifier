@@ -1,0 +1,35 @@
+{
+  "cells": 2209,
+  "presynaptic_sites": 2458914,
+  "factor": 32,
+  "cable_length_cutoff": null,
+  "weighting": "one count per unique root-scoped node membership, matching training deduplication",
+  "old_k7": {
+    "n": 1719192,
+    "mean_um": 15.797136236427198,
+    "median_um": 15.691317945480346,
+    "p5_um": 13.848072345352174,
+    "p95_um": 18.08886324081421,
+    "max_um": 24.059119949340822,
+    "fraction_above_25": 0.0,
+    "mode_1um_bin_left": 15.0
+  },
+  "new_k10": {
+    "n": 1647777,
+    "mean_um": 23.641171521880313,
+    "median_um": 23.50998126602173,
+    "p5_um": 21.077122306823732,
+    "p95_um": 26.599592781066892,
+    "max_um": 35.1633653793335,
+    "fraction_above_25": 0.2003420365741238,
+    "mode_1um_bin_left": 23.0
+  },
+  "site_counts": {
+    "7": {
+      "valid": 2336250
+    },
+    "10": {
+      "valid": 2336213
+    }
+  }
+}

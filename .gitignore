@@ -37,6 +37,12 @@ gnn/code_pdf/
 # notebook input aggregates -- rebuilt by scripts/sbatch/rebuild_path_analysis.sh
 analysis/embedding_paths_summary.npz
 
+# per-window prediction/geometry caches -- ~90MB per run, rebuilt by
+# scripts/sbatch/build_feature_prediction_cache.sh. The .summary.json beside
+# each one is what the notebook actually reads, and is small enough to keep,
+# mirroring results/ keeping metrics but not checkpoints.
+analysis/feature_prediction_cache/*.npz
+
 # python
 __pycache__/
 *.pyc
@@ -46,3 +52,25 @@ __pycache__/
 
 # editor/OS
 .DS_Store
+
+# Published model catalog contains metadata; link downloadable weights separately.
+models/**/*.pt
+models/**/*.pth
+models/**/*.ckpt
+models/**/*.safetensors
+
+# Local analysis inputs and generated binary caches, including reorganized paths.
+analysis/**/*.npz
+analysis/**/*.npy
+analysis/**/*.float32
+analysis/**/*.parquet
+analysis/**/*.duckdb
+analysis/**/*.duckdb.wal
+slurm-*.out
+results/**/*.npz
+analysis/**/*.joblib
+analysis/postsynaptic_targets_conf0.7/targets.csv
+archive/logs*/
+analysis/**/cache/
+analysis/**/*.tmp
+analysis/**/*.pkl
