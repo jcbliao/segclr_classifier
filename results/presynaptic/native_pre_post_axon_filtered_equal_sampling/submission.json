@@ -1,0 +1,34 @@
+{
+  "class_balance": "equal",
+  "sampling": "with replacement, inverse-count weights; equal expected L2 class shares",
+  "pre_post_array": 24705559,
+  "pre_post_tasks": {
+    "0": "mean/pre_post",
+    "1": "pointwise_mlp/pre_post",
+    "2": "graph_transformer/pre_post"
+  },
+  "additional_array": 24705703,
+  "additional_tasks": {
+    "0": "mean/pre_only",
+    "1": "pointwise_mlp/pre_only",
+    "2": "graph_transformer/pre_only",
+    "6": "mean/pre_mean_control",
+    "7": "pointwise_mlp/pre_mean_control",
+    "8": "graph_transformer/pre_mean_control"
+  },
+  "comparison": 24705795,
+  "previous_preemptable_tasks": {
+    "24705703": [
+      0,
+      1,
+      2,
+      6,
+      7,
+      8
+    ]
+  },
+  "training_partition": "mit_normal_gpu",
+  "training_account": "mit_amf_advanced_gpu",
+  "training_qos": "mit_amf_advanced_gpu",
+  "returned_to_gpu": "2026-10-03"
+}

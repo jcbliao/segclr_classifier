@@ -1,0 +1,41 @@
+{
+  "cache": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/compartment_filtered/scale16/k17/conf0.7/fold0/geodesic_exclusion20um",
+  "classifier": "/orcd/scratch/orcd/013/jcbliao/segclr/subcompartment_geodesic_exclusion20um_v1/models_resnet_inverse_sqrt_100epochs/geodesic/model.pt",
+  "classifier_sha256": "b22e9088468a355423205837b4d2e837edf31fcb3a7f4c6844629ebf18f638a4",
+  "voting_rule": "drop iff dendrite votes > half of observed window embeddings; retain ties",
+  "unit": "one unaveraged 64D vector per observed node",
+  "sampling": "uniform without replacement within class from unique observed nodes in the original sampled retained windows",
+  "per_class": 2000,
+  "available_per_class": {
+    "MartFam": 33517,
+    "NglFam": 29047
+  },
+  "n_points": 4000,
+  "seed": 0,
+  "n_neighbors": 15,
+  "min_dist": 0.1,
+  "metric": "euclidean",
+  "n_epochs": 500,
+  "standardization": false,
+  "supervised": false,
+  "umap_version": "0.5.9.post2",
+  "hierarchy_level": 2,
+  "source_to_class": {
+    "MartFam": "MartFam",
+    "L4IT": "pyramidal",
+    "NglFam": "NglFam",
+    "L3IT": "pyramidal",
+    "L2IT": "pyramidal",
+    "L6CT": "pyramidal",
+    "BasketFam": "BasketFam",
+    "L5ET": "pyramidal",
+    "L5IT": "pyramidal",
+    "thalamocortical": "thalamocortical",
+    "L6IT": "pyramidal",
+    "L5NP": "pyramidal",
+    "BipFam": "BipFam"
+  },
+  "label_source": "source database Casey hierarchy_tree, zero-based L2",
+  "plot_title": "Raw presynaptic SegCLR embeddings",
+  "original_sample_source": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/compartment_filtered/casey_l2/balanced_mean_embeddings.npz"
+}

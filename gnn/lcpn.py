@@ -209,6 +209,110 @@ class LCPNHead(nn.Module):
         """Convenience: just the finest (last) level's predictions, (B,)."""
         return self.predict_top_down(hidden)[:, -1]
 
+    def predict_distribution(self, hidden: torch.Tensor) -> dict:
+        """Raw local-head logits, global-column logits, and joint probabilities.
+
+        ``level_logits`` scatters each local head into the declared global
+        class order. At a level with multiple parents these are *conditional*
+        logits: normalize each head separately, then multiply by its parent's
+        joint probability. ``level_probabilities`` already performs that step.
+        Unary paths have probability one and constant zero logits. Raw learned
+        scores are also returned unchanged in ``head_logits`` with ``nodes``
+        describing each parent's children, making later database export exact.
+        ``predictions`` preserves the trained top-down decision rule.
+        """
+        features=hidden if self.trunk is None else self.trunk(hidden)
+        heads=tuple(head(features) for head in self.heads)
+        return self.distribution_from_head_logits(heads,reference=features)
+
+    def distribution_from_head_logits(self,heads,*,reference=None):
+        """Decode raw scores, also usable after vectorized fold inference."""
+        if len(heads)!=len(self.heads):raise ValueError('wrong number of local heads')
+        features=reference if reference is not None else heads[0]
+        n=len(features);level_logits=[];level_probabilities=[]
+        predictions=torch.zeros((n,self.n_levels),dtype=torch.long,device=features.device)
+        previous=torch.full((n,),-1,dtype=torch.long,device=features.device)
+        for level,classes in enumerate(self.hierarchy.level_classes):
+            logits=features.new_zeros((n,len(classes)))
+            probabilities=features.new_zeros((n,len(classes)))
+            parents={}
+            for path in self.hierarchy.label_paths.values():
+                parent=-1 if level==0 else self.hierarchy.level_maps[level-1][path[level-1]]
+                parents.setdefault(parent,set()).add(self.hierarchy.level_maps[level][path[level]])
+            for parent,children in parents.items():
+                key=(level-1,parent)
+                parent_probability=features.new_ones(n) if level==0 else level_probabilities[-1][:,parent]
+                active=previous==parent
+                if key in self.node_lookup:
+                    index=self.node_lookup[key];node=self.nodes[index]
+                    child_ids=node['child_global_indices'];raw=heads[index]
+                    logits[:,child_ids]=raw
+                    probabilities[:,child_ids]=parent_probability[:,None]*raw.softmax(-1)
+                    mapped=torch.as_tensor(child_ids,device=features.device)[raw.argmax(-1)]
+                    predictions[active,level]=mapped[active]
+                else:
+                    child=self.passthrough[key]
+                    probabilities[:,child]=parent_probability
+                    predictions[active,level]=child
+            level_logits.append(logits);level_probabilities.append(probabilities)
+            previous=predictions[:,level]
+        return dict(head_logits=heads,head_nodes=self.nodes,level_logits=tuple(level_logits),
+            level_probabilities=tuple(level_probabilities),predictions=predictions)
+
+    def predict_oracle_routed(
+        self, hidden: torch.Tensor, targets: torch.Tensor
+    ) -> torch.Tensor:
+        """Predict each level while routing through the *true* parent path.
+
+        This is a diagnostic upper bound, not deployable inference: the local
+        classifier used at level ``k`` is selected by ``targets[:, k-1]``
+        rather than by the preceding prediction.  Its difference from
+        :meth:`predict_top_down` isolates error amplification by the cascade.
+        The selected local head still predicts its child normally; the true
+        child label is never supplied to that head.
+        """
+        if targets.ndim != 2 or targets.shape[1] != self.n_levels:
+            raise ValueError(
+                f"targets must have shape (B, {self.n_levels}), got {tuple(targets.shape)}"
+            )
+        if targets.shape[0] != hidden.shape[0]:
+            raise ValueError("hidden and targets batch sizes differ")
+        hidden = hidden if self.trunk is None else self.trunk(hidden)
+        targets = targets.to(hidden.device)
+        batch_size = hidden.shape[0]
+        preds = torch.zeros(
+            batch_size, self.n_levels, dtype=torch.long, device=hidden.device
+        )
+
+        for next_level in range(self.n_levels):
+            parent_level = next_level - 1
+            true_parents = (
+                torch.full((batch_size,), -1, dtype=torch.long, device=hidden.device)
+                if parent_level == -1 else targets[:, parent_level]
+            )
+            next_preds = torch.zeros(batch_size, dtype=torch.long, device=hidden.device)
+            for parent_idx_t in true_parents.unique():
+                parent_idx = int(parent_idx_t.item())
+                mask = true_parents == parent_idx_t
+                key = (parent_level, parent_idx)
+                if key in self.node_lookup:
+                    node_idx = self.node_lookup[key]
+                    node = self.nodes[node_idx]
+                    local_preds = self.heads[node_idx](hidden[mask]).argmax(dim=-1)
+                    child_indices = torch.tensor(
+                        node["child_global_indices"], dtype=torch.long, device=hidden.device
+                    )
+                    next_preds[mask] = child_indices[local_preds]
+                elif key in self.passthrough:
+                    next_preds[mask] = self.passthrough[key]
+                else:
+                    raise ValueError(
+                        f"target contains invalid hierarchy parent at level {parent_level}: "
+                        f"global class {parent_idx}"
+                    )
+            preds[:, next_level] = next_preds
+        return preds
+
 
 def compute_node_class_weights(
     hierarchy: ParsedHierarchy, window_counts_by_label: dict[str, float], eps: float = 1.0,

@@ -1,0 +1,53 @@
+{
+  "variant": "geodesic",
+  "classes": [
+    "soma",
+    "dendrite",
+    "axon",
+    "astrocytic_process"
+  ],
+  "head": "resnet",
+  "model": "gnn.resnet.DeepResNetTrunk(64,128,4) + nn.Linear(128,4); dropout=0, BN=False",
+  "optimizer": "AdamW",
+  "learning_rate": 0.0001,
+  "weight_decay": 1e-05,
+  "epochs": 100,
+  "batch_size": 16384,
+  "random_seed": 0,
+  "standardization": "weighted training samples only",
+  "sampling": "inverse_sqrt",
+  "sampling_details": "point weights 1/sqrt(training class count), with replacement; uniform points within each class",
+  "expected_class_fractions": {
+    "soma": 0.07715605504447698,
+    "dendrite": 0.3408675933074671,
+    "axon": 0.5175118852261766,
+    "astrocytic_process": 0.06446446642187925
+  },
+  "loss_weighting": "none; balancing is implemented by sampling",
+  "samples_per_epoch": 9633792,
+  "best_epoch": 96,
+  "selection_metric": "macro_f1",
+  "test_policy": "Match existing model: best macro F1 on held-out fold over 100 epochs. Fold metrics are used for checkpoint selection, not independent final evaluation.",
+  "gpu": "NVIDIA L40S",
+  "gpu_resident_data": true,
+  "n_train": 9629350,
+  "n_test": 2473144,
+  "n_train_cells": 1828,
+  "n_test_cells": 457,
+  "train_counts": {
+    "soma": 145449,
+    "dendrite": 2838848,
+    "axon": 6543519,
+    "astrocytic_process": 101534
+  },
+  "test_counts": {
+    "soma": 36097,
+    "dendrite": 709067,
+    "axon": 1701856,
+    "astrocytic_process": 26124
+  },
+  "fold": 3,
+  "n_folds": 5,
+  "fold_plan": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/subcompartment_geodesic_10um_cv/folds.json",
+  "selection_split": "held-out cell fold 3"
+}

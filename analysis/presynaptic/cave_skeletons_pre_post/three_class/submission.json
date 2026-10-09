@@ -1,0 +1,25 @@
+{
+  "prepare_job": "25178439",
+  "training_array": "25178560",
+  "status": "submitted",
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "architectures": [
+    "pointwise_mlp",
+    "graph_transformer"
+  ],
+  "num_embeddings": 10,
+  "classes": [
+    "BasketFam",
+    "nonBasketInhibitory",
+    "Excitatory"
+  ],
+  "condition": "pre_post",
+  "task_mapping": "fold = task / 2; task % 2: 0 = MLP, 1 = GT",
+  "epochs": 30
+}

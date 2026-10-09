@@ -1,0 +1,90 @@
+{
+  "window_test_metrics": {
+    "accuracy": 0.9056031037239174,
+    "balanced_accuracy": 0.8870360753841525,
+    "macro_precision": 0.9033277225228592,
+    "macro_f1": 0.8939625877122271,
+    "per_class_recall": {
+      "BasketFam": 0.9456351010622908,
+      "Excitatory": 0.9445897070566316,
+      "nonBasketInhibitory": 0.7708834180335352
+    },
+    "per_class_precision": {
+      "BasketFam": 0.9647665334781188,
+      "Excitatory": 0.8833347975050514,
+      "nonBasketInhibitory": 0.8618818365854073
+    },
+    "confusion_matrix": [
+      [
+        91511,
+        2963,
+        2298
+      ],
+      [
+        1257,
+        120660,
+        5821
+      ],
+      [
+        2085,
+        12973,
+        50664
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9542857142857143,
+    "balanced_accuracy": 0.8787878787878788,
+    "macro_precision": 0.9728349673202614,
+    "macro_f1": 0.912038145576337,
+    "per_class_recall": {
+      "BasketFam": 1.0,
+      "Excitatory": 1.0,
+      "nonBasketInhibitory": 0.6363636363636364
+    },
+    "per_class_precision": {
+      "BasketFam": 0.9705882352941176,
+      "Excitatory": 0.9479166666666666,
+      "nonBasketInhibitory": 1.0
+    },
+    "confusion_matrix": [
+      [
+        33,
+        0,
+        0
+      ],
+      [
+        0,
+        273,
+        0
+      ],
+      [
+        1,
+        15,
+        28
+      ]
+    ]
+  },
+  "dataset_test_metrics": {},
+  "classes": [
+    "BasketFam",
+    "Excitatory",
+    "nonBasketInhibitory"
+  ],
+  "best_epoch": 29,
+  "postsynaptic_cache": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/cave_skeletons_pre_post/k10/conf0.7/postsynaptic",
+  "use_postsynaptic": true,
+  "append_presynaptic_mean": false,
+  "single_presynaptic_embedding": false,
+  "dataset_counts": {
+    "train_windows": 1182756,
+    "test_windows": 290232
+  },
+  "fold": "fold_4",
+  "fold_index": 4,
+  "split_seed": 0,
+  "split_fracs": [
+    0.8,
+    0.2
+  ]
+}

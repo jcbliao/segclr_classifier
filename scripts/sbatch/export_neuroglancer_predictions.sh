@@ -1,8 +1,6 @@
 #!/bin/bash
-# Heavy model inference and precomputed conversion. Safe to resubmit: each
-# completed model cache is reused, and the published skeleton source is swapped
-# only after a complete replacement has been written.
-# Usage: sbatch scripts/sbatch/export_neuroglancer_predictions.sh [RUN_NAME ...]
+# GPU inference/cache validation and immutable export-plan preparation. Use
+# scripts/submit_neuroglancer_predictions.sh for the complete array workflow.
 #SBATCH --job-name=ng_predictions
 #SBATCH --partition=mit_normal_gpu,mit_preemptable
 #SBATCH --account=mit_general
@@ -19,6 +17,7 @@ set -euo pipefail
 REPO=/home/jcbliao/rotation/segclr/gnn_classifier
 PY="$REPO/segclr_db/.venv/bin/python"
 cd "$REPO"
-mkdir -p logs /orcd/scratch/orcd/013/jcbliao/neuroglancer/microns/segclr_predictions \
+mkdir -p logs /orcd/scratch/orcd/013/jcbliao/neuroglancer/microns/segclr_predictions/fold_test_validation \
   /orcd/scratch/orcd/013/jcbliao/segclr/window_prediction_cache
-"$PY" -u scripts/export_neuroglancer_predictions.py --num-workers 15 "$@"
+"$PY" -u scripts/export_neuroglancer_predictions.py \
+  --phase prepare --num-workers 15 "$@"

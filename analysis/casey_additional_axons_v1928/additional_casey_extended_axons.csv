@@ -1,0 +1,2 @@
+casey_v1822_root_id,nucleus_id,class,ct_coarse,ct_coarse_confidence,ct_fine,ct_fine_confidence,is_core,root_id_v1928,status_axon,strategy_axon,status_dendrite,strategy_dendrite
+864691135611879943,305183,inhibitory,MartFam,0.95,MartFam-f,0.06666666666666667,True,864691135611879943,True,axon_fully_extended,True,dendrite_extended

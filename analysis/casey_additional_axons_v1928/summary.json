@@ -1,0 +1,73 @@
+{
+  "checked_at": "2026-09-30T19:51:12.282532+00:00",
+  "datastack": "minnie65_phase3_v1",
+  "metadata": {
+    "1718": {
+      "status": "AVAILABLE",
+      "id": 1756,
+      "expires_on": "2126-03-10 07:10:01.190228+00:00",
+      "time_stamp": "2026-03-07 08:10:01.190228+00:00",
+      "valid": true,
+      "is_merged": false,
+      "version": 1718,
+      "datastack": "minnie65_phase3_v1"
+    },
+    "1928": {
+      "is_merged": false,
+      "valid": true,
+      "id": 1970,
+      "status": "AVAILABLE",
+      "version": 1928,
+      "expires_on": "2026-10-02 07:10:43.996089+00:00",
+      "datastack": "minnie65_phase3_v1",
+      "time_stamp": "2026-09-30 08:10:43.996089+00:00"
+    }
+  },
+  "existing_store": "/orcd/compute/sdorkenw/001/segclr-db/microns",
+  "casey_source": "/home/jcbliao/rotation/segclr/misc/casey_class_hierarchy/microns_public_v1822_ct_csm_v2_sep15.parquet",
+  "existing_store_roots": 2442,
+  "existing_store_roots_without_nucleus": 30,
+  "excluded_existing_nuclei": 2412,
+  "confidence_cutoff": null,
+  "extended_axon_inventories": {
+    "1718": {
+      "unique_roots": 2155,
+      "strategy_unique_roots": {
+        "axon_fully_extended": 547,
+        "axon_partially_extended": 1608
+      },
+      "unique_nuclei": 2100,
+      "roots_without_nucleus": 55,
+      "status_axon_false_roots": 0
+    },
+    "1928": {
+      "unique_roots": 2184,
+      "strategy_unique_roots": {
+        "axon_fully_extended": 802,
+        "axon_partially_extended": 1382
+      },
+      "unique_nuclei": 2100,
+      "roots_without_nucleus": 84,
+      "status_axon_false_roots": 0
+    }
+  },
+  "newly_extended_nuclei": 0,
+  "no_longer_extended_nuclei": 0,
+  "transitions": {
+    "axon_fully_extended -> axon_fully_extended": 518,
+    "axon_partially_extended -> axon_fully_extended": 239,
+    "axon_partially_extended -> axon_partially_extended": 1343
+  },
+  "casey_candidates_after_exclusion": {
+    "BipFam": 1647,
+    "MartFam": 2363,
+    "NglFam": 951
+  },
+  "casey_candidates_unresolved_v1928": 0,
+  "additional_casey_extended_axons": {
+    "MartFam": 1
+  },
+  "additional_casey_by_strategy": {
+    "MartFam / axon_fully_extended": 1
+  }
+}

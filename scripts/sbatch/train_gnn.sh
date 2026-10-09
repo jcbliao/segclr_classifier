@@ -6,6 +6,8 @@
 # Configure via env vars, e.g.:
 #   ARCHITECTURE=mean sbatch scripts/sbatch/train_gnn.sh
 #   ARCHITECTURE=mpnn MPNN_LAYERS=2 sbatch scripts/sbatch/train_gnn.sh
+#   ARCHITECTURE=pointwise_mlp sbatch scripts/sbatch/train_gnn.sh
+#   ARCHITECTURE=linear sbatch scripts/sbatch/train_gnn.sh
 #   EXTRA_ARGS="--gt-no-lpe" sbatch scripts/sbatch/train_gnn.sh
 #
 # Two-hour segments improve backfill eligibility. Runs that need longer
@@ -52,8 +54,13 @@ ARGS=(
   --gt-depth "${GT_DEPTH:-4}"
   --gt-heads "${GT_HEADS:-4}"
   --mpnn-layers "${MPNN_LAYERS:-2}"
+  --pointwise-mlp-layers "${POINTWISE_MLP_LAYERS:-2}"
+  --pointwise-mlp-hidden-dim "${POINTWISE_MLP_HIDDEN_DIM:-128}"
+  --linear-out-dim "${LINEAR_OUT_DIM:-128}"
   --num-embeddings "${NUM_EMBEDDINGS:-20}"
   --batch-size "${BATCH_SIZE:-4096}"
+  --lr "${LR:-1e-4}"
+  --weight-decay "${WEIGHT_DECAY:-1e-5}"
 )
 
 # Ablation switches go through EXTRA_ARGS, word-split deliberately so a caller

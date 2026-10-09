@@ -1,0 +1,11 @@
+{
+  "individual": {
+    "seconds": 2.785536700859666,
+    "fsyncs": 1024
+  },
+  "buffered": {
+    "seconds": 1.0350568685680628,
+    "fsyncs": 256
+  },
+  "speedup": 2.6911919387707495
+}

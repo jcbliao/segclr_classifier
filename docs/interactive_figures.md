@@ -11,10 +11,10 @@ generation never runs on the login node. Without `--push`, wait for the Slurm
 job to finish and then open `docs/figures/index.html`. With `--push`, the job
 commits and pushes `docs/figures` only after a successful export.
 
-Each notebook figure has its own page. Every dropdown state is rendered by the
-notebook's actual Matplotlib plotting function and serialized with mpld3, so
-figure dimensions, subplot geometry, colors, legends, labels, and annotations
-come from the Matplotlib `Figure` rather than a separate Plotly recreation.
+Each notebook figure has its own compact Plotly page. The exporter explicitly
+maps the Matplotlib figure dimensions, subplot geometry, color cycles and
+colormaps, legends, labels, annotations, and ordering into the interactive
+chart while leaving small renderer-specific font differences to Plotly.
 
 The GitHub Actions workflow deploys `docs/figures` after it is pushed. In the
 repository's **Settings → Pages**, set **Source** to **GitHub Actions** once.

@@ -1,0 +1,5 @@
+stage	job_id	dependency
+priority_verify	22600108	
+build_scale32	22794358	afterok:22600108
+finalize_scale32	22794359	afterok:22794358
+train_mean_gt_mlp	22794360	afterok:22794359

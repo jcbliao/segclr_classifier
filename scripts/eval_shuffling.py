@@ -32,11 +32,11 @@ from gnn.model import WindowClassifier  # noqa: E402
 
 
 DEFAULT_CHECKPOINTS = (
-    "results/gnn_lcpn_scratch_meanpool/checkpoint_best.pt",
-    "results/gnn_lcpn_scratch_meanpool_resnet4x128/checkpoint_best.pt",
-    "results/gnn_lcpn_scratch_mpnn_L2_spatial/checkpoint_best.pt",
-    "results/gnn_lcpn_scratch_mpnn_L2_spatial_resnet4x128/checkpoint_best.pt",
-    "results/gnn_lcpn_scratch_mpnn_L2_spatial_frozenagg/checkpoint_best.pt",
+    "results/all_windows/gnn_lcpn_scratch_meanpool/checkpoint_best.pt",
+    "results/all_windows/gnn_lcpn_scratch_meanpool_resnet4x128/checkpoint_best.pt",
+    "results/all_windows/gnn_lcpn_scratch_mpnn_L2_spatial/checkpoint_best.pt",
+    "results/all_windows/gnn_lcpn_scratch_mpnn_L2_spatial_resnet4x128/checkpoint_best.pt",
+    "results/all_windows/gnn_lcpn_scratch_mpnn_L2_spatial_frozenagg/checkpoint_best.pt",
 )
 CONDITIONS = (
     "none",
@@ -226,5 +226,5 @@ if __name__ == "__main__":
     parser.add_argument("--batch-size", type=int, default=4096)
     parser.add_argument("--num-workers", type=int, default=31)
     parser.add_argument("--seed", type=int, default=0)
-    parser.add_argument("--output", default="results/shuffling_ablations.json")
+    parser.add_argument("--output", default="results/all_windows/shuffling_ablations.json")
     raise SystemExit(main(parser.parse_args()))

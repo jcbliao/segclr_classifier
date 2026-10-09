@@ -66,6 +66,7 @@ def parse_args():
                    help="with --limit, choose a deterministic hash sample instead of the first IDs")
     p.add_argument("--dry-run", action="store_true")
     p.add_argument("--merge", action="store_true")
+    p.add_argument("--retry-errors", action="store_true", help="retry failed rows in completed parts")
     return p.parse_args()
 
 
@@ -132,6 +133,14 @@ def build(args) -> int:
     mine = [(i, chunk) for i, chunk in enumerate(chunks) if i % world == rank]
     todo = [(i, chunk) for i, chunk in mine if not part_path(args.output, i).exists()]
     print(f"rank {rank}/{world}: {len(roots):,} roots, {len(chunks):,} parts, {len(todo):,} to fetch")
+    if args.retry_errors:
+        completed_errors = []
+        for index, chunk in mine:
+            path = part_path(args.output, index)
+            if path.exists() and any(row["error"] is not None for row in pq.read_table(path, columns=["error"]).to_pylist()):
+                completed_errors.append((index, chunk))
+        todo = completed_errors + todo
+        print(f"including {len(completed_errors):,} completed parts with errors")
     if args.dry_run or not todo:
         return 0
 
@@ -147,22 +156,26 @@ def build(args) -> int:
     def fetch_one(root_id: int) -> dict:
         # requests.Session is not guaranteed thread-safe.  Give each request
         # stream its own CAVEclient/session, created lazily in that thread.
-        if not hasattr(local, "client"):
-            local.client = build_client(token, args.datastack, args.mat_version)
         for attempt in range(1, args.root_retries + 1):
             try:
+                if not hasattr(local, "client"):
+                    local.client = build_client(token, args.datastack, args.mat_version)
                 return l2_volume(local.client, root_id, args.l2_batch_size, args.sleep)
             except Exception as exc:
                 if attempt == args.root_retries:
                     return {"root_id": root_id, "n_l2_chunks": 0,
                             "n_l2_sizes_missing": 0, "volume_nm3": 0,
                             "error": f"{type(exc).__name__}: {exc}"}
-                time.sleep(min(2 ** (attempt - 1), 8))
+                time.sleep(65 if any(code in str(exc) for code in ("429", "503", "502", "Too Many Requests")) else min(2 ** (attempt - 1), 8))
 
     bar = tqdm(todo, desc=f"rank {rank}", unit="part")
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.request_workers) as pool:
         for index, chunk in bar:
-            rows = list(pool.map(fetch_one, chunk))
+            path = part_path(args.output, index)
+            previous = pq.read_table(path).to_pylist() if args.retry_errors and path.exists() else []
+            good = {int(row["root_id"]): row for row in previous if row["error"] is None}
+            fetched = {row["root_id"]: row for row in pool.map(fetch_one, [r for r in chunk if r not in good])}
+            rows = [good[r] if r in good else fetched[r] for r in chunk]
             write_part(rows, part_path(args.output, index))
     return 0
 

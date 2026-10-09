@@ -334,3 +334,45 @@ HIERARCHY_V2_TREE: dict = {
         "non_neuron": ["astrocyte", "oligo", "microglia", "OPC"],
     },
 }
+
+
+def hierarchy_groups(hierarchy: ParsedHierarchy) -> list[dict]:
+    """Every class in the tree, breadth-first, with the finest classes under it.
+
+    Returns one dict per node: ``name``, the ``level`` it first appears at, and
+    ``leaves`` -- the classes at the hierarchy's finest level that descend from
+    it. A model trained at that finest level emits one of `leaves`, so a node's
+    score is computable from a finest-level confusion matrix by summing the
+    block `leaves` x `leaves`; nothing has to be re-run to score a coarser
+    question than the one the head was trained on.
+
+    Breadth-first, not level-by-level-sorted: children follow their own parent,
+    so `excitatory`'s classes are listed together and `inhibitory`'s together,
+    rather than interleaved alphabetically. That ordering is what a class
+    selector shows, and it is the only thing that makes a long flat list of
+    class names readable as a tree.
+
+    A name is emitted once, at the shallowest level it appears at. Padding
+    repeats a short branch's last element down to the full depth (`non_neuron`
+    is its own child), so without that a padded node would appear once per level
+    it was padded through, each time with the same `leaves`.
+    """
+    paths = list(hierarchy.label_paths.values())
+    finest = hierarchy.depth - 1
+    groups: list[dict] = []
+    seen: set[str] = set()
+    queue = [(0, name) for name in sorted({path[0] for path in paths})]
+    while queue:
+        level, name = queue.pop(0)
+        if name not in seen:
+            seen.add(name)
+            groups.append({
+                "name": name, "level": level,
+                "leaves": tuple(sorted({p[finest] for p in paths if p[level] == name})),
+            })
+        if level < finest:
+            queue.extend(
+                (level + 1, child)
+                for child in sorted({p[level + 1] for p in paths if p[level] == name})
+            )
+    return groups

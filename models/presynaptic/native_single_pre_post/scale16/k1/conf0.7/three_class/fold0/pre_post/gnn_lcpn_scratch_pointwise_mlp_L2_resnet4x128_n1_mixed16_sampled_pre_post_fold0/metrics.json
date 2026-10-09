@@ -1,0 +1,90 @@
+{
+  "window_test_metrics": {
+    "accuracy": 0.8281180173942082,
+    "balanced_accuracy": 0.823275817556777,
+    "macro_precision": 0.8361858632307051,
+    "macro_f1": 0.8275563385441034,
+    "per_class_recall": {
+      "BasketFam": 0.8650813081971616,
+      "Excitatory": 0.8847865025712139,
+      "nonBasketInhibitory": 0.7199596419019555
+    },
+    "per_class_precision": {
+      "BasketFam": 0.9377429241648545,
+      "Excitatory": 0.7791025032223051,
+      "nonBasketInhibitory": 0.7917121623049558
+    },
+    "confusion_matrix": [
+      [
+        109534,
+        7750,
+        9333
+      ],
+      [
+        3625,
+        137817,
+        14321
+      ],
+      [
+        3647,
+        31325,
+        89910
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9498607242339833,
+    "balanced_accuracy": 0.8752290694637983,
+    "macro_precision": 0.9613417336631622,
+    "macro_f1": 0.9082795614706279,
+    "per_class_recall": {
+      "BasketFam": 0.9696969696969697,
+      "Excitatory": 0.996415770609319,
+      "nonBasketInhibitory": 0.6595744680851063
+    },
+    "per_class_precision": {
+      "BasketFam": 0.9696969696969697,
+      "Excitatory": 0.9455782312925171,
+      "nonBasketInhibitory": 0.96875
+    },
+    "confusion_matrix": [
+      [
+        32,
+        0,
+        1
+      ],
+      [
+        1,
+        278,
+        0
+      ],
+      [
+        0,
+        16,
+        31
+      ]
+    ]
+  },
+  "dataset_test_metrics": {},
+  "classes": [
+    "BasketFam",
+    "Excitatory",
+    "nonBasketInhibitory"
+  ],
+  "best_epoch": 21,
+  "postsynaptic_cache": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/native_skeletons_pre_post/scale16/k17/conf0.7",
+  "use_postsynaptic": true,
+  "append_presynaptic_mean": false,
+  "single_presynaptic_embedding": true,
+  "dataset_counts": {
+    "train_windows": 1641431,
+    "test_windows": 407262
+  },
+  "fold": "fold_0",
+  "fold_index": 0,
+  "split_seed": 0,
+  "split_fracs": [
+    0.8,
+    0.2
+  ]
+}

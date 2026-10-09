@@ -1,0 +1,27 @@
+{
+  "training_array": 24705005,
+  "tasks": {
+    "0": "mean/pre_only",
+    "1": "pointwise_mlp/pre_only",
+    "2": "graph_transformer/pre_only",
+    "3": "mean/pre_post",
+    "4": "pointwise_mlp/pre_post",
+    "5": "graph_transformer/pre_post",
+    "6": "mean/pre_mean_control",
+    "7": "pointwise_mlp/pre_mean_control",
+    "8": "graph_transformer/pre_mean_control"
+  },
+  "compartment_filter": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/compartment_filtered/scale16/k17/conf0.7/fold0/geodesic_exclusion20um",
+  "comparison": 24705006,
+  "previous_preemptable_tasks": {
+    "24705005": [
+      6,
+      7,
+      8
+    ]
+  },
+  "training_partition": "mit_normal_gpu",
+  "training_account": "mit_amf_advanced_gpu",
+  "training_qos": "mit_amf_advanced_gpu",
+  "returned_to_gpu": "2026-10-03"
+}

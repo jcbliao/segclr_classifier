@@ -1,0 +1,89 @@
+{
+  "cohort": "confidence 0.7 fold0 training, CAVE-available cells, 5um",
+  "totals": {
+    "cells": 1404,
+    "raw_windows": 1717111,
+    "unique_windows": 1193337,
+    "unique_nodes": 4769911
+  },
+  "by_cell_type": {
+    "BasketFam": {
+      "cells": 130,
+      "raw_windows": 557387,
+      "unique_windows": 376086,
+      "unique_nodes": 1243517
+    },
+    "BipFam": {
+      "cells": 80,
+      "raw_windows": 69169,
+      "unique_windows": 49220,
+      "unique_nodes": 210120
+    },
+    "L2IT": {
+      "cells": 164,
+      "raw_windows": 78037,
+      "unique_windows": 65193,
+      "unique_nodes": 375834
+    },
+    "L3IT": {
+      "cells": 141,
+      "raw_windows": 83702,
+      "unique_windows": 68458,
+      "unique_nodes": 368007
+    },
+    "L4IT": {
+      "cells": 395,
+      "raw_windows": 270339,
+      "unique_windows": 221541,
+      "unique_nodes": 1064556
+    },
+    "L5ET": {
+      "cells": 32,
+      "raw_windows": 12044,
+      "unique_windows": 9827,
+      "unique_nodes": 64187
+    },
+    "L5IT": {
+      "cells": 76,
+      "raw_windows": 55911,
+      "unique_windows": 47526,
+      "unique_nodes": 261479
+    },
+    "L5NP": {
+      "cells": 8,
+      "raw_windows": 4517,
+      "unique_windows": 3477,
+      "unique_nodes": 16397
+    },
+    "L6CT": {
+      "cells": 171,
+      "raw_windows": 31172,
+      "unique_windows": 25682,
+      "unique_nodes": 157937
+    },
+    "L6IT": {
+      "cells": 88,
+      "raw_windows": 48320,
+      "unique_windows": 40526,
+      "unique_nodes": 223534
+    },
+    "MartFam": {
+      "cells": 90,
+      "raw_windows": 437460,
+      "unique_windows": 239882,
+      "unique_nodes": 615946
+    },
+    "NglFam": {
+      "cells": 15,
+      "raw_windows": 7235,
+      "unique_windows": 6256,
+      "unique_nodes": 40567
+    },
+    "thalamocortical": {
+      "cells": 14,
+      "raw_windows": 61818,
+      "unique_windows": 39663,
+      "unique_nodes": 127830
+    }
+  }
+}

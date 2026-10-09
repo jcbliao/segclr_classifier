@@ -1,0 +1,47 @@
+{
+  "elapsed": 330.0,
+  "thread_seconds": {
+    "batch.total": 178.61,
+    "cache.chunk_inclusive": 2693.32,
+    "cache.connection_inclusive": 0.94,
+    "crop.assemble_inclusive": 2691.02,
+    "download.image": 136.21,
+    "download.segmentation": 59.66,
+    "lock.chunk": 154.68,
+    "lock.other": 0.34,
+    "lock.shard": 2332.29,
+    "mask.compute": 6.41,
+    "plan.load": 0.08,
+    "prepared.save": 0.01,
+    "sqlite.close": 0.05,
+    "sqlite.commit": 1.22,
+    "sqlite.connect": 0.17,
+    "sqlite.execute": 1.16,
+    "sqlite.select": 0.44
+  },
+  "calls": {
+    "lock.other": 5724,
+    "plan.load": 1,
+    "prepared.save": 1,
+    "lock.shard": 459,
+    "sqlite.connect": 403,
+    "sqlite.execute": 1258,
+    "sqlite.commit": 855,
+    "cache.connection_inclusive": 911,
+    "sqlite.select": 913,
+    "lock.chunk": 454,
+    "download.image": 351,
+    "cache.chunk_inclusive": 455,
+    "download.segmentation": 101,
+    "mask.compute": 101,
+    "sqlite.close": 279
+  },
+  "inflight": {
+    "batch.total": 1,
+    "crop.assemble_inclusive": 16,
+    "cache.chunk_inclusive": 16,
+    "lock.shard": 12,
+    "lock.chunk": 1,
+    "download.image": 2
+  }
+}

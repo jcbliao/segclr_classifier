@@ -1,0 +1,18 @@
+{
+  "root_id": "864691134886828794",
+  "synapse_id": "194506043",
+  "point_nm": [
+    792976.0,
+    829360.0,
+    780760.0
+  ],
+  "distance_to_skeleton_nm": 43.7525892090971,
+  "window_source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/resampled_teasar_2209/training_local_center/scale32/k9/cells/864691134886828794.npz",
+  "skeleton_source": "/orcd/scratch/orcd/013/jcbliao/skeletons/segclr_registered_teasar_111nm_20260911/resampled_111nm/864691134886828794.npz",
+  "scale": 32,
+  "k": 9,
+  "window_vertices": 257,
+  "window_edges": 256,
+  "cable_length_nm": 19902.439853668213,
+  "public_url": "https://g-ffa18e.d1c26e.5898.data.globus.org/microns/presynaptic_windows/864691134886828794/synapse_194506043_scale32_k9"
+}

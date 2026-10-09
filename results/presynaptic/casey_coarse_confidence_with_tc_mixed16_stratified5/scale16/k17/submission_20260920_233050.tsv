@@ -1,0 +1,4 @@
+stage	job_id	tasks	concurrency	folds
+preemptable	23346246	mean,pointwise_mlp	4	0
+normal_gpu	23346247	graph_transformer	2	0
+summary	23346248	selected		0

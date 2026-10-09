@@ -1,0 +1,13 @@
+{
+  "architecture": "graph_transformer",
+  "dataset": "all_windows",
+  "num_embeddings": 20,
+  "gt_depth": 2,
+  "gt_heads": 4,
+  "gt_no_lpe": true,
+  "gt_no_rel_pos": true,
+  "cls_resnet": true,
+  "epochs": 16,
+  "lr": 0.0001,
+  "seed": 0
+}

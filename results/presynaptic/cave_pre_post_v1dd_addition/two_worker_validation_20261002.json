@@ -1,0 +1,43 @@
+{
+  "job_id": "24619174",
+  "workers": 2,
+  "n_sites": 512,
+  "wall_seconds": 526,
+  "inputs_per_minute": 58.40304182509506,
+  "api_retries": 0,
+  "api_splits": 0,
+  "exact_match_previous_sites": 256,
+  "ok": 509,
+  "empty_mask": 3,
+  "profiles": [
+    {
+      "download_s": 60.876,
+      "root_lookup_s": 191.685,
+      "mask_s": 34.115,
+      "new_labels": 2637900.0,
+      "root_requests": 645.0
+    },
+    {
+      "download_s": 42.785,
+      "root_lookup_s": 148.94,
+      "mask_s": 37.818,
+      "new_labels": 2117838.0,
+      "root_requests": 519.0
+    },
+    {
+      "download_s": 77.986,
+      "root_lookup_s": 173.519,
+      "mask_s": 31.208,
+      "new_labels": 2369355.0,
+      "root_requests": 580.0
+    },
+    {
+      "download_s": 24.344,
+      "root_lookup_s": 129.146,
+      "mask_s": 30.185,
+      "new_labels": 1829835.0,
+      "root_requests": 448.0
+    }
+  ],
+  "large_pool_status": "cancelled"
+}

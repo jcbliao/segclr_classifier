@@ -1,0 +1,45 @@
+{
+  "cohort_path": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_coarse_confidence_with_tc/scale16/k17/conf0.7/cohort.csv",
+  "datastack": "minnie65_public",
+  "materialization": 1718,
+  "built_at": "2026-10-01T04:24:20.458990+00:00",
+  "n_cohort": 1773,
+  "n_synapses": 2197243,
+  "unresolved_synapses": 1,
+  "n_targets": 325574,
+  "volume_status": {
+    "complete": 325331,
+    "lower_bound": 43,
+    "not_queried": 200
+  },
+  "skeleton_available": 132224,
+  "skeleton_versions_requested": [
+    4,
+    3,
+    2,
+    1
+  ],
+  "skeleton_status_counts": [
+    [
+      1,
+      325574,
+      132224
+    ],
+    [
+      2,
+      325574,
+      132224
+    ],
+    [
+      3,
+      325574,
+      132224
+    ],
+    [
+      4,
+      325574,
+      132224
+    ]
+  ],
+  "skeleton_unknown": 0
+}

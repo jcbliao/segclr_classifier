@@ -1,0 +1,68 @@
+{
+  "dimensions": {
+    "x": [
+      8e-09,
+      "m"
+    ],
+    "y": [
+      8e-09,
+      "m"
+    ],
+    "z": [
+      4e-08,
+      "m"
+    ]
+  },
+  "position": [
+    122597,
+    95833.5,
+    21354
+  ],
+  "projectionScale": 669795.669981548,
+  "layers": [
+    {
+      "type": "image",
+      "source": "precomputed://https://bossdb-open-data.s3.amazonaws.com/iarpa_microns/minnie/minnie65/em",
+      "name": "EM"
+    },
+    {
+      "type": "segmentation",
+      "source": "graphene://middleauth+https://minnie.microns-daf.com/segmentation/table/minnie3_v1",
+      "segments": [
+        "864691134989909114",
+        "864691135114295961",
+        "864691135323181212",
+        "864691135340141542",
+        "864691135341516741",
+        "864691135474179378",
+        "864691135511861968",
+        "864691135571356038",
+        "864691135584019053",
+        "864691135756844242",
+        "864691135764678198",
+        "864691135772774651",
+        "864691135779780797",
+        "864691135875919502",
+        "864691135948823905",
+        "864691135994158785",
+        "864691136007128778",
+        "864691136067404440",
+        "864691136453183487",
+        "864691136580010516",
+        "864691136966189518",
+        "864691136968109774",
+        "864691137022180974"
+      ],
+      "name": "Martinotti test cells (23)",
+      "selectedAlpha": 0.7,
+      "notSelectedAlpha": 0,
+      "objectAlpha": 1
+    }
+  ],
+  "selectedLayer": {
+    "layer": "Martinotti test cells (23)",
+    "visible": true
+  },
+  "showSlices": false,
+  "layout": "xy-3d"
+}

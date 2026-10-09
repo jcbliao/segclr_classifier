@@ -1,0 +1,43 @@
+{
+  "profiles": [
+    {
+      "download_s": 107.443,
+      "root_lookup_s": 28.582,
+      "mask_s": 27.959,
+      "new_labels": 31008.0,
+      "root_requests": 10.0,
+      "leaf_requests": 128.0
+    },
+    {
+      "download_s": 94.637,
+      "root_lookup_s": 26.327,
+      "mask_s": 30.948,
+      "new_labels": 43646.0,
+      "root_requests": 12.0,
+      "leaf_requests": 100.0
+    },
+    {
+      "download_s": 59.703,
+      "root_lookup_s": 24.344,
+      "mask_s": 35.476,
+      "new_labels": 52540.0,
+      "root_requests": 15.0,
+      "leaf_requests": 83.0
+    },
+    {
+      "download_s": 81.57,
+      "root_lookup_s": 30.425,
+      "mask_s": 32.015,
+      "new_labels": 49953.0,
+      "root_requests": 14.0,
+      "leaf_requests": 128.0
+    }
+  ],
+  "validated_sites": 512,
+  "exact_images_masks_statuses_match": true,
+  "root_labels_total": 177147.0,
+  "root_requests_total": 51.0,
+  "leaf_requests_total": 439.0,
+  "prior_root_labels_total": 8954928,
+  "prior_root_requests_total": 2192
+}

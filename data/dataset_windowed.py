@@ -107,7 +107,7 @@ def inverse_sqrt_class_weights(class_indices: np.ndarray, num_classes: int) -> t
     return weights / weights.sum() * num_classes
 
 
-def balanced_sampler(dataset: "WindowedGraphDatasetLCPN") -> WeightedRandomSampler:
+def balanced_sampler(dataset: "WindowedGraphDatasetLCPN", power: float = 0.5) -> WeightedRandomSampler:
     """Class-balanced resampling of `dataset`'s windows, the correction
     segCLR_cell_classification's own LCPN config uses
     (`weight_imbalanced_classes: sample`).
@@ -121,6 +121,8 @@ def balanced_sampler(dataset: "WindowedGraphDatasetLCPN") -> WeightedRandomSampl
     """
     num_classes = len(dataset.hierarchy.level_classes[-1])
     class_weights = inverse_sqrt_class_weights(dataset.index_labels, num_classes)
+    if power == 1.0:
+        class_weights = class_weights.square()
     weights = class_weights[torch.from_numpy(dataset.index_labels)]
     # torch.multinomial, which WeightedRandomSampler calls, refuses more than
     # 2**24 categories. At one window per node this bites only at ~16.8M
@@ -129,7 +131,7 @@ def balanced_sampler(dataset: "WindowedGraphDatasetLCPN") -> WeightedRandomSampl
     if len(weights) > 2**24:
         raise ValueError(
             f"{len(weights)} windows exceeds torch.multinomial's 2**24 category limit, so "
-            "WeightedRandomSampler cannot draw from them -- use --class-balance loss instead"
+            "WeightedRandomSampler cannot draw from them"
         )
     return WeightedRandomSampler(weights=weights, num_samples=len(weights), replacement=True)
 
