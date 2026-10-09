@@ -1,5 +1,7 @@
 # Presynaptic deployment analysis · 2026-10-09
 
+See [DATA_GUIDE.md](DATA_GUIDE.md) for storage paths, cache schemas, and access examples.
+
 - `test_analysis.ipynb`: selected-class and true-class probability histograms, accuracy by probability bin, and a 6×6 matrix of probability histograms by true/predicted pair.
 - `unlabeled_analysis.ipynb`: selected-class histogram, probability versus actual embedding count, six class-specific curves, and support counts.
 
@@ -23,4 +25,4 @@ Test caches contain all held-out window joint probabilities, targets, prediction
 
 Unlabeled caches contain exact histogram counts and sums/squared sums by actual embedding count, computed from saved deployment predictions. Each fold retains its own hard presynaptic axon filter. No synapses are deduplicated for these summaries. Class-specific plots filter each fold to synapses selecting that class, then average its selected-class joint probability. Class-specific support counts are retained for confidence intervals.
 
-Shading uses nested 50%, 80%, 95% point-level normal intervals for the mean. These intervals do not account for clustering by presynaptic root or shared fragment, and are not estimates of classification accuracy. Histogram composites pool fold records rather than averaging probabilities across folds. Nothing here writes to shared segclr_db.
+The six-class graph averages fold-specific means with equal fold weights and uses nested 50%, 80%, 95% Student-t intervals across folds. The separate per-fold graph uses point-level normal intervals. These intervals do not account for correlations between roots, fragments, or folds, and are not estimates of classification accuracy. Histogram composites pool fold records rather than averaging probabilities across folds. Nothing here writes to shared segclr_db.
