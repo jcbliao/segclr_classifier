@@ -12,6 +12,8 @@ Notebooks remain grouped with their experiment helpers and caches. This index de
 | `analysis/all_windows` | [neighborhood_cable](all_windows/neighborhood_cable.ipynb) |
 | `analysis/all_windows` | [skeleton stats](all_windows/skeleton%20stats.ipynb) |
 | `analysis` | [casey_coarse_vs_hierarchy](casey_coarse_vs_hierarchy.ipynb) |
+| `analysis/db_deployment/presynaptic/20261009` | [test_analysis](db_deployment/presynaptic/20261009/test_analysis.ipynb) |
+| `analysis/db_deployment/presynaptic/20261009` | [unlabeled_analysis](db_deployment/presynaptic/20261009/unlabeled_analysis.ipynb) |
 | `analysis/presynaptic/casey_confidence_cave` | [casey_confidence_comparison](presynaptic/casey_confidence_cave/casey_confidence_comparison.ipynb) |
 | `analysis/presynaptic/casey_confidence_native` | [casey_confidence_comparison](presynaptic/casey_confidence_native/casey_confidence_comparison.ipynb) |
 | `analysis/presynaptic/cave_embedding_augmentation_conf0.7` | [embedding_augmentation_comparison](presynaptic/cave_embedding_augmentation_conf0.7/embedding_augmentation_comparison.ipynb) |
