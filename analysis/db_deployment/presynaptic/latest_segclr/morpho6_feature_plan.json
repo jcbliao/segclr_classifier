@@ -1,0 +1,2925 @@
+{
+  "experiment_id": "resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k",
+  "run_id": "resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k__20261022_140504",
+  "checkpoint_id": "checkpoint_e0_s100000",
+  "checkpoint_path": "/orcd/compute/sdorkenw/001/collina/segclr_runs/resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k_20261022_140504/checkpoints/checkpoint_e0_s100000.pt",
+  "checkpoint_sha256": "826eebf68fdd47e979385c8f401825a8c9f4f2ea2c838794066f5b906a080897",
+  "points": 15904686,
+  "cached_points": 11169025,
+  "missing_points": 4735661,
+  "chunks": [
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000000.parquet",
+      "rows": 8192,
+      "sha256": "97934d6d968cf56de1ca93a75cb296b8bedd13705c24edb827b4bcd76a982800"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000001.parquet",
+      "rows": 8192,
+      "sha256": "e6f22a1f765d22d84a9e5103dc12f9da64d4400bbf3d75d75fce721884f7c073"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000002.parquet",
+      "rows": 8192,
+      "sha256": "d7366645181cc91b70c97628fc8434937d02dca64cc95b5f3f46aa99659adf0b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000003.parquet",
+      "rows": 8192,
+      "sha256": "77454ea5f54ab2d874b174d11ff8705a4dd3b80d562b2bb2b1fa4d4d8ba3c87e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000004.parquet",
+      "rows": 8192,
+      "sha256": "4c3eb53e648c242de1db1fcb8f6a52f2b9e899646bddd7518b4fa0e041a1faab"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000005.parquet",
+      "rows": 8192,
+      "sha256": "8598947daef5c8e155643735af5a72acc55b71cb8b97240bb114fc55cef1d8b1"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000006.parquet",
+      "rows": 8192,
+      "sha256": "7157b6d1de0bb4cd3b5051120ec2125a2f99c9e982dfda82d050a3358f39d043"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000007.parquet",
+      "rows": 8192,
+      "sha256": "30b35dc00ee8e8850d9e4fe81c91a1a43ed711988a305a75ab96c73774dff917"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000008.parquet",
+      "rows": 8192,
+      "sha256": "80d03d3066b997658a4d4150fec30c22ab7ab81a5a37d740219beab01f41ebb1"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000009.parquet",
+      "rows": 8192,
+      "sha256": "5bd9fbf161db760782a7cc910c9c46e8c3ca9bcc4e26b3148f9f946e71e73f25"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000010.parquet",
+      "rows": 8192,
+      "sha256": "89a713ca9eed1c6db4e5fdb365d254d07e967c97266f46c75beed3a29751b7d8"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000011.parquet",
+      "rows": 8192,
+      "sha256": "57404060e4414a3b31b5241f1772be6732084fcf6686dac35830342297d8d459"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000012.parquet",
+      "rows": 8192,
+      "sha256": "010e9b768eba13dc80b61d63ac4f74ec3f35a5c1aa4efd8995424248813cc3d7"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000013.parquet",
+      "rows": 8192,
+      "sha256": "6056c39008e63ecbc3bd835669db7c1a3f6e1e04adb693a02bf8f8a77a63ce76"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000014.parquet",
+      "rows": 8192,
+      "sha256": "6c6cf6d0d25bf2483967a42cb6bdb3f08c8113e6f43f7b9d3d348e20edd9dd95"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000015.parquet",
+      "rows": 8192,
+      "sha256": "a19fc0a6adc3632a0f89eb6d247c92802b09444e0a8aaa2d90b07ce7a7af00c7"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000016.parquet",
+      "rows": 8192,
+      "sha256": "a9192d137f9791cf5a1f1ade0e0eec5fdc20d0ae107844a165a1ae30bd6eb252"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000017.parquet",
+      "rows": 8192,
+      "sha256": "e4438334937d7b5346dce456f79e12f6fcafbad336646ee4b7bb3302bb340604"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000018.parquet",
+      "rows": 8192,
+      "sha256": "2471900b69c91e264ecdd5f4b3369c86bedae3d84f3ffb75f67df83924fccaac"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000019.parquet",
+      "rows": 8192,
+      "sha256": "3e2daf6b7448ad49aeda2906900c7eef037869943b12b7b78e9b47c8f56b40ff"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000020.parquet",
+      "rows": 8192,
+      "sha256": "89747d0ede41577b9fed7c8a545ee5e42db7bb19438c483fb94782c4396764ec"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000021.parquet",
+      "rows": 8192,
+      "sha256": "e590c7d2f84f119e508111ebc2af1d6dca9ee510e4ab7473321dd5ade5f83149"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000022.parquet",
+      "rows": 8192,
+      "sha256": "d17eb1160834537e689956226914b4b977c45538aeab496e1578867b72afc120"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000023.parquet",
+      "rows": 8192,
+      "sha256": "897d285821e9ab057e0056b0f98bf65116c991002cd0b36a828dee6fdeecc277"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000024.parquet",
+      "rows": 8192,
+      "sha256": "f7952fc897d701c005a20a4e39e4f0e37f0ff1444a7d1b1592f8fac1aa31b2d2"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000025.parquet",
+      "rows": 8192,
+      "sha256": "ff7ef9dd961175e23245c88c04f6341047550683414aa9b254fbf7cbd71d677c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000026.parquet",
+      "rows": 8192,
+      "sha256": "7ef72287d0b67f1d9c052923603813a328ba845ff1a3875a470d5bac97152ac2"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000027.parquet",
+      "rows": 8192,
+      "sha256": "2c830a32406fe8cbed0aa081f432fe1f95cd01250920c54c4f92d69e458ff246"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000028.parquet",
+      "rows": 8192,
+      "sha256": "62812a698e972805021d1228ea5e1181996a6cd95d6782a05e69727c424dc7b6"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000029.parquet",
+      "rows": 8192,
+      "sha256": "799ef75c35f53fcd6b1f92a23b8f24965df7c797c03c36b9aabbdf5e2639c9ef"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000030.parquet",
+      "rows": 8192,
+      "sha256": "f95e5428a401dc3a5ef2b5b679751ac57ae112fcaa738a2e6743cf9d56d32103"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000031.parquet",
+      "rows": 8192,
+      "sha256": "238043fc3235e8cd08ccb64d517314b71e111e29245342b1065b7fc611648077"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000032.parquet",
+      "rows": 8192,
+      "sha256": "f53dcbf23ab83d8e0a77ccd3398b0859fd34e052d270c5c667bace1bec2ec67f"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000033.parquet",
+      "rows": 8192,
+      "sha256": "69e3b0a2209b30ae54882e01cc6973f28f85686268ab752274dda574eff8dac1"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000034.parquet",
+      "rows": 8192,
+      "sha256": "ef9e53bd1a63132a4490ffa5cb27a573dbd02eab25afba64a22ff55868022a52"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000035.parquet",
+      "rows": 8192,
+      "sha256": "88563d3ad754ef983cec73087264320fc3fa4462746c1e042981bf5095aceb8e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000036.parquet",
+      "rows": 8192,
+      "sha256": "2a675ebeeff8b4bbebf344f3aaf53819cc588f9913c427513c7ff3d4bbf9b988"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000037.parquet",
+      "rows": 8192,
+      "sha256": "2a9e8561622258c6227c31288850a0a6d7ba78ed772a4f1c8d67349e11516705"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000038.parquet",
+      "rows": 8192,
+      "sha256": "993279bfc932e317698342adf6f9208b6412ae4ac55055e50c1f0af926606102"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000039.parquet",
+      "rows": 8192,
+      "sha256": "b2e50785daa602e3cc976417e6dfae919a25cec24dde84a3509af8cea9bde815"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000040.parquet",
+      "rows": 8192,
+      "sha256": "ac4876676049112c1182c477a9baac4068cd6a587b848f328d92ff44a30a21ad"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000041.parquet",
+      "rows": 8192,
+      "sha256": "fef313295311902dae63d6c66a7e7e33d2f2700838dbe7183b8ce14028bbd20f"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000042.parquet",
+      "rows": 8192,
+      "sha256": "af406ad99f0f7cce9f01167e460c899027016f438310066b5215fd06fc8cfced"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000043.parquet",
+      "rows": 8192,
+      "sha256": "fbf719db553feb92fec92cdb8826697b2a461ada021a491caaef67cfa765ccd8"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000044.parquet",
+      "rows": 8192,
+      "sha256": "e9d80e19511d681044ef03ef865611b6d34de90e8fb4269a5beb7324d0a8ebd7"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000045.parquet",
+      "rows": 8192,
+      "sha256": "9a266e0b7d76433b379ec377a1d7f682c2303c902bcb174a4a12b168f1fc0062"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000046.parquet",
+      "rows": 8192,
+      "sha256": "80cf2a4331ee6f8f3b8d1dd7cdacd92f352786b0002dfb2b996a930772fba889"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000047.parquet",
+      "rows": 8192,
+      "sha256": "2ec74f891014d20343b45e93c0aab9f57c969f99f150ad1675e7fac7db68e7dd"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000048.parquet",
+      "rows": 8192,
+      "sha256": "df4256aa501e1f32d4e9c9911cb62a0a0884433d98686f30cecba6f6158795ae"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000049.parquet",
+      "rows": 8192,
+      "sha256": "1cd2b2df36710203d36c3f0b17a44c2729d8bb08cbf3b10b42be8d110c3b09e1"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000050.parquet",
+      "rows": 8192,
+      "sha256": "485a1ff7378a0dc78c9551f6619577f9c6c0cb104e833c9b0ce30f14066e77a4"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000051.parquet",
+      "rows": 8192,
+      "sha256": "21393ae83a1d1a62da29851eab1039805d2eb939164efba354d4d0de616f8ef0"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000052.parquet",
+      "rows": 8192,
+      "sha256": "87fbed958a312cbfeb0a173832ea3f44fa98edfbe5179938e82bc16c7e6dfe41"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000053.parquet",
+      "rows": 8192,
+      "sha256": "5e9d9284e11e25c5986d9a7c0691e46b313385b0f69780dc341a5a395e324452"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000054.parquet",
+      "rows": 8192,
+      "sha256": "842be0fde6241320ea04ac3c9b25c4780e0043348423e9134179d7fdfef4d293"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000055.parquet",
+      "rows": 8192,
+      "sha256": "503895d93f775ae98b7d019420f69bbd53ce2f96d57472c42c7ab919207da01c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000056.parquet",
+      "rows": 8192,
+      "sha256": "4c31243178316eb3362a18aeddc0c2be5f43d956e0c540c5da3b488091d033c9"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000057.parquet",
+      "rows": 8192,
+      "sha256": "f1a85973bbd6f30e412099549ae0cd458c2070781b1453357f7edc9a463fc069"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000058.parquet",
+      "rows": 8192,
+      "sha256": "248ecdc4ddc118eee545506c13e801101326fc50878ef7b20df995f721f79819"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000059.parquet",
+      "rows": 8192,
+      "sha256": "5bf0a24423eaeeba4c4ad57fdf3de1166b45d7c85e0bb80484696118663dc7cb"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000060.parquet",
+      "rows": 8192,
+      "sha256": "8839b23bba760207ab64d44c2760c6973633c570282be4890518e914d0927bfc"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000061.parquet",
+      "rows": 8192,
+      "sha256": "223cfc3489bc5ca1d46aa394cbfcafcba73971d6e1cd61dc6e1d5a3cc9a095b8"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000062.parquet",
+      "rows": 8192,
+      "sha256": "104ede3c35156d72da90808275019fd130708b9051b312df443904f5697619e3"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000063.parquet",
+      "rows": 8192,
+      "sha256": "1bb2a691c3cf47cee7d6e147b766493f3b5564aa79cd629b2c379fce03c6e0f2"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000064.parquet",
+      "rows": 8192,
+      "sha256": "8ad83cc6195b0e56baca7c8479faa3059cdcae4ed67dea8ca62452ef7f668fc1"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000065.parquet",
+      "rows": 8192,
+      "sha256": "7dd082815ed07f690eba22e91b8d492cab9bf3a15c104a24baef0f309c92854a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000066.parquet",
+      "rows": 8192,
+      "sha256": "c63d2d1d747184db28559e3345578ca7f1a27fca3b0f5f02e8521b4cc1623f18"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000067.parquet",
+      "rows": 8192,
+      "sha256": "260ede851585e28b76eb215ef0356704b701daf6f0de8b33873c10f1ba16f6c5"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000068.parquet",
+      "rows": 8192,
+      "sha256": "d29a0e8d063011b1a29310dab22da351f91463ba53d7574c9552335795bd5b4d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000069.parquet",
+      "rows": 8192,
+      "sha256": "4db9a92b2e8bdac92ba4118caeacee69a9090306dbcdd874756aa3659182f422"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000070.parquet",
+      "rows": 8192,
+      "sha256": "af679e1d4bf57893cc9061f14b5d4ceae099db6650af344d014f2c4a4e59efee"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000071.parquet",
+      "rows": 8192,
+      "sha256": "887369cd6c488ed3803040cebd8fccad2497655e0282ff15cf1a23ae2e414a48"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000072.parquet",
+      "rows": 8192,
+      "sha256": "fbef5a05c356885e6ec714d1fdf72813316e81a0c5371cecf8fd223aa94a0122"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000073.parquet",
+      "rows": 8192,
+      "sha256": "75bb146f005d57b68e6bbe2939b3c25f67526e09cc1b8e3e6610714c78982a63"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000074.parquet",
+      "rows": 8192,
+      "sha256": "308b17530880276f28cf2100073b0ec858aebcf8ca2f9a2a0d7c35681b1fa5bb"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000075.parquet",
+      "rows": 8192,
+      "sha256": "d97a924125b87720f4b17878894c7cc598215e7f567e6aa46b112fd801470979"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000076.parquet",
+      "rows": 8192,
+      "sha256": "7e6aca77517bdcde53273bce8e90bc8ce885577ad5272b2336fbae99728fa6c9"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000077.parquet",
+      "rows": 8192,
+      "sha256": "4dc49c8ab1f56a4e42692679f0ac050b615cf216ae9984a9edd150e7589f1beb"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000078.parquet",
+      "rows": 8192,
+      "sha256": "944078fab1185cf6d812e5aac1a245302b9b929b71ca3aad6bdde43fc0817bfe"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000079.parquet",
+      "rows": 8192,
+      "sha256": "d8358fdf51fbdaf0e40afd363078d5fda466501b1d54cd5600179bfde31f3fd3"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000080.parquet",
+      "rows": 8192,
+      "sha256": "cbeae6b54779328cbb31ee6f8c73153312202b22b775c34f88c264e0e22d59b1"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000081.parquet",
+      "rows": 8192,
+      "sha256": "0dfd965cc52a80164f917b544e281ebc5813944775b56916cbf52653c320f05b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000082.parquet",
+      "rows": 8192,
+      "sha256": "95ffadb8fd8da6b464316ff9d1631dd42a94a465a49bd7980970353d47753b1f"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000083.parquet",
+      "rows": 8192,
+      "sha256": "e2734e9d7c240a065415334beb5e6c89f0c6218309e93609e50d8b609138fac4"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000084.parquet",
+      "rows": 8192,
+      "sha256": "172cda4b1e66e9ab046657b68e61290f8489ea5b76cff92e3e6d12b763fbb28d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000085.parquet",
+      "rows": 8192,
+      "sha256": "b6defe28c66fc77c59d5619335537178d6cee32bf4a1a2ca7dc8b0ec74d9780f"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000086.parquet",
+      "rows": 8192,
+      "sha256": "c03efb9ad70032464a70e894d0b7f8b18144830b422b82b1de7d273cd17384da"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000087.parquet",
+      "rows": 8192,
+      "sha256": "741604254c895337a67d3f7a78dce06d26327f33fdf038ad547a05b5d2625f95"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000088.parquet",
+      "rows": 8192,
+      "sha256": "08539fcd62465ee2690166e9acb20a40d2d782a5cd7d8eddb6b5d1da0d20fb35"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000089.parquet",
+      "rows": 8192,
+      "sha256": "3af15f548cddf415d9725ac550aa0746456ab201d49ec3109cf0f089f4d3a526"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000090.parquet",
+      "rows": 8192,
+      "sha256": "ba17a6a125c5eb70b0ba77a32330254ed9425dd197856f733cd6f375ed20c8cb"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000091.parquet",
+      "rows": 8192,
+      "sha256": "db60051ca69594db382f6000835db67ff43c76c225a431063046007643ca977d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000092.parquet",
+      "rows": 8192,
+      "sha256": "5ff2a354a4b46359d6b635048d82815ee1d32b9b7c9b78090cba97df37d406bd"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000093.parquet",
+      "rows": 8192,
+      "sha256": "7ce440048d506e111a6a91d94e0a4723b770d22c736c3b1a86cacab97ec808e0"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000094.parquet",
+      "rows": 8192,
+      "sha256": "9aa993d1f1fe8e1b063c02871b72aee79852488aa171134015371a22a710a14c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000095.parquet",
+      "rows": 8192,
+      "sha256": "d05e4cf8cd1edfd4dfd02f26e46fbf162ff01781401e3bda5683492237425495"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000096.parquet",
+      "rows": 8192,
+      "sha256": "f2be433d3fbe3d014f8c08737f4416b4d74210c0ce3d52d6cdbc67c2889e323b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000097.parquet",
+      "rows": 8192,
+      "sha256": "88a2f2e1fce17c51862af6796ffe1af77f4baf8560922712788ffe47091a0a5b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000098.parquet",
+      "rows": 8192,
+      "sha256": "8f65e5df0eb6899c2ceb0a56bd91aea30a941d1fad8cf288b5c887a73234dd0f"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000099.parquet",
+      "rows": 8192,
+      "sha256": "38ef841988c5ae2a05650618af5a4dda65870777fe77a43e5209b7a70877c84c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000100.parquet",
+      "rows": 8192,
+      "sha256": "bae1a9d8c6aae2f3d5c5333662781bae430f89b04a48fb57ab582237b637a2bf"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000101.parquet",
+      "rows": 8192,
+      "sha256": "1bbdf202e2e9f62d1561d6b8804d25c7b3ac142ad73d71b97bf34a517a5ba7e5"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000102.parquet",
+      "rows": 8192,
+      "sha256": "3e22a001029fe5c088d2f7dacf4f9fb965c45fbd4b6716e6a3c7fd58e71e2224"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000103.parquet",
+      "rows": 8192,
+      "sha256": "f8b146f0146f3a585895cc46aa63c8fca446c7bb12e73d4a9a8e5fcecee826d8"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000104.parquet",
+      "rows": 8192,
+      "sha256": "d07a3d9e987cf71d5a8dfdbfefca134908d7826ed504f66f1730404e355ad9ac"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000105.parquet",
+      "rows": 8192,
+      "sha256": "7d43a1a4cb0095a961c7916ceb52f13df71240a2f99cea983478f8bc7309aefc"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000106.parquet",
+      "rows": 8192,
+      "sha256": "4d6f978e0b35ec51b1ff7772eb55c2aa1145a70633d46b7e07aaa70d1e869b9a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000107.parquet",
+      "rows": 8192,
+      "sha256": "5001e3ea092dd8fab4e889c2fb5b02159bbbb6435af390bf2a8338756a0a3068"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000108.parquet",
+      "rows": 8192,
+      "sha256": "fac0d2a95b18a59bcd5c1b9cd8778de0edcdf55edf233e2581065d11a4623281"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000109.parquet",
+      "rows": 8192,
+      "sha256": "f4222013ec68f9decedd71aadfd26924ea5d4362bcc076c7e60f8ede2ed412b9"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000110.parquet",
+      "rows": 8192,
+      "sha256": "3f8edb4e94567dd8fb5160cf214024b0e8486b812927760021d21ddf3cdb0bd9"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000111.parquet",
+      "rows": 8192,
+      "sha256": "ddf1c7ad22bc9a1ef923e9e14a1a390dcfd8d32682a6b6788495474b46bda060"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000112.parquet",
+      "rows": 8192,
+      "sha256": "9335a936a1f69feb2f4fed5708e5521487d06b26bc7d167ec2eefa592db24ed0"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000113.parquet",
+      "rows": 8192,
+      "sha256": "6da11fa34e15214c47073168c09bed52f3a8457343838b7bfa368d7be04b3132"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000114.parquet",
+      "rows": 8192,
+      "sha256": "e8c27804c092e854f5adc6f0419c1539f0ef03af9a24e5d4d7536c7390acd7a5"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000115.parquet",
+      "rows": 8192,
+      "sha256": "086697d37e07d1d98eec95603603e9e6b3344ac9d7c18beebe89dfa1cd2562a2"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000116.parquet",
+      "rows": 8192,
+      "sha256": "fbba225faf82b30b785e0aadff2db333360544020763eb1da5be4f7158e21b38"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000117.parquet",
+      "rows": 8192,
+      "sha256": "69bc25ade98acbc28d10091f1542c6551456ef2502fc608a56c022d4d691e57e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000118.parquet",
+      "rows": 8192,
+      "sha256": "fee0d214d6582cb2dce5dd9c98abcb1a53e06aa82b98529c78f24f22e7ff3983"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000119.parquet",
+      "rows": 8192,
+      "sha256": "e189024624f020f3b6d40cfb438ae8f2bc8821239c9054ca58d4305587085358"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000120.parquet",
+      "rows": 8192,
+      "sha256": "ebb2d13cd5353c34298f5eb96ad64f09f14339890f7035bbe2b3da749b4ea577"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000121.parquet",
+      "rows": 8192,
+      "sha256": "d7a5ec7dae8e20d88a06f2b1cf3a0f4710d211c990401b9cdbc78241316d9781"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000122.parquet",
+      "rows": 8192,
+      "sha256": "0454704133edb3501142740c9a8daddd98488da373ffff8f1b6b26cb4e157a4b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000123.parquet",
+      "rows": 8192,
+      "sha256": "0a622a77405160008e40cc0ffc784368dc04b4eb5caaccd5baac5db644669100"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000124.parquet",
+      "rows": 8192,
+      "sha256": "aae679dd1cfc819d98779351b79e1157df44b147b9b34ad0f5b4c5d97e2ffbba"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000125.parquet",
+      "rows": 8192,
+      "sha256": "bf48b6001108f8a41c2d3a798ef671eb23f8b9c51ef7c1a2a05d1d2015470ad6"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000126.parquet",
+      "rows": 8192,
+      "sha256": "920020209b5b313391f8b20c15225e6eb12d7940134c3564394d624946e8f345"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000127.parquet",
+      "rows": 8192,
+      "sha256": "2a9ce2fac704e878f5bfc80cca77551a294747fe4a80874e5be8d584fa1a71ca"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000128.parquet",
+      "rows": 8192,
+      "sha256": "adf63c555cdbfe2ced3a791a14b85f83beeb2790199f84fe922d069a6204079e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000129.parquet",
+      "rows": 8192,
+      "sha256": "909c4c91912004a941c6c2d16c53e004eff524d1b675b07165c6d780db0d19cd"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000130.parquet",
+      "rows": 8192,
+      "sha256": "080a98a802c7d8462618d38e35fc3d40ed7b1dce69754fc75f232f213b50d3ac"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000131.parquet",
+      "rows": 8192,
+      "sha256": "b8dd90a2bd760fef6eb7c5b1fde1e21315218af6bb80be168df1db145bb0a2c3"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000132.parquet",
+      "rows": 8192,
+      "sha256": "a9661a8c2e2868a56d313a0b5716a59c6da76364647c66745798447783643910"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000133.parquet",
+      "rows": 8192,
+      "sha256": "b269fb45b5570f1b41f59746c3764186bcd4bb56aa9ff24abebc44479821702d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000134.parquet",
+      "rows": 8192,
+      "sha256": "1fd5ccf271436464012d091440e0074b3a26a783907894eff6b80534a8dfa43b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000135.parquet",
+      "rows": 8192,
+      "sha256": "83c644bf965a21600c306399bf6d1c724189e7a7d69b414bfdc3a6ef5cbee28f"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000136.parquet",
+      "rows": 8192,
+      "sha256": "a11e5f30a93efe7c6428241aba20a65385a5d63501f0f6c87c626656cdab404b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000137.parquet",
+      "rows": 8192,
+      "sha256": "650b9e3169e3fa7d8dc2d7b53753c577d47404e83e7ff8885cdf75827c71bf09"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000138.parquet",
+      "rows": 8192,
+      "sha256": "80edc007d0e52016805b57fabefa62cadac0175084f40f6ad9ea5fe40c0892d9"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000139.parquet",
+      "rows": 8192,
+      "sha256": "1a4596b9f268c83d7c62f4eba0e5da313c3cb94b5c9076e1d46c8b73996aa497"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000140.parquet",
+      "rows": 8192,
+      "sha256": "2874b24c7a33ca1ff6388091aec6c16f91e37358108bc05d97663067ee52353b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000141.parquet",
+      "rows": 8192,
+      "sha256": "26df334cb19d38e495281fb45da6b2bcfe87d07a33b66f22e0e64553cfc35b10"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000142.parquet",
+      "rows": 8192,
+      "sha256": "d2a6512c3f02e17680b301d68a91f9df1b4e491c323175d36360e1477edfd4e3"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000143.parquet",
+      "rows": 8192,
+      "sha256": "d7350b635ee4c9ab993e0650c0eb02702d28b848e7e56a48c30b296d26b3455a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000144.parquet",
+      "rows": 8192,
+      "sha256": "0a5397162bedc8fcfe8ff06a562f6834c5f3e23cea4167eecb678b8358753271"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000145.parquet",
+      "rows": 8192,
+      "sha256": "714a1d8519b61559ec9894328bf0dde517b404a943176dfd5ae0c0fcb573c349"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000146.parquet",
+      "rows": 8192,
+      "sha256": "3703919ebed44addd57ba518b04d7a773e6ebd24b9af7c9108d856cdb1de5b9e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000147.parquet",
+      "rows": 8192,
+      "sha256": "10c9539ceb5e5bcb0888e5f8fb6f05cc8cb34133d2fcdb48df517e42d57043d5"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000148.parquet",
+      "rows": 8192,
+      "sha256": "9de013d65806cd9bcb2f6ec089cff59b517e55cc5127c0ada7b0fb7bc9f95a94"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000149.parquet",
+      "rows": 8192,
+      "sha256": "4df8225335aa8d3a2698e6b40f6d3afdca9f87a7d390b1f773c0e73c5947fab6"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000150.parquet",
+      "rows": 8192,
+      "sha256": "5d3559fad3627682df4c960aa0b7cc32ae7327b79bd218d28ce71bad241e69f9"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000151.parquet",
+      "rows": 8192,
+      "sha256": "326702944a1c29fa2965cb73bdf6e60d4f48afa06341fe7e7b6d576e5f24bf75"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000152.parquet",
+      "rows": 8192,
+      "sha256": "83f0c7a9ffe2dd1d393322206a96daf62bd043a281df3b12c429c9a4b4b65fb7"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000153.parquet",
+      "rows": 8192,
+      "sha256": "70800096f0547d502d2ed0241a0104bf470a26d5165495460e77ccd007cd3d53"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000154.parquet",
+      "rows": 8192,
+      "sha256": "1fecdf5bd74b98d8acf8e1631fc32b3aab20e73524bf7af0d500f3d4274db9fb"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000155.parquet",
+      "rows": 8192,
+      "sha256": "ae900dd68d5d66e771cb13b9ef98762fe781cd9a04d9e30f52db51d296fd65af"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000156.parquet",
+      "rows": 8192,
+      "sha256": "141dd5fc9bee64826dd4638963504412ea9ec4630e94abca7f0630e97ea4daed"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000157.parquet",
+      "rows": 8192,
+      "sha256": "21fb79c077ba94dad94442e74f2229a72ccc458156336ab97632710f15190995"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000158.parquet",
+      "rows": 8192,
+      "sha256": "ebcd00dcc8dd5136271ea7467942ec259414fcf469f9c5e30b211ec444e0bf68"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000159.parquet",
+      "rows": 8192,
+      "sha256": "7c64b4c95b39231c6842bc20a150e6d68aab1e620a7dacfc282deb63df9258fb"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000160.parquet",
+      "rows": 8192,
+      "sha256": "4239c3eb94e2a673564716a3a3492372a780ed7a2ba921643d4902628c368e02"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000161.parquet",
+      "rows": 8192,
+      "sha256": "8d931579c5befc265f3969911e4cb11f35350c829ffdad3f3de81dc773b19412"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000162.parquet",
+      "rows": 8192,
+      "sha256": "854c73014ec554111e93bd4cd15dd0d63bd094f2e1185083b0093e4f64fe80c3"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000163.parquet",
+      "rows": 8192,
+      "sha256": "9fde59f2660e4da046663cd43bb639d27d267cc8e233155600fc302ea7241961"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000164.parquet",
+      "rows": 8192,
+      "sha256": "1b4ddf1cfa00f82f1179f658d06ab51359643f6425c3ed79c8002b61a9aeab94"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000165.parquet",
+      "rows": 8192,
+      "sha256": "e75f79fdf33e0e2d7a01c7fddcb136ba20b6024034859a2eba0fcae64e4b0bbb"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000166.parquet",
+      "rows": 8192,
+      "sha256": "518e58dbec80b75a2858de1101c6f450cee5eeec536078a0471bd02cc08b94fb"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000167.parquet",
+      "rows": 8192,
+      "sha256": "0999a9660ea0e3cdb6faf8a90a121889a0894d08482edfd496dd87b99089a8bc"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000168.parquet",
+      "rows": 8192,
+      "sha256": "f93004e9eff4881ba2c9e1c9883bf4620c4fe9e60b74b4c1b3685dfc8e285bce"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000169.parquet",
+      "rows": 8192,
+      "sha256": "8ba6a64267f7790fc07b150df2b4e3b0ce6fa370745a001423ee70f5a231c30b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000170.parquet",
+      "rows": 8192,
+      "sha256": "b35f3af1c02ef94e25705c3c34a87c7041e60ffea1796a216195ae0f7237e4fd"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000171.parquet",
+      "rows": 8192,
+      "sha256": "6d91bed5b0e0a8d334c88e3f9d31f6023055b4d8bcaf762dffb511b2f8756d29"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000172.parquet",
+      "rows": 8192,
+      "sha256": "e0a8e71e72b20b7257f16f4de322755f2405ff12350bb03f5506c1562b045725"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000173.parquet",
+      "rows": 8192,
+      "sha256": "a07afd2a0be97323e559df9a37aba50816e891b863b82b04f79dec4b53ba6304"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000174.parquet",
+      "rows": 8192,
+      "sha256": "a2cf55420704335fc0ff3ff69a5929d6cc554f705d86cafb82af1a2c063b3209"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000175.parquet",
+      "rows": 8192,
+      "sha256": "0bda8aebb1ba374547a9f6e36849baa2e7e315daa4b2cc1d9209482963ec4d08"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000176.parquet",
+      "rows": 8192,
+      "sha256": "2437261b7313ff2ff06564bcfc3499114850dd2a5bfd464589e45aba46e57179"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000177.parquet",
+      "rows": 8192,
+      "sha256": "16491fe9982faf12dba361f4ae129e385ec401e6eb1b46588330820713e4973a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000178.parquet",
+      "rows": 8192,
+      "sha256": "54106a7f86bdf3c37fc8856f00ce7f1ab63177d5142c437698622e83c271d37b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000179.parquet",
+      "rows": 8192,
+      "sha256": "930c74de63e71a0780a892379e703a6bdaff1915d0572016329d1e4782616274"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000180.parquet",
+      "rows": 8192,
+      "sha256": "8ca7ad70024fbc77b6a20aa8cc78b54a7dead907dbf9ddf1182edc8a8d35b115"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000181.parquet",
+      "rows": 8192,
+      "sha256": "abbcce33259a0cd0e27ef7670ae099fac3c8ced2380d0aa3548253157433ceed"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000182.parquet",
+      "rows": 8192,
+      "sha256": "c47ecacbbdf2dd70b2e4475f87c860e7d484d24b4e6e58d98f95ea5b7599f70a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000183.parquet",
+      "rows": 8192,
+      "sha256": "51ad5ea6be96afeb0a99c720f844246cfdb31cc6252a085a482f9959bfb19692"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000184.parquet",
+      "rows": 8192,
+      "sha256": "10a51156d7f20f6642e2f946522fa2e2e46363c1e840bbb2bef3c82218f4fe50"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000185.parquet",
+      "rows": 8192,
+      "sha256": "349ae432a1c695abe8b3d247061aa8883029c7a46fef9467a8769f65a7a76125"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000186.parquet",
+      "rows": 8192,
+      "sha256": "8ff78cfce05939818aef1158380e133548eafd521713739740d8489c0dcf49fd"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000187.parquet",
+      "rows": 8192,
+      "sha256": "b542225c5d148ed5c4093ebf05b9f1ffeefbcadb129397f3d41fa57e530851c6"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000188.parquet",
+      "rows": 8192,
+      "sha256": "c6cbef413fddc83311015d69eeaaeef170f03c3a8e9bbd4d0854d6cbb34434c8"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000189.parquet",
+      "rows": 8192,
+      "sha256": "5de2eaed2fbe67f26eb5e2d0a9d40e9ad52790c4a16a82131ad0118727a30449"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000190.parquet",
+      "rows": 8192,
+      "sha256": "8555b4fec859547053da559b37a7d1d0d1dbc5e1c8b7d594a9c3d91590d449d4"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000191.parquet",
+      "rows": 8192,
+      "sha256": "8112aee4f85b379129cb6aa59de40f57adc15c7a05f7ce75db741045736ecc66"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000192.parquet",
+      "rows": 8192,
+      "sha256": "420190637ec0c7600ea1772e07851121035baa0f63a6ca667ae7b99243892bf9"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000193.parquet",
+      "rows": 8192,
+      "sha256": "9e44077027a60f9cbf7ae5e1ab43ecec31e4cda0d8a7972df475e047362e7840"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000194.parquet",
+      "rows": 8192,
+      "sha256": "e72aab2f40f51c65e824aa6cb34f5505ed1be975c1b7b2c4542aac145bc9a056"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000195.parquet",
+      "rows": 8192,
+      "sha256": "d2ce578c21a5781243b12ea8dfbf8921069e6db8b8692c85be10e528ae830ac6"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000196.parquet",
+      "rows": 8192,
+      "sha256": "e27de153a2fc90fde367e2123795433f3e4d93c8dd6c46eb03a1cb3449cffdd1"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000197.parquet",
+      "rows": 8192,
+      "sha256": "d0f34352691832f26bab4db4688bd400c84cf2f04d3e7c809c0038e65ee4e084"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000198.parquet",
+      "rows": 8192,
+      "sha256": "102efedb1e1730a85ba8aa0767988a34c703c97ae47ca36ad6e08d303c3c58bd"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000199.parquet",
+      "rows": 8192,
+      "sha256": "552a63b08a29f0b35b266eb698bd305e7fa223d4ebebd78577f607cbe2e1844e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000200.parquet",
+      "rows": 8192,
+      "sha256": "cf15c1122e634d7705e4255f2c0922286348b4caed5fc0e935a6ac55a24f10f3"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000201.parquet",
+      "rows": 8192,
+      "sha256": "d777f4b913b0fa181a7e0143341ca7178a1667a8b808bcba62539a7716ad4d22"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000202.parquet",
+      "rows": 8192,
+      "sha256": "3acd9297be19fc60b6d51d42fc8e3f705f463cbf2929ceabc243bb2e81ac2632"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000203.parquet",
+      "rows": 8192,
+      "sha256": "87ce945fc4f50e65988557d40ef1a637e95680680a550912484aaca7d5366fa6"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000204.parquet",
+      "rows": 8192,
+      "sha256": "8df6af33fbc7393291e4ec2f07ee794df94f1475abfd784c7bea8fd0ec5629f1"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000205.parquet",
+      "rows": 8192,
+      "sha256": "760f495014badf4aac88ad265dad7feb317bc3a3ce03b8e3e6c394d239f3b097"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000206.parquet",
+      "rows": 8192,
+      "sha256": "044a16cc678f53747a3a6eaa41ec604f5fd61f921014d68b8b2d6f9fa426d6f5"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000207.parquet",
+      "rows": 8192,
+      "sha256": "f19937b5f11094dcd42a2f915c2c6545223a38b4860e1f24e2c8affb59c18a5f"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000208.parquet",
+      "rows": 8192,
+      "sha256": "460aeea22089f841a169a36080d5ec9f0beba7ad225ff5e22d96296bfb83e5ee"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000209.parquet",
+      "rows": 8192,
+      "sha256": "9b9e98348b22686fc9b0e545ffb75345eb41db52d47ed8d1fd21b9c9f21cd2bc"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000210.parquet",
+      "rows": 8192,
+      "sha256": "09f9525b9b7358a60be2fea9a4fbde36d9f41d39b949c369808397a74880d6bf"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000211.parquet",
+      "rows": 8192,
+      "sha256": "0173b73ba49af13636bbd1c11bac831655b5045b9a9ed513c739ae92b6134514"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000212.parquet",
+      "rows": 8192,
+      "sha256": "6bc48b4ed38bf5ee09409264c3dfe1b4b7c5aca5d0f09900b21a9b99816a7e47"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000213.parquet",
+      "rows": 8192,
+      "sha256": "2f2780741bf07f908eb0bc0b7c1d9e09ccab575fb56c98016d13c21d3fb3428e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000214.parquet",
+      "rows": 8192,
+      "sha256": "c6924cf3ab52ba22203f738f4fa429996770e30b6e6b5c93a3348535c5c64ec4"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000215.parquet",
+      "rows": 8192,
+      "sha256": "6c831af21d374289443c8ba617df65138a3904cbccfa7a3343e29322c4f63614"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000216.parquet",
+      "rows": 8192,
+      "sha256": "c91bdf1e3dc391280eae917cb53b6b0f35c5c8fbf8787546d120e80c748970ee"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000217.parquet",
+      "rows": 8192,
+      "sha256": "7974c84536ab6df65c4f073d617288efb8cc49f9464dadfb40319fada9232e26"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000218.parquet",
+      "rows": 8192,
+      "sha256": "0de84131cbd9efd8b15eb6ebe96bab80e717cd5c22bc992b10e7ce05d0a4ef7c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000219.parquet",
+      "rows": 8192,
+      "sha256": "7d21dccb0c31b2b9eb6e3e93804651b21718b3e3aa267ddbb4d17112aa82673e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000220.parquet",
+      "rows": 8192,
+      "sha256": "fd9a829663a477142590bee180dcb3f342f0066bd491822315d8c532f9e15553"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000221.parquet",
+      "rows": 8192,
+      "sha256": "a3fc7e59cedc340b48b12e6e7dce4fdf9271eee7cfef32aa2b5ddde062d33727"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000222.parquet",
+      "rows": 8192,
+      "sha256": "ba9dfb263fc81b6d2b21afd67fdd807156e34f05b68cbc98e9ebc2fdcd75e4de"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000223.parquet",
+      "rows": 8192,
+      "sha256": "070f54e2e4d9941489219c1ec76171a89e1379a3eed9f33e5c030d908e58da3f"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000224.parquet",
+      "rows": 8192,
+      "sha256": "02842c7affcfa4dec53ce6a5437312e487fc090df17eaf09cdbf178a2e7d7f28"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000225.parquet",
+      "rows": 8192,
+      "sha256": "a48be0d3036b8ca09b5a293817db6559002dbefc9c4c2d853fa6dbb3e3eddb9e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000226.parquet",
+      "rows": 8192,
+      "sha256": "5af7ab93b04cf31d3a938cdc08f5ca170dde4fe1119ed965b1563189643ae4be"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000227.parquet",
+      "rows": 8192,
+      "sha256": "cea88b5ce8847383c4abcee8ab086b28cf784b3ca1e1aae2124c8797f16eed30"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000228.parquet",
+      "rows": 8192,
+      "sha256": "45b2df63f1bd79fa24e22469feb8a7a62a9df0e74e0ccb3b600ae6c556388a05"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000229.parquet",
+      "rows": 8192,
+      "sha256": "3784fcdc82569dc8842b629320ad10b0f25cb33b4b56d5b9f6c9fd6567e95c21"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000230.parquet",
+      "rows": 8192,
+      "sha256": "832e8cfeb411ee29239092f1775ae4ac59c27e3f5c2740103fe59e9ffd9eeea6"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000231.parquet",
+      "rows": 8192,
+      "sha256": "66f6fd3b72c8b4208a8db92fd552fd929488c082f93d9bd4b6ff15585c4d62ba"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000232.parquet",
+      "rows": 8192,
+      "sha256": "1ff6b893586670249d43f96d3623a4147f9515a296405809bfe62f24d1f1820f"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000233.parquet",
+      "rows": 8192,
+      "sha256": "816095ed8f5cd9b0338855045adf5cf05efb5f45abcf0987949915e990819d52"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000234.parquet",
+      "rows": 8192,
+      "sha256": "316c63fdf94a9aee1b5b223fee6bb2d91037f3fe532899a2726e93c75ff172c9"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000235.parquet",
+      "rows": 8192,
+      "sha256": "a4fe2a6db1f68df177151f124115680b7e4015f2c924b068a8693d51e18120f3"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000236.parquet",
+      "rows": 8192,
+      "sha256": "7e7c092e7f0408af3872f599cdd8151ab534eec5adb97b167dccf8c57cedaaa1"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000237.parquet",
+      "rows": 8192,
+      "sha256": "4a8ee8eb344920c4bf4d9f968194d98d259a9b79a91cf2d87328b68c8315edf1"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000238.parquet",
+      "rows": 8192,
+      "sha256": "1bafc003b5e179667ec9962695be188e68fe4a6a2005fc6d9c27a8a2ee830491"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000239.parquet",
+      "rows": 8192,
+      "sha256": "01f6e16875dcd9afc7686777e1f9c02df8ee8f0e0f4ad6b7d7f0469dd89af229"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000240.parquet",
+      "rows": 8192,
+      "sha256": "8ff112c49cf649066ed6b236c44c00209bd7010232a9508356e627a5a8efe713"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000241.parquet",
+      "rows": 8192,
+      "sha256": "dc5afd5a5c662ea31ae331d7c84665896c7c930e791de7b1dafe7aee03df4e9d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000242.parquet",
+      "rows": 8192,
+      "sha256": "784dcfa91eb32803b4b8dafcddd5fc93642c849f110622a965568f168179d624"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000243.parquet",
+      "rows": 8192,
+      "sha256": "3a52dbb8f4dedf1184d89877269bc2438308f2b317be0b60d434cad768d80792"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000244.parquet",
+      "rows": 8192,
+      "sha256": "e3e936a138afca3a6a04d899d39e797e7df8d82d3275e7c8563df47fec2ef832"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000245.parquet",
+      "rows": 8192,
+      "sha256": "963467d6aabb41aa694eb68e70e3c6ee68d91274ab6b56c11aa58a7bef110bdb"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000246.parquet",
+      "rows": 8192,
+      "sha256": "43233a3d988bb187ec1a9df817686b9c150af11be8399a3b6e8d74419355d419"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000247.parquet",
+      "rows": 8192,
+      "sha256": "ca8dbf8a187335025dd61b83a878f1927b62edc2ddf6bfb499dfaa932075b8db"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000248.parquet",
+      "rows": 8192,
+      "sha256": "a5509a6014ba1c5dd29292439a50f9524cabd403e39868a25591f88f1831f95e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000249.parquet",
+      "rows": 8192,
+      "sha256": "a8f0d45c25bcf0c901230e6e9188c1cc482aa3c41579264abb58dfacf9cb8b41"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000250.parquet",
+      "rows": 8192,
+      "sha256": "94c8f032fb246ca9aa201ce471c1ddd935fda71fd364b10a64332ecb01d77dc8"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000251.parquet",
+      "rows": 8192,
+      "sha256": "cf85e09f6ea04b3f9957ff4605e6d72c206689205d1aaff27677ca460cfdf3fb"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000252.parquet",
+      "rows": 8192,
+      "sha256": "e37faaae8d1484341ca45c40caa7a01e33b49dfce917d9b0016b348f3a9e8e9f"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000253.parquet",
+      "rows": 8192,
+      "sha256": "2227b2783aab11ad2b6c49133010adb89b5de0dc55813595f4db93fb95e27225"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000254.parquet",
+      "rows": 8192,
+      "sha256": "fb2100011f438dcc7d4024e2c8c497e615d15b06d8f910a0464e56e5838c9276"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000255.parquet",
+      "rows": 8192,
+      "sha256": "be93ec4ce67bb5b51aa56182ff2f41413a5305c30a362f47d32c56857c03cc27"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000256.parquet",
+      "rows": 8192,
+      "sha256": "4dd2008a49a783696a1e961f450a1d0ab72fa8624c71af900dfd99166dd36a74"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000257.parquet",
+      "rows": 8192,
+      "sha256": "aa34a5b7edb720380f8afba3e82b9b5b5694d963bb4849dfa9fa2e05cf5f0e18"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000258.parquet",
+      "rows": 8192,
+      "sha256": "e4e1b98a74a8885f1b289cc489a42a412c98d8913ebe5c3d2aa50f089b59daac"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000259.parquet",
+      "rows": 8192,
+      "sha256": "3549ea9612f7ba956168a28e26e7d82179a908a3eb07f023315a08e5f464cdfc"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000260.parquet",
+      "rows": 8192,
+      "sha256": "a2ca86358b21d35d2857f8d2eaf82df9b596d1daa613687538211021c22dff3e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000261.parquet",
+      "rows": 8192,
+      "sha256": "e56ee2f6cafd42acf8077ec58c6cd5afb5ec64d45e5442f84e054f1654096bd8"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000262.parquet",
+      "rows": 8192,
+      "sha256": "306d9f2ce1c43d0e6a06501707dd85c0b13307d1eff8ce63b49f1b41480f7774"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000263.parquet",
+      "rows": 8192,
+      "sha256": "926042212c8c470dc5d0f1293ebfae3d26cdbcc1f16287c3d0c0201413946217"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000264.parquet",
+      "rows": 8192,
+      "sha256": "2d647ebf1bbe0a71d2e964c1a93e193178d957529c77d643ae7d2fddddc637ca"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000265.parquet",
+      "rows": 8192,
+      "sha256": "76ba29c69c089b3a85ef4558ae2b4d7768f7348e274bee3cc231a0e652c417bf"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000266.parquet",
+      "rows": 8192,
+      "sha256": "2219564f4dcb7131943c653963f7a6e1d4968e15142b8135a76cd0edb0e4bf30"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000267.parquet",
+      "rows": 8192,
+      "sha256": "cebaac2870d5deef1b3567490fc7586119a796fa9519f09635a00bab5ea9137a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000268.parquet",
+      "rows": 8192,
+      "sha256": "4f10749c25dd671d81873a636006e1a1b2bc1b9cb512897d714061474b71f77e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000269.parquet",
+      "rows": 8192,
+      "sha256": "743041e303fdef60c761592d7fae65b5a7573cf6fe42d7f5ffe5cdab3c309386"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000270.parquet",
+      "rows": 8192,
+      "sha256": "52c2850dbeaa67fe5cca71a4a852671d5a74a1710c8327fdb2512db4d369d6e9"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000271.parquet",
+      "rows": 8192,
+      "sha256": "b7b51a41c9f7012e8020e5be33ec4553c0db2dd22194ecf5a68fffa2a3a9bf89"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000272.parquet",
+      "rows": 8192,
+      "sha256": "dfe50be73a89b035bfe67456c4e2bdcdb9f859608cf015a91450dc29c515bd35"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000273.parquet",
+      "rows": 8192,
+      "sha256": "c785108734a46b4b47d4f851fd5343ce9561218ab773f4cb23867044309fd075"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000274.parquet",
+      "rows": 8192,
+      "sha256": "e2612bd1afb82844a41cc4ea5ec30af5fb39fcb799645db8ce87abaa8042a179"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000275.parquet",
+      "rows": 8192,
+      "sha256": "209be613f929fb420e92b8e2cc381691e89868df11f06ae76df869b3c590127e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000276.parquet",
+      "rows": 8192,
+      "sha256": "87ccf25bfe132c9f419e1a22c8739868cb645534f65a1b92fb94b02b6fcfd2c7"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000277.parquet",
+      "rows": 8192,
+      "sha256": "09bb520a419e16ac6f57f61218a848aedf787b017ab0bd27520991c4b628da27"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000278.parquet",
+      "rows": 8192,
+      "sha256": "e2d49d1fb31a85dacb0431300185ea29cc4c53b22b3893a833596cb04be84957"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000279.parquet",
+      "rows": 8192,
+      "sha256": "bd89d354aff8dd34bcaaa5685913fae22b9296be732dd02a1f3dbc3405b549bd"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000280.parquet",
+      "rows": 8192,
+      "sha256": "6e18f20646898486bb17002b564b68677b48a339807eb811c7b75f31f586b0f5"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000281.parquet",
+      "rows": 8192,
+      "sha256": "c8bec2294b5fecb0ae32300fb14b529e2c2c85c85bfbcc1d930f9aec224ca751"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000282.parquet",
+      "rows": 8192,
+      "sha256": "29840e2cf7f780ceaa609c7be501896c27338f0def6c6835392ff48121f2d617"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000283.parquet",
+      "rows": 8192,
+      "sha256": "faeedbf40341e58f749842502659a29ce359e2162e8f6a2567c9445b4f8c05e2"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000284.parquet",
+      "rows": 8192,
+      "sha256": "3b475df84e829066b8c37e969a16ab6ee76da49a7bdb7272300baaa5beabf7f5"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000285.parquet",
+      "rows": 8192,
+      "sha256": "c52e9d40ff3e0af1017b6fb651d8cfac81dc8e68cb92c715dd91945049cfd378"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000286.parquet",
+      "rows": 8192,
+      "sha256": "980b7461f1c591d3b790b7022dec5d894e008ffb19445607348ba9a136f5ca66"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000287.parquet",
+      "rows": 8192,
+      "sha256": "411336e6c27aa1338cb40db043dd69a6835649630b259ec3d6c3179d66830954"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000288.parquet",
+      "rows": 8192,
+      "sha256": "807820681a7163c0ec7ec8b63aa38e357c9d655d1ad7b53480b4f21849b366be"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000289.parquet",
+      "rows": 8192,
+      "sha256": "bb08123b52a2781096c86fb5d15aee7eeda972a25cca9f544b6871b988f7973e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000290.parquet",
+      "rows": 8192,
+      "sha256": "dc765593c9f2de423a091c2dc1a6d39a09e7fdf4d6a0192201ab09129b11b52b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000291.parquet",
+      "rows": 8192,
+      "sha256": "d982d213f4d81e5b005b2989365d2cfce2677a1d6343374818f1b644dafab0cc"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000292.parquet",
+      "rows": 8192,
+      "sha256": "9e30eca8ae220b697778e67f7f6c109779127e6ebfd681977a3c326d9416af89"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000293.parquet",
+      "rows": 8192,
+      "sha256": "28572186f1843fc84ebf91a1ff0eed968c731f8c60bb944abafc0997ba7c35fc"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000294.parquet",
+      "rows": 8192,
+      "sha256": "3d1ce287e8bf4e4d995c466091c8de06bc9c47af6d9e95e3bbe3bd7113e663a3"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000295.parquet",
+      "rows": 8192,
+      "sha256": "bad6a6e363677e45b5890dbcdbb4185ef40eb74689034cb12aa46aaaf84ac27d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000296.parquet",
+      "rows": 8192,
+      "sha256": "34a2db0677e64f9cc307cad27fe2a86e2f5b850766eea9c39e8d4813669b3b4b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000297.parquet",
+      "rows": 8192,
+      "sha256": "e218013523ca678624d4a3912e0eadad5cd56fefa2f4cc46fe80f5aaa8624151"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000298.parquet",
+      "rows": 8192,
+      "sha256": "cded04e3a9ad7ce8555b332719193a147b27baf665ccac3e5bb3b21f970494ff"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000299.parquet",
+      "rows": 8192,
+      "sha256": "97b4bc94def9668548a362481d482540acd9050d7d1bcf46a64cbc3eb2b72b2a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000300.parquet",
+      "rows": 8192,
+      "sha256": "3dfed417c895b7b15a91bea2d861a5af957eb6be3f32336bebccb4f334a942be"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000301.parquet",
+      "rows": 8192,
+      "sha256": "cc4b5101bb7e72721b1418991b85bb61e5db57ef65fbf65c7d2924d69f1bdaaf"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000302.parquet",
+      "rows": 8192,
+      "sha256": "8aaee87c9b36c1127dd037d735a65a035149aa15d2f828c1d8a1d36bc063a0f2"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000303.parquet",
+      "rows": 8192,
+      "sha256": "e67f1c2fc8f46a49f2557e85b56be0924de1879b58a8a7f9a84b043091c7f74b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000304.parquet",
+      "rows": 8192,
+      "sha256": "2e7a8d223e23d9534f95aea9c7a5be992db8aee46cda0f378575ce821565f623"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000305.parquet",
+      "rows": 8192,
+      "sha256": "32215c454488888d35c8ec345bbdf86e4e4364579cbd9f995eca61e1f80df1a3"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000306.parquet",
+      "rows": 8192,
+      "sha256": "c279b96b3734609c27bcc42df4ac4142db886b3a7187d6ac74b9ae311f449789"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000307.parquet",
+      "rows": 8192,
+      "sha256": "c522a4a0d4065ad95c4e8b28d54c56cf54114e6b5652afe999eea7d1ca75b497"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000308.parquet",
+      "rows": 8192,
+      "sha256": "203983e1e62d0f2582093dd6de305ddfb94cd187a5932aac7e112f21cf172c12"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000309.parquet",
+      "rows": 8192,
+      "sha256": "10101629142e15481c4b05324f7dc85ab847e0eb706a73a5a476177d77bdf345"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000310.parquet",
+      "rows": 8192,
+      "sha256": "7f31456e0847e44cefb9a575ac283b1d99ab5e763117a44beeb72b7aec1d5e8d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000311.parquet",
+      "rows": 8192,
+      "sha256": "3eebf75ee385a8ecab32913c85c79f8798b34987be49f9ea90915550788ffa17"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000312.parquet",
+      "rows": 8192,
+      "sha256": "bdebc03339e7dc6a1da4b72ad00e518e645717ad24eb1796e24968f08fed93e9"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000313.parquet",
+      "rows": 8192,
+      "sha256": "ea95b1c08c16125b0ec14a90734317d5f27d83921486147b34cda80ed4bca354"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000314.parquet",
+      "rows": 8192,
+      "sha256": "a222fdba1f5bd8b575bd1dd3a2ece1b773b6d1e7e5eb0a03b707d5fde32d497e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000315.parquet",
+      "rows": 8192,
+      "sha256": "bd2ce500e1213c9eaa77af684811993766e729e9812f821a890f56293e8bc290"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000316.parquet",
+      "rows": 8192,
+      "sha256": "3ab49b7e91a9a6c9f6e3bba7b4cb06309813bfd794f2254033cf97aa3ff39b92"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000317.parquet",
+      "rows": 8192,
+      "sha256": "4e23889f7ce68d870ea46a847929cd6bac6d0b56a6a4b9364276c4880e222e90"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000318.parquet",
+      "rows": 8192,
+      "sha256": "a572759f6caf71360dfdfb6cc8a484cdb49906f4b397f14f57fc711ad46a9a94"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000319.parquet",
+      "rows": 8192,
+      "sha256": "7814089b38c1ad94cd8d58b32f9d4fd482228aac5971fb92d248a101f651db9a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000320.parquet",
+      "rows": 8192,
+      "sha256": "b669e1f8df28614fa59aa4df31eb92e27f58c3a815166f0449d0dfd04e07456b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000321.parquet",
+      "rows": 8192,
+      "sha256": "8af6bf9ed382d14f0f39d66a80f32a851137e5ce1f51dca05dd5bd2a8afb81fe"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000322.parquet",
+      "rows": 8192,
+      "sha256": "dfc4054aecbe114a14376e50018800bd40278d3ffd4227828003d88d3cf36e0c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000323.parquet",
+      "rows": 8192,
+      "sha256": "59ac75bc90bae7d6688817df171c28179d6ac7d28f624dcd71d4c19c490b5d4d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000324.parquet",
+      "rows": 8192,
+      "sha256": "c043f5bae13de49ac98a305a6ff4093bfcead1f81682dd26363690987d710649"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000325.parquet",
+      "rows": 8192,
+      "sha256": "faad485307a47b4cc6fda2a868f2e7746b0cf8f2e7bd0bb3862fd91b48123ea0"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000326.parquet",
+      "rows": 8192,
+      "sha256": "9e7b8969af3e2c645cf2efb3b84813707435fd4e853127478ef6cb52e3e9a453"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000327.parquet",
+      "rows": 8192,
+      "sha256": "ba3a960c53d389cec00efed3ed0157bba7dec64d678f36d347270282e7700b5d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000328.parquet",
+      "rows": 8192,
+      "sha256": "57dd88f386200062466173eeb62fffeabed63739fad2a6faa0a004c9fabb6c33"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000329.parquet",
+      "rows": 8192,
+      "sha256": "24a529e64f900157f1ad28002469b2a22a16a9c12eef8cd49ba3774d532e6532"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000330.parquet",
+      "rows": 8192,
+      "sha256": "d63e0052f433ab5b24fb7c84019c642ddb32fe2b50a2950b3e93ffc038b52014"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000331.parquet",
+      "rows": 8192,
+      "sha256": "b3fb4c868bd080ba985496d58defadf67a44be42d294c6a2659b13579bc4138c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000332.parquet",
+      "rows": 8192,
+      "sha256": "7690949244b8a00a8f99dcf6d4490378bc95205767c6e04ef491742d69097541"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000333.parquet",
+      "rows": 8192,
+      "sha256": "d7e68553d93676b39eb0aaf2514b4d936415ca02eb9cba074f6ac18391a3c7d6"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000334.parquet",
+      "rows": 8192,
+      "sha256": "8e0dcb93c5a1d0ffc2ce217bb2a35bd4043771d9eaeffb43261aa9982cfff085"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000335.parquet",
+      "rows": 8192,
+      "sha256": "a137a74d2e92fdb1381f626af254d70e1ff5282eb14534f8d29379086fe91f36"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000336.parquet",
+      "rows": 8192,
+      "sha256": "2eeb24640e8b9718e3dc903cf8bbaaadd3152cf3ac1a1572cef8aaf5a7850cba"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000337.parquet",
+      "rows": 8192,
+      "sha256": "85acef272c84dd2d4ccf80d63388db5071b2a6cb71039119da4dcb452d0cbe53"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000338.parquet",
+      "rows": 8192,
+      "sha256": "cfe0f646a0eb14e2a71d34362870911ab3a269964eea90655dd3d82eb1b23edd"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000339.parquet",
+      "rows": 8192,
+      "sha256": "3a535dd6102547e4704c26f7af686a8b3c096fc498a2fe685508176cf588c3a3"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000340.parquet",
+      "rows": 8192,
+      "sha256": "04522b8930e10caad6625ef04bb6b2e0a708707058680ec67df60f9f88764592"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000341.parquet",
+      "rows": 8192,
+      "sha256": "4729c2de345cac8bcf363ed2093dd2c30dd12b4e5519ec969192bd22c51e22c0"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000342.parquet",
+      "rows": 8192,
+      "sha256": "d3d9daf320afb538f2f7e72f36194c1a149cb97d0569014198329dd0c681b25a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000343.parquet",
+      "rows": 8192,
+      "sha256": "2fda566fff94131665a10d7cb5616da6c0b12ca3e4b105cf3e334ab8929b9d50"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000344.parquet",
+      "rows": 8192,
+      "sha256": "f3595777114e4d27a2848f83bb34bc5e9a88a718371e8b9c6411f61314b9bc61"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000345.parquet",
+      "rows": 8192,
+      "sha256": "87c3e8dba33540ae82217b9bb13da84c3f168d8066a93e35f14f7ec2ce832224"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000346.parquet",
+      "rows": 8192,
+      "sha256": "4244bc14bebc315a19662443fb4b7e86544eacf92aa91b6a901bfdaaf51239b9"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000347.parquet",
+      "rows": 8192,
+      "sha256": "777fe3dcefde170e390173f829db3f46e5badeb781a888a0d0945772628b90c9"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000348.parquet",
+      "rows": 8192,
+      "sha256": "94c2b023f5f5498046d1204223fb2dc1ea9a121e5dd254f25bf3b82eabf2f88b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000349.parquet",
+      "rows": 8192,
+      "sha256": "43cdc799b8c7bd179d6e177dfcbd27fc239b606af3cd97c8e056b5d46d8273bf"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000350.parquet",
+      "rows": 8192,
+      "sha256": "98be5523617a401cddee9762768fc2b3ed2f737d22e522023335613be6f79980"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000351.parquet",
+      "rows": 8192,
+      "sha256": "98df43e52846a7ca27ac22556d46c6847ff398b98c9a5584197090c297e74954"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000352.parquet",
+      "rows": 8192,
+      "sha256": "fcc19f01dea716251bc14c2b38358b3daa65e86a1975b3916ba2d852af153921"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000353.parquet",
+      "rows": 8192,
+      "sha256": "28895c95956ab4bd9e6fc6bfca21b8920f355e545893ada031f0e47cd673c141"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000354.parquet",
+      "rows": 8192,
+      "sha256": "554030403c98591c9299912c8f61f0e517b84e39681c6764954e38f2a0acbb8d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000355.parquet",
+      "rows": 8192,
+      "sha256": "92c2f1e130a9e16507084a2f6ca22bf504cdbd57b078e694c13827e220e7500a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000356.parquet",
+      "rows": 8192,
+      "sha256": "ea90fa2cbe1c3be1f2dace5d84a0de03f38efeb87ef5ff1f8e5a3513fa74a101"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000357.parquet",
+      "rows": 8192,
+      "sha256": "35816acd077f67f8c72101bd9b4235b9728a53e0c08c45e6e602e2a4879f6375"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000358.parquet",
+      "rows": 8192,
+      "sha256": "e94c5e33f297c654909d605e6ea187f7956bad62a34595e0bce97b75353cfeee"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000359.parquet",
+      "rows": 8192,
+      "sha256": "05d0f9f87372737714a98300abe8648ecab25a564c2d63f34cb9b4297e1796ae"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000360.parquet",
+      "rows": 8192,
+      "sha256": "f284258771f8f272642076ee6cb94abb104fe8344b26e92364311bd0b1328709"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000361.parquet",
+      "rows": 8192,
+      "sha256": "6be43d3a888bb7de31a479716d0a23164d60d1831fd5533fd290290bf22a95c0"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000362.parquet",
+      "rows": 8192,
+      "sha256": "b98f6094bf5e337dd4f348f959ab55aab7080fe38985947bef91fd7d09ddf40f"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000363.parquet",
+      "rows": 8192,
+      "sha256": "e8acff3d510f8f2b8f69f54cd7370f6763a3ea9c4005ae19d05ece3f01fdc5f0"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000364.parquet",
+      "rows": 8192,
+      "sha256": "936db768880595edfcc8a99e3fdebf6c61419853a45f5d5aa050dfd5e740e719"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000365.parquet",
+      "rows": 8192,
+      "sha256": "71421df65c1656ac2b700477bf27bb3a4c0051c659e1fda67a4201cf8d1847e0"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000366.parquet",
+      "rows": 8192,
+      "sha256": "1db7f397962f90b04d558563b8a7ad585b36af73919592d2628e6b09dc199b59"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000367.parquet",
+      "rows": 8192,
+      "sha256": "21a1c9571e3819c615bd42e7daeedba8efdeea310bd2b0017b7dea302b3ae30d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000368.parquet",
+      "rows": 8192,
+      "sha256": "ddb4032dd97debe461ffa4cfb733bf4879fad6b5c7c172b6bdffe1d42729836d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000369.parquet",
+      "rows": 8192,
+      "sha256": "0f00476ee20da8927251d3746c41c834367b1d58183cffbec6cfb2e450d055a1"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000370.parquet",
+      "rows": 8192,
+      "sha256": "e3d0c7f4c180b6b6381bc8b2d515236930ebaa1f808e5ca865134c5a5320c402"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000371.parquet",
+      "rows": 8192,
+      "sha256": "f53fc4d1267f96626365adc2c96297274b66ac917ce6b51436b1126eb158796f"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000372.parquet",
+      "rows": 8192,
+      "sha256": "84ae992ef24000ab21c8d692da75be5d8b4e7c699333672e8198736f2aa6fc45"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000373.parquet",
+      "rows": 8192,
+      "sha256": "5204ebecc01aba512f93ee1464f37cedb3c77cd0bd1b07bcf9f191fa5f2fc364"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000374.parquet",
+      "rows": 8192,
+      "sha256": "62ff145846cda86737ac68f308a7563f5603c0031b694467d1e8f78c563d3b5c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000375.parquet",
+      "rows": 8192,
+      "sha256": "a29e571b69c9731d6567ab6fb82885a5e465b9a2b60cc103e3514e0f56e6ec85"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000376.parquet",
+      "rows": 8192,
+      "sha256": "72f84c7b974f31716e0a3460ff29495361cd864de0cdf97e69211c59236d71d5"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000377.parquet",
+      "rows": 8192,
+      "sha256": "ef91aa25b1ce80319369ce0f414822c6cf60ac0f6461a2457eb873537ab785b3"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000378.parquet",
+      "rows": 8192,
+      "sha256": "27e943fc84acb6dde0c0918a64184e3fd827bc27df40843973716a06a906adb5"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000379.parquet",
+      "rows": 8192,
+      "sha256": "59c5dde1ae1786653e9173ca1f5be538cf7bf333b352790be5a5122fff2fa908"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000380.parquet",
+      "rows": 8192,
+      "sha256": "6466dae6db45a8bb41c8cd18acd0063b273ebcad871a1164f9754361164e0337"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000381.parquet",
+      "rows": 8192,
+      "sha256": "835b9f8b7a28490669a29d929aec829c9fc655d52d8acfc59c05e6c388eaf5f8"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000382.parquet",
+      "rows": 8192,
+      "sha256": "ebce4d8210ebd6b2570d8d7a29d39c0c4a2141365b6e512d72cccc1551ef3218"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000383.parquet",
+      "rows": 8192,
+      "sha256": "d681340cd7e8c4b5dc8b341b78247c8757ef0be93f4cbcf24e74bd52789c0fb4"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000384.parquet",
+      "rows": 8192,
+      "sha256": "4e95c40fe47a3d57240e74d4f81d4fd4e9cee7e488f17abfe22267a34266fd32"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000385.parquet",
+      "rows": 8192,
+      "sha256": "cf9a775ecf65d3e455567e2d798a99ce37fb99319226957a4bcbb22baefb1691"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000386.parquet",
+      "rows": 8192,
+      "sha256": "9199e52999149eaeeb9dd0255d0bb428bf5b8c34b708e92637073f883cfadcbe"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000387.parquet",
+      "rows": 8192,
+      "sha256": "d5004e5d6e366a964339e11ef5153fd07d9b7ff69b8aeebae29790986d3aa79c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000388.parquet",
+      "rows": 8192,
+      "sha256": "806b0d275cef5db898a2d3cd2bb5261ad9c5ae544dbbf6bbb576ef5fc9c99e5c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000389.parquet",
+      "rows": 8192,
+      "sha256": "64d91ccbc095ac03c8d3632d28289ea878af466be0ee8d8cc9a2194428997561"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000390.parquet",
+      "rows": 8192,
+      "sha256": "9961d2b2bc3509fa4195dbd5594ed552e0cb3e872d5eec4600d360c1177aa9cb"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000391.parquet",
+      "rows": 8192,
+      "sha256": "995e23187f69dc9ca2564d8b7d65058224fbb83a5de648acfb73e6dfde97c5dc"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000392.parquet",
+      "rows": 8192,
+      "sha256": "e0adb54adff7909cf6c104ae027cd38a578e87f0d40925d01c92840bb4dbc7b5"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000393.parquet",
+      "rows": 8192,
+      "sha256": "f1ef0a0abd1498e855cb17dcd31f03e69361a4932bc9f0c3fbd2712a6641f2b9"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000394.parquet",
+      "rows": 8192,
+      "sha256": "b38c33426b1bf77a3be27b5060a2a1a49f2efba1806d4535b5ada5d9518d8ad9"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000395.parquet",
+      "rows": 8192,
+      "sha256": "1dcd0c81ab2aef8f077db73b6604be96d96d22ef8ca2412c6a002e458e26deed"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000396.parquet",
+      "rows": 8192,
+      "sha256": "6706434c42c5825c8651a80360d8c7ae97e40d3e2be71fa2defb9db234c91508"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000397.parquet",
+      "rows": 8192,
+      "sha256": "597b899f52bdb07141d06617ff6c4c6489930324b60123c19833ccd843cf55bf"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000398.parquet",
+      "rows": 8192,
+      "sha256": "c1e392adfb825bd4ed1d4a7ba43f9ee0d288172bafacb9f28af498deb2567dad"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000399.parquet",
+      "rows": 8192,
+      "sha256": "0939cc8c3071b54913a06cef7161a51652320c18dc617029244d921d5a45102d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000400.parquet",
+      "rows": 8192,
+      "sha256": "b7f765bcdfc313e94c673fe48e6b9870091b3197fe52bfc1f479688a69d1477a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000401.parquet",
+      "rows": 8192,
+      "sha256": "a0ff29a60edd0d98dd37afece25eb25a6fdaced3369a4090bb080dd520fb541a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000402.parquet",
+      "rows": 8192,
+      "sha256": "48979b567843e0b0871c88c302ba25db1193478019bb83892f11c8825c4d5ef2"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000403.parquet",
+      "rows": 8192,
+      "sha256": "d7ad55de9422e663bb2efebad5d54f35833227974f46d233bfe4a8ec2d20da1d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000404.parquet",
+      "rows": 8192,
+      "sha256": "85138f9128d97c9349a53f6215322850bf65ec6e58b9f33160b155ebe9bc2847"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000405.parquet",
+      "rows": 8192,
+      "sha256": "219016a98e066d2f2648093be424a54c0136288cfe7a6fe8c55e173dcb3a9048"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000406.parquet",
+      "rows": 8192,
+      "sha256": "ff2483660fffb9df721cf214a903b106e50717f935ddf2adbfa1bab4aa32aefe"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000407.parquet",
+      "rows": 8192,
+      "sha256": "bbb0c06dca84cb40ffedfbb560f3acee563dbf43ccfa1a39757e57f074e8c349"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000408.parquet",
+      "rows": 8192,
+      "sha256": "f9d0f38e8fd28f9008d193264a8c98ea11a7c2bf46d31330de155e95c8856b24"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000409.parquet",
+      "rows": 8192,
+      "sha256": "4b52a9b0bb6d77362220878aea90bbb18fd4add198831e1fbe607cb4a538adf0"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000410.parquet",
+      "rows": 8192,
+      "sha256": "b496c13cf0ed7fdc7ebb965640c4d5c3f31d0e3b18fff267a1e98466c06779b8"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000411.parquet",
+      "rows": 8192,
+      "sha256": "476c777adf9ef4869f3a981bcfc1a2409f5c616a4e1c2e6ad012fea580a41605"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000412.parquet",
+      "rows": 8192,
+      "sha256": "68f621e4dfa72f897e9da1d1cdb8871aaebf2c0c0bf7fb0d77ef41069cd1f504"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000413.parquet",
+      "rows": 8192,
+      "sha256": "9f0bf1b6dc96ba62355fe36bbf613e98c97d3332a5bcb6f6b1a357892f21f1ff"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000414.parquet",
+      "rows": 8192,
+      "sha256": "57a62305f7899ea26c2314d10409cd6b0e8500e8f6d54573af84267e4b931753"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000415.parquet",
+      "rows": 8192,
+      "sha256": "53d14b7b2ec62cdd93e4ef88fbb3ace73bae4fecdc2e9d873543825b24cf769a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000416.parquet",
+      "rows": 8192,
+      "sha256": "0533a7d9ae4b72550dcdd78649d0dd16ac069764f37b77ffe358bde7dcb83b5d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000417.parquet",
+      "rows": 8192,
+      "sha256": "192cb218fe9cbc7070a697778c3c80e0edd7c6c5fc553684f433bcc36ebfdc8e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000418.parquet",
+      "rows": 8192,
+      "sha256": "af67ae787c49ca309a1d5a49f6d4d04bee08bf0e05f9270b260e4980b77e76c2"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000419.parquet",
+      "rows": 8192,
+      "sha256": "f66830457fc9b1500f64ada9704fdf1d2c456ebf24266c4dd801ef18e3eeae57"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000420.parquet",
+      "rows": 8192,
+      "sha256": "db5cf950536505b38d6c01cc2e435dba9b3aeb1c687d4f3ba68455ff567e60af"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000421.parquet",
+      "rows": 8192,
+      "sha256": "b76825f7d89129ad88f874667ba6995e3580e186dc27cc8ec4bfd1c996fc301c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000422.parquet",
+      "rows": 8192,
+      "sha256": "04672c9bf37d705023321b8d0f4cc789ca1673d54e474d3c3ee69dd9e1a97de5"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000423.parquet",
+      "rows": 8192,
+      "sha256": "d3db6fd0a13cb26194fb202c07d4330f91c1fe96223124cf16f5af08ff69d26e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000424.parquet",
+      "rows": 8192,
+      "sha256": "248291f86724c3de1b082f51b8cd7f8ad6abfa391bcdbe3e4f9e5d2ac2590344"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000425.parquet",
+      "rows": 8192,
+      "sha256": "028414cca494d1992b16d125080656c1eb1eaf582aa87a781f029095fe180e2c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000426.parquet",
+      "rows": 8192,
+      "sha256": "7d0dc8d9652caab31dd84049808f911e34e9507b322448b1ad942a01b518ce3c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000427.parquet",
+      "rows": 8192,
+      "sha256": "b8a4c844edaf310ecf6524f5d756b6784eafc0eba573880b605f571d9e1912c5"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000428.parquet",
+      "rows": 8192,
+      "sha256": "aa3964535afe08a42f5ba9192f4ddd0189af07d4eaddc748e3f05111137b1f14"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000429.parquet",
+      "rows": 8192,
+      "sha256": "4480730bf56866ac33881b5d99606d3051cf8490b06eac56aa17a873ab337c6b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000430.parquet",
+      "rows": 8192,
+      "sha256": "d3534f784c488ab8521b391bdbab8edd82d6cce86bbb10527015844a0928c2a9"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000431.parquet",
+      "rows": 8192,
+      "sha256": "3e9b6148766a1f732ba497ff78054f012fef0d6067ea74fe53728a5f5934aa9a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000432.parquet",
+      "rows": 8192,
+      "sha256": "e2af0b517084ef3ffa57b1b70a38a5a74afcc5ad06653e529a184e16e90bd502"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000433.parquet",
+      "rows": 8192,
+      "sha256": "483c71fbd5def76947385364963665d269b73ad79124f3155fab59b89ed4d473"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000434.parquet",
+      "rows": 8192,
+      "sha256": "67cfa13c3c1e7d021bd352251688d5f23b61a28f53d82a655e52e862860cc849"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000435.parquet",
+      "rows": 8192,
+      "sha256": "824af878d024ebf59252f376e8d4a961153f68786fa97cc35acbc1f29ca5907e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000436.parquet",
+      "rows": 8192,
+      "sha256": "ee9fed9532cc938c28ada6fda98967e1000d8284c0698932e9d141876a8c05f2"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000437.parquet",
+      "rows": 8192,
+      "sha256": "4a3c1f3babe53c31d1f563c477a338d1f546472417a791c13a8673dd028751b9"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000438.parquet",
+      "rows": 8192,
+      "sha256": "03a98f592c8739341438991a789444a07e89f8eeac8beb483a3ffe278d04fee5"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000439.parquet",
+      "rows": 8192,
+      "sha256": "c02d40cfcd6ad129bd5117c8c69f3c363a648727a2ecac4ffb51df196898fe7b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000440.parquet",
+      "rows": 8192,
+      "sha256": "680d62ca5d5d320ebaafc0e9f561aebe7fab7d3e17d957db2adaecbbf0b591c6"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000441.parquet",
+      "rows": 8192,
+      "sha256": "466d0f0d8119d2ac4aee51495b0cfad0c702ab3415dfc5b2d6e01367421fdcfa"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000442.parquet",
+      "rows": 8192,
+      "sha256": "7639ff19dd5428bb876c57b561a706a4fee575cb4ea6a0c43de664be3ce19d05"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000443.parquet",
+      "rows": 8192,
+      "sha256": "b805cc434f9d56a095d2cfdc27ef7e91321f3475638aafda905c7c291ae8e0f2"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000444.parquet",
+      "rows": 8192,
+      "sha256": "723b146db8ce61601157916a9e2bf6e4b0bcff467e128b04b4a780c950bbfe5b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000445.parquet",
+      "rows": 8192,
+      "sha256": "bc77bb3308010fe8986665916ac2bdb6e16f7640efb7eaf846777f5fededf329"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000446.parquet",
+      "rows": 8192,
+      "sha256": "68eb5529c16db355a2eea868a69c913fbf236a659667012842c7bc74c5e69ce3"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000447.parquet",
+      "rows": 8192,
+      "sha256": "9dd43368ee3182055b38b930d05b483d2b2672b5e761b4774664ab80fe33f1b5"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000448.parquet",
+      "rows": 8192,
+      "sha256": "9656e6fd12221c3f0fe84a4c806220119061452cbb637f23bcedf4b182bfc008"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000449.parquet",
+      "rows": 8192,
+      "sha256": "1e9f8c0e39b50f8e13b956b423c8ff08ab1d9a46e63302876f9f6a896196d088"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000450.parquet",
+      "rows": 8192,
+      "sha256": "cda83f5ad3a9551befb7c241db07e14125128abdfbed2319f8d4b882903ea2d6"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000451.parquet",
+      "rows": 8192,
+      "sha256": "100d8a752d5a3a091a6679a3faa1be5a6ef3acf328629c8fcf90ad1d13cde68d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000452.parquet",
+      "rows": 8192,
+      "sha256": "a8b63fa80f5d407246105b58dd0a9acd12e921c191d446ed6dcb00ac35e9e70c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000453.parquet",
+      "rows": 8192,
+      "sha256": "d3259d9e80dc6147069df183d04e2f6d4aee2ec9182b0c6a142028e4b59de28c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000454.parquet",
+      "rows": 8192,
+      "sha256": "51b344b25101b934c58e341b205713257c568c2e883e3e1c6cf330d7c6984afa"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000455.parquet",
+      "rows": 8192,
+      "sha256": "1dff4b7c3994f219af85353e59751a4743cc7bc297ecbdeff09d51962af886a1"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000456.parquet",
+      "rows": 8192,
+      "sha256": "3e85b6d35910d9167db8915effad4bfe89a4887c2d663663ddbffa3ac8fde954"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000457.parquet",
+      "rows": 8192,
+      "sha256": "3dfb21b635c5984476f25a2dcecbfb1a24deff2517b285f80df26f4c41cfea1a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000458.parquet",
+      "rows": 8192,
+      "sha256": "4201ff35cd187c61ed17ebedfe9e98ef65ae8798cc682ea0e86c9c893e67ae12"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000459.parquet",
+      "rows": 8192,
+      "sha256": "42efc18eb1e76f41a3ccad7cbf36d0f027034adb81b9ad9dbf5eb9dfb68daa69"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000460.parquet",
+      "rows": 8192,
+      "sha256": "3c0ba1e00efdf16e8e7711ac02eb851c53cf2a9ecbcb9aad92487a904df9fe60"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000461.parquet",
+      "rows": 8192,
+      "sha256": "c5aee7327423d7fd8559f4b5903d7d603e896751677e96baa1553c897479f2ae"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000462.parquet",
+      "rows": 8192,
+      "sha256": "5e72a9972970df8c657f535e67bb430b4e4f91268893f2489ca7c5fc772f23ec"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000463.parquet",
+      "rows": 8192,
+      "sha256": "b7207851ace2c249e5d63c172a9255609972d5b21c0d0d00a9d13e2046f9aea0"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000464.parquet",
+      "rows": 8192,
+      "sha256": "faead5eacbf080fcc70179417c62cb0d213b86f6d4d872f6c51354b35f725c73"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000465.parquet",
+      "rows": 8192,
+      "sha256": "76085068f90d815fd6a00471ac0c566d1b908eab6efe98658b3266ac82467d03"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000466.parquet",
+      "rows": 8192,
+      "sha256": "c20e1cc458c1d5f34ad84880dc176b0f1cdf9f92313196a9970c1c51abf3f106"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000467.parquet",
+      "rows": 8192,
+      "sha256": "3b35c4c39def0d2c592f384b7f4d9e9e5424118dbe75bca17e33ea9860ae9bb0"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000468.parquet",
+      "rows": 8192,
+      "sha256": "40d75819d81534bf57a09537a9e00af641bcd01be1de8153e77f875f5bcef3e0"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000469.parquet",
+      "rows": 8192,
+      "sha256": "424779d942af5a5a407a0ab85e75e9fe9355922071734414b2bdd69e28e454d2"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000470.parquet",
+      "rows": 8192,
+      "sha256": "44857caa734bdc14b9668092cf34ffebcd2fba94ee99dc4563599d3e099e67b8"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000471.parquet",
+      "rows": 8192,
+      "sha256": "b1a90a483022f08d3d03b8d96b865c774e9b3a22f1015b60ff1e3a54b4399776"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000472.parquet",
+      "rows": 8192,
+      "sha256": "8ba4b8d2fb2f418bb1891290e14852e996338bda58f6993467f0915f5856f3be"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000473.parquet",
+      "rows": 8192,
+      "sha256": "b9218657b8052c70a240605c4e13e31bb7421d8c4eefa0b693114b306392210a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000474.parquet",
+      "rows": 8192,
+      "sha256": "3f17316578c5a0353175a6e79df6921bc0dc6c35493047db65d3a80972775099"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000475.parquet",
+      "rows": 8192,
+      "sha256": "8ef509560066da9312b52169a5a4c0e428b430de34b9ba0dd06fea2638624f31"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000476.parquet",
+      "rows": 8192,
+      "sha256": "cb21971fd6477d5dc53ff5d8afa8dc51080fae5d6719e36515846e15d9cf8d2f"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000477.parquet",
+      "rows": 8192,
+      "sha256": "b1aa7f77587e65b82bdbeeb540401184c73400b9fb3bc73d6c4fc7441bf32627"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000478.parquet",
+      "rows": 8192,
+      "sha256": "9c06b368d291715bb7e512b71412d7a5f7e2f7fac7974c08945d407a26302e24"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000479.parquet",
+      "rows": 8192,
+      "sha256": "a1b954be5f12bdd57931866e2af645317c7eecb93ffb4d88c8f6b09bb7778ded"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000480.parquet",
+      "rows": 8192,
+      "sha256": "73d48b5490910e58dce6f675ff4695257fff3435fa6bdd0c050ef4de52d33a14"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000481.parquet",
+      "rows": 8192,
+      "sha256": "273e6e18b19ef4dbfa5e35c68ecadd8f9b0327afd55b297957bd5c5a26ed6ce3"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000482.parquet",
+      "rows": 8192,
+      "sha256": "d8f3c2c33c24934c129cae31059518dd2395932ac0e5a56bfe85052975d06e15"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000483.parquet",
+      "rows": 8192,
+      "sha256": "d7f52b52017e6af216d69da94ce77feba8c4f5ec9059ed859fe591b24289da97"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000484.parquet",
+      "rows": 8192,
+      "sha256": "574e922f6d01e856239b4314833a153447af9d612653b65a6b9595159e575837"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000485.parquet",
+      "rows": 8192,
+      "sha256": "e45caa2122ddc9409687c518c1b51dd65407dfd8b4bfd962f4aac506250d8332"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000486.parquet",
+      "rows": 8192,
+      "sha256": "7421fd547c713dc048b9dbd381fc8fd8f9267829dab7b1cd1179a23bba46c8e6"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000487.parquet",
+      "rows": 8192,
+      "sha256": "e87d36f75a69d41e091c94852fc5d2aa11ad2f9c8bf78339a06d701917678b0d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000488.parquet",
+      "rows": 8192,
+      "sha256": "76ef1bb42b780e25c486eee39348e5638fc3a328e564c7ea07c3b61b9693f106"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000489.parquet",
+      "rows": 8192,
+      "sha256": "273df04f84a8f55a0aa2dad1bd26a179534fb2d46fbb8b1429f3eb5df951b09e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000490.parquet",
+      "rows": 8192,
+      "sha256": "49bf85a750f40822b505dcafb4a0c441f76efa26e4eefd3a305df946b4b6324a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000491.parquet",
+      "rows": 8192,
+      "sha256": "515850b6efb58c557eabf627f233354196af6c3c3209e8e8eb89ac2f454077bb"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000492.parquet",
+      "rows": 8192,
+      "sha256": "326b2eb8dd8cb8e7bb92a9a7ee956ed8e4076a38edd812e13e5c39a82c3c54f8"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000493.parquet",
+      "rows": 8192,
+      "sha256": "4db411029863277f4896923dd68de63b4838cf0be18fdf1382c4f6d4eb291531"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000494.parquet",
+      "rows": 8192,
+      "sha256": "e9890b1e51c04da9150512eac53c54f20f5d2c8bd9222991799ac60afbf0fcf5"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000495.parquet",
+      "rows": 8192,
+      "sha256": "9a0818e6cbabad3b6e748023633b3ad26bc32fc6f6bb380e2d17948896a004a8"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000496.parquet",
+      "rows": 8192,
+      "sha256": "fbee21cff9ecd0e170a7c58d348641fab8bc2953b3cd640c1e9663b25c5cfeac"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000497.parquet",
+      "rows": 8192,
+      "sha256": "dc8bf135c6ba91c3d1c4c3b223cd1bbff8ece4a34f5c1a892cc43e86c697b4a7"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000498.parquet",
+      "rows": 8192,
+      "sha256": "2b3974f8479067abc63846721ab8353743b94b3acf7715441d66a272c85fa74a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000499.parquet",
+      "rows": 8192,
+      "sha256": "2ddc60b3e7bfb887626b5a6dda77aba2e7bea99614dd7179bcfa2b5694c2435b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000500.parquet",
+      "rows": 8192,
+      "sha256": "a393894fadd78f2a0838cb892f5411ec82f6d12d82c6ade927a3576fd369a3f7"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000501.parquet",
+      "rows": 8192,
+      "sha256": "37885da64ead27635c95614e7eb61cea709734605f91361987e3d992232fcf9a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000502.parquet",
+      "rows": 8192,
+      "sha256": "f36ca052e3081a88c9532230a9021726e2b63def888713c96b68cbfc9a865fd1"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000503.parquet",
+      "rows": 8192,
+      "sha256": "88debe568b0ac180413042433c411a0a280b3a48656377a4e87e081ad49a0492"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000504.parquet",
+      "rows": 8192,
+      "sha256": "306132c868d177633134d5c68b82ae5be580d407c8d7f5849eb552707de5bc34"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000505.parquet",
+      "rows": 8192,
+      "sha256": "461147db4948b61a0c6de2a8edc3f8f0b7e034c59a82ac337c7f3f1a286872d3"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000506.parquet",
+      "rows": 8192,
+      "sha256": "66d0d7879fd1a7b1b9c6d10853d0efbcefa0e6719ee4de67628d474a5a058b50"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000507.parquet",
+      "rows": 8192,
+      "sha256": "60fc43290f370a07ec94162d1aa87118850d52aaeb7aef376df05a7dd793210c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000508.parquet",
+      "rows": 8192,
+      "sha256": "ccd27743749ead8c8a32bf539557a3ea32b66099bd456815327e54a58ead66cc"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000509.parquet",
+      "rows": 8192,
+      "sha256": "dfe9454aeb2f288f6180b6813273b82cf38c33fc6d63833a6eac70ca41aab509"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000510.parquet",
+      "rows": 8192,
+      "sha256": "2a32a47ea4c3d3eb0d8b85e6e570c0a40e7eb6c952c8082526ddb3948e268f2c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000511.parquet",
+      "rows": 8192,
+      "sha256": "4cce97a56282d83222267a9eeb0e01821883802c796aae28e7101add1d54bf93"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000512.parquet",
+      "rows": 8192,
+      "sha256": "3d84a3450640159d81ed24b4e5f914c91053eb36969930ad339acba60eb0d125"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000513.parquet",
+      "rows": 8192,
+      "sha256": "55f774fcec64d008040a4990e60f2bda5bcc0c3d1130f13e5b7467199aa4b690"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000514.parquet",
+      "rows": 8192,
+      "sha256": "a5b747f26d076509c6e30fc3bfe0612fae15bef002ec484e21cc28ea1154aa13"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000515.parquet",
+      "rows": 8192,
+      "sha256": "e65e30989c7f0a12d832515ce4f3d28bce0b5efc08fadcd8ec9bce268213c009"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000516.parquet",
+      "rows": 8192,
+      "sha256": "104351474332c694d517df274574e9eeec2aa92361b66e04356af1ac442d2f4f"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000517.parquet",
+      "rows": 8192,
+      "sha256": "19ca0e06588e489b0310d8e6f37bf8634d725448b865bb95d0758bbfba82ae08"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000518.parquet",
+      "rows": 8192,
+      "sha256": "8786d408c8e3ad6cf2cd0cae81a8439c74f6e8d291f9d5b1a3fddaac4098f542"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000519.parquet",
+      "rows": 8192,
+      "sha256": "d85f376b81074067746a5814c475cf911e299ece68dd7c287ef3fd7440bfabf2"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000520.parquet",
+      "rows": 8192,
+      "sha256": "b88829047fb3639b66ecc9bb143a88a2ca8ef97d9f9a3643546d0a7a84a9e3d2"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000521.parquet",
+      "rows": 8192,
+      "sha256": "e4cf11aa0d48a9a345fb31de5f46ad35700fb671617f8531d3aa7379d4234ac3"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000522.parquet",
+      "rows": 8192,
+      "sha256": "38e6641ccb3d347e5ed3bda63db05d3010795aa364b7475c28187531551b8982"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000523.parquet",
+      "rows": 8192,
+      "sha256": "7f1a1529ba8f5e318d3db3eb8f710b63e27a0b0522f658b5228f52995d3c50eb"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000524.parquet",
+      "rows": 8192,
+      "sha256": "227677766e8efcb0e5a6fb7e1b27a58b0bea39fc250f2f8416f3b5a7d0fb18ca"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000525.parquet",
+      "rows": 8192,
+      "sha256": "98cf58868c544150a4028a7e3e05304c17a5d6b50e49c3a9183e31a1794edd3a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000526.parquet",
+      "rows": 8192,
+      "sha256": "cd76b202f979b05ed0315cfc065f3d0560445c499cdc498241169ece9cd10661"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000527.parquet",
+      "rows": 8192,
+      "sha256": "9f147c6e34f84dd695ce6b0fd9e8634b7df61a5547a2eff6b3de934897490544"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000528.parquet",
+      "rows": 8192,
+      "sha256": "d2d6026f15119c08700b718b58a3c4f987f32848a005fccfd4454c8a7a29be37"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000529.parquet",
+      "rows": 8192,
+      "sha256": "85be53fbd31eafe1d79da6c91508f53d7394c37ea56cce9a9a6e16f19f6cd3a0"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000530.parquet",
+      "rows": 8192,
+      "sha256": "94c10c09e915bcc6bf890ce513b5009885c8e501b3a38ba71ceb43ef01ffa9ff"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000531.parquet",
+      "rows": 8192,
+      "sha256": "5bf7c6f0745bd53048ab95e2fb9b0da6c9bbdcd1a77c5ebbb0a0ce1455ecccad"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000532.parquet",
+      "rows": 8192,
+      "sha256": "28f618536d20b2e4c481cd661c22512e144b4d461bb6d92873f0c35d7472717f"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000533.parquet",
+      "rows": 8192,
+      "sha256": "6aee6c601be2ee6a64bf1c9e3e67c160c66cb10467d972613c2f8a10a93e1edb"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000534.parquet",
+      "rows": 8192,
+      "sha256": "ca71f165f01ea7492b2eb022aa81b3be030d0207028d8e28e8045907ab04cbf8"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000535.parquet",
+      "rows": 8192,
+      "sha256": "4c4bb8bfaa7f9946cb3997e5bc96cfdd46ec723595316a23afa39eeda156bc9d"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000536.parquet",
+      "rows": 8192,
+      "sha256": "56e8288e22e4d11afb80d50ffbd4a1b527200e06bfb1b4e375b786293951c34c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000537.parquet",
+      "rows": 8192,
+      "sha256": "bfda97943b2153d5aef8af94609376b9b02e251e5e6b709cdc888e403f68c6eb"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000538.parquet",
+      "rows": 8192,
+      "sha256": "ae96c278a105e411379f17c139b3e27fe1c900c08f7b6e6003962c85bd321eca"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000539.parquet",
+      "rows": 8192,
+      "sha256": "a5249cab7861f826a14a10fc933b6fff203366127c3106a2706c336db1c66849"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000540.parquet",
+      "rows": 8192,
+      "sha256": "d86b50b58ff9e37e3205bae4f098729254aee38eab79c3f8ad85b3bf9c3dd043"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000541.parquet",
+      "rows": 8192,
+      "sha256": "31a4360764b82130e605371a84d1cf7c8ae9ae272e05a51b829364748dca24c0"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000542.parquet",
+      "rows": 8192,
+      "sha256": "87eb49df1b409b7bbd20870c693bcbaa500b883d104b14c7da06a37df86a4faf"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000543.parquet",
+      "rows": 8192,
+      "sha256": "76eeb595a5f464a27d258b4b8030c813dcac3539724a18fd36071d432d7f9391"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000544.parquet",
+      "rows": 8192,
+      "sha256": "7bcf8e094de1a23e8a0cc7ca1da7abac578e6206d62f1176f5faafcbae527dda"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000545.parquet",
+      "rows": 8192,
+      "sha256": "f7af92646ed791b84367cd5a915d3de952854ab99aef4ca3c1b9e1e8556e51f7"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000546.parquet",
+      "rows": 8192,
+      "sha256": "673bc6d9c5dda189a13b058fab386d1414d11ef92dfeb58fb195384b9a7757aa"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000547.parquet",
+      "rows": 8192,
+      "sha256": "61b95a567625e48c06d6b9d39f0c19560d953dc6eb25a80830095ddff5520592"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000548.parquet",
+      "rows": 8192,
+      "sha256": "ddf593a8229c62b733cee5a64795dfa72756654bd9b2e25d67c65011c1fe8655"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000549.parquet",
+      "rows": 8192,
+      "sha256": "e1854969be0e44e34e5b43df3b0c0a0d1f4c35c85fa65a30ae6793c8ae2b3a1b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000550.parquet",
+      "rows": 8192,
+      "sha256": "d3fbc84ae6bf4ce15399cd78c36fd09bbd67ca3b69096387263590b19f8125fb"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000551.parquet",
+      "rows": 8192,
+      "sha256": "3c458dc761135d9339c3db1c7ef3912c8bf810fe6082504813e9d796d8dc209c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000552.parquet",
+      "rows": 8192,
+      "sha256": "e0255608eafaf6142bd832d58b560f9b3deb572886507aefce5ae515cf8825d9"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000553.parquet",
+      "rows": 8192,
+      "sha256": "a44df54e0dba63611afbf8f4d7bcbb337f950696cfc23aeed180bc63695a0769"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000554.parquet",
+      "rows": 8192,
+      "sha256": "bcf45b068e03da5c257973418209670cc90bbbf193946a6c729a7ec00a63b66c"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000555.parquet",
+      "rows": 8192,
+      "sha256": "ae2b52de6442c2c7b46b583261122c44c2ac925fc2c627731ec6bbacc78defe8"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000556.parquet",
+      "rows": 8192,
+      "sha256": "290c438fac2dbdfcaf210ab54211f67386ca29126a5b59abfd24f0ac5e2acb64"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000557.parquet",
+      "rows": 8192,
+      "sha256": "a2afc4e826de268605626d85e79bc1b313c32cd05a100dd818f65c992f5b27c2"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000558.parquet",
+      "rows": 8192,
+      "sha256": "440b7f65fa74a692cdf0b47dce8f246ec6dfeafe7593bea22aa3821ef278b247"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000559.parquet",
+      "rows": 8192,
+      "sha256": "46aa0e919f3b7d943fd342077a1099316b4cb1f92d1708c84761740b7a771189"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000560.parquet",
+      "rows": 8192,
+      "sha256": "d1297ba43708651d3522f9e1bebdd05394dc230808ea87cb721940e91e6e6180"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000561.parquet",
+      "rows": 8192,
+      "sha256": "75d1cf811b8a9124e1a655f62d4cb6a1b5302be709df6550aa91a8a7d0aeb827"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000562.parquet",
+      "rows": 8192,
+      "sha256": "60af9adabe75f9d1f1334a5ff86502abd0bf8ca080f85a7089bc083d7358c21f"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000563.parquet",
+      "rows": 8192,
+      "sha256": "04725a3439410a47d138f169abd39244f8654de78edbb6d3750eca02ca702e86"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000564.parquet",
+      "rows": 8192,
+      "sha256": "fc0b757d1e50d6f84bb5d7e604b8435a8d03c8775c711e0a7c28bf5c104fc387"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000565.parquet",
+      "rows": 8192,
+      "sha256": "7635bed5be9e2bb00e9f48138372b9dc9cf5ae33e4b6701d3f07f4884f6a2c77"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000566.parquet",
+      "rows": 8192,
+      "sha256": "bc27187746510216bc4c30425a18bd8ad1c3d80fd9177048cb27bac27d17337b"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000567.parquet",
+      "rows": 8192,
+      "sha256": "d6b1fa8074e84a50744c2f22d5ea7c8469bee653f9d75e6db02c4b5019aa244f"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000568.parquet",
+      "rows": 8192,
+      "sha256": "a515f614162278f608f948691cd6db06fbc699e0d65cc03ca5c2bfd865ce6c85"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000569.parquet",
+      "rows": 8192,
+      "sha256": "8e12d4f6d74c0bcc94410b2d3f175f3c64a110ddc1411056ce144e5e3a78b96e"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000570.parquet",
+      "rows": 8192,
+      "sha256": "3232b5598009ea386e50e0447869cc6b983b5a51cd17bd0b3cc463823037e717"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000571.parquet",
+      "rows": 8192,
+      "sha256": "e1623ddc98c8544c4518e98c0fc362f649a5ebc533f7e560514b8e10d2beda6a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000572.parquet",
+      "rows": 8192,
+      "sha256": "2dfb569049a55163d59855dafe995a2b1cffc4c80b8a1ba34ad08d3b5c5067f5"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000573.parquet",
+      "rows": 8192,
+      "sha256": "707c424cf664e97d713f5f25d341ebfbd7995471e4e11c3871aa46466819074a"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000574.parquet",
+      "rows": 8192,
+      "sha256": "722299fd3e5b123280d056e5de7f730ca1635e50e9b974f7b2dbbd46a59dd5ee"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000575.parquet",
+      "rows": 8192,
+      "sha256": "1130ad0e2e5616dc835c785a8d1705c21fee8eb96e795e3dd30cf0239b7a1265"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000576.parquet",
+      "rows": 8192,
+      "sha256": "2626e86e36a08859e382684cc5069dd064ccc84587c2875c2fc6266dca45dd51"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000577.parquet",
+      "rows": 8192,
+      "sha256": "b76eae0d78c1b377ef0219efb3364e484f24f1541a6755f01a81f9f5f9675483"
+    },
+    {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/requests/000578.parquet",
+      "rows": 685,
+      "sha256": "926792232988a025dfac0baba24fcba0ae5aab80ce6252e9a17a0d163e0e4b0f"
+    }
+  ],
+  "embedding_table_version": 497343,
+  "training_cells": 2029,
+  "verified_canonical_cells": 2029,
+  "scope": "training_only",
+  "classes": [
+    "BasketFam",
+    "BipFam",
+    "MartFam",
+    "NglFam",
+    "pyramidal",
+    "thalamocortical"
+  ],
+  "label_confidence_min": 0,
+  "embedding_dim": 64,
+  "em_volume": "em_clahe2d_flash",
+  "seg_volume": "seg_1718_zarr3_flash",
+  "precision": "tf32",
+  "segclr_source_commit": "afb3d8c"
+}

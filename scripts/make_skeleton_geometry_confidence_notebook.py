@@ -17,14 +17,14 @@ def code(text):
 
 
 nb = nbf.v4.new_notebook(cells=[
-    markdown('''# CAVE / TEASAR skeleton agreement versus Casey confidence
+    markdown('''# CAVE / TEASAR skeleton agreement versus Morpho confidence
 
 Each point represents one matched cell, comparing the two full skeletons under
-the same v1718 root. Casey's identity and confidence come from the existing
+the same v1718 root. Morpho's identity and confidence come from the existing
 root/nucleus join. Confidence describes **cell-type annotation confidence**;
 the geometry metrics describe agreement between skeletonization methods.
 
-The default uses Casey **coarse confidence** and **coarse cell type**. Change
+The default uses Morpho **coarse confidence** and **coarse cell type**. Change
 the configuration to fine confidence/fine type or your original classification.
 No confidence threshold or additional cell-type filter is applied.
 

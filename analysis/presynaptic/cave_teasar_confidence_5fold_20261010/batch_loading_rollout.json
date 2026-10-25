@@ -1,0 +1,114 @@
+{
+  "timestamp": "2026-10-11T00:01:38.090435+00:00",
+  "tests": "24 passed, 9 subtests passed",
+  "benchmarks": {
+    "CAVE": {
+      "family": "CAVE",
+      "parity_batches": [
+        596,
+        596,
+        596
+      ],
+      "exact_tensor_parity": true,
+      "windows": 9523,
+      "batches": 16,
+      "single_worker_seconds": {
+        "old": 1.4872371703386307,
+        "new": 0.16386768128722906
+      },
+      "single_worker_speedup": 9.075841914988626,
+      "four_worker_seconds": {
+        "old": 0.5939989639446139,
+        "new": 0.08688315190374851
+      },
+      "four_worker_speedup": 6.8367566200022525,
+      "raw_timings": {
+        "old": [
+          1.4872371703386307,
+          1.502536796964705,
+          1.4515056535601616
+        ],
+        "new": [
+          0.1648213379085064,
+          0.16386768128722906,
+          0.1597169851884246
+        ]
+      }
+    },
+    "TEASAR": {
+      "family": "TEASAR",
+      "parity_batches": [
+        378,
+        378,
+        378
+      ],
+      "exact_tensor_parity": true,
+      "windows": 6041,
+      "batches": 16,
+      "single_worker_seconds": {
+        "old": 1.3716569850221276,
+        "new": 0.04721941985189915
+      },
+      "single_worker_speedup": 29.04857766834592,
+      "four_worker_seconds": {
+        "old": 0.4330009510740638,
+        "new": 0.04389176797121763
+      },
+      "four_worker_speedup": 9.865197304378523,
+      "raw_timings": {
+        "old": [
+          1.4245038917288184,
+          1.364901041612029,
+          1.3716569850221276
+        ],
+        "new": [
+          0.04721941985189915,
+          0.04455986339598894,
+          0.05255154427140951
+        ]
+      }
+    }
+  },
+  "code_sha256": {
+    "data/batched_presynaptic.py": "82e9e223480a05432c9a210f9bfc282539e7d9de114635fb2dbb4cd2c3f52bf2",
+    "scripts/train_gnn.py": "0ed4bd5538b609376479ca43ec6bf86ae72043006d2bb6b35c92c234a5bec8f3"
+  },
+  "restarted_jobs": [
+    {
+      "job": "25533350_2",
+      "index": 2,
+      "family": "CAVE",
+      "architecture": "graph_transformer",
+      "checkpoint": "results/presynaptic/casey_confidence_cave/k10/conf0/fold1/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold1/checkpoint_last.pt",
+      "saved_epoch": 18,
+      "baseline_progress": "train:  63%|\u2588\u2588\u2588\u2588\u2588\u2588\u258e   | 19/30 [22:22<12:57, 70.69s/epoch, train_loss=0.3143, val_cell_f1=0.615, val_window_f1=0.574]"
+    },
+    {
+      "job": "25533350_3",
+      "index": 3,
+      "family": "TEASAR",
+      "architecture": "mean",
+      "checkpoint": "results/presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold1/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold1/checkpoint_last.pt",
+      "saved_epoch": 9,
+      "baseline_progress": "train:  33%|\u2588\u2588\u2588\u258e      | 10/30 [21:21<42:34, 127.72s/epoch, train_loss=0.3012, val_cell_f1=0.694, val_window_f1=0.631]"
+    },
+    {
+      "job": "25533350_0",
+      "index": 0,
+      "family": "CAVE",
+      "architecture": "mean",
+      "checkpoint": "results/presynaptic/casey_confidence_cave/k10/conf0/fold1/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold1/checkpoint_last.pt",
+      "saved_epoch": 20,
+      "baseline_progress": "train:  67%|\u2588\u2588\u2588\u2588\u2588\u2588\u258b   | 20/30 [22:39<11:22, 68.26s/epoch, train_loss=0.3017, val_cell_f1=0.688, val_window_f1=0.654]"
+    },
+    {
+      "job": "25533350_1",
+      "index": 1,
+      "family": "CAVE",
+      "architecture": "pointwise_mlp",
+      "checkpoint": "results/presynaptic/casey_confidence_cave/k10/conf0/fold1/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold1/checkpoint_last.pt",
+      "saved_epoch": 17,
+      "baseline_progress": "train:  60%|\u2588\u2588\u2588\u2588\u2588\u2588    | 18/30 [22:47<15:19, 76.61s/epoch, train_loss=0.3074, val_cell_f1=0.607, val_window_f1=0.605]"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "preparation_job": 26117443,
+  "plan": "analysis/presynaptic/segmentation_augmentation/full_plan.json",
+  "output": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/segmentation_augmentation/cave_conf0.7_fold0_n6_r3_20261016",
+  "training_cells": 1414,
+  "shards": 18,
+  "max_concurrent_gpus": 6,
+  "variants": 7,
+  "batch_size": 32,
+  "variants_per_forward": 4,
+  "precision": "fp16",
+  "model_compiled": true,
+  "morphology_compiled": true,
+  "preemptable_array": 26117457,
+  "normal_array": 26117458,
+  "finalization_job": 26117459,
+  "status": "cancelled before start; replaced to include held-out cells"
+}

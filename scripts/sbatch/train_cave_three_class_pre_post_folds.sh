@@ -22,7 +22,7 @@ if ((task % 2 == 1)); then architecture=graph_transformer; fi
 base=/orcd/scratch/orcd/013/jcbliao/presynaptic_axons
 exec segclr_db/.venv/bin/python -u scripts/train_gnn.py \
   --dataset presynaptic_cave \
-  --presynaptic-database "$base/casey_confidence_cave/k10/conf0.7/fold$fold" \
+  --presynaptic-database "$base/morpho_confidence_cave/k10/conf0.7/fold$fold" \
   --manifest "analysis/presynaptic/cave_skeletons_pre_post/three_class/manifests/fold$fold.json" \
   --postsynaptic-cache "$base/cave_skeletons_pre_post/k10/conf0.7/postsynaptic" \
   --use-postsynaptic \

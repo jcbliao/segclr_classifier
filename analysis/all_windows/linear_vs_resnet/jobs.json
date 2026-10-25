@@ -1,0 +1,9 @@
+{
+  "training_array": 25505812,
+  "render_job": 25505817,
+  "render_dependency": "afterany:25505812",
+  "gpu_concurrency": 4,
+  "cpus_per_job": 16,
+  "workers_per_job": 15,
+  "submitted_at": "2026-10-10T16:51:53.728134+00:00"
+}

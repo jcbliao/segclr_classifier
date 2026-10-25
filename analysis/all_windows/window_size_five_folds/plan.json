@@ -1,0 +1,866 @@
+{
+  "description": "Missing folds for matched 10/20/40-node whole-cell ResNet-head comparisons; preserve existing reports and original training settings.",
+  "jobs": [
+    {
+      "index": 0,
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 10,
+      "fold": 1,
+      "config": "analysis/all_windows/window_size_five_folds/configs/000.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n10_fold1.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n10_fold0.json",
+      "packing_key": "55b2b8d7bde8edc0f552e4ed08a004645ee929a0689abcdb5d6634f6863a48f1"
+    },
+    {
+      "index": 1,
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 10,
+      "fold": 2,
+      "config": "analysis/all_windows/window_size_five_folds/configs/001.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n10_fold2.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n10_fold0.json",
+      "packing_key": "266e7c8ee1cd499d7c6cd1f5c740e624cb7f98aa4bbe5447f59354d05dc6c07b"
+    },
+    {
+      "index": 2,
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 10,
+      "fold": 3,
+      "config": "analysis/all_windows/window_size_five_folds/configs/002.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n10_fold3.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n10_fold0.json",
+      "packing_key": "2c85d67b0dd7a4525069a1a6a4cc42e4271641e16f2978d18f7e91452dde47c0"
+    },
+    {
+      "index": 3,
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 10,
+      "fold": 4,
+      "config": "analysis/all_windows/window_size_five_folds/configs/003.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n10_fold4.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n10_fold0.json",
+      "packing_key": "1e04a880ddca1024fe99ed3aed54f9f922825131252c52ffeb7fc6063e42516f"
+    },
+    {
+      "index": 4,
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 10,
+      "fold": 1,
+      "config": "analysis/all_windows/window_size_five_folds/configs/004.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n10_fold1.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n10_fold0.json",
+      "packing_key": "55b2b8d7bde8edc0f552e4ed08a004645ee929a0689abcdb5d6634f6863a48f1"
+    },
+    {
+      "index": 5,
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 10,
+      "fold": 2,
+      "config": "analysis/all_windows/window_size_five_folds/configs/005.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n10_fold2.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n10_fold0.json",
+      "packing_key": "266e7c8ee1cd499d7c6cd1f5c740e624cb7f98aa4bbe5447f59354d05dc6c07b"
+    },
+    {
+      "index": 6,
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 10,
+      "fold": 3,
+      "config": "analysis/all_windows/window_size_five_folds/configs/006.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n10_fold3.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n10_fold0.json",
+      "packing_key": "2c85d67b0dd7a4525069a1a6a4cc42e4271641e16f2978d18f7e91452dde47c0"
+    },
+    {
+      "index": 7,
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 10,
+      "fold": 4,
+      "config": "analysis/all_windows/window_size_five_folds/configs/007.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n10_fold4.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n10_fold0.json",
+      "packing_key": "1e04a880ddca1024fe99ed3aed54f9f922825131252c52ffeb7fc6063e42516f"
+    },
+    {
+      "index": 8,
+      "model": "mean_resnet4x128",
+      "nodes": 20,
+      "fold": 1,
+      "config": "analysis/all_windows/window_size_five_folds/configs/008.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n20_fold1.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n20_fold0.json",
+      "packing_key": "6315ca6d826acba8b8789465fe1dbb39c128e8507104bacb34c6412f6a91f862"
+    },
+    {
+      "index": 9,
+      "model": "mean_resnet4x128",
+      "nodes": 20,
+      "fold": 2,
+      "config": "analysis/all_windows/window_size_five_folds/configs/009.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n20_fold2.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n20_fold0.json",
+      "packing_key": "788528d44d7eba2d94c9e87215077637e9fbc93fe2726c498057f2e21ceb0bf1"
+    },
+    {
+      "index": 10,
+      "model": "mean_resnet4x128",
+      "nodes": 20,
+      "fold": 3,
+      "config": "analysis/all_windows/window_size_five_folds/configs/010.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n20_fold3.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n20_fold0.json",
+      "packing_key": "1069982fa2317d5957430f79e26bf140d12a6ae6093912bad65dc6d4e210a1ea"
+    },
+    {
+      "index": 11,
+      "model": "mean_resnet4x128",
+      "nodes": 20,
+      "fold": 4,
+      "config": "analysis/all_windows/window_size_five_folds/configs/011.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n20_fold4.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n20_fold0.json",
+      "packing_key": "281b2a2dcbaefec2de8bc199dd4221a6628fef66317553cdb7b0aad301559f33"
+    },
+    {
+      "index": 12,
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 1,
+      "config": "analysis/all_windows/window_size_five_folds/configs/012.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n20_fold1.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n20_fold0.json",
+      "packing_key": "6315ca6d826acba8b8789465fe1dbb39c128e8507104bacb34c6412f6a91f862"
+    },
+    {
+      "index": 13,
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 2,
+      "config": "analysis/all_windows/window_size_five_folds/configs/013.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n20_fold2.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n20_fold0.json",
+      "packing_key": "788528d44d7eba2d94c9e87215077637e9fbc93fe2726c498057f2e21ceb0bf1"
+    },
+    {
+      "index": 14,
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 3,
+      "config": "analysis/all_windows/window_size_five_folds/configs/014.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n20_fold3.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n20_fold0.json",
+      "packing_key": "1069982fa2317d5957430f79e26bf140d12a6ae6093912bad65dc6d4e210a1ea"
+    },
+    {
+      "index": 15,
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 4,
+      "config": "analysis/all_windows/window_size_five_folds/configs/015.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n20_fold4.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n20_fold0.json",
+      "packing_key": "281b2a2dcbaefec2de8bc199dd4221a6628fef66317553cdb7b0aad301559f33"
+    },
+    {
+      "index": 16,
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 1,
+      "config": "analysis/all_windows/window_size_five_folds/configs/016.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n20_fold1.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n20_fold0.json",
+      "packing_key": "6315ca6d826acba8b8789465fe1dbb39c128e8507104bacb34c6412f6a91f862"
+    },
+    {
+      "index": 17,
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 2,
+      "config": "analysis/all_windows/window_size_five_folds/configs/017.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n20_fold2.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n20_fold0.json",
+      "packing_key": "788528d44d7eba2d94c9e87215077637e9fbc93fe2726c498057f2e21ceb0bf1"
+    },
+    {
+      "index": 18,
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 3,
+      "config": "analysis/all_windows/window_size_five_folds/configs/018.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n20_fold3.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n20_fold0.json",
+      "packing_key": "1069982fa2317d5957430f79e26bf140d12a6ae6093912bad65dc6d4e210a1ea"
+    },
+    {
+      "index": 19,
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 4,
+      "config": "analysis/all_windows/window_size_five_folds/configs/019.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n20_fold4.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n20_fold0.json",
+      "packing_key": "281b2a2dcbaefec2de8bc199dd4221a6628fef66317553cdb7b0aad301559f33"
+    },
+    {
+      "index": 20,
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 20,
+      "fold": 1,
+      "config": "analysis/all_windows/window_size_five_folds/configs/020.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n20_fold1.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n20_fold0.json",
+      "packing_key": "6315ca6d826acba8b8789465fe1dbb39c128e8507104bacb34c6412f6a91f862"
+    },
+    {
+      "index": 21,
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 20,
+      "fold": 2,
+      "config": "analysis/all_windows/window_size_five_folds/configs/021.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n20_fold2.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n20_fold0.json",
+      "packing_key": "788528d44d7eba2d94c9e87215077637e9fbc93fe2726c498057f2e21ceb0bf1"
+    },
+    {
+      "index": 22,
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 20,
+      "fold": 3,
+      "config": "analysis/all_windows/window_size_five_folds/configs/022.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n20_fold3.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n20_fold0.json",
+      "packing_key": "1069982fa2317d5957430f79e26bf140d12a6ae6093912bad65dc6d4e210a1ea"
+    },
+    {
+      "index": 23,
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 20,
+      "fold": 4,
+      "config": "analysis/all_windows/window_size_five_folds/configs/023.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n20_fold4.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n20_fold0.json",
+      "packing_key": "281b2a2dcbaefec2de8bc199dd4221a6628fef66317553cdb7b0aad301559f33"
+    },
+    {
+      "index": 24,
+      "model": "mean_resnet4x128",
+      "nodes": 40,
+      "fold": 1,
+      "config": "analysis/all_windows/window_size_five_folds/configs/024.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n40_fold1.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n40_fold0.json",
+      "packing_key": "57d853593aa66bb03d1ea2badb17d8583d14061f9ae674ab5cc8f642270567af"
+    },
+    {
+      "index": 25,
+      "model": "mean_resnet4x128",
+      "nodes": 40,
+      "fold": 2,
+      "config": "analysis/all_windows/window_size_five_folds/configs/025.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n40_fold2.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n40_fold0.json",
+      "packing_key": "cc91e03c2c269c3abbd19c4bee735a10547c407a19e4ad8070a633af48fa9226"
+    },
+    {
+      "index": 26,
+      "model": "mean_resnet4x128",
+      "nodes": 40,
+      "fold": 3,
+      "config": "analysis/all_windows/window_size_five_folds/configs/026.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n40_fold3.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n40_fold0.json",
+      "packing_key": "b3401bcd531ace4c65835d3fa08bea9e8d1d069ab1ddf80d957b78a05693217e"
+    },
+    {
+      "index": 27,
+      "model": "mean_resnet4x128",
+      "nodes": 40,
+      "fold": 4,
+      "config": "analysis/all_windows/window_size_five_folds/configs/027.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n40_fold4.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n40_fold0.json",
+      "packing_key": "5b30dd1aabbfbea2f9db180856c77b08590217577bd0cfc7c7962568a5737038"
+    },
+    {
+      "index": 28,
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 1,
+      "config": "analysis/all_windows/window_size_five_folds/configs/028.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n40_fold1.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n40_fold0.json",
+      "packing_key": "57d853593aa66bb03d1ea2badb17d8583d14061f9ae674ab5cc8f642270567af"
+    },
+    {
+      "index": 29,
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 2,
+      "config": "analysis/all_windows/window_size_five_folds/configs/029.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n40_fold2.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n40_fold0.json",
+      "packing_key": "cc91e03c2c269c3abbd19c4bee735a10547c407a19e4ad8070a633af48fa9226"
+    },
+    {
+      "index": 30,
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 3,
+      "config": "analysis/all_windows/window_size_five_folds/configs/030.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n40_fold3.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n40_fold0.json",
+      "packing_key": "b3401bcd531ace4c65835d3fa08bea9e8d1d069ab1ddf80d957b78a05693217e"
+    },
+    {
+      "index": 31,
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 4,
+      "config": "analysis/all_windows/window_size_five_folds/configs/031.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n40_fold4.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n40_fold0.json",
+      "packing_key": "5b30dd1aabbfbea2f9db180856c77b08590217577bd0cfc7c7962568a5737038"
+    },
+    {
+      "index": 32,
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 1,
+      "config": "analysis/all_windows/window_size_five_folds/configs/032.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n40_fold1.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n40_fold0.json",
+      "packing_key": "57d853593aa66bb03d1ea2badb17d8583d14061f9ae674ab5cc8f642270567af"
+    },
+    {
+      "index": 33,
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 2,
+      "config": "analysis/all_windows/window_size_five_folds/configs/033.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n40_fold2.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n40_fold0.json",
+      "packing_key": "cc91e03c2c269c3abbd19c4bee735a10547c407a19e4ad8070a633af48fa9226"
+    },
+    {
+      "index": 34,
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 3,
+      "config": "analysis/all_windows/window_size_five_folds/configs/034.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n40_fold3.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n40_fold0.json",
+      "packing_key": "b3401bcd531ace4c65835d3fa08bea9e8d1d069ab1ddf80d957b78a05693217e"
+    },
+    {
+      "index": 35,
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 4,
+      "config": "analysis/all_windows/window_size_five_folds/configs/035.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n40_fold4.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n40_fold0.json",
+      "packing_key": "5b30dd1aabbfbea2f9db180856c77b08590217577bd0cfc7c7962568a5737038"
+    },
+    {
+      "index": 36,
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 40,
+      "fold": 1,
+      "config": "analysis/all_windows/window_size_five_folds/configs/036.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n40_fold1.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n40_fold0.json",
+      "packing_key": "57d853593aa66bb03d1ea2badb17d8583d14061f9ae674ab5cc8f642270567af"
+    },
+    {
+      "index": 37,
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 40,
+      "fold": 2,
+      "config": "analysis/all_windows/window_size_five_folds/configs/037.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n40_fold2.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n40_fold0.json",
+      "packing_key": "cc91e03c2c269c3abbd19c4bee735a10547c407a19e4ad8070a633af48fa9226"
+    },
+    {
+      "index": 38,
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 40,
+      "fold": 3,
+      "config": "analysis/all_windows/window_size_five_folds/configs/038.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n40_fold3.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n40_fold0.json",
+      "packing_key": "b3401bcd531ace4c65835d3fa08bea9e8d1d069ab1ddf80d957b78a05693217e"
+    },
+    {
+      "index": 39,
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 40,
+      "fold": 4,
+      "config": "analysis/all_windows/window_size_five_folds/configs/039.json",
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n40_fold4.json",
+      "template": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n40_fold0.json",
+      "packing_key": "5b30dd1aabbfbea2f9db180856c77b08590217577bd0cfc7c7962568a5737038"
+    }
+  ],
+  "packing": [
+    {
+      "index": 0,
+      "key": "55b2b8d7bde8edc0f552e4ed08a004645ee929a0689abcdb5d6634f6863a48f1",
+      "config": "analysis/all_windows/window_size_five_folds/configs/000.json",
+      "nodes": 10,
+      "fold": 1,
+      "ready": false
+    },
+    {
+      "index": 1,
+      "key": "266e7c8ee1cd499d7c6cd1f5c740e624cb7f98aa4bbe5447f59354d05dc6c07b",
+      "config": "analysis/all_windows/window_size_five_folds/configs/001.json",
+      "nodes": 10,
+      "fold": 2,
+      "ready": false
+    },
+    {
+      "index": 2,
+      "key": "2c85d67b0dd7a4525069a1a6a4cc42e4271641e16f2978d18f7e91452dde47c0",
+      "config": "analysis/all_windows/window_size_five_folds/configs/002.json",
+      "nodes": 10,
+      "fold": 3,
+      "ready": false
+    },
+    {
+      "index": 3,
+      "key": "1e04a880ddca1024fe99ed3aed54f9f922825131252c52ffeb7fc6063e42516f",
+      "config": "analysis/all_windows/window_size_five_folds/configs/003.json",
+      "nodes": 10,
+      "fold": 4,
+      "ready": false
+    },
+    {
+      "index": 4,
+      "key": "6315ca6d826acba8b8789465fe1dbb39c128e8507104bacb34c6412f6a91f862",
+      "config": "analysis/all_windows/window_size_five_folds/configs/008.json",
+      "nodes": 20,
+      "fold": 1,
+      "ready": false
+    },
+    {
+      "index": 5,
+      "key": "788528d44d7eba2d94c9e87215077637e9fbc93fe2726c498057f2e21ceb0bf1",
+      "config": "analysis/all_windows/window_size_five_folds/configs/009.json",
+      "nodes": 20,
+      "fold": 2,
+      "ready": false
+    },
+    {
+      "index": 6,
+      "key": "1069982fa2317d5957430f79e26bf140d12a6ae6093912bad65dc6d4e210a1ea",
+      "config": "analysis/all_windows/window_size_five_folds/configs/010.json",
+      "nodes": 20,
+      "fold": 3,
+      "ready": false
+    },
+    {
+      "index": 7,
+      "key": "281b2a2dcbaefec2de8bc199dd4221a6628fef66317553cdb7b0aad301559f33",
+      "config": "analysis/all_windows/window_size_five_folds/configs/011.json",
+      "nodes": 20,
+      "fold": 4,
+      "ready": false
+    },
+    {
+      "index": 8,
+      "key": "57d853593aa66bb03d1ea2badb17d8583d14061f9ae674ab5cc8f642270567af",
+      "config": "analysis/all_windows/window_size_five_folds/configs/024.json",
+      "nodes": 40,
+      "fold": 1,
+      "ready": false
+    },
+    {
+      "index": 9,
+      "key": "cc91e03c2c269c3abbd19c4bee735a10547c407a19e4ad8070a633af48fa9226",
+      "config": "analysis/all_windows/window_size_five_folds/configs/025.json",
+      "nodes": 40,
+      "fold": 2,
+      "ready": false
+    },
+    {
+      "index": 10,
+      "key": "b3401bcd531ace4c65835d3fa08bea9e8d1d069ab1ddf80d957b78a05693217e",
+      "config": "analysis/all_windows/window_size_five_folds/configs/026.json",
+      "nodes": 40,
+      "fold": 3,
+      "ready": false
+    },
+    {
+      "index": 11,
+      "key": "5b30dd1aabbfbea2f9db180856c77b08590217577bd0cfc7c7962568a5737038",
+      "config": "analysis/all_windows/window_size_five_folds/configs/027.json",
+      "nodes": 40,
+      "fold": 4,
+      "ready": false
+    }
+  ],
+  "runs": [
+    {
+      "model": "mean_resnet4x128",
+      "nodes": 10,
+      "fold": 0,
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n10_fold0.json"
+    },
+    {
+      "model": "mean_resnet4x128",
+      "nodes": 10,
+      "fold": 1,
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n10_fold1.json"
+    },
+    {
+      "model": "mean_resnet4x128",
+      "nodes": 10,
+      "fold": 2,
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n10_fold2.json"
+    },
+    {
+      "model": "mean_resnet4x128",
+      "nodes": 10,
+      "fold": 3,
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n10_fold3.json"
+    },
+    {
+      "model": "mean_resnet4x128",
+      "nodes": 10,
+      "fold": 4,
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n10_fold4.json"
+    },
+    {
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 10,
+      "fold": 0,
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_fold0.json"
+    },
+    {
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 10,
+      "fold": 1,
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_fold1.json"
+    },
+    {
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 10,
+      "fold": 2,
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_fold2.json"
+    },
+    {
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 10,
+      "fold": 3,
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_fold3.json"
+    },
+    {
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 10,
+      "fold": 4,
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_fold4.json"
+    },
+    {
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 10,
+      "fold": 0,
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n10_fold0.json"
+    },
+    {
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 10,
+      "fold": 1,
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n10_fold1.json"
+    },
+    {
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 10,
+      "fold": 2,
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n10_fold2.json"
+    },
+    {
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 10,
+      "fold": 3,
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n10_fold3.json"
+    },
+    {
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 10,
+      "fold": 4,
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n10_fold4.json"
+    },
+    {
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 10,
+      "fold": 0,
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n10_fold0.json"
+    },
+    {
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 10,
+      "fold": 1,
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n10_fold1.json"
+    },
+    {
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 10,
+      "fold": 2,
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n10_fold2.json"
+    },
+    {
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 10,
+      "fold": 3,
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n10_fold3.json"
+    },
+    {
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 10,
+      "fold": 4,
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n10_fold4.json"
+    },
+    {
+      "model": "mean_resnet4x128",
+      "nodes": 20,
+      "fold": 0,
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n20_fold0.json"
+    },
+    {
+      "model": "mean_resnet4x128",
+      "nodes": 20,
+      "fold": 1,
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n20_fold1.json"
+    },
+    {
+      "model": "mean_resnet4x128",
+      "nodes": 20,
+      "fold": 2,
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n20_fold2.json"
+    },
+    {
+      "model": "mean_resnet4x128",
+      "nodes": 20,
+      "fold": 3,
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n20_fold3.json"
+    },
+    {
+      "model": "mean_resnet4x128",
+      "nodes": 20,
+      "fold": 4,
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n20_fold4.json"
+    },
+    {
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 0,
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n20_fold0.json"
+    },
+    {
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 1,
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n20_fold1.json"
+    },
+    {
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 2,
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n20_fold2.json"
+    },
+    {
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 3,
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n20_fold3.json"
+    },
+    {
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 4,
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n20_fold4.json"
+    },
+    {
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 0,
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n20_fold0.json"
+    },
+    {
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 1,
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n20_fold1.json"
+    },
+    {
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 2,
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n20_fold2.json"
+    },
+    {
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 3,
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n20_fold3.json"
+    },
+    {
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 20,
+      "fold": 4,
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n20_fold4.json"
+    },
+    {
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 20,
+      "fold": 0,
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n20_fold0.json"
+    },
+    {
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 20,
+      "fold": 1,
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n20_fold1.json"
+    },
+    {
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 20,
+      "fold": 2,
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n20_fold2.json"
+    },
+    {
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 20,
+      "fold": 3,
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n20_fold3.json"
+    },
+    {
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 20,
+      "fold": 4,
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n20_fold4.json"
+    },
+    {
+      "model": "mean_resnet4x128",
+      "nodes": 40,
+      "fold": 0,
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n40_fold0.json"
+    },
+    {
+      "model": "mean_resnet4x128",
+      "nodes": 40,
+      "fold": 1,
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n40_fold1.json"
+    },
+    {
+      "model": "mean_resnet4x128",
+      "nodes": 40,
+      "fold": 2,
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n40_fold2.json"
+    },
+    {
+      "model": "mean_resnet4x128",
+      "nodes": 40,
+      "fold": 3,
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n40_fold3.json"
+    },
+    {
+      "model": "mean_resnet4x128",
+      "nodes": 40,
+      "fold": 4,
+      "report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n40_fold4.json"
+    },
+    {
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 0,
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n40_fold0.json"
+    },
+    {
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 1,
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n40_fold1.json"
+    },
+    {
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 2,
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n40_fold2.json"
+    },
+    {
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 3,
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n40_fold3.json"
+    },
+    {
+      "model": "pointwise_mlp_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 4,
+      "report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n40_fold4.json"
+    },
+    {
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 0,
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n40_fold0.json"
+    },
+    {
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 1,
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n40_fold1.json"
+    },
+    {
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 2,
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n40_fold2.json"
+    },
+    {
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 3,
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n40_fold3.json"
+    },
+    {
+      "model": "mpnn_L2_resnet4x128",
+      "nodes": 40,
+      "fold": 4,
+      "report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_resnet4x128_n40_fold4.json"
+    },
+    {
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 40,
+      "fold": 0,
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n40_fold0.json"
+    },
+    {
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 40,
+      "fold": 1,
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n40_fold1.json"
+    },
+    {
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 40,
+      "fold": 2,
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n40_fold2.json"
+    },
+    {
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 40,
+      "fold": 3,
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n40_fold3.json"
+    },
+    {
+      "model": "gt_L2_H4_resnet4x128",
+      "nodes": 40,
+      "fold": 4,
+      "report": "results/all_windows/gnn_lcpn_scratch_gt_L2_H4_resnet4x128_n40_fold4.json"
+    }
+  ],
+  "prediction_root": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/window_size_five_folds/predictions"
+}

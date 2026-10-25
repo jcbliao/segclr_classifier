@@ -1,0 +1,233 @@
+{
+  "args": {
+    "postsynaptic_cache": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/native_skeletons_pre_post/scale16/k17/conf0.7",
+    "append_presynaptic_mean": true,
+    "single_presynaptic_embedding": false,
+    "use_postsynaptic": false,
+    "architecture": "mean",
+    "dataset": "presynaptic_dense",
+    "presynaptic_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_coarse_confidence_with_tc_folds/scale16/k17/conf0.7/fold3",
+    "manifest": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/report_folds_20261012/manifests/group35_fold3.json",
+    "selection_domain": null,
+    "embedding_augmentation": null,
+    "embedding_augmentation_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/cave_embedding_training_choices/conf0.7/fold0/cutoff5000_fp16",
+    "results_dir": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold3/pre_mean_control",
+    "attention_budget": 14450688,
+    "mixed_cell_batch_size": 16,
+    "presynaptic_cell_cache": 16,
+    "presynaptic_memmap_root": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_k17_memmap/scale16/k17",
+    "presynaptic_compartment_filter": null,
+    "pointwise_mlp_layers": 2,
+    "pointwise_mlp_hidden_dim": 128,
+    "linear_out_dim": 128,
+    "mpnn_layers": 2,
+    "mpnn_hidden_dim": 128,
+    "mpnn_dropout": 0.1,
+    "spatial": false,
+    "position": false,
+    "lpe": false,
+    "cls_hidden_dim": null,
+    "classifier": "lcpn",
+    "cls_resnet": true,
+    "cls_resnet_hidden": 128,
+    "cls_resnet_layers": 4,
+    "cls_resnet_dropout": 0.0,
+    "class_balance": "sample",
+    "gt_dim": 128,
+    "gt_depth": 4,
+    "gt_heads": 4,
+    "gt_mlp_ratio": 4,
+    "gt_pos_dim": 8,
+    "gt_no_exp": false,
+    "gt_dropout": 0.0,
+    "gt_no_lpe": false,
+    "gt_no_rel_pos": false,
+    "gt_no_adj_bias": false,
+    "gt_use_thickness": false,
+    "gt_attention_scope": "global",
+    "no_embeddings": false,
+    "freeze_aggregator": false,
+    "num_embeddings": 17,
+    "neighborhood_root": "/orcd/scratch/orcd/013/jcbliao/embedding_paths/r5um",
+    "window_nm": 10000.0,
+    "batch_size": 4096,
+    "epochs": 30,
+    "resume": true,
+    "lr": 0.0001,
+    "weight_decay": 1e-05,
+    "num_workers": 15,
+    "seed": 0,
+    "amp": true,
+    "optimized_loading": true,
+    "cuda_graphs": true
+  },
+  "window_test_metrics": {
+    "accuracy": 0.8223000067967104,
+    "balanced_accuracy": 0.695921435754745,
+    "macro_precision": 0.7033158885924403,
+    "macro_f1": 0.6980385148458467,
+    "per_class_recall": {
+      "BasketFam": 0.9639233200805728,
+      "BipFam": 0.2944912012241775,
+      "MartFam": 0.6843796127463749,
+      "NglFam": 0.5149122807017544,
+      "pyramidal": 0.8837406434718112,
+      "thalamocortical": 0.8340815563037786
+    },
+    "per_class_precision": {
+      "BasketFam": 0.8737895283947915,
+      "BipFam": 0.31672495371322773,
+      "MartFam": 0.7941861783190801,
+      "NglFam": 0.464950495049505,
+      "pyramidal": 0.8658183921341817,
+      "thalamocortical": 0.9044257839438562
+    },
+    "confusion_matrix": [
+      [
+        127769,
+        689,
+        1647,
+        42,
+        1664,
+        740
+      ],
+      [
+        1623,
+        7698,
+        8062,
+        293,
+        8298,
+        166
+      ],
+      [
+        13237,
+        7505,
+        63056,
+        766,
+        6986,
+        586
+      ],
+      [
+        41,
+        258,
+        636,
+        1174,
+        168,
+        3
+      ],
+      [
+        2098,
+        7535,
+        4640,
+        227,
+        116766,
+        861
+      ],
+      [
+        1456,
+        620,
+        1356,
+        23,
+        980,
+        22295
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9348441926345609,
+    "balanced_accuracy": 0.8131942285581757,
+    "macro_precision": 0.934333658402041,
+    "macro_f1": 0.8371273169858165,
+    "per_class_recall": {
+      "BasketFam": 1.0,
+      "BipFam": 0.3181818181818182,
+      "MartFam": 0.9130434782608695,
+      "NglFam": 0.6666666666666666,
+      "pyramidal": 0.9812734082397003,
+      "thalamocortical": 1.0
+    },
+    "per_class_precision": {
+      "BasketFam": 0.8421052631578947,
+      "BipFam": 1.0,
+      "MartFam": 0.8076923076923077,
+      "NglFam": 1.0,
+      "pyramidal": 0.9562043795620438,
+      "thalamocortical": 1.0
+    },
+    "confusion_matrix": [
+      [
+        32,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        7,
+        4,
+        0,
+        11,
+        0
+      ],
+      [
+        1,
+        0,
+        21,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        2,
+        0,
+        0
+      ],
+      [
+        5,
+        0,
+        0,
+        0,
+        262,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        6
+      ]
+    ]
+  },
+  "dataset_test_metrics": {},
+  "classes": [
+    "BasketFam",
+    "BipFam",
+    "MartFam",
+    "NglFam",
+    "pyramidal",
+    "thalamocortical"
+  ],
+  "best_epoch": 27,
+  "postsynaptic_cache": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/native_skeletons_pre_post/scale16/k17/conf0.7",
+  "use_postsynaptic": false,
+  "append_presynaptic_mean": true,
+  "single_presynaptic_embedding": false,
+  "dataset_counts": {
+    "train_windows": 1636729,
+    "test_windows": 411964
+  },
+  "fold": "fold_3",
+  "fold_index": 3,
+  "split_seed": 0,
+  "split_fracs": [
+    0.8,
+    0.2
+  ]
+}

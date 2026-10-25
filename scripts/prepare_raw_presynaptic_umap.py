@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 import numpy as np
 
-SOURCE = Path(__file__).resolve().parents[1] / 'analysis/presynaptic/compartment_filtered/casey_l2'
+SOURCE = Path(__file__).resolve().parents[1] / 'analysis/presynaptic/compartment_filtered/morpho_l2'
 OUTPUT = SOURCE / 'raw_martinotti_neurogliaform'
 MEMMAP = Path('/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_k17_memmap/scale16/k17')
 

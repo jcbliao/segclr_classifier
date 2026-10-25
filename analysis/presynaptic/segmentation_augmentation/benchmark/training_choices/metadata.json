@@ -1,0 +1,15 @@
+{
+  "policy": "segmask",
+  "choice_labels": [
+    "clean",
+    "erode1",
+    "dilate1",
+    "erode2",
+    "dilate2",
+    "erode3",
+    "dilate3"
+  ],
+  "plan_sha256": "f8ab7b9b21312e4746f97b9422d9b307b43f95d6b8c31ea7bb71d18e873e99ab",
+  "pilot": true,
+  "source": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/benchmark"
+}

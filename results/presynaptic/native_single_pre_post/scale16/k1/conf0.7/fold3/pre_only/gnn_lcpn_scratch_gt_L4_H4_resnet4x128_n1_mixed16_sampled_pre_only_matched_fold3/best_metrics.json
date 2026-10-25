@@ -1,0 +1,230 @@
+{
+  "run": "gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n1_mixed16_sampled_pre_only_matched_fold3",
+  "epoch": 18,
+  "classes": [
+    "BasketFam",
+    "BipFam",
+    "MartFam",
+    "NglFam",
+    "pyramidal",
+    "thalamocortical"
+  ],
+  "window_test_metrics": {
+    "accuracy": 0.718062743346506,
+    "balanced_accuracy": 0.5079026918382548,
+    "macro_precision": 0.5129423409697952,
+    "macro_f1": 0.5092018692931685,
+    "per_class_recall": {
+      "BasketFam": 0.8295674872313298,
+      "BipFam": 0.11599081866870696,
+      "MartFam": 0.665320830077277,
+      "NglFam": 0.0,
+      "pyramidal": 0.7886881560922446,
+      "thalamocortical": 0.64784885895997
+    },
+    "per_class_precision": {
+      "BasketFam": 0.8628983528340828,
+      "BipFam": 0.16101964949548592,
+      "MartFam": 0.5995930983215306,
+      "NglFam": 0.0,
+      "pyramidal": 0.7504573017038989,
+      "thalamocortical": 0.7036856434637734
+    },
+    "confusion_matrix": [
+      [
+        109960,
+        2924,
+        10716,
+        0,
+        5731,
+        3220
+      ],
+      [
+        1974,
+        3032,
+        10958,
+        0,
+        9750,
+        426
+      ],
+      [
+        9030,
+        3922,
+        61300,
+        0,
+        15571,
+        2313
+      ],
+      [
+        64,
+        153,
+        1687,
+        0,
+        354,
+        22
+      ],
+      [
+        4007,
+        8626,
+        13976,
+        0,
+        104207,
+        1311
+      ],
+      [
+        2396,
+        173,
+        3599,
+        0,
+        3245,
+        17317
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9065155807365439,
+    "balanced_accuracy": 0.6418064376051674,
+    "macro_precision": 0.5716187661076572,
+    "macro_f1": 0.6027490574891187,
+    "per_class_recall": {
+      "BasketFam": 1.0,
+      "BipFam": 0.0,
+      "MartFam": 0.8695652173913043,
+      "NglFam": 0.0,
+      "pyramidal": 0.9812734082397003,
+      "thalamocortical": 1.0
+    },
+    "per_class_precision": {
+      "BasketFam": 0.8421052631578947,
+      "BipFam": 0.0,
+      "MartFam": 0.6451612903225806,
+      "NglFam": 0.0,
+      "pyramidal": 0.9424460431654677,
+      "thalamocortical": 1.0
+    },
+    "confusion_matrix": [
+      [
+        32,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        8,
+        0,
+        14,
+        0
+      ],
+      [
+        1,
+        0,
+        20,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        0,
+        0,
+        0
+      ],
+      [
+        5,
+        0,
+        0,
+        0,
+        262,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        6
+      ]
+    ]
+  },
+  "complete": false,
+  "selection_domain": null,
+  "selection_metrics": {
+    "accuracy": 0.718062743346506,
+    "balanced_accuracy": 0.5079026918382548,
+    "macro_precision": 0.5129423409697952,
+    "macro_f1": 0.5092018692931685,
+    "per_class_recall": {
+      "BasketFam": 0.8295674872313298,
+      "BipFam": 0.11599081866870696,
+      "MartFam": 0.665320830077277,
+      "NglFam": 0.0,
+      "pyramidal": 0.7886881560922446,
+      "thalamocortical": 0.64784885895997
+    },
+    "per_class_precision": {
+      "BasketFam": 0.8628983528340828,
+      "BipFam": 0.16101964949548592,
+      "MartFam": 0.5995930983215306,
+      "NglFam": 0.0,
+      "pyramidal": 0.7504573017038989,
+      "thalamocortical": 0.7036856434637734
+    },
+    "confusion_matrix": [
+      [
+        109960,
+        2924,
+        10716,
+        0,
+        5731,
+        3220
+      ],
+      [
+        1974,
+        3032,
+        10958,
+        0,
+        9750,
+        426
+      ],
+      [
+        9030,
+        3922,
+        61300,
+        0,
+        15571,
+        2313
+      ],
+      [
+        64,
+        153,
+        1687,
+        0,
+        354,
+        22
+      ],
+      [
+        4007,
+        8626,
+        13976,
+        0,
+        104207,
+        1311
+      ],
+      [
+        2396,
+        173,
+        3599,
+        0,
+        3245,
+        17317
+      ]
+    ]
+  }
+}

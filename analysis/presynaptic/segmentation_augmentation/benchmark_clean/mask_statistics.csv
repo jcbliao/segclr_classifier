@@ -1,0 +1,2 @@
+augmentation_id,n,cells,mean_voxels,voxel_quantiles,mean_delta_voxels,delta_quantiles,mean_fractional_change,fractional_change_quantiles,empty_masks,baseline_empty_masks,halo_clipped_masks,mean_occupancy,mean_volume_um3,mean_baseline_cosine,baseline_cosine_quantiles
+segmask_n6_clean,16384,32,22050.849487304688,[  2362.83   3328.15   6011.    10594.    18763.5   66040.8  181618.28],0.0,[0. 0. 0.],0.0,[0. 0. 0.],0,0,15,0.01027202798696257,0.903202795,1.0,[1. 1. 1.]

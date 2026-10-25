@@ -1,0 +1,34 @@
+{
+  "plan": "analysis/presynaptic/segmentation_augmentation/full_all_cells_plan.json",
+  "output": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/segmentation_augmentation/cave_conf0.7_fold0_all_cells_n6_r3_20261016",
+  "cells": 1773,
+  "training_cells": 1414,
+  "held_out_cells": 359,
+  "include_held_out": true,
+  "shards": 18,
+  "max_concurrent_gpus": 4,
+  "variants": 7,
+  "batch_size": 32,
+  "variants_per_forward": 4,
+  "precision": "fp16",
+  "model_compiled": true,
+  "morphology_compiled": true,
+  "preparation_job": 26117501,
+  "normal_array": 26130404,
+  "finalization_job": 26130457,
+  "completed_normal_shards": [
+    12,
+    13
+  ],
+  "original_normal_array": 26117503,
+  "excluded_nodes": [
+    "node3006"
+  ],
+  "cancelled_preemptable_array": 26117502,
+  "partition": "mit_normal_gpu",
+  "normal_remaining_array": 26130456,
+  "embedding_arrays": [
+    26130404,
+    26130456
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "architectures": [
+    "mean",
+    "pointwise_mlp",
+    "graph_transformer"
+  ],
+  "mean_resume": true
+}

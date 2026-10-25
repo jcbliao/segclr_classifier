@@ -1,8 +1,8 @@
 Compare full CAVE and TEASAR skeletons for cells in
-`data/v1718_extended_axon_neurons_casey_comparison.csv` with a Casey identity.
-This CSV joins the v1718 extended-axon list to Casey by root or stable nucleus
+`data/v1718_extended_axon_neurons_morpho_comparison.csv` with a Morpho identity.
+This CSV joins the v1718 extended-axon list to Morpho by root or stable nucleus
 identity. There is no additional label, confidence, split, or cell-type filter.
-Both skeletons use the v1718 root: Casey's newer root is label metadata only.
+Both skeletons use the v1718 root: Morpho's newer root is label metadata only.
 
 Run from the repository:
 
@@ -61,10 +61,10 @@ geodesic distances are not implemented by this runner.
 
 The summary reports medians across cells and explicit missing/error/stale lists;
 it exits unsuccessfully if the frozen cohort is incomplete. Per-cell metrics
-retain the original and Casey labels and match source for stratified analysis.
+retain the original and Morpho labels and match source for stratified analysis.
 
 The initial run on 2026-10-01 completed all 2,069 paired cells with no errors,
-missing results, or stale checkpoints. Of the 2,103 input cells, 34 had no Casey
+missing results, or stale checkpoints. Of the 2,103 input cells, 34 had no Morpho
 identity match; every matched cell had both skeletons. Seven analytic and
 brute-force tests passed. Preparation took 2m59s; comparison shards took roughly
 12–16s for the first wave. Cell medians were 0.190 µm symmetric mean distance,

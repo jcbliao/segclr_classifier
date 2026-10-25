@@ -1,0 +1,254 @@
+{
+  "stage": "baseline",
+  "amp_dtype": "float16",
+  "gpu": "NVIDIA L40S",
+  "results": [
+    {
+      "evaluation": {},
+      "family": "CAVE",
+      "architecture": "mean",
+      "dataset_startup_seconds": 0.1336977118626237,
+      "sampling_seconds": 0.045780230313539505,
+      "windows": 42535,
+      "training_wall_seconds": 0.8968579461798072,
+      "loader_wait_seconds": 0.6255598245188594,
+      "copy_host_seconds": 0.06090622581541538,
+      "copy_gpu_seconds": 0.05930326396226883,
+      "compute_gpu_seconds": 0.20514003205299378,
+      "checkpoint_seconds": 0.011424725875258446,
+      "sync_profile_four_steps": {
+        "aten::item": {
+          "count": 228,
+          "cpu_seconds": 7.830300000002648e-05
+        },
+        "cudaMemcpyAsync": {
+          "count": 80,
+          "cpu_seconds": 0.0003364200000000021
+        },
+        "cudaStreamSynchronize": {
+          "count": 72,
+          "cpu_seconds": 0.00032829300000000646
+        },
+        "aten::is_nonzero": {
+          "count": 12,
+          "cpu_seconds": 6.989999999998645e-06
+        },
+        "aten::nonzero": {
+          "count": 36,
+          "cpu_seconds": 0.0005439600000000162
+        },
+        "cudaDeviceSynchronize": {
+          "count": 1,
+          "cpu_seconds": 4.580999999998312e-06
+        }
+      },
+      "gpu_parity": true
+    },
+    {
+      "evaluation": {},
+      "family": "CAVE",
+      "architecture": "pointwise_mlp",
+      "dataset_startup_seconds": 0.1336977118626237,
+      "sampling_seconds": 0.045780230313539505,
+      "windows": 42535,
+      "training_wall_seconds": 1.24984747543931,
+      "loader_wait_seconds": 0.8675530171021819,
+      "copy_host_seconds": 0.06946100946515799,
+      "copy_gpu_seconds": 0.06770483171939849,
+      "compute_gpu_seconds": 0.30598531126976014,
+      "checkpoint_seconds": 0.012100809253752232,
+      "sync_profile_four_steps": {
+        "aten::item": {
+          "count": 260,
+          "cpu_seconds": 8.558900000000267e-05
+        },
+        "cudaMemcpyAsync": {
+          "count": 80,
+          "cpu_seconds": 0.00032749000000000726
+        },
+        "cudaStreamSynchronize": {
+          "count": 72,
+          "cpu_seconds": 0.0003290550000000021
+        },
+        "aten::is_nonzero": {
+          "count": 12,
+          "cpu_seconds": 7.079999999999927e-06
+        },
+        "aten::nonzero": {
+          "count": 36,
+          "cpu_seconds": 0.000555692000000041
+        },
+        "cudaDeviceSynchronize": {
+          "count": 1,
+          "cpu_seconds": 3.8490000000019794e-06
+        }
+      },
+      "gpu_parity": true
+    },
+    {
+      "evaluation": {},
+      "family": "CAVE",
+      "architecture": "graph_transformer",
+      "dataset_startup_seconds": 0.1336977118626237,
+      "sampling_seconds": 0.045780230313539505,
+      "windows": 42535,
+      "training_wall_seconds": 1.3454635255038738,
+      "loader_wait_seconds": 0.3874683603644371,
+      "copy_host_seconds": 0.06384959816932678,
+      "copy_gpu_seconds": 0.06195593595504761,
+      "compute_gpu_seconds": 0.8877561244964599,
+      "checkpoint_seconds": 0.053019250743091106,
+      "sync_profile_four_steps": {
+        "aten::item": {
+          "count": 776,
+          "cpu_seconds": 0.0002323000000001298
+        },
+        "cudaMemcpyAsync": {
+          "count": 304,
+          "cpu_seconds": 0.0014163450000000456
+        },
+        "cudaStreamSynchronize": {
+          "count": 128,
+          "cpu_seconds": 0.00058335499999996
+        },
+        "aten::is_nonzero": {
+          "count": 20,
+          "cpu_seconds": 1.1448999999988245e-05
+        },
+        "aten::nonzero": {
+          "count": 36,
+          "cpu_seconds": 0.0005342479999999996
+        },
+        "cudaDeviceSynchronize": {
+          "count": 1,
+          "cpu_seconds": 4.215000000011059e-06
+        }
+      },
+      "gpu_parity": true
+    },
+    {
+      "evaluation": {},
+      "family": "TEASAR",
+      "architecture": "mean",
+      "dataset_startup_seconds": 0.14749919809401035,
+      "sampling_seconds": 0.06360488943755627,
+      "windows": 53183,
+      "training_wall_seconds": 2.1605483535677195,
+      "loader_wait_seconds": 1.7608142271637917,
+      "copy_host_seconds": 0.11914950702339411,
+      "copy_gpu_seconds": 0.11748668783903123,
+      "compute_gpu_seconds": 0.2743044147491455,
+      "checkpoint_seconds": 0.01138994749635458,
+      "sync_profile_four_steps": {
+        "aten::item": {
+          "count": 208,
+          "cpu_seconds": 7.956600000003754e-05
+        },
+        "cudaMemcpyAsync": {
+          "count": 64,
+          "cpu_seconds": 0.0002625100000000125
+        },
+        "cudaStreamSynchronize": {
+          "count": 56,
+          "cpu_seconds": 0.00025715899999999466
+        },
+        "aten::is_nonzero": {
+          "count": 12,
+          "cpu_seconds": 6.8440000000009606e-06
+        },
+        "aten::nonzero": {
+          "count": 24,
+          "cpu_seconds": 0.00037961799999995855
+        },
+        "cudaDeviceSynchronize": {
+          "count": 1,
+          "cpu_seconds": 3.824999999997089e-06
+        }
+      },
+      "gpu_parity": true
+    },
+    {
+      "evaluation": {},
+      "family": "TEASAR",
+      "architecture": "pointwise_mlp",
+      "dataset_startup_seconds": 0.14749919809401035,
+      "sampling_seconds": 0.06360488943755627,
+      "windows": 53183,
+      "training_wall_seconds": 2.0868764696642756,
+      "loader_wait_seconds": 1.674914801493287,
+      "copy_host_seconds": 0.1112476410344243,
+      "copy_gpu_seconds": 0.10931660771369935,
+      "compute_gpu_seconds": 0.29412486386299136,
+      "checkpoint_seconds": 0.012088935822248459,
+      "sync_profile_four_steps": {
+        "aten::item": {
+          "count": 240,
+          "cpu_seconds": 8.117899999999827e-05
+        },
+        "cudaMemcpyAsync": {
+          "count": 64,
+          "cpu_seconds": 0.00027519299999999975
+        },
+        "cudaStreamSynchronize": {
+          "count": 56,
+          "cpu_seconds": 0.0002700309999999945
+        },
+        "aten::is_nonzero": {
+          "count": 12,
+          "cpu_seconds": 7.136000000004515e-06
+        },
+        "aten::nonzero": {
+          "count": 24,
+          "cpu_seconds": 0.000365456000000006
+        },
+        "cudaDeviceSynchronize": {
+          "count": 1,
+          "cpu_seconds": 3.7890000000006692e-06
+        }
+      },
+      "gpu_parity": true
+    },
+    {
+      "evaluation": {},
+      "family": "TEASAR",
+      "architecture": "graph_transformer",
+      "dataset_startup_seconds": 0.14749919809401035,
+      "sampling_seconds": 0.06360488943755627,
+      "windows": 53183,
+      "training_wall_seconds": 2.0783225372433662,
+      "loader_wait_seconds": 1.006059336476028,
+      "copy_host_seconds": 0.10951413121074438,
+      "copy_gpu_seconds": 0.1076870722770691,
+      "compute_gpu_seconds": 0.9560630083084106,
+      "checkpoint_seconds": 0.054175098426640034,
+      "sync_profile_four_steps": {
+        "aten::item": {
+          "count": 756,
+          "cpu_seconds": 0.00023034700000002659
+        },
+        "cudaMemcpyAsync": {
+          "count": 288,
+          "cpu_seconds": 0.0012377190000000342
+        },
+        "cudaStreamSynchronize": {
+          "count": 112,
+          "cpu_seconds": 0.0005024230000000134
+        },
+        "aten::is_nonzero": {
+          "count": 20,
+          "cpu_seconds": 1.1624999999974988e-05
+        },
+        "aten::nonzero": {
+          "count": 24,
+          "cpu_seconds": 0.0003620300000000534
+        },
+        "cudaDeviceSynchronize": {
+          "count": 1,
+          "cpu_seconds": 4.237999999997555e-06
+        }
+      },
+      "gpu_parity": true
+    }
+  ],
+  "voting_450k_seconds": 0.13774758763611317
+}

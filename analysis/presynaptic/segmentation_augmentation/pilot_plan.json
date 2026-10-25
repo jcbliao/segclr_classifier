@@ -1,0 +1,51 @@
+{
+  "format_version": 1,
+  "manifest": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_confidence_cave/k10/conf0.7/fold0/manifest.json",
+  "manifest_sha256": "b347d7070d0df5fdd137c408c7dd5f1d84850bfc125480f90cefb9af4688827a",
+  "classifier_record": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold0/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold0.json",
+  "classifier_record_sha256": "64898a14b89cc9840eaa97ca4040c37110d391c46c1776d1fb37f92136d76675",
+  "checkpoint": "/orcd/compute/sdorkenw/001/collina/segclr_runs/resnet_860b_reshuffled_20260603_150412/checkpoints/checkpoint_e0_s95000.pt",
+  "checkpoint_sha256": "fc2b2715c9facd31eccf863054fecdd584827409fcc0679d47baa45986847c2d",
+  "radius": 3,
+  "neighbors": 6,
+  "crop_size": 129,
+  "resolution_nm": [
+    32,
+    32,
+    40
+  ],
+  "materialization": 1718,
+  "node_set_id": "cave_skeleton_v4",
+  "selection": "existing CAVE presynaptic conf0.7 fold0 training target_nodes; 5um match cutoff",
+  "nodes_per_cell": 128,
+  "shards": [
+    [
+      {
+        "root_id": 864691134886037498,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691134886037498.npz",
+        "n_nodes": 128,
+        "geometry_sha256": "802c460f7894e9f416a399c06dd0e21025d9b3fbbb1b9dd01a4485a1dfaedde9"
+      },
+      {
+        "root_id": 864691134886335738,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691134886335738.npz",
+        "n_nodes": 128,
+        "geometry_sha256": "b2cbfebb25c1d399ad9955f2aaf2a8bc366255c58655c3166615a9d6637e32d5"
+      },
+      {
+        "root_id": 864691134886499066,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691134886499066.npz",
+        "n_nodes": 128,
+        "geometry_sha256": "5c340e660a99673e621c716d2b243e4c72b90f6afb4d5f860c0c0af55ed71a38"
+      }
+    ]
+  ],
+  "node_loads": [
+    384
+  ],
+  "total_nodes": 384,
+  "cells": 3,
+  "precision": "fp16",
+  "variants_per_forward": 4,
+  "output": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/pilot"
+}

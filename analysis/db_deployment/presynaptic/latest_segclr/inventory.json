@@ -1,0 +1,460 @@
+{
+  "run_id": "resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k__20261022_140504",
+  "checkpoint_id": "checkpoint_e0_s100000",
+  "runs": [
+    {
+      "run_id": "resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k__20261022_140504",
+      "experiment_id": "resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k",
+      "timestamp": "20261022_140504",
+      "run_dir": "/orcd/compute/sdorkenw/001/collina/segclr_runs/resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k_20261022_140504",
+      "datastack": "minnie65_phase3_v1",
+      "mat_version": 1718,
+      "seed": 42,
+      "git_commit": "a6b403a305d645d8816c77e46085eeeddf76436d",
+      "git_dirty": true,
+      "registered_ts": "2026-10-22 22:59:09.071478"
+    }
+  ],
+  "checkpoints": [
+    {
+      "run_id": "resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k__20261022_140504",
+      "checkpoint_id": "checkpoint_e0_s96000",
+      "epoch": 0,
+      "step": 96000,
+      "path": "/orcd/compute/sdorkenw/001/collina/segclr_runs/resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k_20261022_140504/checkpoints/checkpoint_e0_s96000.pt",
+      "registered_ts": "2026-10-22 22:59:09.178847"
+    },
+    {
+      "run_id": "resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k__20261022_140504",
+      "checkpoint_id": "checkpoint_e0_s97000",
+      "epoch": 0,
+      "step": 97000,
+      "path": "/orcd/compute/sdorkenw/001/collina/segclr_runs/resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k_20261022_140504/checkpoints/checkpoint_e0_s97000.pt",
+      "registered_ts": "2026-10-22 22:59:09.178847"
+    },
+    {
+      "run_id": "resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k__20261022_140504",
+      "checkpoint_id": "checkpoint_e0_s98000",
+      "epoch": 0,
+      "step": 98000,
+      "path": "/orcd/compute/sdorkenw/001/collina/segclr_runs/resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k_20261022_140504/checkpoints/checkpoint_e0_s98000.pt",
+      "registered_ts": "2026-10-22 22:59:09.178847"
+    },
+    {
+      "run_id": "resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k__20261022_140504",
+      "checkpoint_id": "checkpoint_e0_s99000",
+      "epoch": 0,
+      "step": 99000,
+      "path": "/orcd/compute/sdorkenw/001/collina/segclr_runs/resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k_20261022_140504/checkpoints/checkpoint_e0_s99000.pt",
+      "registered_ts": "2026-10-22 22:59:09.178847"
+    },
+    {
+      "run_id": "resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k__20261022_140504",
+      "checkpoint_id": "checkpoint_e0_s100000",
+      "epoch": 0,
+      "step": 100000,
+      "path": "/orcd/compute/sdorkenw/001/collina/segclr_runs/resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k_20261022_140504/checkpoints/checkpoint_e0_s100000.pt",
+      "registered_ts": "2026-10-22 22:59:09.178847"
+    }
+  ],
+  "node_embeddings": {
+    "schema": "root_id: int64 not null\nnode_id: int32 not null\nrun_id: string not null\ncheckpoint_id: string not null\nembedding: fixed_size_list<item: float>[64]\n  child 0, item: float\nnode_set_id: string not null",
+    "version": 496873,
+    "rows_for_pinned_checkpoint": 48556576
+  },
+  "agg_embeddings": {
+    "schema": "root_id: int64 not null\nnode_id: int32 not null\nrun_id: string not null\ncheckpoint_id: string not null\nagg_spec_id: string not null\nn_contributing: int32\nembedding: fixed_size_list<item: float>[64]\n  child 0, item: float\nnode_set_id: string not null",
+    "version": 22256,
+    "rows_for_pinned_checkpoint": 12007087
+  },
+  "training_npz": {
+    "cave": {
+      "root_id": "864691134886037498",
+      "keys": {
+        "root_id": {
+          "shape": [
+            1
+          ],
+          "dtype": "uint64"
+        },
+        "root_cave_node_original": {
+          "shape": [
+            1
+          ],
+          "dtype": "int64"
+        },
+        "root_xyz_nm": {
+          "shape": [
+            3
+          ],
+          "dtype": "float32"
+        },
+        "k_observed": {
+          "shape": [
+            1
+          ],
+          "dtype": "int32"
+        },
+        "cave_pos_nm": {
+          "shape": [
+            10571,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "cave_edges": {
+          "shape": [
+            10558,
+            2
+          ],
+          "dtype": "int32"
+        },
+        "cave_edge_length_nm": {
+          "shape": [
+            10558
+          ],
+          "dtype": "float32"
+        },
+        "cave_observed_node_ids": {
+          "shape": [
+            10571
+          ],
+          "dtype": "int32"
+        },
+        "cave_observed_x": {
+          "shape": [
+            10571,
+            64
+          ],
+          "dtype": "float32"
+        },
+        "cave_observed": {
+          "shape": [
+            10571
+          ],
+          "dtype": "bool"
+        },
+        "new_pos_nm": {
+          "shape": [
+            121765,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "new_edges": {
+          "shape": [
+            121754,
+            2
+          ],
+          "dtype": "int32"
+        },
+        "new_edge_length_nm": {
+          "shape": [
+            121754
+          ],
+          "dtype": "float32"
+        },
+        "new_observed_node_ids": {
+          "shape": [
+            10355
+          ],
+          "dtype": "int32"
+        },
+        "new_observed_x": {
+          "shape": [
+            10355,
+            64
+          ],
+          "dtype": "float32"
+        },
+        "new_observed": {
+          "shape": [
+            121765
+          ],
+          "dtype": "bool"
+        },
+        "embedding_to_new_distance_nm": {
+          "shape": [
+            10571
+          ],
+          "dtype": "float32"
+        },
+        "embedding_to_new_within_2um": {
+          "shape": [
+            10571
+          ],
+          "dtype": "bool"
+        },
+        "embedding_to_new_node": {
+          "shape": [
+            10571
+          ],
+          "dtype": "int32"
+        },
+        "embedding_to_new_collision_count": {
+          "shape": [
+            121765
+          ],
+          "dtype": "int32"
+        },
+        "cave_synapse_id": {
+          "shape": [
+            8845
+          ],
+          "dtype": "int64"
+        },
+        "cave_synapse_xyz_nm": {
+          "shape": [
+            8845,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "cave_nearest_observed_node": {
+          "shape": [
+            8845
+          ],
+          "dtype": "int32"
+        },
+        "cave_nearest_observed_distance_nm": {
+          "shape": [
+            8845
+          ],
+          "dtype": "float32"
+        },
+        "cave_within_2um": {
+          "shape": [
+            8845
+          ],
+          "dtype": "bool"
+        },
+        "cave_valid_k_window": {
+          "shape": [
+            8845
+          ],
+          "dtype": "bool"
+        },
+        "cave_radius_nm": {
+          "shape": [
+            8845
+          ],
+          "dtype": "float32"
+        },
+        "cave_n_intermediate": {
+          "shape": [
+            8845
+          ],
+          "dtype": "int32"
+        },
+        "cave_window_offsets": {
+          "shape": [
+            8846
+          ],
+          "dtype": "int64"
+        },
+        "cave_window_members": {
+          "shape": [
+            83100
+          ],
+          "dtype": "int32"
+        },
+        "cave_window_lpe": {
+          "shape": [
+            83100,
+            8
+          ],
+          "dtype": "float32"
+        },
+        "new_synapse_id": {
+          "shape": [
+            8845
+          ],
+          "dtype": "int64"
+        },
+        "new_synapse_xyz_nm": {
+          "shape": [
+            8845,
+            3
+          ],
+          "dtype": "float32"
+        },
+        "new_nearest_observed_node": {
+          "shape": [
+            8845
+          ],
+          "dtype": "int32"
+        },
+        "new_nearest_observed_distance_nm": {
+          "shape": [
+            8845
+          ],
+          "dtype": "float32"
+        },
+        "new_within_2um": {
+          "shape": [
+            8845
+          ],
+          "dtype": "bool"
+        },
+        "new_valid_k_window": {
+          "shape": [
+            8845
+          ],
+          "dtype": "bool"
+        },
+        "new_radius_nm": {
+          "shape": [
+            8845
+          ],
+          "dtype": "float32"
+        },
+        "new_n_intermediate": {
+          "shape": [
+            8845
+          ],
+          "dtype": "int32"
+        },
+        "new_window_offsets": {
+          "shape": [
+            8846
+          ],
+          "dtype": "int64"
+        },
+        "new_window_members": {
+          "shape": [
+            1030265
+          ],
+          "dtype": "int32"
+        },
+        "new_window_lpe": {
+          "shape": [
+            1030265,
+            8
+          ],
+          "dtype": "float32"
+        }
+      }
+    },
+    "native": {
+      "root_id": "864691134886037498",
+      "keys": {
+        "root_id": {
+          "shape": [],
+          "dtype": "int64"
+        },
+        "k_observed": {
+          "shape": [],
+          "dtype": "int64"
+        },
+        "factor": {
+          "shape": [],
+          "dtype": "int64"
+        },
+        "center_policy": {
+          "shape": [],
+          "dtype": "<U39"
+        },
+        "new_center_original_node_ids": {
+          "shape": [
+            8845
+          ],
+          "dtype": "int64"
+        },
+        "skeleton_name": {
+          "shape": [],
+          "dtype": "<U32"
+        },
+        "geometry_path": {
+          "shape": [],
+          "dtype": "<U129"
+        },
+        "embedding_path": {
+          "shape": [],
+          "dtype": "<U214"
+        },
+        "new_synapse_id": {
+          "shape": [
+            8845
+          ],
+          "dtype": "int64"
+        },
+        "new_nearest_observed_node": {
+          "shape": [
+            8845
+          ],
+          "dtype": "int32"
+        },
+        "new_nearest_observed_distance_nm": {
+          "shape": [
+            8845
+          ],
+          "dtype": "float64"
+        },
+        "new_valid_k_window": {
+          "shape": [
+            8845
+          ],
+          "dtype": "bool"
+        },
+        "new_radius_nm": {
+          "shape": [
+            8845
+          ],
+          "dtype": "float32"
+        },
+        "new_cable_length_nm": {
+          "shape": [
+            8845
+          ],
+          "dtype": "float64"
+        },
+        "new_window_offsets": {
+          "shape": [
+            8846
+          ],
+          "dtype": "int64"
+        },
+        "new_window_members": {
+          "shape": [
+            145112
+          ],
+          "dtype": "int32"
+        },
+        "new_window_edge_offsets": {
+          "shape": [
+            8846
+          ],
+          "dtype": "int64"
+        },
+        "new_window_edges": {
+          "shape": [
+            273152,
+            2
+          ],
+          "dtype": "int32"
+        },
+        "new_window_lpe": {
+          "shape": [
+            145112,
+            8
+          ],
+          "dtype": "float32"
+        }
+      }
+    }
+  },
+  "parquet_schemas": {
+    "parts/*/*.parquet": {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/incoming_presynaptic_fragments_k10_collina_v2/parts/000/00000.parquet",
+      "schema": "synapse_id: int64\ncell_root_id: int64\npartner_root_id: int64\nanchor_node_id: int32\nanchor_distance_nm: double\nfragment_node_ids: list<element: int32>\n  child 0, element: int32\nnode_count: int16\nn_embeddings_available: int16\nn_embeddings_used: int16\nmissing_embedding_count: int16\nstatus: string\nmean_embedding: fixed_size_list<element: float>[64]\n  child 0, element: float\nfragment_embeddings: list<element: fixed_size_list<element: float>[64]>\n  child 0, element: fixed_size_list<element: float>[64]\n      child 0, element: float\nfold0_logits: fixed_size_list<element: float>[4]\n  child 0, element: float\nfold1_logits: fixed_size_list<element: float>[4]\n  child 0, element: float\nfold2_logits: fixed_size_list<element: float>[4]\n  child 0, element: float\nfold3_logits: fixed_size_list<element: float>[4]\n  child 0, element: float\nfold4_logits: fixed_size_list<element: float>[4]\n  child 0, element: float\npresynaptic_fold0_class: string\npresynaptic_fold0_is_axon: bool\npresynaptic_fold1_class: string\npresynaptic_fold1_is_axon: bool\npresynaptic_fold2_class: string\npresynaptic_fold2_is_axon: bool\npresynaptic_fold3_class: string\npresynaptic_fold3_is_axon: bool\npresynaptic_fold4_class: string\npresynaptic_fold4_is_axon: bool\npresynaptic_axon_fold_count: int8\npresynaptic_axon_all_folds: bool\n-- schema metadata --\nplan_sha256: 'd4d7691a38c482bb11556d82234790bc6655a2e66b39a522218a3c2cccb' + 5\nlogit_classes: '[\"astrocytic_process\", \"axon\", \"dendrite\", \"soma\"]'"
+    },
+    "postsynaptic_points/*.parquet": {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/incoming_presynaptic_fragments_k10_collina_v2/postsynaptic_points/864691134966495519.parquet",
+      "schema": "cell_root_id: int64\nsynapse_id: int64\npost_embedding: fixed_size_list<element: float>[64]\n  child 0, element: float\npost_position_nm: fixed_size_list<element: float>[3]\n  child 0, element: float\npostsynaptic_n_embeddings_used: int16\npostsynaptic_fold0_logits: fixed_size_list<element: float>[4]\n  child 0, element: float\npostsynaptic_fold0_class: string\npostsynaptic_fold1_logits: fixed_size_list<element: float>[4]\n  child 0, element: float\npostsynaptic_fold1_class: string\npostsynaptic_fold2_logits: fixed_size_list<element: float>[4]\n  child 0, element: float\npostsynaptic_fold2_class: string\npostsynaptic_fold3_logits: fixed_size_list<element: float>[4]\n  child 0, element: float\npostsynaptic_fold3_class: string\npostsynaptic_fold4_logits: fixed_size_list<element: float>[4]\n  child 0, element: float\npostsynaptic_fold4_class: string\n-- schema metadata --\nplan_sha256: 'd4d7691a38c482bb11556d82234790bc6655a2e66b39a522218a3c2cccb' + 5\nlogit_classes: '[\"astrocytic_process\", \"axon\", \"dendrite\", \"soma\"]'"
+    },
+    "cell_types/post_shards/*/*.parquet": {
+      "path": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/incoming_presynaptic_fragments_k10_collina_v2/cell_types/post_shards/rank=20/data_0.parquet",
+      "schema": "cell_root_id: int64\nsynapse_id: int64\npost_embedding: list<element: float>\n  child 0, element: float\npost_position_nm: list<element: float>\n  child 0, element: float\npostsynaptic_n_embeddings_used: int16\npostsynaptic_fold0_logits: list<element: float>\n  child 0, element: float\npostsynaptic_fold0_class: string\npostsynaptic_fold1_logits: list<element: float>\n  child 0, element: float\npostsynaptic_fold1_class: string\npostsynaptic_fold2_logits: list<element: float>\n  child 0, element: float\npostsynaptic_fold2_class: string\npostsynaptic_fold3_logits: list<element: float>\n  child 0, element: float\npostsynaptic_fold3_class: string\npostsynaptic_fold4_logits: list<element: float>\n  child 0, element: float\npostsynaptic_fold4_class: string"
+    }
+  }
+}

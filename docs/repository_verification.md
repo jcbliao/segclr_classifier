@@ -23,3 +23,13 @@ The all-windows skeleton-statistics notebook requires a longer cell timeout for 
 The verifier also inherits the existing native-notebook workaround of disabling NumPy transparent-huge-page allocation on the cluster. This affects allocation behavior, not scientific parameters. The successful full-population all-windows run took approximately 22 minutes before that launcher workaround was added.
 
 Re-run the checks using the commands in the [reproduction guide](reproducibility.md).
+
+## Optional test environments
+
+The CPU test suite runs with `python -m pytest scripts/test_*.py -q`.
+GPU-dependent tests skip without CUDA. The grouped segmentation inference test
+requires the optional `segclr` inference package. Two historical subcompartment
+database integration tests require the legacy named-skeleton API and skip with
+newer schema-v7 `segclr_db` installations; this does not validate those legacy
+import paths against the newer API. Model pooling tests use the repository's
+hierarchy rather than requiring external training manifests.

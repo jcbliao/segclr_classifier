@@ -1,0 +1,226 @@
+{
+  "format_version": 1,
+  "manifest": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_confidence_cave/k10/conf0.7/fold0/manifest.json",
+  "manifest_sha256": "b347d7070d0df5fdd137c408c7dd5f1d84850bfc125480f90cefb9af4688827a",
+  "classifier_record": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold0/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold0.json",
+  "classifier_record_sha256": "64898a14b89cc9840eaa97ca4040c37110d391c46c1776d1fb37f92136d76675",
+  "checkpoint": "/orcd/compute/sdorkenw/001/collina/segclr_runs/resnet_860b_reshuffled_20260603_150412/checkpoints/checkpoint_e0_s95000.pt",
+  "checkpoint_sha256": "fc2b2715c9facd31eccf863054fecdd584827409fcc0679d47baa45986847c2d",
+  "radius": 0,
+  "neighbors": 6,
+  "crop_size": 129,
+  "resolution_nm": [
+    32,
+    32,
+    40
+  ],
+  "materialization": 1718,
+  "node_set_id": "cave_skeleton_v4",
+  "selection": "existing CAVE presynaptic conf0.7 fold0 training target_nodes; 5um match cutoff",
+  "nodes_per_cell": 512,
+  "cell_selection": "balanced by cell type, seed 20261016",
+  "shards": [
+    [
+      {
+        "root_id": 864691134990847098,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691134990847098.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "8149eb05221324cf57e37cdd4d2b2fe84361d6749ffaee18d5498ca81575c9ac"
+      },
+      {
+        "root_id": 864691135066958404,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135066958404.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "05670d1176b912c22c0d7116a40be896979f2284e3d5391f0e28f2a4ac79da73"
+      },
+      {
+        "root_id": 864691135271103653,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135271103653.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "15b7ecfcd00972fdc0bd9e27cd7abe797130d63e82e9fccdc22551afec18c98e"
+      },
+      {
+        "root_id": 864691135271343525,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135271343525.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "0a006f7a88cf5bd2a29f1bd869af05bb5b82972a26a8f539b75f5b58ac1d9c3b"
+      },
+      {
+        "root_id": 864691135273655569,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135273655569.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "57190cfbf17c55952506be159e0ece7daec775d046cd4fae2125a6318e7a0943"
+      },
+      {
+        "root_id": 864691135279678881,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135279678881.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "a77d7e414489ec3c0ddd2c372c354ed04284e0d7e9610f65be4ec118371dd92d"
+      },
+      {
+        "root_id": 864691135325071004,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135325071004.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "b6da1591aaba582ae6bd2968d201a3e71edb3d5b0db87c75506fb70e08f892a3"
+      },
+      {
+        "root_id": 864691135405224174,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135405224174.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "289f0ae9c7241740649279e41c5ca160c721e6e2584e048edf22499fd4cb9812"
+      },
+      {
+        "root_id": 864691135448127572,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135448127572.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "1db37f32c86fee1d3e6ac8abb354d7a8bcf02e3fb9bba55f7559ccd2e224e8f4"
+      },
+      {
+        "root_id": 864691135518510218,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135518510218.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "b8ffc1cf25fcf86886c3b2c3b559e516ba27aa046587c27e56ff426c4d227cbf"
+      },
+      {
+        "root_id": 864691135562001633,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135562001633.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "53bf30bfecf67d4f65bf72cc4ad08d6808f5358bd36edf78914aa6d9e6ab625e"
+      },
+      {
+        "root_id": 864691135567047191,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135567047191.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "d9c043ce97796eceb0f7d9c2bc5a5e7df5cd2ef5ab5c86ff4f83165c70caa368"
+      },
+      {
+        "root_id": 864691135569282284,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135569282284.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "7692d9f4a426407b1a48bbf368c3fec05497d73639baa41dae47359d8354a9b3"
+      },
+      {
+        "root_id": 864691135587758716,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135587758716.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "c5356aad7b0efa89ff3b3c5d6c9b8451aa98b8c5747e31f1f712a7ef9785bf5e"
+      },
+      {
+        "root_id": 864691135660029314,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135660029314.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "27684ebff481fe0bdde2b6e5d2272ca34d9030c526d5cd4e72522c623aa56e03"
+      },
+      {
+        "root_id": 864691135685250546,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135685250546.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "089f276d4bc1498eefd600fe4b40ee9a3cc0a894bed724736f0367f4cbf7b6fd"
+      },
+      {
+        "root_id": 864691135702946683,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135702946683.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "f810a23bf2fe8234517c0584b729d081331c36a404721bc84a3fd6f791375c6c"
+      },
+      {
+        "root_id": 864691135742664043,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135742664043.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "28c1485cb6c42df1ddeaf82d9964051be99fe56e8aaf79b72090667776868977"
+      },
+      {
+        "root_id": 864691135742824555,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135742824555.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "1101358d137d68b801b819ced22cab1409324c5e08c1e1eb74768a014c4142ab"
+      },
+      {
+        "root_id": 864691135811658700,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135811658700.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "7159ee91c114910d6ce58aeba155d756f35557ff5533c265abd4a9ada8997f34"
+      },
+      {
+        "root_id": 864691135868415766,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135868415766.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "5fbe606ae8e89d6096522da3de3ca0c2d46a0a8ba3294893793877cf1ced8580"
+      },
+      {
+        "root_id": 864691135878154067,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135878154067.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "e78f27fc4cdd7d034ec3d6c785043fe061af8214269fb1ca5fd66ee7045a504a"
+      },
+      {
+        "root_id": 864691135929072340,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691135929072340.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "361c79abf92600d30d805fdca5565cc27ffdacf9c9e28dc7da5e5990876fe4d2"
+      },
+      {
+        "root_id": 864691136091233847,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691136091233847.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "57a48ab2d0154c4078788e0f02a1e682443672d8187ee46f0120ecd42b74b498"
+      },
+      {
+        "root_id": 864691136102330485,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691136102330485.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "6cf5d274e642e52684e8aaf25cd68dc0b0979b55d3012b39097eb6387fb9ac1d"
+      },
+      {
+        "root_id": 864691136145572404,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691136145572404.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "a9f0e3571a38869bbba3cde77960b61204de043f54da26eb131c70160a65e119"
+      },
+      {
+        "root_id": 864691136288755395,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691136288755395.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "a10993b1941ff0124b7ad72fdb9af46f335a3b1213de8af671af3d8b1250c4a1"
+      },
+      {
+        "root_id": 864691136336204979,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691136336204979.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "93a7d252278e93532980623ba4093a2fb262a01106f467693f29d23a16b57283"
+      },
+      {
+        "root_id": 864691136445215875,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691136445215875.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "074e6500c6618057a77e38cc44a8e6580c895d79b41fc0250f88f6425efd4d80"
+      },
+      {
+        "root_id": 864691136927176778,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691136927176778.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "e2b0ae9ca4bf720c1d0e52bfd9eaa9949c9301e0acb8f53455f3321da0290110"
+      },
+      {
+        "root_id": 864691136953631711,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691136953631711.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "3cccb6e89d55765b8297db12b924b57973646e290fbcc09eb5cb144c7cfa51e8"
+      },
+      {
+        "root_id": 864691136975300636,
+        "source": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10/cells/864691136975300636.npz",
+        "n_nodes": 512,
+        "geometry_sha256": "5884071f969d05b04fe052d29df26f430310993007a3bf1e4c8ce872d0283798"
+      }
+    ]
+  ],
+  "node_loads": [
+    16384
+  ],
+  "total_nodes": 16384,
+  "cells": 32,
+  "precision": "fp16",
+  "variants_per_forward": 1,
+  "output": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/benchmark_clean"
+}

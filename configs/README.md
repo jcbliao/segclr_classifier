@@ -2,6 +2,8 @@
 
 These JSON files are recipes for the current trainer, not claims to reproduce any particular historical checkpoint. Keys match the trainer's argparse destination names (for example, `gt_no_lpe`, not `--gt-no-lpe`). Omitted keys use the current CLI defaults.
 
+The shared GPU performance defaults are `amp: true` (FP16 with gradient scaling), `optimized_loading: true` (parallel clean-window packing and GPU residency when memory permits), and `cuda_graphs: true` (supported deterministic models). They apply to every recipe and launcher without extra flags. Memory limits and stochastic/unsupported configurations automatically use compatible fallbacks; data, sampling and model settings are preserved. Explicit JSON values or `--no-amp`, `--no-optimized-loading`, and `--no-cuda-graphs` override these defaults. Epoch timing and the selected path are recorded in each run's `performance.jsonl`.
+
 | Recipe | Aggregator |
 |---|---|
 | [baselines/mean.json](baselines/mean.json) | Raw mean pooling |

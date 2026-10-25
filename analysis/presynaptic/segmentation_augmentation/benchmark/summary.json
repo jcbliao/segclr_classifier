@@ -1,0 +1,282 @@
+{
+  "completed_cells": 32,
+  "expected_cells": 32,
+  "complete": true,
+  "statistics": [
+    {
+      "augmentation_id": "segmask_n6_clean",
+      "n": 16384,
+      "cells": 32,
+      "mean_voxels": 22050.849487304688,
+      "voxel_quantiles": [
+        2362.83,
+        3328.15,
+        6011.0,
+        10594.0,
+        18763.5,
+        66040.79999999993,
+        181618.28000000003
+      ],
+      "mean_delta_voxels": 0.0,
+      "delta_quantiles": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mean_fractional_change": 0.0,
+      "fractional_change_quantiles": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "empty_masks": 0,
+      "baseline_empty_masks": 0,
+      "halo_clipped_masks": 16,
+      "mean_occupancy": 0.010272027986962569,
+      "mean_volume_um3": 0.903202795,
+      "mean_baseline_cosine": 1.0,
+      "baseline_cosine_quantiles": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "augmentation_id": "segmask_n6_dilate1",
+      "n": 16384,
+      "cells": 32,
+      "mean_voxels": 28200.36328125,
+      "voxel_quantiles": [
+        4594.47,
+        6059.15,
+        9689.75,
+        15416.0,
+        25343.25,
+        81954.14999999994,
+        205480.69000000006
+      ],
+      "mean_delta_voxels": 6149.5137939453125,
+      "delta_quantiles": [
+        2676.15,
+        4803.5,
+        16205.399999999994
+      ],
+      "mean_fractional_change": 0.4893285830264302,
+      "fractional_change_quantiles": [
+        0.22907901681436732,
+        0.4610231522331678,
+        0.8289904453383773
+      ],
+      "empty_masks": 0,
+      "baseline_empty_masks": 0,
+      "halo_clipped_masks": 16,
+      "mean_occupancy": 0.013136678522715686,
+      "mean_volume_um3": 1.15508688,
+      "mean_baseline_cosine": 0.7238211466446955,
+      "baseline_cosine_quantiles": [
+        0.44752037525177,
+        0.7429229021072388,
+        0.9235961437225342
+      ]
+    },
+    {
+      "augmentation_id": "segmask_n6_dilate2",
+      "n": 16384,
+      "cells": 32,
+      "mean_voxels": 34936.76544189453,
+      "voxel_quantiles": [
+        7327.3,
+        9306.0,
+        13936.75,
+        20809.5,
+        32559.0,
+        99720.24999999988,
+        226357.73000000004
+      ],
+      "mean_delta_voxels": 12885.915954589844,
+      "delta_quantiles": [
+        5884.15,
+        10184.5,
+        33379.89999999998
+      ],
+      "mean_fractional_change": 1.0477723913332304,
+      "fractional_change_quantiles": [
+        0.4677022585763644,
+        0.9763807282136114,
+        1.8285813320541398
+      ],
+      "empty_masks": 0,
+      "baseline_empty_masks": 0,
+      "halo_clipped_masks": 16,
+      "mean_occupancy": 0.016274721416047935,
+      "mean_volume_um3": 1.4310099125,
+      "mean_baseline_cosine": 0.6117554139147501,
+      "baseline_cosine_quantiles": [
+        0.2831844091415405,
+        0.6309454441070557,
+        0.8748526573181152
+      ]
+    },
+    {
+      "augmentation_id": "segmask_n6_dilate3",
+      "n": 16384,
+      "cells": 32,
+      "mean_voxels": 42317.38928222656,
+      "voxel_quantiles": [
+        10595.32,
+        13074.45,
+        18765.75,
+        26827.0,
+        40272.0,
+        117707.6499999998,
+        249721.18000000002
+      ],
+      "mean_delta_voxels": 20266.539794921875,
+      "delta_quantiles": [
+        9641.45,
+        16167.0,
+        51360.64999999999
+      ],
+      "mean_fractional_change": 1.6787335515584998,
+      "fractional_change_quantiles": [
+        0.7201503493629775,
+        1.5517329841015242,
+        2.9966742490711464
+      ],
+      "empty_masks": 0,
+      "baseline_empty_masks": 0,
+      "halo_clipped_masks": 16,
+      "mean_occupancy": 0.01971286445415547,
+      "mean_volume_um3": 1.733320265,
+      "mean_baseline_cosine": 0.6528148320780787,
+      "baseline_cosine_quantiles": [
+        0.3445110619068146,
+        0.6733427047729492,
+        0.891454815864563
+      ]
+    },
+    {
+      "augmentation_id": "segmask_n6_erode1",
+      "n": 16384,
+      "cells": 32,
+      "mean_voxels": 16676.054443359375,
+      "voxel_quantiles": [
+        668.0,
+        1213.0,
+        2989.75,
+        6465.5,
+        12968.75,
+        50436.39999999979,
+        157888.2300000001
+      ],
+      "mean_delta_voxels": -5374.7950439453125,
+      "delta_quantiles": [
+        -14869.55,
+        -4083.5,
+        -2078.0
+      ],
+      "mean_fractional_change": -0.40665336281899245,
+      "fractional_change_quantiles": [
+        -0.639449635275797,
+        -0.39242569761772805,
+        -0.21119318660134423
+      ],
+      "empty_masks": 0,
+      "baseline_empty_masks": 0,
+      "halo_clipped_masks": 16,
+      "mean_occupancy": 0.007768267524247518,
+      "mean_volume_um3": 0.68305119,
+      "mean_baseline_cosine": 0.7604430042120782,
+      "baseline_cosine_quantiles": [
+        0.49421462416648865,
+        0.7830679416656494,
+        0.9430376291275024
+      ]
+    },
+    {
+      "augmentation_id": "segmask_n6_erode2",
+      "n": 16384,
+      "cells": 32,
+      "mean_voxels": 12690.10986328125,
+      "voxel_quantiles": [
+        48.0,
+        196.0,
+        1139.0,
+        3544.5,
+        8495.25,
+        38517.04999999998,
+        139731.96000000005
+      ],
+      "mean_delta_voxels": -9360.739624023438,
+      "delta_quantiles": [
+        -27007.5,
+        -6930.0,
+        -3077.1500000000015
+      ],
+      "mean_fractional_change": -0.668271019543193,
+      "fractional_change_quantiles": [
+        -0.9421742725295777,
+        -0.6654921035248904,
+        -0.3874523831046149
+      ],
+      "empty_masks": 3,
+      "baseline_empty_masks": 0,
+      "halo_clipped_masks": 16,
+      "mean_occupancy": 0.00591148036035087,
+      "mean_volume_um3": 0.5197869,
+      "mean_baseline_cosine": 0.6236227260470562,
+      "baseline_cosine_quantiles": [
+        0.31113243103027344,
+        0.6357197165489197,
+        0.8958993554115295
+      ]
+    },
+    {
+      "augmentation_id": "segmask_n6_erode3",
+      "n": 16384,
+      "cells": 32,
+      "mean_voxels": 9936.168395996094,
+      "voxel_quantiles": [
+        0.0,
+        5.0,
+        341.0,
+        1806.0,
+        5382.75,
+        28981.549999999967,
+        123510.16
+      ],
+      "mean_delta_voxels": -12114.681091308594,
+      "delta_quantiles": [
+        -36775.049999999996,
+        -8641.5,
+        -3296.0
+      ],
+      "mean_fractional_change": -0.8076380318227445,
+      "fractional_change_quantiles": [
+        -0.9985846687347306,
+        -0.8286170913972313,
+        -0.5327535231530023
+      ],
+      "empty_masks": 459,
+      "baseline_empty_masks": 0,
+      "halo_clipped_masks": 16,
+      "mean_occupancy": 0.004628601719203898,
+      "mean_volume_um3": 0.4069854575,
+      "mean_baseline_cosine": 0.5597694804484217,
+      "baseline_cosine_quantiles": [
+        0.2288217395544052,
+        0.5680348873138428,
+        0.8679706454277039
+      ]
+    }
+  ],
+  "timing_totals": {
+    "n_crops": 16384,
+    "transfer_normalize_ms": 5379.140036582947,
+    "morphology_ms": 5788.385199427605,
+    "mask_and_count_ms": 7850.84792971611,
+    "model_ms": 151000.07985687256,
+    "download_ms": 278.40598371624947,
+    "morphology_over_model_time": 0.038333656544514434
+  }
+}

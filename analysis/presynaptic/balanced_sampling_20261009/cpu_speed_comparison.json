@@ -1,0 +1,173 @@
+[
+  {
+    "rank": 0,
+    "before": {
+      "epochs": [
+        [
+          12,
+          107
+        ],
+        [
+          13,
+          105
+        ],
+        [
+          14,
+          109
+        ],
+        [
+          15,
+          109
+        ],
+        [
+          16,
+          107
+        ]
+      ],
+      "median_training_seconds": 107
+    },
+    "after": {
+      "epochs": [
+        [
+          20,
+          45
+        ],
+        [
+          21,
+          46
+        ],
+        [
+          22,
+          46
+        ],
+        [
+          23,
+          45
+        ],
+        [
+          24,
+          45
+        ]
+      ],
+      "median_training_seconds": 45
+    },
+    "speedup": 2.3777777777777778
+  },
+  {
+    "rank": 1,
+    "before": {
+      "epochs": [
+        [
+          14,
+          97
+        ],
+        [
+          15,
+          98
+        ],
+        [
+          16,
+          99
+        ],
+        [
+          17,
+          95
+        ],
+        [
+          18,
+          96
+        ]
+      ],
+      "median_training_seconds": 97
+    },
+    "after": {
+      "epochs": [
+        [
+          23,
+          39
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          25,
+          38
+        ],
+        [
+          26,
+          39
+        ],
+        [
+          27,
+          38
+        ]
+      ],
+      "median_training_seconds": 39
+    },
+    "speedup": 2.4871794871794872
+  },
+  {
+    "rank": 2,
+    "before": {
+      "epochs": [
+        [
+          1,
+          511
+        ],
+        [
+          2,
+          512
+        ]
+      ],
+      "median_training_seconds": 511.5
+    },
+    "after": {
+      "epochs": [],
+      "median_training_seconds": null
+    },
+    "speedup": null
+  },
+  {
+    "rank": 3,
+    "before": {
+      "epochs": [
+        [
+          2,
+          246
+        ],
+        [
+          3,
+          251
+        ],
+        [
+          4,
+          248
+        ],
+        [
+          5,
+          243
+        ],
+        [
+          6,
+          247
+        ]
+      ],
+      "median_training_seconds": 247
+    },
+    "after": {
+      "epochs": [
+        [
+          8,
+          89
+        ],
+        [
+          9,
+          88
+        ]
+      ],
+      "median_training_seconds": 88.5
+    },
+    "speedup": 2.790960451977401
+  }
+]

@@ -67,6 +67,7 @@ import json
 import os
 import random
 import sys
+import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -74,6 +75,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import numpy as np  # noqa: E402
 import torch  # noqa: E402
 from torch_geometric.loader import DataLoader  # noqa: E402
+from torch.utils.data import DataLoader as TensorDataLoader  # noqa: E402
 from tqdm import tqdm  # noqa: E402
 
 from data.dataset_lcpn import (  # noqa: E402
@@ -81,15 +83,35 @@ from data.dataset_lcpn import (  # noqa: E402
     load_manifest,
 )
 from data.geodesic_window import DEFAULT_WINDOW_NM  # noqa: E402
+from data.segmentation_augmentation import TRAINING_POLICIES
 from data.dataset_windowed import WindowedGraphDatasetLCPN, balanced_sampler  # noqa: E402
 from data.dataset_presynaptic import (  # noqa: E402
     AttentionBudgetBatchSampler,
-    PresynapticWindowDataset,
 )
+from data.batched_presynaptic import (  # noqa: E402
+    collate_presynaptic,
+)
+from data.packed_presynaptic import PackedPresynapticWindowDataset as PresynapticWindowDataset, ResidentWindowLoader
+from gnn.cuda_prefetch import CUDABatchPrefetcher
+from gnn.window_graph_training import WindowGraphTrainer
+from data.epoch_plans import precompute_epoch_plans
+from data.packed_windows import PackedWholeCellWindows
 from data.mixed_cell_batch_sampler import MixedCellBatchSampler  # noqa: E402
 from data.window_prediction_cache import save_prediction_cache  # noqa: E402
 from gnn.metrics import majority_vote_by_group, summarize  # noqa: E402
+from gnn.training_performance import prepare_routes, move_routes, routed_loss, static_top_down  # noqa: E402
 from gnn.model import ModelConfig, WindowClassifier  # noqa: E402
+
+
+def selection_domain_mask(manifest, root_ids, domain):
+    """Match actual evaluated roots, including repeated windows, to a domain."""
+    roots, inverse = np.unique(root_ids, return_inverse=True)
+    root_mask = np.asarray([manifest['cells'][str(int(root))].get('source_dataset') == domain
+                           for root in roots], dtype=bool)
+    mask = root_mask[inverse]
+    if not mask.any():
+        raise ValueError(f'No held-out windows from selection domain {domain!r}')
+    return mask
 
 
 def _seed_loader_worker(worker_id: int) -> None:
@@ -100,7 +122,7 @@ def _seed_loader_worker(worker_id: int) -> None:
     np.random.seed(seed)
 
 
-@torch.no_grad()
+@torch.inference_mode()
 def evaluate(model, loader, device, amp: bool = False):
     """Returns (finest_level_labels, finest_level_preds, root_ids), all at
     WINDOW granularity -- one entry per window subgraph, not per cell.
@@ -109,23 +131,25 @@ def evaluate(model, loader, device, amp: bool = False):
     model.eval()
     preds, labels, root_ids = [], [], []
     for data in loader:
-        data = data.to(device)
+        labels.append(data.y_levels[:, -1].numpy().copy())
+        root_ids.append(data.root_id.numpy().reshape(-1).copy())
+        shape = (data.num_graphs, int((data.ptr[1:] - data.ptr[:-1]).max()))
+        data = data.to(device, non_blocking=True)
         with torch.autocast(
-            device_type=device.type, dtype=torch.bfloat16,
+            device_type=device.type, dtype=torch.float16,
             enabled=amp and device.type == "cuda",
         ):
             g = model(
                 data.x, data.edge_index, data.batch,
-                pos_enc=data.pos_enc, rel_pos=data.rel_pos,
+                pos_enc=getattr(data, "pos_enc", None), rel_pos=getattr(data, "rel_pos", None),
+                batch_shape=shape,
                 thickness=getattr(data, "thickness", None),
                 has_segclr=getattr(data, "has_segclr", None),
                 postsynaptic_embedding=getattr(data, "postsynaptic_embedding", None),
             )
-            level_preds = model.cls_head.predict_top_down(g)
-        preds.append(level_preds[:, -1].cpu().numpy())
-        labels.append(data.y_levels[:, -1].cpu().numpy())
-        root_ids.append(data.root_id.cpu().numpy().reshape(-1))
-    return np.concatenate(labels), np.concatenate(preds), np.concatenate(root_ids)
+            level_preds = static_top_down(model.cls_head, g)
+        preds.append(level_preds[:, -1])
+    return np.concatenate(labels), torch.cat(preds).cpu().numpy(), np.concatenate(root_ids)
 
 
 def cell_level_metrics(labels, preds, root_ids, num_classes, classes):
@@ -162,9 +186,7 @@ def publish_test_prediction_cache(run_name, dataset, predictions, targets, num_e
     print(f"published shared window predictions to {path}")
 
 
-def main(args):
-    torch.manual_seed(args.seed)
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+def build_training_datasets(args):
     if args.manifest:
         manifest = json.loads(Path(args.manifest).read_text())
     elif args.dataset == 'presynaptic_dense':
@@ -231,6 +253,7 @@ def main(args):
             single_presynaptic_embedding=args.single_presynaptic_embedding,
             memmap_root=args.presynaptic_memmap_root,
             compartment_filter=args.presynaptic_compartment_filter,
+            geometry_required=args.spatial or args.position or args.lpe or args.architecture not in ("mean", "pointwise_mlp", "linear"),
             embedding_augmentation=(None if args.embedding_augmentation in (None, "clean")
                                     else args.embedding_augmentation),
             augmentation_database=args.embedding_augmentation_database,
@@ -243,7 +266,41 @@ def main(args):
             single_presynaptic_embedding=args.single_presynaptic_embedding,
             memmap_root=args.presynaptic_memmap_root,
             compartment_filter=args.presynaptic_compartment_filter,
+            geometry_required=args.spatial or args.position or args.lpe or args.architecture not in ("mean", "pointwise_mlp", "linear"),
         )
+    return train_ds, test_ds, manifest
+
+
+def main(args):
+    from data.packing_cache import training_cache_session
+    with training_cache_session():
+        return _main(args)
+
+
+def _main(args):
+    torch.manual_seed(args.seed)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if device.type == 'cuda':
+        # Parallelism belongs to packing/loading workers, not nested Torch pools.
+        torch.set_num_threads(1)
+    train_ds, test_ds, manifest = build_training_datasets(args)
+    if args.dataset == "all_windows" and args.optimized_loading and device.type == "cuda":
+        train_ds, test_ds = PackedWholeCellWindows(train_ds), PackedWholeCellWindows(test_ds)
+    if args.optimized_loading and device.type == "cuda":
+        from data.packing_cache import identity, prepare_cached
+        cache_key = identity(args, manifest)
+        for split, dataset in [('train', train_ds), ('test', test_ds)]:
+            try:
+                if prepare_cached(dataset, cache_key, split, workers=max(1, args.num_workers)):
+                    if not dataset.prepare_device(device):
+                        print(f'{split}: packed CPU cache loaded; insufficient free VRAM for residency', flush=True)
+            except (MemoryError, torch.cuda.OutOfMemoryError) as error:
+                torch.cuda.empty_cache()
+                if split == 'train' and args.embedding_augmentation in TRAINING_POLICIES:
+                    raise RuntimeError('Segmentation augmentation requires the default packed/resident fast path; refusing silent streaming fallback') from error
+                print(f'Using streaming batches: {error}', flush=True)
+            if split == 'train' and args.embedding_augmentation in TRAINING_POLICIES and 'device_fields' not in getattr(dataset,'_packed',{}):
+                raise RuntimeError('Segmentation augmentation fast path could not make the node/view bank GPU-resident')
     val_ds = test_ds
     hierarchy = train_ds.hierarchy
     classes = train_ds.classes  # finest-level names, for summarize()'s per_class_recall keys
@@ -252,7 +309,8 @@ def main(args):
     # num_workers=0 (the DataLoader default) serializes all window extraction
     # on one core and leaves the GPU idle waiting -- measured as the actual
     # bottleneck, not batch size. See CLAUDE.md's DataLoader-throughput note.
-    loader_kwargs = dict(num_workers=args.num_workers, persistent_workers=args.num_workers > 0)
+    loader_kwargs = dict(num_workers=args.num_workers, persistent_workers=args.num_workers > 0,
+                         pin_memory=device.type == "cuda")
     train_generator = torch.Generator().manual_seed(args.seed)
     loader_kwargs.update(worker_init_fn=_seed_loader_worker, generator=train_generator)
     # --class-balance sample resamples the training windows instead of shuffling
@@ -265,6 +323,20 @@ def main(args):
             sampler=train_sampler, shuffle=train_sampler is None, **loader_kwargs,
         )
         test_loader = DataLoader(test_ds, batch_size=args.batch_size, shuffle=False, **loader_kwargs)
+        train_batch_sampler = train_loader.batch_sampler
+        def whole_cell_loader(dataset, loader):
+            if 'device_fields' in getattr(dataset, '_packed', {}):
+                return ResidentWindowLoader(dataset, loader.batch_sampler, train_generator)
+            if hasattr(dataset, '_packed'):
+                return TensorDataLoader(dataset, batch_sampler=loader.batch_sampler,
+                    collate_fn=collate_presynaptic, num_workers=0, pin_memory=True,
+                    generator=train_generator)
+            # The original dataset keeps the PyG list-collation path.
+            if isinstance(dataset, PackedWholeCellWindows):
+                return DataLoader(dataset.source, batch_sampler=loader.batch_sampler, **loader_kwargs)
+            return loader
+        train_loader = whole_cell_loader(train_ds, train_loader)
+        test_loader = whole_cell_loader(test_ds, test_loader)
     else:
         sampler_cls = MixedCellBatchSampler if args.mixed_cell_batch_size else AttentionBudgetBatchSampler
         sampler_kwargs = ({"cells_per_batch": args.mixed_cell_batch_size}
@@ -280,8 +352,15 @@ def main(args):
             test_ds, attention_budget=args.attention_budget,
             max_windows=args.batch_size, shuffle=False, seed=args.seed,
         )
-        train_loader = DataLoader(train_ds, batch_sampler=train_batch_sampler, **loader_kwargs)
-        test_loader = DataLoader(test_ds, batch_sampler=test_batch_sampler, **loader_kwargs)
+        def presynaptic_loader(dataset, sampler):
+            if "device_fields" in getattr(dataset, "_packed", {}):
+                return ResidentWindowLoader(dataset, sampler)
+            options = dict(loader_kwargs)
+            if hasattr(dataset, "_packed"):
+                options.update(num_workers=0, persistent_workers=False, pin_memory=False)
+            return TensorDataLoader(dataset, batch_sampler=sampler, collate_fn=collate_presynaptic, **options)
+        train_loader = presynaptic_loader(train_ds, train_batch_sampler)
+        test_loader = presynaptic_loader(test_ds, test_batch_sampler)
     val_loader = test_loader  # val_ds is test_ds -- see the dataset construction comment above
 
     config = ModelConfig(
@@ -318,7 +397,7 @@ def main(args):
         gt_use_rel_pos=not args.gt_no_rel_pos,
         gt_use_adj_bias=not args.gt_no_adj_bias,
         gt_attention_scope=args.gt_attention_scope,
-        gt_use_thickness=use_thickness,
+        gt_use_thickness=args.gt_use_thickness,
     )
     model = WindowClassifier(config, hierarchy=hierarchy).to(device)
 
@@ -346,8 +425,10 @@ def main(args):
     # disagree with what the optimizer actually holds.
     opt = torch.optim.Adam(
         [p for p in model.parameters() if p.requires_grad],
-        lr=args.lr, weight_decay=args.weight_decay,
+        lr=args.lr, weight_decay=args.weight_decay, fused=device.type == "cuda",
     )
+
+    scaler = torch.amp.GradScaler("cuda", enabled=args.amp and device.type == "cuda")
 
     # agg_tag identifies the aggregation method -- "meanpool" for the
     # mean-readout baseline, "mpnn_L{layers}" for the message-passing encoder,
@@ -473,6 +554,8 @@ def main(args):
     start_epoch, best_val_f1 = 0, -1.0
     if args.resume and last_path.exists():
         ckpt = torch.load(last_path, map_location=device, weights_only=False)
+        if ckpt.get('selection_domain') != args.selection_domain:
+            raise SystemExit('Refusing to resume across a changed checkpoint-selection domain')
         # A mismatched config means this directory belongs to a different model
         # than the one just built -- resuming would silently load foreign
         # weights, or fail deep inside load_state_dict with an unhelpful shape
@@ -508,6 +591,14 @@ def main(args):
             )
         model.load_state_dict(ckpt["model_state"])
         opt.load_state_dict(ckpt["optimizer_state"])
+        for group in opt.param_groups:
+            group["fused"] = device.type == "cuda"
+        if device.type == "cuda":
+            for state in opt.state.values():
+                if "step" in state:
+                    state["step"] = state["step"].to(device)
+        if ckpt.get("grad_scaler_state"):
+            scaler.load_state_dict(ckpt["grad_scaler_state"])
         start_epoch = ckpt["epoch"] + 1
         best_val_f1 = ckpt["best_val_f1"]
         # .cpu() is load-bearing, not defensive: map_location=device above sends
@@ -546,6 +637,8 @@ def main(args):
         + [f"window_precision_{c}" for c in classes]
         + [f"cell_precision_{c}" for c in classes]
     )
+    if args.selection_domain:
+        csv_fields += ['selection_window_macro_f1']
     if start_epoch == 0:
         with open(csv_path, "w", newline="") as f:
             csv.DictWriter(f, fieldnames=csv_fields).writeheader()
@@ -584,6 +677,8 @@ def main(args):
             "cell_macro_precision": cell_metrics["macro_precision"],
             "cell_macro_f1": cell_metrics["macro_f1"],
         }
+        if args.selection_domain:
+            row['selection_window_macro_f1'] = selection_metrics['macro_f1']
         for c in classes:
             row[f"window_recall_{c}"] = window_metrics["per_class_recall"][c]
             row[f"cell_recall_{c}"] = cell_metrics["per_class_recall"][c]
@@ -596,47 +691,104 @@ def main(args):
     # The best weights live on disk in checkpoint_best.pt rather than in an
     # in-memory `best_state`: a resumed run may never beat a best set before
     # the interruption, so the final model has to be reloadable from disk.
+    window_graph = None
+    if (args.cuda_graphs and device.type == "cuda" and "device_fields" in getattr(train_ds, "_packed", {})
+            and args.architecture in ("mean", "linear", "pointwise_mlp", "graph_transformer", "graph_transformer_teasar")
+            and hasattr(model.cls_head, "nodes") and not config.cls_resnet_bn
+            and not config.cls_resnet_dropout
+            and (not args.architecture.startswith("graph_transformer") or not config.gt_dropout)):
+        try:
+            window_graph = WindowGraphTrainer(model, opt, scaler, train_ds, amp=args.amp)
+        except MemoryError as error:
+            print(f"Using resident prefetch without graph buffers: {error}", flush=True)
+        if window_graph:
+            print("Training with GPU-resident windows and masked CUDA graph buffers", flush=True)
+    epoch_plans = precompute_epoch_plans(train_batch_sampler, start_epoch, args.epochs, workers=min(8, max(1, args.num_workers))) if window_graph and args.dataset != 'all_windows' else {}
     epoch_bar = tqdm(
         range(start_epoch, args.epochs),
         desc="train", unit="epoch", initial=start_epoch, total=args.epochs,
     )
     for epoch in epoch_bar:
+        epoch_started = time.perf_counter()
+        loader_wait = 0.0
+        cuda_steps = []
+        step_count = 0
         if args.dataset != "all_windows":
             train_batch_sampler.set_epoch(epoch)
+            if epoch in epoch_plans:
+                train_batch_sampler._plan = epoch_plans[epoch]
+        elif window_graph:
+            # Match DataLoader's base-seed draw before the unchanged Torch sampler.
+            torch.empty((), dtype=torch.int64).random_(generator=train_generator)
         model.train()
-        total_loss, n = 0.0, 0
+        total_loss, n = (window_graph.loss_sum if window_graph else torch.zeros((), device=device, dtype=torch.float64)), 0
+        total_loss.zero_()
+        graph_before = (window_graph.hits, window_graph.misses, window_graph.capture_seconds) if window_graph else (0, 0, 0)
         batch_bar = tqdm(
-            train_loader, desc=f"epoch {epoch}", unit="batch", leave=False,
+            train_batch_sampler if window_graph else (CUDABatchPrefetcher(train_loader, device, model.cls_head) if device.type == "cuda" else train_loader),
+            desc=f"epoch {epoch}", unit="batch", leave=False, disable=not sys.stderr.isatty(),
         )
+        batch_finished = time.perf_counter()
         for data in batch_bar:
-            data = data.to(device)
+            loader_wait += time.perf_counter() - batch_finished
+            sample_cuda = device.type == "cuda" and step_count % 32 == 0
+            step_count += 1
+            if window_graph:
+                if sample_cuda:
+                    step_start = torch.cuda.Event(enable_timing=True)
+                    step_end = torch.cuda.Event(enable_timing=True)
+                    step_start.record()
+                n += window_graph.step_indices(data)
+                if sample_cuda:
+                    step_end.record()
+                    cuda_steps.append((step_start, step_end))
+                batch_finished = time.perf_counter()
+                continue
+            if device.type == "cuda":
+                data, shape, routes = data
+            else:
+                shape = (data.num_graphs, int((data.ptr[1:] - data.ptr[:-1]).max()))
+                routes = move_routes(prepare_routes(model.cls_head, data.y_levels), device)
+                data = data.to(device)
+            if sample_cuda:
+                step_start = torch.cuda.Event(enable_timing=True)
+                step_end = torch.cuda.Event(enable_timing=True)
+                step_start.record()
             opt.zero_grad()
             with torch.autocast(
-                device_type=device.type, dtype=torch.bfloat16,
+                device_type=device.type, dtype=torch.float16,
                 enabled=args.amp and device.type == "cuda",
             ):
                 g = model(
                     data.x, data.edge_index, data.batch,
-                    pos_enc=data.pos_enc, rel_pos=data.rel_pos,
+                    pos_enc=getattr(data, "pos_enc", None), rel_pos=getattr(data, "rel_pos", None),
+                    batch_shape=shape,
                     thickness=getattr(data, "thickness", None),
                     has_segclr=getattr(data, "has_segclr", None),
                     postsynaptic_embedding=getattr(data, "postsynaptic_embedding", None),
                 )
-                loss = model.cls_head.compute_loss(g, data.y_levels)
-            loss.backward()
-            opt.step()
-            total_loss += loss.item() * data.num_graphs
+                loss = routed_loss(model.cls_head, g, data.y_levels, routes)
+            scaler.scale(loss).backward()
+            scaler.step(opt)
+            scaler.update()
+            total_loss += loss.detach().double() * data.num_graphs
             n += data.num_graphs
-            batch_bar.set_postfix(loss=f"{total_loss / max(1, n):.4f}")
+            if sample_cuda:
+                step_end.record()
+                cuda_steps.append((step_start, step_end))
+            batch_finished = time.perf_counter()
+        total_loss = total_loss.item()
+        training_finished = time.perf_counter()
 
         val_labels, val_preds, val_root_ids = evaluate(model, val_loader, device, args.amp)
+        evaluation_finished = time.perf_counter()
         # Window-level metrics via the SAME summarize() the cell-level ones
         # use -- lets us see whether imbalance bias shows up at the per-window
         # classification step itself, independent of what majority voting
         # does to it afterward.
         window_val_metrics = summarize(val_labels, val_preds, len(classes), classes)
         val_metrics = cell_level_metrics(val_labels, val_preds, val_root_ids, len(classes), classes)
-        # Checkpoint selection uses WINDOW balanced accuracy, not cell -- cell
+        # Checkpoint selection uses WINDOW macro F1, not cell -- cell
         # metrics come from majority-voting a few hundred val cells, which is
         # small-sample and genuinely noisy epoch to epoch, whereas window
         # metrics average over ~1.8M val windows. The window metric is also
@@ -647,12 +799,18 @@ def main(args):
         # selection is therefore not held out from the final reported test
         # metrics below. Accepted trade-off of the two-way split, in exchange
         # for both partitions getting the full 20% of held-out cells.
-        if window_val_metrics["macro_f1"] > best_val_f1:
-            best_val_f1 = window_val_metrics["macro_f1"]
+        selection_metrics = window_val_metrics
+        if args.selection_domain:
+            domain_mask = selection_domain_mask(manifest, val_root_ids, args.selection_domain)
+            selection_metrics = summarize(val_labels[domain_mask], val_preds[domain_mask], len(classes), classes)
+        metrics_finished = time.perf_counter()
+        if selection_metrics["macro_f1"] > best_val_f1:
+            best_val_f1 = selection_metrics["macro_f1"]
             torch.save(
                 {
                     "model_state": model.state_dict(), "config": config,
                     "epoch": epoch, "val_window_macro_f1": best_val_f1,
+                    "selection_domain": args.selection_domain,
                 },
                 ckpt_dir / "checkpoint_best.pt",
             )
@@ -665,6 +823,7 @@ def main(args):
                 "run": run_name, "epoch": epoch, "classes": classes,
                 "window_test_metrics": window_val_metrics,
                 "test_metrics": val_metrics, "complete": False,
+                "selection_domain": args.selection_domain, "selection_metrics": selection_metrics,
             }, indent=2))
             os.replace(best_metrics_tmp, best_metrics_path)
             tqdm.write(
@@ -711,6 +870,9 @@ def main(args):
             {
                 "model_state": model.state_dict(),
                 "optimizer_state": opt.state_dict(),
+                "grad_scaler_state": scaler.state_dict(),
+                "amp_dtype": "float16" if scaler.is_enabled() else "float32",
+                "selection_domain": args.selection_domain,
                 "config": config,
                 "epoch": epoch,
                 "best_val_f1": best_val_f1,
@@ -722,6 +884,30 @@ def main(args):
             tmp_path,
         )
         os.replace(tmp_path, last_path)
+        with (ckpt_dir / "performance.jsonl").open("a") as performance_file:
+            performance_file.write(json.dumps({
+                "epoch": epoch, "training_seconds": training_finished - epoch_started,
+                "loader_wait_host_seconds": loader_wait,
+                "evaluation_seconds": evaluation_finished - training_finished,
+                "metrics_seconds": metrics_finished - evaluation_finished,
+                "checkpoint_and_logging_seconds": time.perf_counter() - metrics_finished,
+                "windows": n, "loader_workers": 0 if hasattr(train_ds, "_packed") else args.num_workers,
+                "resident_features": "device_fields" in getattr(train_ds, "_packed", {}),
+                "packed_bytes": getattr(train_ds, "packing_bytes", None),
+                "cuda_prefetch": device.type == "cuda",
+                "model_step_cuda_seconds": sum(a.elapsed_time(b) for a, b in cuda_steps) / 1000 * step_count / len(cuda_steps) if cuda_steps else None,
+                "model_step_cuda_seconds_estimated": True,
+                "sampled_cuda_steps": len(cuda_steps), "optimizer_steps": step_count,
+                "fused_adam": device.type == "cuda",
+                "cuda_graphs": window_graph is not None,
+                "precomputed_epoch_plan": epoch in epoch_plans,
+                "cuda_graph_hits": window_graph.hits - graph_before[0] if window_graph else 0,
+                "cuda_graph_captures": window_graph.misses - graph_before[1] if window_graph else 0,
+                "cuda_graph_capture_seconds": window_graph.capture_seconds - graph_before[2] if window_graph else 0.0,
+                "cuda_graph_cached": len(window_graph.cache) if window_graph else 0,
+                "amp_dtype": "float16" if scaler.is_enabled() else "float32",
+                "grad_scale": scaler.get_scale(),
+            }) + "\n")
 
     # Best weights from disk, not from an in-memory copy -- see the note above
     # the epoch loop. Absent only if the run trained zero epochs (already
@@ -789,7 +975,7 @@ def main(args):
         )
 
 
-if __name__ == "__main__":
+def build_training_parser():
     p = argparse.ArgumentParser()
     p.add_argument('--postsynaptic-cache',
                    help='Prepared native-site cache; applies the same eligibility filter to both groups')
@@ -824,9 +1010,11 @@ if __name__ == "__main__":
         default="/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10",
     )
     p.add_argument("--manifest", help="explicit cohort/split manifest JSON")
+    p.add_argument('--selection-domain', choices=('microns', 'v1dd'),
+                   help='select the best epoch using only this held-out source dataset; final reports retain every domain')
     p.add_argument(
-        "--embedding-augmentation", choices=("clean", "gray", "flip", "structured_low"),
-        help="training-only node embedding choice set; augmented policies sample clean plus draws 0-3",
+        "--embedding-augmentation", choices=("clean", "gray", "flip", "structured_low", "segmask", *TRAINING_POLICIES),
+        help="training-only embedding choices; segmentation conditions sample cumulative pools uniformly per node",
     )
     p.add_argument(
         "--embedding-augmentation-database",
@@ -1037,9 +1225,16 @@ if __name__ == "__main__":
     )
     p.add_argument("--seed", type=int, default=0)
     p.add_argument(
-        "--amp", action="store_true",
-        help="use BF16 autocast on CUDA (recommended for L40S presynaptic training)",
+        "--amp", action=argparse.BooleanOptionalAction, default=True,
+        help="use FP16 autocast with gradient scaling on CUDA",
     )
-    from scripts.training_config import parse_training_args
+    p.add_argument('--optimized-loading', action=argparse.BooleanOptionalAction, default=True,
+                   help='pack clean windows and keep features on GPU when memory permits (default: enabled)')
+    p.add_argument('--cuda-graphs', action=argparse.BooleanOptionalAction, default=True,
+                   help='replay supported deterministic training steps on GPU (default: enabled)')
+    return p
 
-    main(parse_training_args(p))
+
+if __name__ == "__main__":
+    from scripts.training_config import parse_training_args
+    main(parse_training_args(build_training_parser()))

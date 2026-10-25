@@ -16,7 +16,7 @@ cd /orcd/home/002/jcbliao/rotation/segclr/gnn_classifier
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
 fold=${SLURM_ARRAY_TASK_ID:?}
 base=/orcd/scratch/orcd/013/jcbliao/presynaptic_axons
-database="$base/casey_confidence_cave/k10/conf0.7/fold$fold"
+database="$base/morpho_confidence_cave/k10/conf0.7/fold$fold"
 exec segclr_db/.venv/bin/python -u scripts/train_gnn.py \
   --dataset presynaptic_cave --presynaptic-database "$database" \
   --manifest "$database/manifest.json" \

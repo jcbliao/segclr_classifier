@@ -32,12 +32,12 @@ DEFAULT=Path('/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/incoming_presy
 FAMILIES=('cave_n10','single_pre_post')
 
 
-def checkpoint(family,classes,fold):
-    base=ROOT/'results/presynaptic'
+def checkpoint(family,classes,fold,confidence='0.7',results_root=None):
+    base=Path(results_root) if results_root else ROOT/'results/presynaptic'
     if family=='cave_n10':
-        base=base/f'cave_skeletons_pre_post/k10/conf0.7/{classes}_class/fold{fold}/pre_post';k=10
+        base=base/f'cave_skeletons_pre_post/k10/conf{confidence}/{classes}_class/fold{fold}/pre_post';k=10
     else:
-        base=base/'native_single_pre_post/scale16/k1/conf0.7'
+        base=base/f'native_single_pre_post/scale16/k1/conf{confidence}'
         if classes=='three':base=base/'three_class'
         base=base/f'fold{fold}/pre_post';k=1
     return base/f'gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n{k}_mixed16_sampled_pre_post_fold{fold}/checkpoint_best.pt'
@@ -80,10 +80,10 @@ def vectorized_predictor(models,device):
     return lambda x,mask,post:mapped(params,buffers,x,mask,post)
 
 
-def prepare(out,workers):
+def prepare(out,workers,confidence='0.7',results_root=None):
     torch.set_num_threads(1)
     def one(key):
-        family,classes,fold=key;path=checkpoint(*key);model,manifest=load_checkpoint(path)
+        family,classes,fold=key;path=checkpoint(*key,confidence=confidence,results_root=results_root);model,manifest=load_checkpoint(path)
         return dict(family=family,classes=classes,fold=fold,path=str(path),sha256=sha(path),
             manifest=str(manifest),manifest_sha256=sha(manifest),config=asdict(model.config),
             level_classes=model.cls_head.hierarchy.level_classes,
@@ -106,13 +106,18 @@ def prepare(out,workers):
     for info in models:
         expected=expected_hierarchies[info['hierarchy_id']]
         if tuple(map(tuple,info['level_classes']))!=expected.level_classes:
-            raise ValueError('checkpoint class order differs from registered Casey hierarchy')
+            raise ValueError('checkpoint class order differs from registered Morpho hierarchy')
+    fragment_plan=json.loads((out/'plan.json').read_text())
     plan=dict(models=models,fragment_plan_sha256=sha(out/'plan.json'),
-        embedding_run_id=EMBED_RUN,embedding_checkpoint_id=EMBED_CKPT,
+        embedding_run_id=fragment_plan.get('embedding_run_id',EMBED_RUN),embedding_checkpoint_id=fragment_plan.get('embedding_checkpoint_id',EMBED_CKPT),
         filter='per fold: ready presynaptic mean embedding has subcompartment argmax axon',
         scores='raw conditional local-head logits; explicit joint probabilities; top-down class indices',
         identity=dict(root_id='cell_root_id',subject_root_id='partner_root_id',node_id='anchor_node_id',synapse_id='synapse_id'),
         shared_database_predictions_written=False)
+    if confidence != '0.7':
+        plan['label_confidence_min'] = float(confidence)
+    if 'axon_filter_embedding_run_id' in fragment_plan:
+        plan['axon_filter_embedding_run_id']=fragment_plan['axon_filter_embedding_run_id']
     dest=out/'cell_types/plan.json'
     if dest.exists() and json.loads(dest.read_text())!=plan:raise ValueError('model plan already frozen differently')
     atomic_json(dest,plan);print(json.dumps(plan),flush=True)
@@ -344,8 +349,10 @@ def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('stage',choices=['prepare','prepare-posts','infer','finalize'])
     p.add_argument('--output',type=Path,default=DEFAULT);p.add_argument('--rank',type=int,default=0)
     p.add_argument('--workers',type=int,default=4);p.add_argument('--device',default='cuda');p.add_argument('--batch-size',type=int,default=8192)
+    p.add_argument('--confidence',choices=('0','0.7'),default='0.7',help='Training label-confidence cohort; does not change the deployment axon filter')
+    p.add_argument('--model-results-root',type=Path,default=None)
     p.add_argument('--limit-parts',type=int,default=0);a=p.parse_args()
-    if a.stage=='prepare':prepare(a.output,a.workers)
+    if a.stage=='prepare':prepare(a.output,a.workers,a.confidence,a.model_results_root)
     elif a.stage=='prepare-posts':prepare_posts(a.output,a.workers)
     elif a.stage=='infer':infer(a.output,a.rank,a.workers,a.device,a.batch_size,a.limit_parts)
     else:finalize(a.output,a.workers)

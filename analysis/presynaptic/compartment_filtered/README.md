@@ -1,8 +1,8 @@
 # Dendrite-filtered presynaptic means
 
-**Current requested analysis:** [Casey L2 2D/3D comparison](casey_l2/README.md), balanced to 2,000 windows per each of six L2 classes. The 13-class plots in this parent directory are the initial coarse-type visualization, retained for reference. The plotting script now defaults to zero-based hierarchy level 2.
+**Current requested analysis:** [Morpho L2 2D/3D comparison](morpho_l2/README.md), balanced to 2,000 windows per each of six L2 classes. The 13-class plots in this parent directory are the initial coarse-type visualization, retained for reference. The plotting script now defaults to zero-based hierarchy level 2.
 
-Source: native scale16/k17, confidence 0.7, fold0 presynaptic windows with Casey coarse cell types and thalamocortical cells. The source manifest contains 1,773 labeled cells. Classifier: the geodesic 20 µm soma-exclusion inverse-square-root ResNet checkpoint, with its saved training normalization.
+Source: native scale16/k17, confidence 0.7, fold0 presynaptic windows with Morpho coarse cell types and thalamocortical cells. The source manifest contains 1,773 labeled cells. Classifier: the geodesic 20 µm soma-exclusion inverse-square-root ResNet checkpoint, with its saved training normalization.
 
 Every observed SegCLR embedding receives a compartment prediction on the GPU. A window is removed if **strictly more than half** of its observed embeddings predict dendrite. Other compartment predictions and ties are retained. Invalid source windows remain excluded. Voting happens before deduplication by the full sorted node set within each cell. This is a window filter; it does not remove whole cells or connected skeleton components.
 

@@ -66,85 +66,85 @@ Regenerate with `python scripts/build_model_catalog.py` (through Slurm on the la
 | [gnn_lcpn_scratch_pointwise_mlp_L4_resnet4x128_n10_fold0](all_windows/gnn_lcpn_scratch_pointwise_mlp_L4_resnet4x128_n10_fold0/README.md) | `pointwise_mlp` |
 | [gnn_lcpn_scratch_pointwise_mlp_L4_resnet4x128_n20_fold0](all_windows/gnn_lcpn_scratch_pointwise_mlp_L4_resnet4x128_n20_fold0/README.md) | `pointwise_mlp` |
 
-## presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold0
+## presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold0
 
 | Run | Architecture |
 |---|---|
-| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `graph_transformer` |
-| [gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `mean` |
-| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
+| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `graph_transformer` |
+| [gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `mean` |
+| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
 
-## presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold0
-
-| Run | Architecture |
-|---|---|
-| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `graph_transformer` |
-| [gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `mean` |
-| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
-
-## presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold0
+## presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold0
 
 | Run | Architecture |
 |---|---|
-| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `graph_transformer` |
-| [gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `mean` |
-| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
+| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `graph_transformer` |
+| [gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `mean` |
+| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
 
-## presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold0
-
-| Run | Architecture |
-|---|---|
-| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `graph_transformer` |
-| [gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `mean` |
-| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
-
-## presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold0
+## presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold0
 
 | Run | Architecture |
 |---|---|
-| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `graph_transformer` |
-| [gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `mean` |
-| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
+| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `graph_transformer` |
+| [gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `mean` |
+| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
 
-## presynaptic/casey_confidence_cave/k10/conf0/fold0
-
-| Run | Architecture |
-|---|---|
-| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/casey_confidence_cave/k10/conf0/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `graph_transformer` |
-| [gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/casey_confidence_cave/k10/conf0/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `mean` |
-| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/casey_confidence_cave/k10/conf0/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
-
-## presynaptic/casey_confidence_cave/k10/conf0.3/fold0
+## presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold0
 
 | Run | Architecture |
 |---|---|
-| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/casey_confidence_cave/k10/conf0.3/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `graph_transformer` |
-| [gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/casey_confidence_cave/k10/conf0.3/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `mean` |
-| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/casey_confidence_cave/k10/conf0.3/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
+| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `graph_transformer` |
+| [gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `mean` |
+| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
 
-## presynaptic/casey_confidence_cave/k10/conf0.5/fold0
-
-| Run | Architecture |
-|---|---|
-| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/casey_confidence_cave/k10/conf0.5/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `graph_transformer` |
-| [gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/casey_confidence_cave/k10/conf0.5/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `mean` |
-| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/casey_confidence_cave/k10/conf0.5/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
-
-## presynaptic/casey_confidence_cave/k10/conf0.7/fold0
+## presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold0
 
 | Run | Architecture |
 |---|---|
-| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/casey_confidence_cave/k10/conf0.7/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `graph_transformer` |
-| [gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/casey_confidence_cave/k10/conf0.7/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `mean` |
-| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/casey_confidence_cave/k10/conf0.7/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
+| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `graph_transformer` |
+| [gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `mean` |
+| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0](presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
 
-## presynaptic/casey_confidence_cave/k10/conf0.9/fold0
+## presynaptic/morpho_confidence_cave/k10/conf0/fold0
 
 | Run | Architecture |
 |---|---|
-| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/casey_confidence_cave/k10/conf0.9/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `graph_transformer` |
-| [gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/casey_confidence_cave/k10/conf0.9/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `mean` |
-| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/casey_confidence_cave/k10/conf0.9/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
+| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/morpho_confidence_cave/k10/conf0/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `graph_transformer` |
+| [gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/morpho_confidence_cave/k10/conf0/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `mean` |
+| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/morpho_confidence_cave/k10/conf0/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
+
+## presynaptic/morpho_confidence_cave/k10/conf0.3/fold0
+
+| Run | Architecture |
+|---|---|
+| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/morpho_confidence_cave/k10/conf0.3/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `graph_transformer` |
+| [gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/morpho_confidence_cave/k10/conf0.3/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `mean` |
+| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/morpho_confidence_cave/k10/conf0.3/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
+
+## presynaptic/morpho_confidence_cave/k10/conf0.5/fold0
+
+| Run | Architecture |
+|---|---|
+| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/morpho_confidence_cave/k10/conf0.5/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `graph_transformer` |
+| [gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/morpho_confidence_cave/k10/conf0.5/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `mean` |
+| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/morpho_confidence_cave/k10/conf0.5/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
+
+## presynaptic/morpho_confidence_cave/k10/conf0.7/fold0
+
+| Run | Architecture |
+|---|---|
+| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/morpho_confidence_cave/k10/conf0.7/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `graph_transformer` |
+| [gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/morpho_confidence_cave/k10/conf0.7/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `mean` |
+| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/morpho_confidence_cave/k10/conf0.7/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
+
+## presynaptic/morpho_confidence_cave/k10/conf0.9/fold0
+
+| Run | Architecture |
+|---|---|
+| [gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/morpho_confidence_cave/k10/conf0.9/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `graph_transformer` |
+| [gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/morpho_confidence_cave/k10/conf0.9/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `mean` |
+| [gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0](presynaptic/morpho_confidence_cave/k10/conf0.9/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0/README.md) | `pointwise_mlp` |
 
 ## presynaptic/cave_embedding_augmentation_conf0.7
 

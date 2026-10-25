@@ -1,0 +1,16 @@
+{
+  "status": "submitted",
+  "scope": "exact same cells, geometry, windows and selected centers; newest embeddings; six classes; no confidence cutoff",
+  "label_confidence_min": 0,
+  "configurations": 2,
+  "folds": 5,
+  "segclr_checkpoint": "checkpoint_e0_s100000",
+  "point_plan": "26832622",
+  "preprocessing_parity": "26832898",
+  "embedding_array": "26832899",
+  "feature_assembly": "26832900",
+  "preparation": "26832901",
+  "training_array": "26832902",
+  "model_registration": "26832903",
+  "geometry_selection_check": "26832897"
+}

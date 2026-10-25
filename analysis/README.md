@@ -1,11 +1,14 @@
 # Analysis notebooks
 
+The report comparisons now have [`*_all_folds.ipynb` companions](report_folds_20261012/README.md#notebook-index), with five-fold means and confidence intervals. Their original entry points use the same frozen run catalog; prior versions are archived with the report sweep.
+
 Notebooks remain grouped with their experiment helpers and caches. This index describes locations only; the notebook prose and scientific interpretation are maintained by the author.
 
 [Execution and environment instructions](../docs/reproducibility.md#notebooks)
 
 | Experiment directory | Notebook |
 |---|---|
+| `analysis/all_windows` | [linear_vs_resnet](all_windows/linear_vs_resnet.ipynb) |
 | `analysis/all_windows` | [architecture_comparison](all_windows/architecture_comparison.ipynb) |
 | `analysis/all_windows` | [embedding_path_geodesics](all_windows/embedding_path_geodesics.ipynb) |
 | `analysis/all_windows` | [feature_prediction_correlation](all_windows/feature_prediction_correlation.ipynb) |
@@ -14,8 +17,8 @@ Notebooks remain grouped with their experiment helpers and caches. This index de
 | `analysis` | [casey_coarse_vs_hierarchy](casey_coarse_vs_hierarchy.ipynb) |
 | `analysis/db_deployment/presynaptic/20261009` | [test_analysis](db_deployment/presynaptic/20261009/test_analysis.ipynb) |
 | `analysis/db_deployment/presynaptic/20261009` | [unlabeled_analysis](db_deployment/presynaptic/20261009/unlabeled_analysis.ipynb) |
-| `analysis/presynaptic/casey_confidence_cave` | [casey_confidence_comparison](presynaptic/casey_confidence_cave/casey_confidence_comparison.ipynb) |
-| `analysis/presynaptic/casey_confidence_native` | [casey_confidence_comparison](presynaptic/casey_confidence_native/casey_confidence_comparison.ipynb) |
+| `analysis/presynaptic/morpho_confidence_cave` | [morpho_confidence_comparison](presynaptic/morpho_confidence_cave/morpho_confidence_comparison.ipynb) |
+| `analysis/presynaptic/morpho_confidence_native` | [morpho_confidence_comparison](presynaptic/morpho_confidence_native/morpho_confidence_comparison.ipynb) |
 | `analysis/presynaptic/cave_embedding_augmentation_conf0.7` | [embedding_augmentation_comparison](presynaptic/cave_embedding_augmentation_conf0.7/embedding_augmentation_comparison.ipynb) |
 | `analysis/presynaptic/cave_pre_post_v1dd_addition` | [pre_post_comparison](presynaptic/cave_pre_post_v1dd_addition/pre_post_comparison.ipynb) |
 | `analysis/presynaptic/cave_skeletons` | [presynaptic_axon_database_figures](presynaptic/cave_skeletons/presynaptic_axon_database_figures.ipynb) |

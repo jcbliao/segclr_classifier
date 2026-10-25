@@ -1,0 +1,330 @@
+{
+  "jobs": [
+    {
+      "index": 0,
+      "source_report": "results/presynaptic/cave_skeletons/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_fold0.json",
+      "source_sha256": "0484d3865ba0ee3cf19b5a5f6b53be6ae17945b0786d158852675aebe0932a48",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/00.json",
+      "manifest_sha256": "9888930b47f1e3ec84aeb4303b80fee119a273cd3ca4e4fbc3268b6c78b38f91",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 338143,
+      "results_dir": "results/presynaptic/cave_skeletons/balanced_sampling",
+      "epochs": 100,
+      "architecture": "graph_transformer"
+    },
+    {
+      "index": 1,
+      "source_report": "results/presynaptic/cave_skeletons/gnn_lcpn_scratch_mean_resnet4x128_n10_fold0.json",
+      "source_sha256": "9265acb0da9621b0e9f02792c6e99dee33a3efe7a7e8ad5e8066fb4c5f58fec8",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/01.json",
+      "manifest_sha256": "9888930b47f1e3ec84aeb4303b80fee119a273cd3ca4e4fbc3268b6c78b38f91",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 338143,
+      "results_dir": "results/presynaptic/cave_skeletons/balanced_sampling",
+      "epochs": 100,
+      "architecture": "mean"
+    },
+    {
+      "index": 2,
+      "source_report": "results/presynaptic/new_skeletons/gnn_lcpn_scratch_gt_teasar_L4_H4_resnet4x128_n10_fold0.json",
+      "source_sha256": "38fe10d0e6c8b2ebeec0943d5cfab4cff74837e51bbfce4fef243a2cb191003f",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/02.json",
+      "manifest_sha256": "9888930b47f1e3ec84aeb4303b80fee119a273cd3ca4e4fbc3268b6c78b38f91",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 354943,
+      "results_dir": "results/presynaptic/new_skeletons/balanced_sampling",
+      "epochs": 100,
+      "architecture": "graph_transformer_teasar"
+    },
+    {
+      "index": 3,
+      "source_report": "results/presynaptic/new_skeletons_native/local_center/scale16/k17/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_fold0.json",
+      "source_sha256": "08e31f6ca28c94f14bece5edaaf8e1e07aa3446c41efb05d6fd3489f32004732",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/03.json",
+      "manifest_sha256": "aed1555eb1c03ad5412a583ab6f7344985c62d2074eb0cb46dbb3ac8efd8a24d",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 470186,
+      "results_dir": "results/presynaptic/new_skeletons_native/local_center/scale16/k17/balanced_sampling",
+      "epochs": 30,
+      "architecture": "graph_transformer"
+    },
+    {
+      "index": 4,
+      "source_report": "results/presynaptic/new_skeletons_native/local_center/scale16/k17/gnn_lcpn_scratch_mean_resnet4x128_n17_fold0.json",
+      "source_sha256": "a78ec1e27282a79bfb5a2f33471f7e7c5f6a38ae6ba8cd559c037b37b165a7a2",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/04.json",
+      "manifest_sha256": "aed1555eb1c03ad5412a583ab6f7344985c62d2074eb0cb46dbb3ac8efd8a24d",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 470186,
+      "results_dir": "results/presynaptic/new_skeletons_native/local_center/scale16/k17/balanced_sampling",
+      "epochs": 30,
+      "architecture": "mean"
+    },
+    {
+      "index": 5,
+      "source_report": "results/presynaptic/new_skeletons_native/local_center/scale16/k17/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_fold0.json",
+      "source_sha256": "7d2ff7b3eef8ad007aed7f20f504329ee1e77f8d2c2e295da8bad609255da808",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/05.json",
+      "manifest_sha256": "aed1555eb1c03ad5412a583ab6f7344985c62d2074eb0cb46dbb3ac8efd8a24d",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 470186,
+      "results_dir": "results/presynaptic/new_skeletons_native/local_center/scale16/k17/balanced_sampling",
+      "epochs": 30,
+      "architecture": "pointwise_mlp"
+    },
+    {
+      "index": 6,
+      "source_report": "results/presynaptic/new_skeletons_native/local_center/scale32/k9/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n9_fold0.json",
+      "source_sha256": "b1f7a5dab3f53a61346131a78014d79bc1e1abf0f9187eeb39334eeb1e7e03cd",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/06.json",
+      "manifest_sha256": "aed1555eb1c03ad5412a583ab6f7344985c62d2074eb0cb46dbb3ac8efd8a24d",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 470673,
+      "results_dir": "results/presynaptic/new_skeletons_native/local_center/scale32/k9/balanced_sampling",
+      "epochs": 30,
+      "architecture": "graph_transformer"
+    },
+    {
+      "index": 7,
+      "source_report": "results/presynaptic/new_skeletons_native/local_center/scale32/k9/gnn_lcpn_scratch_mean_resnet4x128_n9_fold0.json",
+      "source_sha256": "18ef5f8e7f3f6c6db85df74707300b06f86cebed8a26794c85d8fa97bd98ab1a",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/07.json",
+      "manifest_sha256": "aed1555eb1c03ad5412a583ab6f7344985c62d2074eb0cb46dbb3ac8efd8a24d",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 470673,
+      "results_dir": "results/presynaptic/new_skeletons_native/local_center/scale32/k9/balanced_sampling",
+      "epochs": 30,
+      "architecture": "mean"
+    },
+    {
+      "index": 8,
+      "source_report": "results/presynaptic/new_skeletons_native/local_center/scale32/k9/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n9_fold0.json",
+      "source_sha256": "1627f14f3863f886a978c8d34c197493f2ee3001ece7c760e907f4831a5b2433",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/08.json",
+      "manifest_sha256": "aed1555eb1c03ad5412a583ab6f7344985c62d2074eb0cb46dbb3ac8efd8a24d",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 470673,
+      "results_dir": "results/presynaptic/new_skeletons_native/local_center/scale32/k9/balanced_sampling",
+      "epochs": 30,
+      "architecture": "pointwise_mlp"
+    },
+    {
+      "index": 9,
+      "source_report": "results/presynaptic/new_skeletons_native/local_center/scale4/k65/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n65_fold0.json",
+      "source_sha256": "cc6bd81d7ee4953b286b72f1383ddf5b9238d73069736576d8318c5abf2c000a",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/09.json",
+      "manifest_sha256": "aed1555eb1c03ad5412a583ab6f7344985c62d2074eb0cb46dbb3ac8efd8a24d",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 465463,
+      "results_dir": "results/presynaptic/new_skeletons_native/local_center/scale4/k65/balanced_sampling",
+      "epochs": 30,
+      "architecture": "graph_transformer"
+    },
+    {
+      "index": 10,
+      "source_report": "results/presynaptic/new_skeletons_native/local_center/scale4/k65/gnn_lcpn_scratch_mean_resnet4x128_n65_fold0.json",
+      "source_sha256": "71324afc037a2f02a4700e50966383e029426f299f4c3d94af3625f7a41737b5",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/10.json",
+      "manifest_sha256": "aed1555eb1c03ad5412a583ab6f7344985c62d2074eb0cb46dbb3ac8efd8a24d",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 465463,
+      "results_dir": "results/presynaptic/new_skeletons_native/local_center/scale4/k65/balanced_sampling",
+      "epochs": 30,
+      "architecture": "mean"
+    },
+    {
+      "index": 11,
+      "source_report": "results/presynaptic/new_skeletons_native/local_center/scale4/k65/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n65_fold0.json",
+      "source_sha256": "79b76c9b746f603eeb47a0be97e763af0d753743af2d29de9e3750403e8e7546",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/11.json",
+      "manifest_sha256": "aed1555eb1c03ad5412a583ab6f7344985c62d2074eb0cb46dbb3ac8efd8a24d",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 465463,
+      "results_dir": "results/presynaptic/new_skeletons_native/local_center/scale4/k65/balanced_sampling",
+      "epochs": 30,
+      "architecture": "pointwise_mlp"
+    },
+    {
+      "index": 12,
+      "source_report": "results/presynaptic/new_skeletons_native/local_center/scale8/k33/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n33_fold0.json",
+      "source_sha256": "b012a0dba203c8757333d0b4fe421d2f0df52907ec24a3a3393e1f39bf7e0a6d",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/12.json",
+      "manifest_sha256": "aed1555eb1c03ad5412a583ab6f7344985c62d2074eb0cb46dbb3ac8efd8a24d",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 468914,
+      "results_dir": "results/presynaptic/new_skeletons_native/local_center/scale8/k33/balanced_sampling",
+      "epochs": 30,
+      "architecture": "graph_transformer"
+    },
+    {
+      "index": 13,
+      "source_report": "results/presynaptic/new_skeletons_native/local_center/scale8/k33/gnn_lcpn_scratch_mean_resnet4x128_n33_fold0.json",
+      "source_sha256": "dcd056c3b15c5da1c5d3c6751de98bcd5918fc426bc148f77e4afdb8cceef3a1",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/13.json",
+      "manifest_sha256": "aed1555eb1c03ad5412a583ab6f7344985c62d2074eb0cb46dbb3ac8efd8a24d",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 468914,
+      "results_dir": "results/presynaptic/new_skeletons_native/local_center/scale8/k33/balanced_sampling",
+      "epochs": 30,
+      "architecture": "mean"
+    },
+    {
+      "index": 14,
+      "source_report": "results/presynaptic/new_skeletons_native/local_center/scale8/k33/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n33_fold0.json",
+      "source_sha256": "ab16b7170389c82ce6a1739772886b92cb4ba5f08c3368c9a9a0bad277e03727",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/14.json",
+      "manifest_sha256": "aed1555eb1c03ad5412a583ab6f7344985c62d2074eb0cb46dbb3ac8efd8a24d",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 468914,
+      "results_dir": "results/presynaptic/new_skeletons_native/local_center/scale8/k33/balanced_sampling",
+      "epochs": 30,
+      "architecture": "pointwise_mlp"
+    },
+    {
+      "index": 15,
+      "source_report": "results/presynaptic/new_skeletons_native/mixed_cell_b32/scale32/k9/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n9_mixed16_fold0.json",
+      "source_sha256": "e81a7daade9d44376986380487abab5dd6dd88191e8c2d9ce107da2551472c7e",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/15.json",
+      "manifest_sha256": "aed1555eb1c03ad5412a583ab6f7344985c62d2074eb0cb46dbb3ac8efd8a24d",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 470673,
+      "results_dir": "results/presynaptic/new_skeletons_native/mixed_cell_b32/scale32/k9/balanced_sampling",
+      "epochs": 30,
+      "architecture": "graph_transformer"
+    },
+    {
+      "index": 16,
+      "source_report": "results/presynaptic/new_skeletons_native/mixed_cell_b32/scale32/k9/gnn_lcpn_scratch_mean_resnet4x128_n9_mixed16_fold0.json",
+      "source_sha256": "2aaefef7baca37d3437c8e81b2117e47e11cc33342657a782d9fc344e7ceca0e",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/16.json",
+      "manifest_sha256": "aed1555eb1c03ad5412a583ab6f7344985c62d2074eb0cb46dbb3ac8efd8a24d",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 470673,
+      "results_dir": "results/presynaptic/new_skeletons_native/mixed_cell_b32/scale32/k9/balanced_sampling",
+      "epochs": 30,
+      "architecture": "mean"
+    },
+    {
+      "index": 17,
+      "source_report": "results/presynaptic/new_skeletons_native/mixed_cell_b32/scale32/k9/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n9_mixed16_fold0.json",
+      "source_sha256": "33a19f9cff58c3869074f76351d24bd5a0a883e79cf264f14464b461eb5d4fbc",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/configs/17.json",
+      "manifest_sha256": "aed1555eb1c03ad5412a583ab6f7344985c62d2074eb0cb46dbb3ac8efd8a24d",
+      "classes": [
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "expected_test_windows": 470673,
+      "results_dir": "results/presynaptic/new_skeletons_native/mixed_cell_b32/scale32/k9/balanced_sampling",
+      "epochs": 30,
+      "architecture": "pointwise_mlp"
+    }
+  ],
+  "change": "class_balance: loss -> sample (1/sqrt(class window count)); unweighted loss",
+  "preserve_original_results": true
+}

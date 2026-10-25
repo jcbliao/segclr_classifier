@@ -1,0 +1,110 @@
+{
+  "run": "gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_fold2",
+  "epoch": 22,
+  "classes": [
+    "BasketFam",
+    "Excitatory",
+    "nonBasketInhibitory"
+  ],
+  "window_test_metrics": {
+    "accuracy": 0.8173207658104582,
+    "balanced_accuracy": 0.8101546837076912,
+    "macro_precision": 0.8221775025302454,
+    "macro_f1": 0.8121054437136137,
+    "per_class_recall": {
+      "BasketFam": 0.8906332354491379,
+      "Excitatory": 0.8878248653711075,
+      "nonBasketInhibitory": 0.6520059503028279
+    },
+    "per_class_precision": {
+      "BasketFam": 0.8742230401395387,
+      "Excitatory": 0.7809092313236884,
+      "nonBasketInhibitory": 0.8114002361275089
+    },
+    "confusion_matrix": [
+      [
+        118285,
+        9151,
+        5374
+      ],
+      [
+        4570,
+        151676,
+        14594
+      ],
+      [
+        12448,
+        33403,
+        85907
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.945679012345679,
+    "balanced_accuracy": 0.8529411764705883,
+    "macro_precision": 0.9515172935669653,
+    "macro_f1": 0.8864658310764675,
+    "per_class_recall": {
+      "BasketFam": 0.9705882352941176,
+      "Excitatory": 1.0,
+      "nonBasketInhibitory": 0.5882352941176471
+    },
+    "per_class_precision": {
+      "BasketFam": 0.9428571428571428,
+      "Excitatory": 0.943952802359882,
+      "nonBasketInhibitory": 0.967741935483871
+    },
+    "confusion_matrix": [
+      [
+        33,
+        0,
+        1
+      ],
+      [
+        0,
+        320,
+        0
+      ],
+      [
+        2,
+        19,
+        30
+      ]
+    ]
+  },
+  "complete": false,
+  "selection_domain": null,
+  "selection_metrics": {
+    "accuracy": 0.8173207658104582,
+    "balanced_accuracy": 0.8101546837076912,
+    "macro_precision": 0.8221775025302454,
+    "macro_f1": 0.8121054437136137,
+    "per_class_recall": {
+      "BasketFam": 0.8906332354491379,
+      "Excitatory": 0.8878248653711075,
+      "nonBasketInhibitory": 0.6520059503028279
+    },
+    "per_class_precision": {
+      "BasketFam": 0.8742230401395387,
+      "Excitatory": 0.7809092313236884,
+      "nonBasketInhibitory": 0.8114002361275089
+    },
+    "confusion_matrix": [
+      [
+        118285,
+        9151,
+        5374
+      ],
+      [
+        4570,
+        151676,
+        14594
+      ],
+      [
+        12448,
+        33403,
+        85907
+      ]
+    ]
+  }
+}

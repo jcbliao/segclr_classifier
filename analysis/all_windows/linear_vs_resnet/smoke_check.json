@@ -1,0 +1,22 @@
+[
+  {
+    "architecture": "Mean",
+    "loss": 0.6313769221305847,
+    "encoder_and_head_trainable": true
+  },
+  {
+    "architecture": "MPNN L2 + LPE + relative position",
+    "loss": 0.9510636329650879,
+    "encoder_and_head_trainable": true
+  },
+  {
+    "architecture": "GT L4 + LPE + relative position",
+    "loss": 0.7742444276809692,
+    "encoder_and_head_trainable": true
+  },
+  {
+    "architecture": "Pointwise MLP L2",
+    "loss": 0.9173555970191956,
+    "encoder_and_head_trainable": true
+  }
+]

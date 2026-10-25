@@ -23,11 +23,14 @@ class MeanReadout(nn.Module):
     learned attention) the only thing that varies.
     """
 
-    def forward(self, z: torch.Tensor, batch_index: torch.Tensor) -> torch.Tensor:
-        num_graphs = int(batch_index.max().item()) + 1 if batch_index.numel() else 0
+    def forward(self, z: torch.Tensor, batch_index: torch.Tensor, num_graphs: int | None = None, node_valid: torch.Tensor | None = None) -> torch.Tensor:
+        if num_graphs is None:
+            num_graphs = int(batch_index.max().item()) + 1 if batch_index.numel() else 0
         d = z.shape[-1]
         g = torch.zeros(num_graphs, d, device=z.device, dtype=z.dtype)
+        if node_valid is not None:
+            z = torch.where(node_valid[:, None], z, 0)
         g.index_add_(0, batch_index, z)
         counts = torch.zeros(num_graphs, device=z.device, dtype=z.dtype)
-        counts.index_add_(0, batch_index, torch.ones(z.shape[0], device=z.device, dtype=z.dtype))
+        counts.index_add_(0, batch_index, torch.ones(z.shape[0], device=z.device, dtype=z.dtype) if node_valid is None else node_valid.to(z.dtype))
         return g / counts.clamp(min=1).unsqueeze(-1)

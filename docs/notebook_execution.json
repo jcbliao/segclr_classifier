@@ -178,5 +178,10 @@
     "notebook": "archive/geodesic_radius_20260828/training_curves.ipynb",
     "status": "passed",
     "seconds": 8.2
+  },
+  {
+    "notebook": "analysis/all_windows/linear_vs_resnet.ipynb",
+    "status": "passed",
+    "notes": "Executed using cached historical ResNet reports; new linear runs pending."
   }
 ]

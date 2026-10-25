@@ -68,14 +68,15 @@ def majority_vote_by_group(
     Returns (group_y_true, group_y_pred), one entry per unique group_id in
     the order np.unique returns them -- pass straight to summarize().
     """
-    groups = np.unique(group_ids)
-    true_out = np.empty(len(groups), dtype=y_true.dtype)
-    pred_out = np.empty(len(groups), dtype=y_pred.dtype)
-    for i, g in enumerate(groups):
-        mask = group_ids == g
-        true_out[i] = y_true[mask][0]  # constant within a group by construction
-        pred_out[i] = np.bincount(y_pred[mask]).argmax()
-    return true_out, pred_out
+    groups, first, inverse = np.unique(group_ids, return_index=True, return_inverse=True)
+    if not len(groups):
+        return np.empty(0, dtype=y_true.dtype), np.empty(0, dtype=y_pred.dtype)
+    if np.any(y_pred < 0):
+        raise ValueError("Predicted classes must be nonnegative")
+    width = int(y_pred.max()) + 1
+    counts = np.bincount(inverse * width + y_pred, minlength=len(groups) * width)
+    # argmax preserves the original smallest-class tie break.
+    return y_true[first], counts.reshape(len(groups), width).argmax(1).astype(y_pred.dtype)
 
 
 def summarize(y_true: np.ndarray, y_pred: np.ndarray, num_classes: int, classes: list[str]) -> dict:

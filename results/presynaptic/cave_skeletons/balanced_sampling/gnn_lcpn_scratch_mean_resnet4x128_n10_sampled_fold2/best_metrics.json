@@ -1,0 +1,184 @@
+{
+  "run": "gnn_lcpn_scratch_mean_resnet4x128_n10_sampled_fold2",
+  "epoch": 99,
+  "classes": [
+    "putative_cge",
+    "putative_parvalbumin",
+    "putative_somatostatin",
+    "pyramidal",
+    "thalamocortical"
+  ],
+  "window_test_metrics": {
+    "accuracy": 0.8562640071001232,
+    "balanced_accuracy": 0.7397266662136847,
+    "macro_precision": 0.7607898846948824,
+    "macro_f1": 0.7488250366649689,
+    "per_class_recall": {
+      "putative_cge": 0.309347442680776,
+      "putative_parvalbumin": 0.8986331596690162,
+      "putative_somatostatin": 0.7141763649144731,
+      "pyramidal": 0.9500959957059986,
+      "thalamocortical": 0.8263803680981595
+    },
+    "per_class_precision": {
+      "putative_cge": 0.34367897170624656,
+      "putative_parvalbumin": 0.9447136450332492,
+      "putative_somatostatin": 0.8224732846400172,
+      "pyramidal": 0.8676147146430052,
+      "thalamocortical": 0.8254688074518937
+    },
+    "confusion_matrix": [
+      [
+        4385,
+        202,
+        3734,
+        5816,
+        38
+      ],
+      [
+        1216,
+        73306,
+        2905,
+        3905,
+        243
+      ],
+      [
+        4510,
+        2925,
+        45718,
+        10488,
+        374
+      ],
+      [
+        2625,
+        880,
+        2978,
+        138067,
+        769
+      ],
+      [
+        23,
+        283,
+        251,
+        858,
+        6735
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9454545454545454,
+    "balanced_accuracy": 0.8318840579710145,
+    "macro_precision": 0.9515622384832195,
+    "macro_f1": 0.858018648018648,
+    "per_class_recall": {
+      "putative_cge": 0.3333333333333333,
+      "putative_parvalbumin": 1.0,
+      "putative_somatostatin": 0.8260869565217391,
+      "pyramidal": 1.0,
+      "thalamocortical": 1.0
+    },
+    "per_class_precision": {
+      "putative_cge": 1.0,
+      "putative_parvalbumin": 0.9459459459459459,
+      "putative_somatostatin": 0.8636363636363636,
+      "pyramidal": 0.9482288828337875,
+      "thalamocortical": 1.0
+    },
+    "confusion_matrix": [
+      [
+        10,
+        0,
+        3,
+        17,
+        0
+      ],
+      [
+        0,
+        35,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        19,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        348,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        4
+      ]
+    ]
+  },
+  "complete": false,
+  "selection_domain": null,
+  "selection_metrics": {
+    "accuracy": 0.8562640071001232,
+    "balanced_accuracy": 0.7397266662136847,
+    "macro_precision": 0.7607898846948824,
+    "macro_f1": 0.7488250366649689,
+    "per_class_recall": {
+      "putative_cge": 0.309347442680776,
+      "putative_parvalbumin": 0.8986331596690162,
+      "putative_somatostatin": 0.7141763649144731,
+      "pyramidal": 0.9500959957059986,
+      "thalamocortical": 0.8263803680981595
+    },
+    "per_class_precision": {
+      "putative_cge": 0.34367897170624656,
+      "putative_parvalbumin": 0.9447136450332492,
+      "putative_somatostatin": 0.8224732846400172,
+      "pyramidal": 0.8676147146430052,
+      "thalamocortical": 0.8254688074518937
+    },
+    "confusion_matrix": [
+      [
+        4385,
+        202,
+        3734,
+        5816,
+        38
+      ],
+      [
+        1216,
+        73306,
+        2905,
+        3905,
+        243
+      ],
+      [
+        4510,
+        2925,
+        45718,
+        10488,
+        374
+      ],
+      [
+        2625,
+        880,
+        2978,
+        138067,
+        769
+      ],
+      [
+        23,
+        283,
+        251,
+        858,
+        6735
+      ]
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "packing_array": "26328177",
+  "training_array": "26328178",
+  "missing_runs": 40,
+  "max_concurrent_gpu_jobs": 4,
+  "training_dependency": "afterok:26328177",
+  "amp": true,
+  "optimized_loading": true,
+  "cuda_graphs": true
+}

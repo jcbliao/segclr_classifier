@@ -3,12 +3,12 @@
 Six training runs compare mean pooling, pointwise MLP, and the full
 GraphTransformer under two training conditions on paired fold 0.
 
-- `no_v1dd`: existing Casey MICrONS training cells without a confidence cutoff, including
+- `no_v1dd`: existing Morpho MICrONS training cells without a confidence cutoff, including
   the established thalamocortical cohort policy.
 - `with_v1dd`: identical MICrONS training cells plus the fold's V1DD training cells.
 
 Both conditions evaluate on exactly the same held-out MICrONS and V1DD cells.
-MICrONS keeps its existing Casey fine-type stratified folds. V1DD is split by
+MICrONS keeps its existing Morpho fine-type stratified folds. V1DD is split by
 cell into five folds, balanced by family and fine label with deterministic seed
 0, and only fold 0 is trained/evaluated. The MICrONS source is the conf0 cohort
 (2,029 cells before window eligibility); its exclusions contain no confidence

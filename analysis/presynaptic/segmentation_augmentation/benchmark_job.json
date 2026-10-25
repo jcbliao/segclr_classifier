@@ -1,0 +1,16 @@
+{
+  "job_id": 26115419,
+  "replaces_cancelled_job": 26115061,
+  "cells": 32,
+  "crops": 16384,
+  "augmented_pass_embeddings": 114688,
+  "clean_pass_embeddings": 16384,
+  "batch_size": 32,
+  "variants_per_forward": 4,
+  "model_compiled": true,
+  "morphology_compiled": true,
+  "plan": "analysis/presynaptic/segmentation_augmentation/benchmark_plan.json",
+  "baseline_plan": "analysis/presynaptic/segmentation_augmentation/benchmark_clean_plan.json",
+  "stdout": "logs/cave_segmask_pilot_26115419.out",
+  "stderr": "logs/cave_segmask_pilot_26115419.err"
+}

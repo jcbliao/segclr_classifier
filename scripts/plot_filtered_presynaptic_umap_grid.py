@@ -1,4 +1,4 @@
-"""Compare UMAP parameters on the existing, identical Casey L2 samples."""
+"""Compare UMAP parameters on the existing, identical Morpho L2 samples."""
 import argparse
 import json
 from pathlib import Path
@@ -13,7 +13,7 @@ import umap
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--input', type=Path, default=Path(__file__).resolve().parents[1] / 'analysis/presynaptic/compartment_filtered/casey_l2')
+    parser.add_argument('--input', type=Path, default=Path(__file__).resolve().parents[1] / 'analysis/presynaptic/compartment_filtered/morpho_l2')
     parser.add_argument('--dimensions', type=int, choices=[2, 3], default=2)
     parser.add_argument('--classes', nargs='+', help='Refit on only these ground-truth classes')
     parser.add_argument('--samples-name', default='balanced_mean_embeddings.npz')
@@ -77,7 +77,7 @@ def main():
                 payload.append(dict(title=f'n_neighbors = {nn}, min_dist = {md:g}', traces=traces))
             print(f'Ready: {path.name}', flush=True)
     title = settings.get('plot_title', 'Presynaptic window means')
-    fig.suptitle(f'{title} · Casey L2 · identical {len(x):,} samples', fontsize=16)
+    fig.suptitle(f'{title} · Morpho L2 · identical {len(x):,} samples', fontsize=16)
     fig.legend(handles=[Line2D([], [], marker='o', linestyle='', color=colors[name], label=name)
         for name in names], loc='lower center', ncol=len(names), frameon=False)
     fig.tight_layout(rect=(0, .04, 1, .96))
@@ -88,7 +88,7 @@ def main():
         html = '''<!doctype html><html><head><meta charset="utf-8"><title>3D UMAP parameter grid</title>
 <script src="https://cdn.plot.ly/plotly-3.1.0.min.js"></script>
 <style>body{font:15px system-ui;margin:20px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}.panel{height:480px}</style></head>
-<body><h2>3D UMAP · Casey L2 · identical 12,000 windows</h2><p>Rows: neighbors 2, 4, 15. Columns: min_dist 0.001, 0.01, 0.1. Drag each panel to rotate; click legend entries to hide classes.</p><div class="grid" id="grid"></div>
+<body><h2>3D UMAP · Morpho L2 · identical 12,000 windows</h2><p>Rows: neighbors 2, 4, 15. Columns: min_dist 0.001, 0.01, 0.1. Drag each panel to rotate; click legend entries to hide classes.</p><div class="grid" id="grid"></div>
 <script>const panels=PAYLOAD;panels.forEach((p,i)=>{const el=document.createElement('div');el.className='panel';el.id='panel'+i;document.getElementById('grid').appendChild(el);Plotly.newPlot(el,p.traces,{title:{text:p.title,font:{size:14}},margin:{l:0,r:0,t:45,b:0},scene:{xaxis:{title:'UMAP 1'},yaxis:{title:'UMAP 2'},zaxis:{title:'UMAP 3'},aspectmode:'data'},legend:{orientation:'h',font:{size:10}}},{responsive:true,displaylogo:false})});</script></body></html>'''
         html = html.replace('identical 12,000 windows', f'identical {len(x):,} windows · ' + ', '.join(names))
         (output / 'umap_parameter_grid.html').write_text(html.replace('PAYLOAD', json.dumps(payload, separators=(',', ':')).replace('</', '<\\/')))

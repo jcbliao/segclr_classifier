@@ -1,0 +1,283 @@
+{
+  "identity": {
+    "plan_sha256": "317827e875be6910e76d16b1d43d28e8151895967172d3d509a2c2a03f5b0ee3",
+    "fold": 4,
+    "condition": "axon_only",
+    "config": {
+      "in_dim": 64,
+      "postsynaptic_dim": 64,
+      "append_presynaptic_mean": false,
+      "architecture": "pointwise_mlp",
+      "cls_head_hidden_dim": null,
+      "classifier": "lcpn",
+      "cls_head_resnet": true,
+      "cls_resnet_hidden": 128,
+      "cls_resnet_layers": 4,
+      "cls_resnet_dropout": 0.0,
+      "cls_resnet_bn": false,
+      "use_spatial_features": false,
+      "use_position": false,
+      "use_lpe": false,
+      "use_embeddings": true,
+      "mpnn_hidden_dim": 128,
+      "mpnn_out_dim": 128,
+      "mpnn_layers": 2,
+      "mpnn_dropout": 0.1,
+      "linear_out_dim": 128,
+      "pointwise_mlp_hidden_dim": 128,
+      "pointwise_mlp_out_dim": 128,
+      "pointwise_mlp_layers": 2,
+      "gt_dim": 128,
+      "gt_depth": 4,
+      "gt_heads": 4,
+      "gt_mlp_ratio": 4,
+      "gt_pos_dim": 8,
+      "gt_use_exp": true,
+      "gt_qkv_bias": false,
+      "gt_dropout": 0.0,
+      "gt_use_lpe": true,
+      "gt_use_rel_pos": true,
+      "gt_use_adj_bias": true,
+      "gt_attention_scope": "global",
+      "gt_use_thickness": false
+    },
+    "trainer_sha256": "d2e9e281cd02b94e1963d4fc55c2a03843601c98839cfa9ee81f93ee98364e20",
+    "preparation_code_sha256": "05e89b71a05a14b36a06216ac5f6c8fae98ebd11c637d2ab8d8b6857e837e791",
+    "epochs": 30,
+    "windows_per_epoch": 1026041,
+    "updates_per_epoch": 251,
+    "class_sampling_probabilities": [
+      0.2559617590987795,
+      0.09533260020696317,
+      0.21659931289246923,
+      0.03880938674716148,
+      0.28914028043176043,
+      0.1041566606228662
+    ],
+    "validation_index_sha256": "340d25d1da56bfaa63c6454f55c51bb70c250b99eb090f0b617b691407555d58",
+    "test_index_sha256": "0882fe6cb14cd16e804f8d3d012c43e05a0a940c57da7a22c09ae94644299a02"
+  },
+  "best_epoch": 29,
+  "best_validation_axon_macro_f1": 0.6491075511546555,
+  "window_test_metrics": {
+    "accuracy": 0.861555910925755,
+    "balanced_accuracy": 0.7210787927384326,
+    "macro_precision": 0.736164542801213,
+    "macro_f1": 0.7263845524487667,
+    "per_class_recall": {
+      "BasketFam": 0.9482149944642895,
+      "BipFam": 0.3070362473347548,
+      "MartFam": 0.8220596851316362,
+      "NglFam": 0.528604118993135,
+      "pyramidal": 0.8627242945424763,
+      "thalamocortical": 0.8578334159643034
+    },
+    "per_class_precision": {
+      "BasketFam": 0.948135770234987,
+      "BipFam": 0.3658455760521374,
+      "MartFam": 0.7604594646572372,
+      "NglFam": 0.6637931034482759,
+      "pyramidal": 0.8953473771647688,
+      "thalamocortical": 0.7834059652498726
+    },
+    "confusion_matrix": [
+      [
+        90784,
+        344,
+        2494,
+        11,
+        1310,
+        799
+      ],
+      [
+        582,
+        3312,
+        2708,
+        19,
+        4018,
+        148
+      ],
+      [
+        2133,
+        1533,
+        43496,
+        138,
+        4480,
+        1131
+      ],
+      [
+        3,
+        38,
+        284,
+        462,
+        86,
+        1
+      ],
+      [
+        1799,
+        3745,
+        7392,
+        66,
+        92698,
+        1748
+      ],
+      [
+        449,
+        81,
+        823,
+        0,
+        941,
+        13842
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9342857142857143,
+    "balanced_accuracy": 0.7748655346230745,
+    "macro_precision": 0.9323374820637594,
+    "macro_f1": 0.8021701923735195,
+    "per_class_recall": {
+      "BasketFam": 1.0,
+      "BipFam": 0.2631578947368421,
+      "MartFam": 0.9047619047619048,
+      "NglFam": 0.5,
+      "pyramidal": 0.9812734082397003,
+      "thalamocortical": 1.0
+    },
+    "per_class_precision": {
+      "BasketFam": 0.8461538461538461,
+      "BipFam": 1.0,
+      "MartFam": 0.7916666666666666,
+      "NglFam": 1.0,
+      "pyramidal": 0.9562043795620438,
+      "thalamocortical": 1.0
+    },
+    "confusion_matrix": [
+      [
+        33,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        5,
+        3,
+        0,
+        11,
+        0
+      ],
+      [
+        1,
+        0,
+        19,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        2,
+        0,
+        0
+      ],
+      [
+        5,
+        0,
+        0,
+        0,
+        262,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        6
+      ]
+    ]
+  },
+  "classes": [
+    "BasketFam",
+    "BipFam",
+    "MartFam",
+    "NglFam",
+    "pyramidal",
+    "thalamocortical"
+  ],
+  "head_nodes": [
+    {
+      "parent_level": 0,
+      "child_level": 1,
+      "parent_name": "neuron",
+      "parent_global_idx": 0,
+      "children": [
+        "excitatory",
+        "inhibitory"
+      ],
+      "child_global_indices": [
+        0,
+        1
+      ],
+      "n_children": 2
+    },
+    {
+      "parent_level": 1,
+      "child_level": 2,
+      "parent_name": "excitatory",
+      "parent_global_idx": 0,
+      "children": [
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "child_global_indices": [
+        4,
+        5
+      ],
+      "n_children": 2
+    },
+    {
+      "parent_level": 1,
+      "child_level": 2,
+      "parent_name": "inhibitory",
+      "parent_global_idx": 1,
+      "children": [
+        "BasketFam",
+        "BipFam",
+        "MartFam",
+        "NglFam"
+      ],
+      "child_global_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "n_children": 4
+    }
+  ],
+  "level_classes": [
+    [
+      "neuron"
+    ],
+    [
+      "excitatory",
+      "inhibitory"
+    ],
+    [
+      "BasketFam",
+      "BipFam",
+      "MartFam",
+      "NglFam",
+      "pyramidal",
+      "thalamocortical"
+    ]
+  ],
+  "shared_database_predictions_written": false
+}

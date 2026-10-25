@@ -1,0 +1,80 @@
+{
+  "jobs": [
+    {
+      "index": 0,
+      "architecture": "Mean",
+      "config": "analysis/all_windows/linear_vs_resnet/configs/00.json",
+      "source_report": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n10_fold0.json",
+      "source_sha256": "7a88fb11ff96bb6960626c31a3fd976672109c1c07e6e9edb35e157543eb1606",
+      "linear_report": "results/all_windows/linear_vs_resnet/gnn_lcpn_scratch_mean_n10_fold0.json",
+      "classes": [
+        "astrocyte",
+        "microglia",
+        "oligo",
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ]
+    },
+    {
+      "index": 1,
+      "architecture": "MPNN L2 + LPE + relative position",
+      "config": "analysis/all_windows/linear_vs_resnet/configs/01.json",
+      "source_report": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_position_lpe_resnet4x128_n10_fold0.json",
+      "source_sha256": "a3cde834bfb80b31ca0ff3536384ac05eb799c7c1359495565bf12354ebd80f3",
+      "linear_report": "results/all_windows/linear_vs_resnet/gnn_lcpn_scratch_mpnn_L2_position_lpe_n10_fold0.json",
+      "classes": [
+        "astrocyte",
+        "microglia",
+        "oligo",
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ]
+    },
+    {
+      "index": 2,
+      "architecture": "GT L4 + LPE + relative position",
+      "config": "analysis/all_windows/linear_vs_resnet/configs/02.json",
+      "source_report": "results/all_windows/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_fold0.json",
+      "source_sha256": "9b9875b77a5f2b356d59694f74bf20f064332595f466511338d29bc5f5019e15",
+      "linear_report": "results/all_windows/linear_vs_resnet/gnn_lcpn_scratch_gt_L4_H4_n10_fold0.json",
+      "classes": [
+        "astrocyte",
+        "microglia",
+        "oligo",
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ]
+    },
+    {
+      "index": 3,
+      "architecture": "Pointwise MLP L2",
+      "config": "analysis/all_windows/linear_vs_resnet/configs/03.json",
+      "source_report": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_fold0.json",
+      "source_sha256": "885278188ba4cd4789426434a8d3d8fb6e1bd9fef0b860ce9fb3d679ecbff98a",
+      "linear_report": "results/all_windows/linear_vs_resnet/gnn_lcpn_scratch_pointwise_mlp_L2_n10_fold0.json",
+      "classes": [
+        "astrocyte",
+        "microglia",
+        "oligo",
+        "putative_cge",
+        "putative_parvalbumin",
+        "putative_somatostatin",
+        "pyramidal",
+        "thalamocortical"
+      ]
+    }
+  ],
+  "manifest_sha256": "97f38548ddf14d79a719281c221f9fcc3eb93935e6e2f46acb4108ff754f1851",
+  "window_nodes": 10,
+  "epochs": 16,
+  "seed": 0
+}

@@ -173,6 +173,7 @@ class ModelConfig:
 
 
 class WindowClassifier(nn.Module):
+    supports_batch_shape = True
     def __init__(self, config: ModelConfig, hierarchy: ParsedHierarchy):
         super().__init__()
         self.config = config
@@ -377,16 +378,16 @@ class WindowClassifier(nn.Module):
         )
 
     def forward(self, x, edge_index, batch_index, pos_enc=None, rel_pos=None,
-                thickness=None, has_segclr=None, postsynaptic_embedding=None):
+                thickness=None, has_segclr=None, postsynaptic_embedding=None, batch_shape=None, node_valid=None, dense_adjacency=None):
         g = self._encode(x, edge_index, batch_index, pos_enc, rel_pos,
-                         thickness, has_segclr)
+                         thickness, has_segclr, batch_shape, node_valid, dense_adjacency)
         if self.config.postsynaptic_dim:
             if (postsynaptic_embedding is None or
                     postsynaptic_embedding.shape != (g.shape[0], self.config.postsynaptic_dim)):
                 raise ValueError('Expected one postsynaptic embedding per pooled window')
             g = torch.cat((g, postsynaptic_embedding.to(dtype=g.dtype)), dim=-1)
         if self.config.append_presynaptic_mean:
-            raw_mean = MeanReadout()(x, batch_index)
+            raw_mean = MeanReadout()(x, batch_index, None if batch_shape is None else batch_shape[0], node_valid)
             g = torch.cat((g, raw_mean.to(dtype=g.dtype)), dim=-1)
         return g
 
@@ -404,6 +405,9 @@ class WindowClassifier(nn.Module):
         rel_pos: torch.Tensor | None = None,
         thickness: torch.Tensor | None = None,
         has_segclr: torch.Tensor | None = None,
+        batch_shape: tuple[int, int] | None = None,
+        node_valid: torch.Tensor | None = None,
+        dense_adjacency: torch.Tensor | None = None,
     ) -> torch.Tensor:
         """Returns g: (B, cls_in_dim), one embedding per window, ready for
         self.cls_head.
@@ -435,7 +439,8 @@ class WindowClassifier(nn.Module):
                     "WindowedGraphDatasetLCPN(..., use_thickness=True))"
                 )
             return self.graph_transformer(
-                x, edge_index, batch_index, pos_enc, rel_pos, thickness, has_segclr
+                x, edge_index, batch_index, pos_enc, rel_pos, thickness, has_segclr,
+                batch_shape=batch_shape, node_valid=node_valid, dense_adjacency=dense_adjacency,
             )
 
         if self.pointwise_mlp is not None:
@@ -445,11 +450,11 @@ class WindowClassifier(nn.Module):
             # and ignored here rather than rejected, exactly as the "mean" and
             # "mpnn" paths ignore what they don't consume -- the constructor is
             # where an attempt to actually switch them on is refused.
-            return self.readout(self.pointwise_mlp(x), batch_index)
+            return self.readout(self.pointwise_mlp(x), batch_index, None if batch_shape is None else batch_shape[0], node_valid)
 
         if self.linear is not None:
             # Same contract as the pointwise MLP above, one Linear deep.
-            return self.readout(self.linear(x), batch_index)
+            return self.readout(self.linear(x), batch_index, None if batch_shape is None else batch_shape[0], node_valid)
 
         node_input = self._node_features(x, pos_enc, rel_pos)
         if self.encoder is not None:
@@ -465,7 +470,7 @@ class WindowClassifier(nn.Module):
             z = self.encoder(node_input, edge_index)
         else:
             z = node_input
-        return self.readout(z, batch_index)
+        return self.readout(z, batch_index, None if batch_shape is None else batch_shape[0], node_valid)
 
     def _node_features(
         self,

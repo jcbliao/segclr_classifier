@@ -37,6 +37,10 @@ sbatch scripts/sbatch/train_config.sh configs/graph_transformer/fixed_node.json 
 
 [Configuration recipes](configs/README.md) provide JSON defaults for the existing trainer. Explicit command-line options override those defaults. Existing training launchers continue to work.
 
+GPU training defaults to FP16 with gradient scaling, fused Adam, parallel packing of clean windows, GPU-resident features when memory permits, and asynchronous batch transfers. This applies to whole-cell and presynaptic windows through the shared trainer and existing launchers. Supported deterministic mean, linear, pointwise MLP and graph-transformer LCPN runs also replay full training steps with CUDA graphs. Presynaptic epoch plans are prepared in parallel without changing draws or batch boundaries. MPNN, dropout, batch-normalized and flat-head runs retain their model behavior with the compatible loading/transfer optimizations; stochastic embedding augmentation retains its original sampling path.
+
+Packing/residency falls back to streaming when memory is insufficient. CPU training remains available. Use `--no-amp`, `--no-optimized-loading`, or `--no-cuda-graphs` to explicitly override the shared defaults (the corresponding JSON keys are `amp`, `optimized_loading`, and `cuda_graphs`). Existing explicit configuration values continue to take precedence. The paired-axon trainer also defaults to FP16/scaler, fused AdamW, parallel bag packing, GPU residency when possible, asynchronous transfers and precomputed seeded plans; its original masked pooling, gradient clipping and optimizer choice are preserved.
+
 ## Repository layout
 
 ```text

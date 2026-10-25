@@ -1,0 +1,12 @@
+{
+  "status": "features_submitted",
+  "label_confidence_min": 0,
+  "segclr_run": "resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k__20261022_140504",
+  "segclr_checkpoint": "checkpoint_e0_s100000",
+  "point_plan": "26830969",
+  "segclr_preprocessing_parity": "26831217",
+  "embedding_array": "26831218",
+  "feature_assembly": "26831219",
+  "submission_policy": "Classifier arrays are submitted only after embedding assembly to respect the GPU QOS cap.",
+  "classifier_dispatch": "26831475"
+}

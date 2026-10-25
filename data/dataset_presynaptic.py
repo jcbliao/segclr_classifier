@@ -20,6 +20,7 @@ from torch_geometric.data import Data
 
 from data.dataset_lcpn import load_hierarchy, split_cells
 from data.geodesic_window import REL_POS_SCALE_NM
+from data.segmentation_augmentation import TRAINING_POLICIES, training_choice_indices
 from gnn.hierarchy import with_dropped_labels
 
 DEFAULT_DATABASE = Path("/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10")
@@ -30,18 +31,29 @@ DEFAULT_AUGMENTATION_DATABASE = Path(
 NON_NEURON_LABELS = {"astrocyte", "microglia", "oligo", "OPC"}
 
 
-def load_cell_arrays(path: Path, variant: str) -> dict[str, np.ndarray]:
+def load_cell_arrays(path: Path, variant: str, single_presynaptic_embedding: bool = False) -> dict[str, np.ndarray]:
     """Decode one cell exactly as the training loader does before caching it."""
     with np.load(path) as z:
         if "geometry_path" in z:
             with np.load(str(z['geometry_path'])) as geo, np.load(str(z['embedding_path'])) as emb:
                 original = geo['original_node_ids']
                 ids = emb['node_ids']
-                locations = np.searchsorted(ids, original)
-                if len(locations) and (locations.max() >= len(ids) or not np.array_equal(ids[locations], original)):
-                    raise ValueError(f'Missing named embeddings for cell {path.stem}')
+                sparse = bool(z['center_embeddings_only']) if 'center_embeddings_only' in z else False
+                if sparse:
+                    if not single_presynaptic_embedding:
+                        raise ValueError('Center-only features require single-presynaptic-embedding mode')
+                    observed = emb['local_node_ids'].astype(np.int32)
+                    if np.any(observed < 0) or np.any(observed >= len(original)) or len(np.unique(observed)) != len(observed):
+                        raise ValueError('Invalid sparse center node IDs')
+                    np.testing.assert_array_equal(ids, original[observed])
+                    locations = np.arange(len(ids))
+                else:
+                    observed = np.arange(len(original), dtype=np.int32)
+                    locations = np.searchsorted(ids, original)
+                    if len(locations) and (locations.max() >= len(ids) or not np.array_equal(ids[locations], original)):
+                        raise ValueError(f'Missing named embeddings for cell {path.stem}')
                 cell = dict(pos=geo['pos_nm'].copy(), edges=geo['edges'].copy(),
-                            observed_ids=np.arange(len(original), dtype=np.int32),
+                            observed_ids=observed,
                             observed_x=emb['embeddings'][locations].copy(),
                             original_node_ids=original.copy())
         else:
@@ -194,13 +206,15 @@ class PresynapticWindowDataset(Dataset):
             self._cache.move_to_end(root_id)
             return self._cache[root_id]
         if self.memmap_root is None:
-            cell = load_cell_arrays(self.cell_dir / f"{root_id}.npz", self.variant)
+            cell = load_cell_arrays(self.cell_dir / f"{root_id}.npz", self.variant, self.single_presynaptic_embedding)
         else:
             directory = self.memmap_root / str(root_id)
             cell = {name: np.load(directory / f'{name}.npy', mmap_mode='c')
                     for name in self._memmap_keys[root_id]}
         if self.embedding_augmentation is not None:
-            path = (self.augmentation_database / self.embedding_augmentation /
+            segmentation_policy = self.embedding_augmentation in TRAINING_POLICIES
+            source_policy = "segmask" if segmentation_policy else self.embedding_augmentation
+            path = (self.augmentation_database / source_policy /
                     "cells" / f"{root_id}.npz")
             if not path.is_file():
                 raise FileNotFoundError(f"Missing packed augmentation choices: {path}")
@@ -208,10 +222,24 @@ class PresynapticWindowDataset(Dataset):
                 node_ids = z["node_ids"].copy()
                 choices = z["embedding_choices"].copy()
                 policy = str(z["augmentation_id"])
-            if (policy != self.embedding_augmentation or choices.ndim != 3
+                if segmentation_policy:
+                    choice_labels = z["choice_labels"].tolist()
+                    selected = training_choice_indices(self.embedding_augmentation, choice_labels)
+                    clean_index = choice_labels.index("clean")
+            if (policy != source_policy or choices.ndim != 3
                     or choices.shape[0] != len(node_ids) or choices.shape[1] < 2
                     or choices.shape[2] != 64):
                 raise ValueError(f"Invalid packed augmentation choices: {path}")
+            if segmentation_policy:
+                choices = choices[:, selected, :].copy()
+                # Use the original clean inputs for a fair comparison to saved baselines.
+                locations = np.searchsorted(cell["observed_ids"], node_ids)
+                if (len(locations) and (locations.max() >= len(cell["observed_ids"]) or
+                        not np.array_equal(cell["observed_ids"][locations], node_ids))):
+                    raise ValueError(f"Augmented nodes absent from clean source: {root_id}")
+                for slot, original in enumerate(selected):
+                    if original == clean_index:
+                        choices[:, slot] = cell["observed_x"][locations]
             cell["augmentation_choices"] = choices
             cell["augmentation_lookup"] = {
                 int(node): row for row, node in enumerate(node_ids)
@@ -372,10 +400,14 @@ class AttentionBudgetBatchSampler(Sampler[list[int]]):
             sampled = np.random.default_rng(self.seed + self.epoch).choice(
                 len(labels), size=len(labels), replace=True, p=probabilities
             )
-            sampled_by_cell: dict[int, list[int]] = defaultdict(list)
-            for index in sampled:
-                sampled_by_cell[int(self.dataset.index_root_ids[index])].append(int(index))
-            by_cell = sampled_by_cell
+            sampled_roots = self.dataset.index_root_ids[sampled]
+            order = np.argsort(sampled_roots, kind="stable")
+            keys, starts = np.unique(sampled_roots[order], return_index=True)
+            ends = np.r_[starts[1:], len(order)]
+            first_occurrence = np.minimum.reduceat(order, starts)
+            # Dict insertion order controls subsequent seeded shuffles: retain it exactly.
+            by_cell = {int(keys[i]): sampled[order[starts[i]:ends[i]]].tolist()
+                       for i in np.argsort(first_occurrence)}
 
         cells = list(by_cell)
         if self.shuffle:
@@ -389,7 +421,8 @@ class AttentionBudgetBatchSampler(Sampler[list[int]]):
             # Exact sorting avoids padding every 129-node graph as though it
             # had 256 nodes, which the old power-of-two bands did.  Greedy
             # batches therefore use the requested attention budget closely.
-            indices.sort(key=lambda index: int(self.dataset.window_sizes[index]))
+            array = np.asarray(indices, dtype=np.int64)
+            indices = array[np.argsort(self.dataset.window_sizes[array], kind="stable")].tolist()
             batch, largest = [], 0
             for index in indices:
                 size = int(self.dataset.window_sizes[index]) + 1  # CLS

@@ -1,0 +1,33 @@
+{
+  "normal_workers": 25641194,
+  "preemptable_workers": 25641195,
+  "gpu_validation": 25641189,
+  "density_preparation": 25641132,
+  "total_training_runs": 204,
+  "normal_max_concurrent": 4,
+  "preemptable_max_concurrent": 4,
+  "cpu_per_worker": 16,
+  "preemptable_segment_minutes": 30,
+  "structure_cache_array": 25641618,
+  "structure_inference_array": 25641631,
+  "augmentation_propagation": 25641712,
+  "initial_notebook_render": 25641842,
+  "final_notebook_render": 25641783,
+  "packing_cpu_array": 25643707,
+  "packing_cache_groups": 114,
+  "packing_max_concurrent": null,
+  "packing_cpu_per_job": 16,
+  "normal_training_runs": 102,
+  "preemptable_training_runs": 102,
+  "packing_array_throttle": 0,
+  "packing_oversize_retry_array": 25658415,
+  "h200_training_array": 25658709,
+  "h200_training_tasks": [
+    100,
+    101,
+    102,
+    103
+  ],
+  "remaining_training_partition": "mit_normal_gpu",
+  "preemptable_workers_cancelled": true
+}

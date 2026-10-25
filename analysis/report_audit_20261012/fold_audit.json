@@ -1,0 +1,1570 @@
+{
+  "scope": "Report outline: canonical n10 whole-cell heads, historical balanced-sampling skeleton and density comparisons, six-class pre/post models including matched-width controls, all confidence thresholds, GT augmentation, V1DD, paired axon/dendrite experiment. Excludes historical alternative architectures/window sizes and three-class prediction deployment experiments.",
+  "summary": [
+    {
+      "experiment": "Whole-cell linear versus ResNet",
+      "configurations": 8,
+      "expected_runs": 40,
+      "completed_runs": 8,
+      "missing_runs": 32
+    },
+    {
+      "experiment": "Historical TEASAR density sweep",
+      "configurations": 12,
+      "expected_runs": 60,
+      "completed_runs": 12,
+      "missing_runs": 48
+    },
+    {
+      "experiment": "Historical CAVE versus original mesh TEASAR",
+      "configurations": 3,
+      "expected_runs": 15,
+      "completed_runs": 3,
+      "missing_runs": 12
+    },
+    {
+      "experiment": "V1DD addition",
+      "configurations": 6,
+      "expected_runs": 30,
+      "completed_runs": 6,
+      "missing_runs": 24
+    },
+    {
+      "experiment": "TEASAR neighborhood pre/post",
+      "configurations": 9,
+      "expected_runs": 45,
+      "completed_runs": 17,
+      "missing_runs": 28
+    },
+    {
+      "experiment": "Single-embedding pre/post",
+      "configurations": 9,
+      "expected_runs": 45,
+      "completed_runs": 13,
+      "missing_runs": 32
+    },
+    {
+      "experiment": "CAVE six-class pre+post",
+      "configurations": 3,
+      "expected_runs": 15,
+      "completed_runs": 5,
+      "missing_runs": 10
+    },
+    {
+      "experiment": "Morpho CAVE/TEASAR confidence sweep",
+      "configurations": 30,
+      "expected_runs": 150,
+      "completed_runs": 150,
+      "missing_runs": 0
+    },
+    {
+      "experiment": "EM augmentation",
+      "configurations": 4,
+      "expected_runs": 20,
+      "completed_runs": 20,
+      "missing_runs": 0
+    },
+    {
+      "experiment": "Paired axon versus axon+dendrite",
+      "configurations": 2,
+      "expected_runs": 10,
+      "completed_runs": 10,
+      "missing_runs": 0
+    }
+  ],
+  "missing_fold_runs": 186,
+  "v1dd_additional_fold0_reruns_for_microns_selection": 3,
+  "optional_matched_cave_preonly_and_meancontrol_runs": 30,
+  "groups": [
+    {
+      "category": "Whole-cell linear versus ResNet",
+      "report_pattern": "results/all_windows/linear_vs_resnet/gnn_lcpn_scratch_mean_n10_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/all_windows/linear_vs_resnet/gnn_lcpn_scratch_mean_n10_fold0.json"
+      ]
+    },
+    {
+      "category": "Whole-cell linear versus ResNet",
+      "report_pattern": "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n10_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n10_fold0.json"
+      ]
+    },
+    {
+      "category": "Whole-cell linear versus ResNet",
+      "report_pattern": "results/all_windows/linear_vs_resnet/gnn_lcpn_scratch_pointwise_mlp_L2_n10_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/all_windows/linear_vs_resnet/gnn_lcpn_scratch_pointwise_mlp_L2_n10_fold0.json"
+      ]
+    },
+    {
+      "category": "Whole-cell linear versus ResNet",
+      "report_pattern": "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/all_windows/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_fold0.json"
+      ]
+    },
+    {
+      "category": "Whole-cell linear versus ResNet",
+      "report_pattern": "results/all_windows/linear_vs_resnet/gnn_lcpn_scratch_mpnn_L2_position_lpe_n10_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/all_windows/linear_vs_resnet/gnn_lcpn_scratch_mpnn_L2_position_lpe_n10_fold0.json"
+      ]
+    },
+    {
+      "category": "Whole-cell linear versus ResNet",
+      "report_pattern": "results/all_windows/gnn_lcpn_scratch_mpnn_L2_position_lpe_resnet4x128_n10_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/all_windows/gnn_lcpn_scratch_mpnn_L2_position_lpe_resnet4x128_n10_fold0.json"
+      ]
+    },
+    {
+      "category": "Whole-cell linear versus ResNet",
+      "report_pattern": "results/all_windows/linear_vs_resnet/gnn_lcpn_scratch_gt_L4_H4_n10_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/all_windows/linear_vs_resnet/gnn_lcpn_scratch_gt_L4_H4_n10_fold0.json"
+      ]
+    },
+    {
+      "category": "Whole-cell linear versus ResNet",
+      "report_pattern": "results/all_windows/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/all_windows/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_fold0.json"
+      ]
+    },
+    {
+      "category": "Historical TEASAR density sweep",
+      "report_pattern": "results/presynaptic/new_skeletons_native/local_center/scale4/k65/balanced_sampling/gnn_lcpn_scratch_mean_resnet4x128_n65_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/new_skeletons_native/local_center/scale4/k65/balanced_sampling/gnn_lcpn_scratch_mean_resnet4x128_n65_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "Historical TEASAR density sweep",
+      "report_pattern": "results/presynaptic/new_skeletons_native/local_center/scale4/k65/balanced_sampling/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n65_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/new_skeletons_native/local_center/scale4/k65/balanced_sampling/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n65_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "Historical TEASAR density sweep",
+      "report_pattern": "results/presynaptic/new_skeletons_native/local_center/scale4/k65/balanced_sampling/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n65_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/new_skeletons_native/local_center/scale4/k65/balanced_sampling/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n65_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "Historical TEASAR density sweep",
+      "report_pattern": "results/presynaptic/new_skeletons_native/local_center/scale8/k33/balanced_sampling/gnn_lcpn_scratch_mean_resnet4x128_n33_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/new_skeletons_native/local_center/scale8/k33/balanced_sampling/gnn_lcpn_scratch_mean_resnet4x128_n33_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "Historical TEASAR density sweep",
+      "report_pattern": "results/presynaptic/new_skeletons_native/local_center/scale8/k33/balanced_sampling/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n33_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/new_skeletons_native/local_center/scale8/k33/balanced_sampling/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n33_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "Historical TEASAR density sweep",
+      "report_pattern": "results/presynaptic/new_skeletons_native/local_center/scale8/k33/balanced_sampling/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n33_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/new_skeletons_native/local_center/scale8/k33/balanced_sampling/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n33_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "Historical TEASAR density sweep",
+      "report_pattern": "results/presynaptic/new_skeletons_native/local_center/scale16/k17/balanced_sampling/gnn_lcpn_scratch_mean_resnet4x128_n17_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/new_skeletons_native/local_center/scale16/k17/balanced_sampling/gnn_lcpn_scratch_mean_resnet4x128_n17_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "Historical TEASAR density sweep",
+      "report_pattern": "results/presynaptic/new_skeletons_native/local_center/scale16/k17/balanced_sampling/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/new_skeletons_native/local_center/scale16/k17/balanced_sampling/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "Historical TEASAR density sweep",
+      "report_pattern": "results/presynaptic/new_skeletons_native/local_center/scale16/k17/balanced_sampling/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/new_skeletons_native/local_center/scale16/k17/balanced_sampling/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "Historical TEASAR density sweep",
+      "report_pattern": "results/presynaptic/new_skeletons_native/local_center/scale32/k9/balanced_sampling/gnn_lcpn_scratch_mean_resnet4x128_n9_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/new_skeletons_native/local_center/scale32/k9/balanced_sampling/gnn_lcpn_scratch_mean_resnet4x128_n9_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "Historical TEASAR density sweep",
+      "report_pattern": "results/presynaptic/new_skeletons_native/local_center/scale32/k9/balanced_sampling/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n9_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/new_skeletons_native/local_center/scale32/k9/balanced_sampling/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n9_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "Historical TEASAR density sweep",
+      "report_pattern": "results/presynaptic/new_skeletons_native/local_center/scale32/k9/balanced_sampling/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n9_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/new_skeletons_native/local_center/scale32/k9/balanced_sampling/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n9_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "Historical CAVE versus original mesh TEASAR",
+      "report_pattern": "results/presynaptic/cave_skeletons/balanced_sampling/gnn_lcpn_scratch_mean_resnet4x128_n10_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/cave_skeletons/balanced_sampling/gnn_lcpn_scratch_mean_resnet4x128_n10_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "Historical CAVE versus original mesh TEASAR",
+      "report_pattern": "results/presynaptic/cave_skeletons/balanced_sampling/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/cave_skeletons/balanced_sampling/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "Historical CAVE versus original mesh TEASAR",
+      "report_pattern": "results/presynaptic/new_skeletons/balanced_sampling/gnn_lcpn_scratch_gt_teasar_L4_H4_resnet4x128_n10_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/new_skeletons/balanced_sampling/gnn_lcpn_scratch_gt_teasar_L4_H4_resnet4x128_n10_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "V1DD addition",
+      "report_pattern": "results/presynaptic/cave_v1dd_addition/no_v1dd/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/cave_v1dd_addition/no_v1dd/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "V1DD addition",
+      "report_pattern": "results/presynaptic/cave_v1dd_addition/no_v1dd/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/cave_v1dd_addition/no_v1dd/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "V1DD addition",
+      "report_pattern": "results/presynaptic/cave_v1dd_addition/no_v1dd/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/cave_v1dd_addition/no_v1dd/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "V1DD addition",
+      "report_pattern": "results/presynaptic/cave_v1dd_addition/with_v1dd/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/cave_v1dd_addition/with_v1dd/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "V1DD addition",
+      "report_pattern": "results/presynaptic/cave_v1dd_addition/with_v1dd/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/cave_v1dd_addition/with_v1dd/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "V1DD addition",
+      "report_pattern": "results/presynaptic/cave_v1dd_addition/with_v1dd/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/cave_v1dd_addition/with_v1dd/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0.json"
+      ]
+    },
+    {
+      "category": "TEASAR neighborhood pre/post",
+      "report_pattern": "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold[0-4]/pre_only/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_pre_only_matched_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold0/pre_only/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_pre_only_matched_fold0.json"
+      ]
+    },
+    {
+      "category": "TEASAR neighborhood pre/post",
+      "report_pattern": "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold[0-4]/pre_only/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_pre_only_matched_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold0/pre_only/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_pre_only_matched_fold0.json"
+      ]
+    },
+    {
+      "category": "TEASAR neighborhood pre/post",
+      "report_pattern": "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold[0-4]/pre_only/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_only_matched_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold0/pre_only/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_only_matched_fold0.json"
+      ]
+    },
+    {
+      "category": "TEASAR neighborhood pre/post",
+      "report_pattern": "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold[0-4]/pre_post/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_pre_post_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold0/pre_post/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_pre_post_fold0.json"
+      ]
+    },
+    {
+      "category": "TEASAR neighborhood pre/post",
+      "report_pattern": "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold[0-4]/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_pre_post_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold0/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_pre_post_fold0.json",
+        "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold1/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_pre_post_fold1.json",
+        "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold2/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_pre_post_fold2.json",
+        "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold3/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_pre_post_fold3.json",
+        "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold4/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_pre_post_fold4.json"
+      ]
+    },
+    {
+      "category": "TEASAR neighborhood pre/post",
+      "report_pattern": "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold[0-4]/pre_post/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_post_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold0/pre_post/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_post_fold0.json",
+        "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold1/pre_post/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_post_fold1.json",
+        "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold2/pre_post/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_post_fold2.json",
+        "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold3/pre_post/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_post_fold3.json",
+        "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold4/pre_post/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_post_fold4.json"
+      ]
+    },
+    {
+      "category": "TEASAR neighborhood pre/post",
+      "report_pattern": "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold[0-4]/pre_mean_control/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_pre_mean_control_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold0/pre_mean_control/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_pre_mean_control_fold0.json"
+      ]
+    },
+    {
+      "category": "TEASAR neighborhood pre/post",
+      "report_pattern": "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold[0-4]/pre_mean_control/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_pre_mean_control_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold0/pre_mean_control/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_pre_mean_control_fold0.json"
+      ]
+    },
+    {
+      "category": "TEASAR neighborhood pre/post",
+      "report_pattern": "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold[0-4]/pre_mean_control/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_mean_control_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/native_skeletons_pre_post/scale16/k17/conf0.7/fold0/pre_mean_control/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_mean_control_fold0.json"
+      ]
+    },
+    {
+      "category": "Single-embedding pre/post",
+      "report_pattern": "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold[0-4]/pre_only/gnn_lcpn_scratch_mean_resnet4x128_n1_mixed16_sampled_pre_only_matched_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold0/pre_only/gnn_lcpn_scratch_mean_resnet4x128_n1_mixed16_sampled_pre_only_matched_fold0.json"
+      ]
+    },
+    {
+      "category": "Single-embedding pre/post",
+      "report_pattern": "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold[0-4]/pre_only/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_only_matched_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold0/pre_only/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_only_matched_fold0.json"
+      ]
+    },
+    {
+      "category": "Single-embedding pre/post",
+      "report_pattern": "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold[0-4]/pre_only/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n1_mixed16_sampled_pre_only_matched_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold0/pre_only/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n1_mixed16_sampled_pre_only_matched_fold0.json"
+      ]
+    },
+    {
+      "category": "Single-embedding pre/post",
+      "report_pattern": "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold[0-4]/pre_post/gnn_lcpn_scratch_mean_resnet4x128_n1_mixed16_sampled_pre_post_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold0/pre_post/gnn_lcpn_scratch_mean_resnet4x128_n1_mixed16_sampled_pre_post_fold0.json"
+      ]
+    },
+    {
+      "category": "Single-embedding pre/post",
+      "report_pattern": "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold[0-4]/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold0/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_fold0.json",
+        "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold1/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_fold1.json",
+        "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold2/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_fold2.json",
+        "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold3/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_fold3.json",
+        "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold4/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_fold4.json"
+      ]
+    },
+    {
+      "category": "Single-embedding pre/post",
+      "report_pattern": "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold[0-4]/pre_post/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n1_mixed16_sampled_pre_post_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold0/pre_post/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n1_mixed16_sampled_pre_post_fold0.json"
+      ]
+    },
+    {
+      "category": "Single-embedding pre/post",
+      "report_pattern": "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold[0-4]/pre_mean_control/gnn_lcpn_scratch_mean_resnet4x128_n1_mixed16_sampled_pre_mean_control_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold0/pre_mean_control/gnn_lcpn_scratch_mean_resnet4x128_n1_mixed16_sampled_pre_mean_control_fold0.json"
+      ]
+    },
+    {
+      "category": "Single-embedding pre/post",
+      "report_pattern": "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold[0-4]/pre_mean_control/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_mean_control_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold0/pre_mean_control/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_mean_control_fold0.json"
+      ]
+    },
+    {
+      "category": "Single-embedding pre/post",
+      "report_pattern": "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold[0-4]/pre_mean_control/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n1_mixed16_sampled_pre_mean_control_fold[0-4].json",
+      "completed_folds": [
+        0
+      ],
+      "missing_folds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": [
+        "results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold0/pre_mean_control/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n1_mixed16_sampled_pre_mean_control_fold0.json"
+      ]
+    },
+    {
+      "category": "CAVE six-class pre+post",
+      "report_pattern": "results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold[0-4]/pre_post/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_pre_post_fold[0-4].json",
+      "completed_folds": [],
+      "missing_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": []
+    },
+    {
+      "category": "CAVE six-class pre+post",
+      "report_pattern": "results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold[0-4]/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold0/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold0.json",
+        "results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold1/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold1.json",
+        "results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold2/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold2.json",
+        "results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold3/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold3.json",
+        "results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold4/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold4.json"
+      ]
+    },
+    {
+      "category": "CAVE six-class pre+post",
+      "report_pattern": "results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold[0-4]/pre_post/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_pre_post_fold[0-4].json",
+      "completed_folds": [],
+      "missing_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reports": []
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_confidence_cave/k10/conf0/fold[0-4]/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_confidence_cave/k10/conf0/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0/fold1/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0/fold2/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0/fold3/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0/fold4/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_confidence_cave/k10/conf0/fold[0-4]/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_confidence_cave/k10/conf0/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0/fold1/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0/fold2/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0/fold3/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0/fold4/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_confidence_cave/k10/conf0/fold[0-4]/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_confidence_cave/k10/conf0/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0/fold1/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0/fold2/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0/fold3/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0/fold4/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold[0-4]/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold1/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold2/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold3/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold4/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold[0-4]/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold1/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold2/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold3/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold4/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold[0-4]/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold1/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold2/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold3/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.3/fold4/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold[0-4]/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold1/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold2/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold3/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold4/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold[0-4]/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold1/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold2/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold3/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold4/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold[0-4]/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold1/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold2/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold3/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.5/fold4/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold[0-4]/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold1/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold2/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold3/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold4/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold[0-4]/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold1/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold2/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold3/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold4/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold[0-4]/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold1/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold2/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold3/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.7/fold4/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold[0-4]/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold1/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold2/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold3/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold4/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold[0-4]/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold1/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold2/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold3/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold4/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold[0-4]/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold1/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold2/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold3/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_confidence_cave/k10/conf0.9/fold4/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold[0-4]/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold1/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold2/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold3/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold4/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold[0-4]/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold1/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold2/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold3/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold4/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold[0-4]/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold1/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold2/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold3/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold4/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold[0-4]/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold1/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold2/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold3/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold4/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold[0-4]/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold1/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold2/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold3/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold4/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold[0-4]/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold1/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold2/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold3/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold4/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold[0-4]/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold1/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold2/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold3/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold4/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold[0-4]/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold1/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold2/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold3/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold4/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold[0-4]/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold1/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold2/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold3/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold4/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold[0-4]/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold1/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold2/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold3/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold4/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold[0-4]/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold1/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold2/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold3/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold4/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold[0-4]/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold1/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold2/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold3/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold4/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold[0-4]/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold1/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold2/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold3/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold4/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold[0-4]/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold1/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold2/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold3/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold4/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Morpho CAVE/TEASAR confidence sweep",
+      "report_pattern": "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold[0-4]/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold1/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold1.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold2/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold2.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold3/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold3.json",
+        "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold4/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "EM augmentation",
+      "report_pattern": "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_clean_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_clean_sampled_fold0.json",
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_clean_sampled_fold1.json",
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_clean_sampled_fold2.json",
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_clean_sampled_fold3.json",
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_clean_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "EM augmentation",
+      "report_pattern": "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_flip_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_flip_sampled_fold0.json",
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_flip_sampled_fold1.json",
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_flip_sampled_fold2.json",
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_flip_sampled_fold3.json",
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_flip_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "EM augmentation",
+      "report_pattern": "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_gray_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_gray_sampled_fold0.json",
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_gray_sampled_fold1.json",
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_gray_sampled_fold2.json",
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_gray_sampled_fold3.json",
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_gray_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "EM augmentation",
+      "report_pattern": "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_structured_low_sampled_fold[0-4].json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_structured_low_sampled_fold0.json",
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_structured_low_sampled_fold1.json",
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_structured_low_sampled_fold2.json",
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_structured_low_sampled_fold3.json",
+        "results/presynaptic/cave_embedding_augmentation_conf0.7/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_embaug_structured_low_sampled_fold4.json"
+      ]
+    },
+    {
+      "category": "Paired axon versus axon+dendrite",
+      "report_pattern": "results/presynaptic/axon_vs_whole_cell_morpho6/fold[0-4]/axon_only/complete.json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/axon_vs_whole_cell_morpho6/fold0/axon_only/complete.json",
+        "results/presynaptic/axon_vs_whole_cell_morpho6/fold1/axon_only/complete.json",
+        "results/presynaptic/axon_vs_whole_cell_morpho6/fold2/axon_only/complete.json",
+        "results/presynaptic/axon_vs_whole_cell_morpho6/fold3/axon_only/complete.json",
+        "results/presynaptic/axon_vs_whole_cell_morpho6/fold4/axon_only/complete.json"
+      ]
+    },
+    {
+      "category": "Paired axon versus axon+dendrite",
+      "report_pattern": "results/presynaptic/axon_vs_whole_cell_morpho6/fold[0-4]/axon_dendrite/complete.json",
+      "completed_folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "missing_folds": [],
+      "reports": [
+        "results/presynaptic/axon_vs_whole_cell_morpho6/fold0/axon_dendrite/complete.json",
+        "results/presynaptic/axon_vs_whole_cell_morpho6/fold1/axon_dendrite/complete.json",
+        "results/presynaptic/axon_vs_whole_cell_morpho6/fold2/axon_dendrite/complete.json",
+        "results/presynaptic/axon_vs_whole_cell_morpho6/fold3/axon_dendrite/complete.json",
+        "results/presynaptic/axon_vs_whole_cell_morpho6/fold4/axon_dendrite/complete.json"
+      ]
+    }
+  ]
+}

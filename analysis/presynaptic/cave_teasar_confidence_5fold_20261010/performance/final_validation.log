@@ -1,0 +1,6 @@
+.......................................................                  [100%]
+55 passed in 7.81s
+FP16 trainer + scaler checkpoint passed: mean, 1 epochs
+FP16 trainer + scaler checkpoint passed: mean, 2 epochs
+FP16 trainer + scaler checkpoint passed: pointwise_mlp, 1 epochs
+FP16 trainer + scaler checkpoint passed: graph_transformer, 1 epochs

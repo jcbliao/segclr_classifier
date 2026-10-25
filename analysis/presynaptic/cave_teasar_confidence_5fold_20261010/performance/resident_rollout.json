@@ -1,0 +1,94 @@
+{
+  "time": "2026-10-10T21:28:21.341147",
+  "jobs": [
+    {
+      "job": "25533350_17",
+      "epoch": 11,
+      "checkpoint": "results/presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold3/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold3/checkpoint_last.pt"
+    },
+    {
+      "job": "25533350_18",
+      "epoch": 24,
+      "checkpoint": "results/presynaptic/casey_confidence_cave/k10/conf0/fold4/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold4/checkpoint_last.pt"
+    },
+    {
+      "job": "25533350_20",
+      "epoch": 20,
+      "checkpoint": "results/presynaptic/casey_confidence_cave/k10/conf0/fold4/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold4/checkpoint_last.pt"
+    }
+  ],
+  "gpu_benchmark_job": "25539705",
+  "gpu_validation_job": "25539814",
+  "normal_concurrency": 4,
+  "preemptable_concurrency": 4,
+  "full_epoch_samples": {
+    "22": {
+      "epoch": 29,
+      "training_seconds": 6.647719792090356,
+      "loader_wait_host_seconds": 0.4515243899077177,
+      "evaluation_seconds": 0.5340490248054266,
+      "metrics_seconds": 0.01053226925432682,
+      "checkpoint_and_logging_seconds": 0.016447744332253933,
+      "windows": 1768115,
+      "loader_workers": 0,
+      "resident_features": true,
+      "packed_bytes": 7809763971,
+      "cuda_prefetch": true,
+      "model_step_cuda_seconds": 4.498045536756515,
+      "fused_adam": true,
+      "amp_dtype": "float16",
+      "grad_scale": 131072.0
+    },
+    "24": {
+      "epoch": 29,
+      "training_seconds": 5.366939474828541,
+      "loader_wait_host_seconds": 0.41641081776469946,
+      "evaluation_seconds": 0.44327135756611824,
+      "metrics_seconds": 0.007387329824268818,
+      "checkpoint_and_logging_seconds": 0.01380548533052206,
+      "windows": 1255321,
+      "loader_workers": 0,
+      "resident_features": true,
+      "packed_bytes": 3286430394,
+      "cuda_prefetch": true,
+      "model_step_cuda_seconds": 3.7333441599607466,
+      "fused_adam": true,
+      "amp_dtype": "float16",
+      "grad_scale": 131072.0
+    },
+    "25": {
+      "epoch": 16,
+      "training_seconds": 5.856245307251811,
+      "loader_wait_host_seconds": 0.44010346569120884,
+      "evaluation_seconds": 0.49097977858036757,
+      "metrics_seconds": 0.008028730750083923,
+      "checkpoint_and_logging_seconds": 0.01653411891311407,
+      "windows": 1255321,
+      "loader_workers": 0,
+      "resident_features": true,
+      "packed_bytes": 3286430394,
+      "cuda_prefetch": true,
+      "model_step_cuda_seconds": 4.180588795423508,
+      "fused_adam": true,
+      "amp_dtype": "float16",
+      "grad_scale": 65536.0
+    },
+    "26": {
+      "epoch": 26,
+      "training_seconds": 17.156877798959613,
+      "loader_wait_host_seconds": 0.5144174639135599,
+      "evaluation_seconds": 1.697743458673358,
+      "metrics_seconds": 0.010083935223519802,
+      "checkpoint_and_logging_seconds": 0.05462308879941702,
+      "windows": 1255321,
+      "loader_workers": 0,
+      "resident_features": true,
+      "packed_bytes": 4350942602,
+      "cuda_prefetch": true,
+      "model_step_cuda_seconds": 15.92975234413147,
+      "fused_adam": true,
+      "amp_dtype": "float16",
+      "grad_scale": 65536.0
+    }
+  }
+}

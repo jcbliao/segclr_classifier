@@ -1,0 +1,8 @@
+{
+  "job_id": 26115061,
+  "plan": "analysis/presynaptic/segmentation_augmentation/pilot_plan.json",
+  "launcher": "scripts/sbatch/segmentation_augmentation_pilot.sh",
+  "stdout": "logs/cave_segmask_pilot_26115061.out",
+  "stderr": "logs/cave_segmask_pilot_26115061.err",
+  "status": "cancelled before start; replaced by larger benchmark"
+}

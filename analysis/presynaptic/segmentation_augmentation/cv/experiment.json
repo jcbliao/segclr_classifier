@@ -1,0 +1,393 @@
+{
+  "conditions": [
+    "shrink1",
+    "expand1",
+    "both1",
+    "shrink2",
+    "expand2",
+    "both2",
+    "shrink3",
+    "expand3",
+    "both3"
+  ],
+  "folds": [
+    {
+      "fold": 0,
+      "manifest": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_confidence_cave/k10/conf0.7/fold0/manifest.json",
+      "manifest_sha256": "b347d7070d0df5fdd137c408c7dd5f1d84850bfc125480f90cefb9af4688827a",
+      "baseline": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold0/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold0.json",
+      "baseline_sha256": "64898a14b89cc9840eaa97ca4040c37110d391c46c1776d1fb37f92136d76675"
+    },
+    {
+      "fold": 1,
+      "manifest": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_confidence_cave/k10/conf0.7/fold1/manifest.json",
+      "manifest_sha256": "db385f0b88b8ae9d4a1346b3dfd0442347af374e5af8064e4c27245555cff153",
+      "baseline": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold1/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold1.json",
+      "baseline_sha256": "8569a3b0a425bb125f27f20d44c7df1eb2cf4c64d10791788ef70229dc292d0e"
+    },
+    {
+      "fold": 2,
+      "manifest": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_confidence_cave/k10/conf0.7/fold2/manifest.json",
+      "manifest_sha256": "b09916d80f7bb414e40115a2947dfe5314f10f085a9b76268420db7df82c5297",
+      "baseline": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold2/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold2.json",
+      "baseline_sha256": "7a26c7f4a41031a209196f7bb905f1688e2ca59b7ef4cf9d00e1bcedcafc4cc4"
+    },
+    {
+      "fold": 3,
+      "manifest": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_confidence_cave/k10/conf0.7/fold3/manifest.json",
+      "manifest_sha256": "95a45979959b671c31f1e36f6365a06c8258a7fbef9f123439e0f1d00055733f",
+      "baseline": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold3/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold3.json",
+      "baseline_sha256": "2cfe81caed0fc4ce5cbd15d45d885e963e3705ad46b284d307ca5fb241f6a02c"
+    },
+    {
+      "fold": 4,
+      "manifest": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_confidence_cave/k10/conf0.7/fold4/manifest.json",
+      "manifest_sha256": "baefdc49458a9a68ec19b6099c33eba6727fbddf789f8825e63f8d60aa2918a2",
+      "baseline": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold4/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold4.json",
+      "baseline_sha256": "86eea671a0864071d88b6f68aab7b7dacff8815c10f0a693be5a4b64c9eb0cd3"
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": 0,
+      "fold": 0,
+      "condition": "shrink1",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold0_shrink1.json",
+      "config_sha256": "f98d44c26f6533f3957b5e4e635fe7c0d508529c620591ff7ef509211b39e465"
+    },
+    {
+      "task_id": 1,
+      "fold": 0,
+      "condition": "expand1",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold0_expand1.json",
+      "config_sha256": "d00393735ba9f5ab8242bd61bc106d9eab5c46e5281833291a08c07c01f55dfc"
+    },
+    {
+      "task_id": 2,
+      "fold": 0,
+      "condition": "both1",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold0_both1.json",
+      "config_sha256": "4b419c5c3dda6aaa730304d2faac86c930ea0e9702c8b777ea15bf444698919b"
+    },
+    {
+      "task_id": 3,
+      "fold": 0,
+      "condition": "shrink2",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold0_shrink2.json",
+      "config_sha256": "bdd4eb51cc21622ba2fa1d9c6ff3a7b38c6fa6941e60c635a4a8a40f17ef54ed"
+    },
+    {
+      "task_id": 4,
+      "fold": 0,
+      "condition": "expand2",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold0_expand2.json",
+      "config_sha256": "097aab4e18933a7572779f62bbf5fc23c4371e74feb3351983aabda1799df8a5"
+    },
+    {
+      "task_id": 5,
+      "fold": 0,
+      "condition": "both2",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold0_both2.json",
+      "config_sha256": "9788d587342a380614e7eb8280174a31144eadb5dc76cd84942467836a4c5aae"
+    },
+    {
+      "task_id": 6,
+      "fold": 0,
+      "condition": "shrink3",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold0_shrink3.json",
+      "config_sha256": "fcc2d128fb87dfafe50c3e345ba720e6c61622f42b230d773a55b8b8600230d3"
+    },
+    {
+      "task_id": 7,
+      "fold": 0,
+      "condition": "expand3",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold0_expand3.json",
+      "config_sha256": "e35fa2ce6d0ecc1fce82e83798b4af954bb7925be777cb4657dbed8d5b58462f"
+    },
+    {
+      "task_id": 8,
+      "fold": 0,
+      "condition": "both3",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold0_both3.json",
+      "config_sha256": "e138fbe0c1dd5cba731a8b89925b19fe97675f28c59a3eb4fa7bc6f30656ba57"
+    },
+    {
+      "task_id": 9,
+      "fold": 1,
+      "condition": "shrink1",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold1_shrink1.json",
+      "config_sha256": "bf66294fd82996c1522fb66837c1fd5016bfd9bdae1d2c6ef18041cd894fdd39"
+    },
+    {
+      "task_id": 10,
+      "fold": 1,
+      "condition": "expand1",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold1_expand1.json",
+      "config_sha256": "71fd596a322b54756be3e82b2779e36dd863df85cb67a35297584db0b6ad2b05"
+    },
+    {
+      "task_id": 11,
+      "fold": 1,
+      "condition": "both1",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold1_both1.json",
+      "config_sha256": "43575215e4a1d204e8ceb3fde5cc21beb0a43e81d03e23a51ec12e64b7384e52"
+    },
+    {
+      "task_id": 12,
+      "fold": 1,
+      "condition": "shrink2",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold1_shrink2.json",
+      "config_sha256": "5f4fd161e7234f4b0cadcb085f06adf6bf5992fe5b1d29a4f98434de0c3c1a26"
+    },
+    {
+      "task_id": 13,
+      "fold": 1,
+      "condition": "expand2",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold1_expand2.json",
+      "config_sha256": "03990bee52663549cfbc9be9ca661e5b4be7ef8b87ad763566dc919dd405fdec"
+    },
+    {
+      "task_id": 14,
+      "fold": 1,
+      "condition": "both2",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold1_both2.json",
+      "config_sha256": "f2facd4d6890d8be3a7ccb7e022c549c827adfb719386d2c92459f5e881c06ea"
+    },
+    {
+      "task_id": 15,
+      "fold": 1,
+      "condition": "shrink3",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold1_shrink3.json",
+      "config_sha256": "a5a26d8f146561651ea95c98446af575bdf29aaa4a6264d9961a8efa94a37386"
+    },
+    {
+      "task_id": 16,
+      "fold": 1,
+      "condition": "expand3",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold1_expand3.json",
+      "config_sha256": "477a591f2cdb5c1c647e684618fae75884d25afee9abe3f7c69e3b190d11cc41"
+    },
+    {
+      "task_id": 17,
+      "fold": 1,
+      "condition": "both3",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold1_both3.json",
+      "config_sha256": "1a4bde24e617f39ef79faa78c5165c58f22535f60f754c0e3df304560f5a625a"
+    },
+    {
+      "task_id": 18,
+      "fold": 2,
+      "condition": "shrink1",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold2_shrink1.json",
+      "config_sha256": "9a92c306603673034810a67b3691bce65a8574dd6968284ad55a47cc5b460c14"
+    },
+    {
+      "task_id": 19,
+      "fold": 2,
+      "condition": "expand1",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold2_expand1.json",
+      "config_sha256": "6c0e2bbfadf16e6a9b1fa94076e1698d1c1e2dc5100c8844284371d377ba938e"
+    },
+    {
+      "task_id": 20,
+      "fold": 2,
+      "condition": "both1",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold2_both1.json",
+      "config_sha256": "f923a966d0e83f28e9d538fd2f0279e1df82781cc11176d61f34edbdd80645ce"
+    },
+    {
+      "task_id": 21,
+      "fold": 2,
+      "condition": "shrink2",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold2_shrink2.json",
+      "config_sha256": "20054725e0d74346896c4b67a57d9aaab948f0714b16417ef5c51afdb2bb6ae7"
+    },
+    {
+      "task_id": 22,
+      "fold": 2,
+      "condition": "expand2",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold2_expand2.json",
+      "config_sha256": "dfdf17231cb46566f4a272c5ec733f9592434090f01b8ed6ce9562fe81dde775"
+    },
+    {
+      "task_id": 23,
+      "fold": 2,
+      "condition": "both2",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold2_both2.json",
+      "config_sha256": "f3c31a2ab8ee23507b0c72e5a6c33822e22d5ce30cf6c069020b9d841643e088"
+    },
+    {
+      "task_id": 24,
+      "fold": 2,
+      "condition": "shrink3",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold2_shrink3.json",
+      "config_sha256": "e83ec645da9171d385c4c5c443d4fe8e744fd0dcac7bb6b4b5ae54cd817cc58f"
+    },
+    {
+      "task_id": 25,
+      "fold": 2,
+      "condition": "expand3",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold2_expand3.json",
+      "config_sha256": "1195d934e4a808ad12ad9fdf15ec0f2f2112c1bf913d0fcfe1b1df13b68aeae5"
+    },
+    {
+      "task_id": 26,
+      "fold": 2,
+      "condition": "both3",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold2_both3.json",
+      "config_sha256": "792e8b391a71fec781eaf1df6209d14a5293ae05dd41e2a53471d30048110086"
+    },
+    {
+      "task_id": 27,
+      "fold": 3,
+      "condition": "shrink1",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold3_shrink1.json",
+      "config_sha256": "4d5d3d1674ef2586f23a7a3309afad746977538569cc72fc4c80e1b37745cb1b"
+    },
+    {
+      "task_id": 28,
+      "fold": 3,
+      "condition": "expand1",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold3_expand1.json",
+      "config_sha256": "f1b416dd13e1e078a1387c5b0bad87ced6c4ded569e1ced7f23d7b2713031138"
+    },
+    {
+      "task_id": 29,
+      "fold": 3,
+      "condition": "both1",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold3_both1.json",
+      "config_sha256": "a19a637a7f6e1af2efc9243a818add494d79cf806933b40cf5a6fcdb81a606b4"
+    },
+    {
+      "task_id": 30,
+      "fold": 3,
+      "condition": "shrink2",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold3_shrink2.json",
+      "config_sha256": "d78ceefc03f0a632852be0bc0720652d5f57327f72fd4bb2f7e39b65ddef8943"
+    },
+    {
+      "task_id": 31,
+      "fold": 3,
+      "condition": "expand2",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold3_expand2.json",
+      "config_sha256": "d62385b59e37d4c2391df8c2d26b89faf49946c71044cbab91a1ceb72a0719ea"
+    },
+    {
+      "task_id": 32,
+      "fold": 3,
+      "condition": "both2",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold3_both2.json",
+      "config_sha256": "830e342fa99b094d0f479a90018671f8b1404f89feea522f525b0091c952cc73"
+    },
+    {
+      "task_id": 33,
+      "fold": 3,
+      "condition": "shrink3",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold3_shrink3.json",
+      "config_sha256": "91a1751fca1292d62021ba9fc417eeb3029832f1f11e9d2177c8e6804af1030b"
+    },
+    {
+      "task_id": 34,
+      "fold": 3,
+      "condition": "expand3",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold3_expand3.json",
+      "config_sha256": "80791c472ac3582cdb6e3b501a290f5b5d52ba8224a7ed687440d1849d4befe4"
+    },
+    {
+      "task_id": 35,
+      "fold": 3,
+      "condition": "both3",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold3_both3.json",
+      "config_sha256": "51693dc64453239b0451aa83fd2b83bd668d9246482e10ec501b6ea678d71810"
+    },
+    {
+      "task_id": 36,
+      "fold": 4,
+      "condition": "shrink1",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold4_shrink1.json",
+      "config_sha256": "dcf7593c1fcc74b4e9057898673e4ecef27400f00ccb7a8d2d41474714c487bb"
+    },
+    {
+      "task_id": 37,
+      "fold": 4,
+      "condition": "expand1",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold4_expand1.json",
+      "config_sha256": "540347ec77eabd9f822a6360b1cc59465003afc56b8a1b2c19fa9b1974ff9b70"
+    },
+    {
+      "task_id": 38,
+      "fold": 4,
+      "condition": "both1",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold4_both1.json",
+      "config_sha256": "4d8ca30a2d63f4d7e02cc61a89dce0ba5f5ee0589a507f191f533dfe4a44b996"
+    },
+    {
+      "task_id": 39,
+      "fold": 4,
+      "condition": "shrink2",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold4_shrink2.json",
+      "config_sha256": "5e17792bca95563ac6b70ac836f668c3cafe9a857c4b30034d7840bd7b9bdf23"
+    },
+    {
+      "task_id": 40,
+      "fold": 4,
+      "condition": "expand2",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold4_expand2.json",
+      "config_sha256": "a55f23912e68075f099eb939fdf6f2e39bdc4d82122a1f9bb114378f34b45280"
+    },
+    {
+      "task_id": 41,
+      "fold": 4,
+      "condition": "both2",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold4_both2.json",
+      "config_sha256": "22a88e5f029f469a9795c70a461716016c720e4aee3e2bf64c768cff2c210897"
+    },
+    {
+      "task_id": 42,
+      "fold": 4,
+      "condition": "shrink3",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold4_shrink3.json",
+      "config_sha256": "b404a043d63f6ae553a7a7756fd10b1a3d5cbe630069dc8aab84c85664ac9a6b"
+    },
+    {
+      "task_id": 43,
+      "fold": 4,
+      "condition": "expand3",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold4_expand3.json",
+      "config_sha256": "87b0bcbaca08720ff66240ab49a7f0b40d1e1613409267fc3e0a9e9c123c0c08"
+    },
+    {
+      "task_id": 44,
+      "fold": 4,
+      "condition": "both3",
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/segmentation_augmentation/cv/configs/fold4_both3.json",
+      "config_sha256": "7babda3934f2caed6777d6256569e4481771ba1874bda8c4f332637e3acaced7"
+    }
+  ],
+  "cells": 1773,
+  "embedding_plan": "analysis/presynaptic/segmentation_augmentation/full_all_cells_plan.json",
+  "augmentation_database": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/segmentation_augmentation/cave_conf0.7_fold0_all_cells_n6_r3_20261016/training_choices",
+  "results": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/cave_segmentation_augmentation_conf0.7/six_class",
+  "embedding_finalization_job": 26130457,
+  "sampling": "independent uniform choice per node, clean appears once",
+  "choice_counts": {
+    "shrink": {
+      "1": 2,
+      "2": 3,
+      "3": 4
+    },
+    "expand": {
+      "1": 2,
+      "2": 3,
+      "3": 4
+    },
+    "both": {
+      "1": 3,
+      "2": 5,
+      "3": 7
+    }
+  },
+  "strength_policy": "cumulative layers 1 through maximum strength",
+  "evaluation": "original clean embeddings",
+  "model": "six-class pointwise MLP, pre/post, K10; saved baseline hyperparameters"
+}
