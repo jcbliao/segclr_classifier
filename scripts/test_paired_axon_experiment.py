@@ -12,8 +12,7 @@ from data.dataset_lcpn import load_hierarchy
 
 
 def test_ragged_pooling_matches_ordinary_model():
-    manifest=json.loads((prep.SOURCE/'fold0/manifest.json').read_text())
-    hierarchy=load_hierarchy(manifest);torch.manual_seed(1)
+    hierarchy=load_hierarchy();torch.manual_seed(1)
     model=WindowClassifier(ModelConfig(architecture='pointwise_mlp',postsynaptic_dim=64),hierarchy).eval()
     counts=np.array([1,3,10]);offsets=np.r_[0,np.cumsum(counts)];raw=np.random.default_rng(1).normal(size=(14,64)).astype(np.float32)
     x,mask=prep.padded(raw,offsets,np.arange(14),np.arange(3))
@@ -77,8 +76,7 @@ def test_mixed_input_routing_and_bulk_loader(tmp_path):
 
 
 def test_evaluate_decodes_bfloat16_features_in_float32():
-    manifest=json.loads((prep.SOURCE/'fold0/manifest.json').read_text())
-    hierarchy=load_hierarchy(manifest)
+    hierarchy=load_hierarchy()
     model=WindowClassifier(ModelConfig(architecture='pointwise_mlp',postsynaptic_dim=64),hierarchy).eval()
     path=next(iter(hierarchy.label_paths.values()))
     targets=torch.tensor([[hierarchy.level_maps[i][v] for i,v in enumerate(path)]])

@@ -64,6 +64,7 @@ def test_dataset_loads_shared_cache_and_original_clean_embeddings(
     ds.memmap_root = None
     ds.cell_dir = tmp_path
     ds.variant = "cave"
+    ds.single_presynaptic_embedding = False
     ds.embedding_augmentation = policy
     ds.augmentation_database = tmp_path
     ds.postsynaptic_cache = None

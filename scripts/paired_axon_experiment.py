@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 import numpy as np
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 BASE=Path('/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/axon_vs_whole_cell_casey6_20261009')
-SOURCE=Path('/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/morpho_confidence_cave/k10/conf0.7')
+SOURCE=Path('/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_confidence_cave/k10/conf0.7')
 POST=Path('/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/cave_skeletons_pre_post/k10/conf0.7/postsynaptic')
 NEIGHBOR=Path('/orcd/scratch/orcd/013/jcbliao/embedding_paths/r5um/neighborhoods/n10')
 DOC=ROOT/'analysis/presynaptic/axon_vs_whole_cell_morpho6'

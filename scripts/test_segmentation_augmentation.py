@@ -138,6 +138,7 @@ def test_embedding_database_summary_and_training_export(tmp_path):
 
 
 def test_grouped_forward_keeps_counts_and_vectors_aligned(monkeypatch):
+    pytest.importorskip('segclr', reason='Grouped inference requires the optional SegCLR inference environment')
     from scripts.generate_segmentation_augmentations import inference_class
     from data.segmentation_augmentation import variant_names
 
