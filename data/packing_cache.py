@@ -38,11 +38,16 @@ def identity(args, manifest):
     if args.postsynaptic_cache:
         p=Path(args.postsynaptic_cache)
         paths.extend(sorted(p.rglob('*')) if p.is_dir() else [p])
+        marker = p/'complete.json'
+        if marker.exists():
+            shared = json.loads(marker.read_text()).get('shared_feature_store')
+            if shared:
+                paths.extend(sorted((p/shared).resolve().rglob('*')))
     if getattr(args,'embedding_augmentation',None) in TRAINING_POLICIES:
         config['segmentation_augmentation_database']=str(Path(args.embedding_augmentation_database).resolve())
         paths.extend(Path(args.embedding_augmentation_database)/'segmask'/'cells'/f'{rid}.npz' for rid in manifest['cells'])
     config['sources'] = [(str(p),p.stat().st_size,p.stat().st_mtime_ns) for p in paths if p.is_file()]
-    modules=['packing_cache.py','packed_windows.py','packed_presynaptic.py','batched_presynaptic.py',
+    modules=['packing_cache.py','postsynaptic_cache.py','packed_windows.py','packed_presynaptic.py','batched_presynaptic.py',
              'dataset_windowed.py','dataset_presynaptic.py','geodesic_window.py','dataset_lcpn.py',
              'packed_segmentation_augmentation.py','segmentation_augmentation.py']
     config['code']={name:hashlib.sha256((ROOT/'data'/name).read_bytes()).hexdigest() for name in modules}
