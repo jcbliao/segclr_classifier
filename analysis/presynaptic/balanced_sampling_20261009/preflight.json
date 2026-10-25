@@ -1,0 +1,110 @@
+[
+  {
+    "index": 0,
+    "architecture": "graph_transformer",
+    "train": 1326381,
+    "test": 338143
+  },
+  {
+    "index": 1,
+    "architecture": "mean",
+    "train": 1326381,
+    "test": 338143
+  },
+  {
+    "index": 2,
+    "architecture": "graph_transformer_teasar",
+    "train": 1388478,
+    "test": 354943
+  },
+  {
+    "index": 3,
+    "architecture": "graph_transformer",
+    "train": 1830472,
+    "test": 470186
+  },
+  {
+    "index": 4,
+    "architecture": "mean",
+    "train": 1830472,
+    "test": 470186
+  },
+  {
+    "index": 5,
+    "architecture": "pointwise_mlp",
+    "train": 1830472,
+    "test": 470186
+  },
+  {
+    "index": 6,
+    "architecture": "graph_transformer",
+    "train": 1832622,
+    "test": 470673
+  },
+  {
+    "index": 7,
+    "architecture": "mean",
+    "train": 1832622,
+    "test": 470673
+  },
+  {
+    "index": 8,
+    "architecture": "pointwise_mlp",
+    "train": 1832622,
+    "test": 470673
+  },
+  {
+    "index": 9,
+    "architecture": "graph_transformer",
+    "train": 1811284,
+    "test": 465463
+  },
+  {
+    "index": 10,
+    "architecture": "mean",
+    "train": 1811284,
+    "test": 465463
+  },
+  {
+    "index": 11,
+    "architecture": "pointwise_mlp",
+    "train": 1811284,
+    "test": 465463
+  },
+  {
+    "index": 12,
+    "architecture": "graph_transformer",
+    "train": 1825166,
+    "test": 468914
+  },
+  {
+    "index": 13,
+    "architecture": "mean",
+    "train": 1825166,
+    "test": 468914
+  },
+  {
+    "index": 14,
+    "architecture": "pointwise_mlp",
+    "train": 1825166,
+    "test": 468914
+  },
+  {
+    "index": 15,
+    "architecture": "graph_transformer",
+    "train": 1832622,
+    "test": 470673
+  },
+  {
+    "index": 16,
+    "architecture": "mean",
+    "train": 1832622,
+    "test": 470673
+  },
+  {
+    "index": 17,
+    "architecture": "pointwise_mlp",
+    "train": 1832622,
+    "test": 470673
+  }
+]

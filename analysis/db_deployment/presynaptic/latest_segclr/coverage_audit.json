@@ -1,0 +1,133 @@
+{
+  "run_id": "resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k__20261022_140504",
+  "checkpoint_id": "checkpoint_e0_s100000",
+  "embedding_table_version": 498010,
+  "required_points": 15904686,
+  "previously_cached": 11169025,
+  "node_sets": [
+    [
+      "cave_skeleton_v4",
+      57117760
+    ]
+  ],
+  "newly_available_canonical": 0,
+  "missing_without_local_canonical_mapping": 4735661,
+  "nodes_version": 60892,
+  "previously_missing_now_in_db": 2,
+  "required_not_found_in_node_embeddings": 4735659,
+  "node_sets_registry": [
+    {
+      "node_set_id": "cave_skeleton_v4",
+      "kind": "cave_skeleton",
+      "description": "CAVE skeleton service, version 4",
+      "params_json": "{\"skeleton_version\": 4}",
+      "created_ts": "2026-10-09 23:22:38.139372"
+    },
+    {
+      "node_set_id": "teasar_existing_111nm_20260910",
+      "kind": "teasar_skeleton",
+      "description": "TEASAR skeletons 'teasar_existing_111nm_20260910' (Jacob), ported from named_skeletons",
+      "params_json": "{\"ported_from\": \"named_skeletons\"}",
+      "created_ts": "2026-10-09 23:22:38.461497"
+    },
+    {
+      "node_set_id": "teasar_existing_20260910",
+      "kind": "teasar_skeleton",
+      "description": "TEASAR skeletons 'teasar_existing_20260910' (Jacob), ported from named_skeletons",
+      "params_json": "{\"ported_from\": \"named_skeletons\"}",
+      "created_ts": "2026-10-09 23:45:39.746903"
+    },
+    {
+      "node_set_id": "teasar_registered_111nm_20260911",
+      "kind": "teasar_skeleton",
+      "description": "TEASAR skeletons 'teasar_registered_111nm_20260911' (Jacob), ported from named_skeletons",
+      "params_json": "{\"ported_from\": \"named_skeletons\"}",
+      "created_ts": "2026-10-09 23:53:08.997568"
+    },
+    {
+      "node_set_id": "teasar_registered_20260911",
+      "kind": "teasar_skeleton",
+      "description": "TEASAR skeletons 'teasar_registered_20260911' (Jacob), ported from named_skeletons",
+      "params_json": "{\"ported_from\": \"named_skeletons\"}",
+      "created_ts": "2026-10-10 17:59:12.295177"
+    },
+    {
+      "node_set_id": "teasar_target",
+      "kind": "teasar_skeleton",
+      "description": "TEASAR skeletons 'teasar_target' (Jacob), ported from named_skeletons",
+      "params_json": "{\"ported_from\": \"named_skeletons\"}",
+      "created_ts": "2026-10-10 19:40:02.147104"
+    },
+    {
+      "node_set_id": "teasar_testing_111nm_20260910",
+      "kind": "teasar_skeleton",
+      "description": "TEASAR skeletons 'teasar_testing_111nm_20260910' (Jacob), ported from named_skeletons",
+      "params_json": "{\"ported_from\": \"named_skeletons\"}",
+      "created_ts": "2026-10-10 19:56:56.405765"
+    },
+    {
+      "node_set_id": "teasar_testing_20260910",
+      "kind": "teasar_skeleton",
+      "description": "TEASAR skeletons 'teasar_testing_20260910' (Jacob), ported from named_skeletons",
+      "params_json": "{\"ported_from\": \"named_skeletons\"}",
+      "created_ts": "2026-10-10 19:59:37.085745"
+    }
+  ],
+  "agg_specs_registry": [
+    {
+      "agg_spec_id": "geodesic_mean_20000nm",
+      "method": "geodesic_mean",
+      "window_nm": 20000,
+      "params_json": "{}",
+      "created_ts": "2026-08-13 15:41:18.728845",
+      "k_nearest": null
+    },
+    {
+      "agg_spec_id": "geodesic_mean_40000nm",
+      "method": "geodesic_mean",
+      "window_nm": 40000,
+      "params_json": "{}",
+      "created_ts": "2026-08-13 15:50:14.164119",
+      "k_nearest": null
+    },
+    {
+      "agg_spec_id": "geodesic_mean_10000nm",
+      "method": "geodesic_mean",
+      "window_nm": 10000,
+      "params_json": "{}",
+      "created_ts": "2026-08-13 19:15:27.131134",
+      "k_nearest": null
+    },
+    {
+      "agg_spec_id": "synapse_anchor_geodesic_mean_20000nm",
+      "method": "geodesic_mean",
+      "window_nm": 20000,
+      "params_json": "{\"nodes\": \"synapse_anchors\"}",
+      "created_ts": "2026-10-13 21:41:33.301736",
+      "k_nearest": null
+    },
+    {
+      "agg_spec_id": "pointwise_mlp_mean_k10",
+      "method": "pointwise_mlp_mean",
+      "window_nm": null,
+      "params_json": "{}",
+      "created_ts": "2026-10-25 07:37:58.703334",
+      "k_nearest": 10
+    },
+    {
+      "agg_spec_id": "pointwise_mlp_mean_k1",
+      "method": "pointwise_mlp_mean",
+      "window_nm": null,
+      "params_json": "{}",
+      "created_ts": "2026-10-25 07:38:00.245374",
+      "k_nearest": 1
+    }
+  ],
+  "aggregated_embedding_groups": [
+    [
+      "geodesic_mean_20000nm",
+      "cave_skeleton_v4",
+      12007087
+    ]
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "job_id": 25432628,
+  "array": "0-17%4",
+  "partition": "mit_normal_gpu",
+  "account": "mit_amf_advanced_gpu",
+  "cpus_per_task": 16,
+  "num_workers": 15,
+  "submitted_at": "2026-10-09T19:42:55.285152+00:00",
+  "status": "submitted",
+  "supersedes": {
+    "job_id": 25429027,
+    "array": "0-17%4",
+    "partition": "mit_normal_gpu",
+    "account": "mit_amf_advanced_gpu",
+    "submitted_at": "2026-10-09T19:02:06.514073+00:00",
+    "status": "submitted"
+  },
+  "resume_from_latest_checkpoints": true
+}

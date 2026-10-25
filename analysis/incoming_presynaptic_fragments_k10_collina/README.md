@@ -55,7 +55,7 @@ The final `fragments.duckdb` provides `fragments` (all records) and
 `classified_fragments` (complete inputs only) views over the Parquet parts.
 `summary.json` reports all coverage failures. The shared segclr_db is read-only
 for prediction facts throughout; the new derived database is separate. The
-three Casey hierarchy metadata entries were registered in the shared database.
+three Morpho hierarchy metadata entries were registered in the shared database.
 
 Jobs use account/QOS `mit_amf_advanced_cpu`, partition `mit_normal`, 32 array
 shards with at most 16 running together, four CPUs each. The production array

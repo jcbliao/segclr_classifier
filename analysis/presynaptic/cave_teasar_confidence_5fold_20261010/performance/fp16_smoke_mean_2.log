@@ -1,0 +1,92 @@
+Packed 4,178 windows in 0.1s (0.01 GiB)
+Resident window features: 0.01 GiB on cuda
+Packed 569 windows in 0.0s (0.00 GiB)
+Resident window features: 0.00 GiB on cuda
+train=4178 val=569 test=569 windows, classes=['BasketFam', 'BipFam', 'MartFam', 'NglFam', 'pyramidal', 'thalamocortical']
+class balance: resampling train windows with replacement (1/sqrt(count), theirs)
+resumed from /orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/cave_teasar_confidence_5fold_20261010/performance/fp16_smoke/mean/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold1/checkpoint_last.pt: starting at epoch 1, best window macro F1 so far 0.0105
+resumed epoch_metrics.csv with 1 prior epochs retained
+Training with GPU-resident windows and masked CUDA graph buffers
+train:  50%|█████     | 1/2 [00:00<?, ?epoch/s]
+epoch 1:   0%|          | 0/34 [00:00<?, ?batch/s][A
+epoch 1:   3%|▎         | 1/34 [00:00<00:10,  3.18batch/s][A
+epoch 1:  50%|█████     | 17/34 [00:00<00:00, 45.22batch/s][A
+                                                           [A                                               train:  50%|█████     | 1/2 [00:00<?, ?epoch/s]train:  50%|█████     | 1/2 [00:00<?, ?epoch/s, train_loss=0.2147, val_cell_f1=0.000, val_window_f1=0.103]                                                                                                          train:  50%|█████     | 1/2 [00:00<?, ?epoch/s, train_loss=0.2147, val_cell_f1=0.000, val_window_f1=0.103]train: 100%|██████████| 2/2 [00:00<00:00,  1.74epoch/s, train_loss=0.2147, val_cell_f1=0.000, val_window_f1=0.103]train: 100%|██████████| 2/2 [00:00<00:00,  1.74epoch/s, train_loss=0.2147, val_cell_f1=0.000, val_window_f1=0.103]
+  new best selection metric (window macro F1)=0.103 at epoch 1 -> checkpoint_best.pt
+epoch    1  train_loss=0.2147  window[P=1.000 R=0.054 F1=0.103]  cell[P=0.000 R=0.000 F1=0.000]
+loaded best checkpoint from epoch 1 for final test evaluation
+=== test metrics (GNN) ===
+window-level  P=1.0000 R=0.0545 F1=0.1033 acc=0.0545
+{
+  "accuracy": 0.0,
+  "balanced_accuracy": 0.0,
+  "macro_precision": 0.0,
+  "macro_f1": 0.0,
+  "per_class_recall": {
+    "BasketFam": 0.0,
+    "BipFam": 0.0,
+    "MartFam": 0.0,
+    "NglFam": 0.0,
+    "pyramidal": 0.0,
+    "thalamocortical": 0.0
+  },
+  "per_class_precision": {
+    "BasketFam": 0.0,
+    "BipFam": 0.0,
+    "MartFam": 0.0,
+    "NglFam": 0.0,
+    "pyramidal": 0.0,
+    "thalamocortical": 0.0
+  },
+  "confusion_matrix": [
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ]
+}
+wrote /orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/cave_teasar_confidence_5fold_20261010/performance/fp16_smoke/mean/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold1.json

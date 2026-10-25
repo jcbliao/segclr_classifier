@@ -1,0 +1,1 @@
+{"epoch": 0, "training_seconds": 0.12900971341878176, "loader_wait_host_seconds": 0.020620297640562057, "evaluation_seconds": 0.024806597270071507, "metrics_seconds": 0.00034322217106819153, "checkpoint_and_logging_seconds": 0.01633437443524599, "windows": 4178, "loader_workers": 0}

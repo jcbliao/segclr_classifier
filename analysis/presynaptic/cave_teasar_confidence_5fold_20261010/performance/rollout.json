@@ -1,0 +1,31 @@
+{
+  "time": "2026-10-10T21:09:55.044012",
+  "jobs": [
+    {
+      "job": "25533350_16",
+      "epoch": 3,
+      "checkpoint": "results/presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold3/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold3/checkpoint_last.pt",
+      "previous_amp_dtype": "bfloat16",
+      "new_amp_dtype": "float16"
+    },
+    {
+      "job": "25533350_13",
+      "epoch": 22,
+      "checkpoint": "results/presynaptic/casey_confidence_cave/k10/conf0/fold3/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold3/checkpoint_last.pt",
+      "previous_amp_dtype": "bfloat16",
+      "new_amp_dtype": "float16"
+    },
+    {
+      "job": "25533350_14",
+      "epoch": 21,
+      "checkpoint": "results/presynaptic/casey_confidence_cave/k10/conf0/fold3/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold3/checkpoint_last.pt",
+      "previous_amp_dtype": "bfloat16",
+      "new_amp_dtype": "float16"
+    }
+  ],
+  "test_job": "25539147",
+  "normal_throttle_temporarily": 3,
+  "normal_throttle_restored": 4,
+  "held_job_released": "25533350_10",
+  "gpu_validation_complete": true
+}

@@ -1,0 +1,33 @@
+{
+  "shared_defaults": {
+    "amp": true,
+    "optimized_loading": true,
+    "cuda_graphs": true
+  },
+  "gpu_validation": [
+    {
+      "job_id": 25573313,
+      "passed": 84,
+      "subtests_passed": 9,
+      "log": "logs/validate_training_defaults_25573313.log"
+    },
+    {
+      "job_id": 25573837,
+      "passed": 20,
+      "log": "logs/validate_paired_defaults_25573837.log",
+      "includes": "all new whole-cell tests plus paired resident bags and FP16 checkpoint resume"
+    }
+  ],
+  "unique_tests_passed": 85,
+  "files_sha256": {
+    "scripts/train_gnn.py": "9a88167f23b8e428f9d151d86d68d84ddf225ecd85a26652c7580660ca94d888",
+    "scripts/train_paired_axon_experiment.py": "a7631b3ab7234430181768a04f4cb31a8e1b56b29ce996a845d604e8d103ef85",
+    "data/packed_windows.py": "9ad3de0683e7db37dd69808a189e6649f4bd6ca4c9387b1d8d14d30961fd4aa2",
+    "data/packed_presynaptic.py": "11f7effacc4f53f7ad3f839b272ac5f8386e65d1fdf3df731e110f8c7c353033",
+    "gnn/cuda_prefetch.py": "25c07f85eec6c6e68fd14b99df53fc5dc5b1903daf07d632eb7e576ceb25fa8c",
+    "gnn/cuda_graph_training.py": "488e6b58beb2bbad2692e52ba606eccdc06a3d05d8f8c930b074d26edd65c7af",
+    "gnn/window_graph_training.py": "f5fbffc85809a7ce730f337a5e9e960f93d4d0c0d76126d9efb0ffc6a90cff6c",
+    "scripts/test_default_training_pipeline.py": "c32e29705e7342ef4d99837c86eca338de44e99517a69c364c816a45626d3b3f",
+    "scripts/test_packed_presynaptic.py": "476b5d94a88d8d6d8199af2c887d8df827a9666339e7bb560cd0ceba94d52da9"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "root_id": "864691134886037498",
+  "conditions": [
+    "axon",
+    "dendrite"
+  ],
+  "checks": [
+    "forward/backward/optimizer",
+    "dendrite auxiliary raw mean",
+    "joint probability normalization",
+    "five-fold compartment parity with ordinary forwards",
+    "post embedding and synapse identity match source cache",
+    "hierarchy matches all saved classes"
+  ]
+}

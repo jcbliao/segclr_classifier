@@ -18,7 +18,7 @@ from gnn.model import ModelConfig, WindowClassifier
 from prepare_native_three_class import GROUPS
 
 BASE = Path('/orcd/scratch/orcd/013/jcbliao/presynaptic_axons')
-DATABASE = BASE / 'casey_confidence_cave/k10/conf0.7'
+DATABASE = BASE / 'morpho_confidence_cave/k10/conf0.7'
 POST = Path('/orcd/scratch/orcd/013/jcbliao/segclr/postsynaptic_site_embeddings_v1718')
 OUTPUT = BASE / 'cave_skeletons_pre_post/k10/conf0.7/postsynaptic'
 ANALYSIS = ROOT / 'analysis/presynaptic/cave_skeletons_pre_post/three_class'

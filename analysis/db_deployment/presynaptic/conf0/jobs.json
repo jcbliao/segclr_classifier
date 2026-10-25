@@ -1,0 +1,17 @@
+{
+  "status": "submitted",
+  "label_confidence_min": 0,
+  "configurations": 4,
+  "folds": 5,
+  "training_array": "26829238",
+  "preparation": "26829040",
+  "inference_plan": "26829239",
+  "inference_parity": "26829240",
+  "prediction_array": "26829241",
+  "prediction_audit": "26831457",
+  "import_preflight": "26831458",
+  "import_job": "26831459",
+  "output": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/incoming_presynaptic_fragments_k10_collina_conf0_v1",
+  "saved_shard_check": "26831367",
+  "prediction_status": "saved outputs; completion markers undergoing independent verification"
+}

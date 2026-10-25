@@ -1,0 +1,199 @@
+{
+  "args": {
+    "postsynaptic_cache": null,
+    "append_presynaptic_mean": false,
+    "single_presynaptic_embedding": false,
+    "use_postsynaptic": false,
+    "architecture": "graph_transformer",
+    "dataset": "presynaptic_dense",
+    "presynaptic_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/resampled_teasar_2209/training_local_center/scale4/k65",
+    "manifest": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/balanced_sampling_20261009/manifests/09.json",
+    "embedding_augmentation": null,
+    "embedding_augmentation_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/cave_embedding_training_choices/conf0.7/fold0/cutoff5000_fp16",
+    "results_dir": "results/presynaptic/new_skeletons_native/local_center/scale4/k65/balanced_sampling",
+    "attention_budget": 14450688,
+    "mixed_cell_batch_size": 0,
+    "presynaptic_cell_cache": 1,
+    "presynaptic_memmap_root": null,
+    "presynaptic_compartment_filter": null,
+    "pointwise_mlp_layers": 2,
+    "pointwise_mlp_hidden_dim": 128,
+    "linear_out_dim": 128,
+    "mpnn_layers": 2,
+    "mpnn_hidden_dim": 128,
+    "mpnn_dropout": 0.1,
+    "spatial": false,
+    "position": false,
+    "lpe": false,
+    "cls_hidden_dim": null,
+    "classifier": "lcpn",
+    "cls_resnet": true,
+    "cls_resnet_hidden": 128,
+    "cls_resnet_layers": 4,
+    "cls_resnet_dropout": 0.0,
+    "class_balance": "sample",
+    "gt_dim": 128,
+    "gt_depth": 4,
+    "gt_heads": 4,
+    "gt_mlp_ratio": 4,
+    "gt_pos_dim": 8,
+    "gt_no_exp": false,
+    "gt_dropout": 0.0,
+    "gt_no_lpe": false,
+    "gt_no_rel_pos": false,
+    "gt_no_adj_bias": false,
+    "gt_use_thickness": false,
+    "gt_attention_scope": "global",
+    "no_embeddings": false,
+    "freeze_aggregator": false,
+    "num_embeddings": 65,
+    "neighborhood_root": "/orcd/scratch/orcd/013/jcbliao/embedding_paths/r5um",
+    "window_nm": 10000.0,
+    "batch_size": 4096,
+    "epochs": 30,
+    "resume": true,
+    "lr": 0.0001,
+    "weight_decay": 1e-05,
+    "num_workers": 15,
+    "seed": 0,
+    "amp": true
+  },
+  "window_test_metrics": {
+    "accuracy": 0.8566996732285918,
+    "balanced_accuracy": 0.7507435741044644,
+    "macro_precision": 0.7884614286690153,
+    "macro_f1": 0.7670057120607596,
+    "per_class_recall": {
+      "putative_cge": 0.31882984083701355,
+      "putative_parvalbumin": 0.9360523174183667,
+      "putative_somatostatin": 0.7803807292708244,
+      "pyramidal": 0.9534049166431195,
+      "thalamocortical": 0.765050066352998
+    },
+    "per_class_precision": {
+      "putative_cge": 0.3963084404818922,
+      "putative_parvalbumin": 0.9666813991176038,
+      "putative_somatostatin": 0.8529215845458898,
+      "pyramidal": 0.8484971935542278,
+      "thalamocortical": 0.8778985256454628
+    },
+    "confusion_matrix": [
+      [
+        10757,
+        1050,
+        9178,
+        12573,
+        181
+      ],
+      [
+        1683,
+        124670,
+        1879,
+        4534,
+        421
+      ],
+      [
+        10636,
+        1258,
+        81947,
+        10787,
+        381
+      ],
+      [
+        3922,
+        1270,
+        2272,
+        168705,
+        781
+      ],
+      [
+        145,
+        719,
+        802,
+        2229,
+        12683
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9411764705882353,
+    "balanced_accuracy": 0.8322303783173348,
+    "macro_precision": 0.9384506620985942,
+    "macro_f1": 0.8608089260808927,
+    "per_class_recall": {
+      "putative_cge": 0.36363636363636365,
+      "putative_parvalbumin": 0.9714285714285714,
+      "putative_somatostatin": 0.8260869565217391,
+      "pyramidal": 1.0,
+      "thalamocortical": 1.0
+    },
+    "per_class_precision": {
+      "putative_cge": 0.9230769230769231,
+      "putative_parvalbumin": 1.0,
+      "putative_somatostatin": 0.8260869565217391,
+      "pyramidal": 0.943089430894309,
+      "thalamocortical": 1.0
+    },
+    "confusion_matrix": [
+      [
+        12,
+        0,
+        4,
+        17,
+        0
+      ],
+      [
+        0,
+        34,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        19,
+        3,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        348,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        3
+      ]
+    ]
+  },
+  "dataset_test_metrics": {},
+  "classes": [
+    "putative_cge",
+    "putative_parvalbumin",
+    "putative_somatostatin",
+    "pyramidal",
+    "thalamocortical"
+  ],
+  "best_epoch": 29,
+  "postsynaptic_cache": null,
+  "use_postsynaptic": false,
+  "append_presynaptic_mean": false,
+  "single_presynaptic_embedding": false,
+  "dataset_counts": {
+    "train_windows": 1811284,
+    "test_windows": 465463
+  },
+  "fold": "fold_0",
+  "fold_index": 0,
+  "split_seed": 0,
+  "split_fracs": [
+    0.8,
+    0.2
+  ]
+}

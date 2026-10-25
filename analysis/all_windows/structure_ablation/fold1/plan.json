@@ -1,0 +1,58 @@
+{
+  "manifest": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/report_folds_20261012/manifests/group01_fold1.json",
+  "manifest_sha256": "81f98d99644b00bb0eb3e113637ad35f3f7426c5316938ff1923fea703a7d97d",
+  "preflight": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/all_windows/linear_vs_resnet/preflight.json",
+  "preflight_sha256": "d22b7d733239c1f9f0e40ffe6f4e99d5a18f9193b5c84f9c43b81e00d70a371c",
+  "runs": {
+    "GT": {
+      "checkpoint": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/all_windows/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_fold1/checkpoint_best.pt",
+      "checkpoint_sha256": "ac5b25662a262a4e72299f6ae04ac518c8dad4b3480fc1410ad98565746de9f5",
+      "report": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/all_windows/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_fold1.json"
+    },
+    "MPNN": {
+      "checkpoint": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/all_windows/gnn_lcpn_scratch_mpnn_L2_position_lpe_resnet4x128_n10_fold1/checkpoint_best.pt",
+      "checkpoint_sha256": "7ff7b0368260d9a5931a270e12c1016d09f370ca0a98cf25f3bd6dbfee76d9b0",
+      "report": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/all_windows/gnn_lcpn_scratch_mpnn_L2_position_lpe_resnet4x128_n10_fold1.json"
+    },
+    "Mean control": {
+      "checkpoint": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n10_fold1/checkpoint_best.pt",
+      "checkpoint_sha256": "5c70c2df78f374a4bf6928f6dd719daa4bf9c6905fb6d0d2c3b6f5821f068c1c",
+      "report": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/all_windows/gnn_lcpn_scratch_mean_resnet4x128_n10_fold1.json"
+    }
+  },
+  "nodes": 10,
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "soma_policy": "original 5um Euclidean nucleus exclusion; primary metrics exclude unknown-nucleus cells; historical cohort reported separately",
+  "interpretation": "class-stratified held-out sample, up to 20000 windows per supported class, seed 0",
+  "conditions": [
+    "identity",
+    "recompute_lpe",
+    "rewire",
+    "rewire_lpe_stale",
+    "rewire_lpe0",
+    "drop_edges",
+    "drop_edges_stale_lpe",
+    "zero_pos_enc",
+    "zero_rel_pos",
+    "zero_geometry",
+    "permute_x"
+  ],
+  "model_conditions": {
+    "GT": [
+      "no_qk",
+      "no_adjacency_bias",
+      "uniform_attention",
+      "nodewise_mean_readout",
+      "no_attention_update"
+    ],
+    "MPNN": [
+      "no_neighbors",
+      "no_self"
+    ],
+    "Mean control": []
+  }
+}

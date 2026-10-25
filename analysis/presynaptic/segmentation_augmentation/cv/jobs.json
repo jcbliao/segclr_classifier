@@ -1,0 +1,69 @@
+{
+  "tasks": 45,
+  "folds": 5,
+  "conditions": [
+    "shrink1",
+    "expand1",
+    "both1",
+    "shrink2",
+    "expand2",
+    "both2",
+    "shrink3",
+    "expand3",
+    "both3"
+  ],
+  "max_concurrent_gpus": 4,
+  "embedding_dependency": 26130457,
+  "sampling": "independent uniform choice per node, clean appears once",
+  "choice_counts": {
+    "shrink": {
+      "1": 2,
+      "2": 3,
+      "3": 4
+    },
+    "expand": {
+      "1": 2,
+      "2": 3,
+      "3": 4
+    },
+    "both": {
+      "1": 3,
+      "2": 5,
+      "3": 7
+    }
+  },
+  "evaluation": "original clean embeddings",
+  "preflight_job": 26130458,
+  "summary_job": 26130460,
+  "excluded_nodes": [
+    "node3006"
+  ],
+  "partition": "mit_normal_gpu",
+  "cancelled_training_preemptable_array": 26130407,
+  "cancelled_training_normal_array": 26130408,
+  "training_array": 26130459,
+  "fast_backend": {
+    "verified": true,
+    "benchmark": "analysis/presynaptic/segmentation_augmentation/cv/fast_training_benchmark.json",
+    "training_seconds_per_epoch": 1.293967172736302,
+    "previous_training_seconds_per_epoch": 73.5628063250333,
+    "speedup": 56.85059704372013,
+    "resumed_tasks": [
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44
+    ]
+  },
+  "summary_status": "completed directly; queued summary cancelled",
+  "primary_metric": "window_macro_f1"
+}

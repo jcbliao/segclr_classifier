@@ -1,0 +1,268 @@
+{
+  "stage": "optimized",
+  "amp_dtype": "float16",
+  "gpu": "NVIDIA L40S",
+  "results": [
+    {
+      "evaluation": {
+        "baseline_seconds": 1.034666996449232,
+        "optimized_seconds": 1.3197960956022143,
+        "prediction_disagreement_fractions": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "note": "Independent FP16 scatter reductions can differ near decision boundaries; same-hidden routing checked exactly."
+      },
+      "family": "CAVE",
+      "architecture": "mean",
+      "dataset_startup_seconds": 0.12564517930150032,
+      "sampling_seconds": 0.03365734778344631,
+      "windows": 42535,
+      "training_wall_seconds": 0.778033054433763,
+      "loader_wait_seconds": 0.6015657503157854,
+      "copy_host_seconds": 0.011418890208005905,
+      "copy_gpu_seconds": 0.010405023947358132,
+      "compute_gpu_seconds": 0.15266384053230286,
+      "checkpoint_seconds": 0.10324872564524412,
+      "sync_profile_four_steps": {
+        "cudaMemcpyAsync": {
+          "count": 12,
+          "cpu_seconds": 8.388999999999397e-05
+        },
+        "aten::item": {
+          "count": 196,
+          "cpu_seconds": 9.145399999999154e-05
+        },
+        "cudaStreamSynchronize": {
+          "count": 4,
+          "cpu_seconds": 2.1166999999998552e-05
+        },
+        "cudaDeviceSynchronize": {
+          "count": 1,
+          "cpu_seconds": 1.4105999999999766e-05
+        }
+      },
+      "gpu_parity": true
+    },
+    {
+      "evaluation": {
+        "baseline_seconds": 1.1419777139090002,
+        "optimized_seconds": 1.1946375551633537,
+        "prediction_disagreement_fractions": [
+          0.0005667557282811108,
+          0.00024289531212047608,
+          0.00040482552020079345
+        ],
+        "note": "Independent FP16 scatter reductions can differ near decision boundaries; same-hidden routing checked exactly."
+      },
+      "family": "CAVE",
+      "architecture": "pointwise_mlp",
+      "dataset_startup_seconds": 0.12564517930150032,
+      "sampling_seconds": 0.03365734778344631,
+      "windows": 42535,
+      "training_wall_seconds": 0.9991139341145754,
+      "loader_wait_seconds": 0.7337556518614292,
+      "copy_host_seconds": 0.016260188072919846,
+      "copy_gpu_seconds": 0.014344832003116608,
+      "compute_gpu_seconds": 0.23370768117904664,
+      "checkpoint_seconds": 0.012323086149990559,
+      "sync_profile_four_steps": {
+        "cudaMemcpyAsync": {
+          "count": 12,
+          "cpu_seconds": 8.311700000000019e-05
+        },
+        "aten::item": {
+          "count": 228,
+          "cpu_seconds": 0.00012760799999999016
+        },
+        "cudaStreamSynchronize": {
+          "count": 4,
+          "cpu_seconds": 2.0760999999997693e-05
+        },
+        "cudaDeviceSynchronize": {
+          "count": 1,
+          "cpu_seconds": 5.1479999999974094e-06
+        }
+      },
+      "gpu_parity": true
+    },
+    {
+      "evaluation": {
+        "baseline_seconds": 0.9880577526055276,
+        "optimized_seconds": 1.4293796508572996,
+        "prediction_disagreement_fractions": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "note": "Independent FP16 scatter reductions can differ near decision boundaries; same-hidden routing checked exactly."
+      },
+      "family": "CAVE",
+      "architecture": "graph_transformer",
+      "dataset_startup_seconds": 0.12564517930150032,
+      "sampling_seconds": 0.03365734778344631,
+      "windows": 42535,
+      "training_wall_seconds": 1.0495246918871999,
+      "loader_wait_seconds": 0.11686977930366993,
+      "copy_host_seconds": 0.01866262871772051,
+      "copy_gpu_seconds": 0.016871839955449105,
+      "compute_gpu_seconds": 0.8972175083160401,
+      "checkpoint_seconds": 0.05317484959959984,
+      "sync_profile_four_steps": {
+        "cudaMemcpyAsync": {
+          "count": 212,
+          "cpu_seconds": 0.0010973769999999775
+        },
+        "cudaStreamSynchronize": {
+          "count": 36,
+          "cpu_seconds": 0.00015809799999999495
+        },
+        "aten::is_nonzero": {
+          "count": 8,
+          "cpu_seconds": 5.77299999998354e-06
+        },
+        "aten::item": {
+          "count": 720,
+          "cpu_seconds": 0.00020213900000000376
+        },
+        "cudaDeviceSynchronize": {
+          "count": 1,
+          "cpu_seconds": 5.79299999999057e-06
+        }
+      },
+      "gpu_parity": true
+    },
+    {
+      "evaluation": {
+        "baseline_seconds": 2.248907108325511,
+        "optimized_seconds": 2.8627505651675165,
+        "prediction_disagreement_fractions": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "note": "Independent FP16 scatter reductions can differ near decision boundaries; same-hidden routing checked exactly."
+      },
+      "family": "TEASAR",
+      "architecture": "mean",
+      "dataset_startup_seconds": 0.12528714910149574,
+      "sampling_seconds": 0.04849180579185486,
+      "windows": 53183,
+      "training_wall_seconds": 1.9121238393709064,
+      "loader_wait_seconds": 1.6541188964620233,
+      "copy_host_seconds": 0.016288572922348976,
+      "copy_gpu_seconds": 0.016190751910209657,
+      "compute_gpu_seconds": 0.22487974381446837,
+      "checkpoint_seconds": 0.012462874874472618,
+      "sync_profile_four_steps": {
+        "cudaMemcpyAsync": {
+          "count": 12,
+          "cpu_seconds": 7.98829999999998e-05
+        },
+        "aten::item": {
+          "count": 180,
+          "cpu_seconds": 6.217400000001726e-05
+        },
+        "cudaStreamSynchronize": {
+          "count": 4,
+          "cpu_seconds": 2.0759000000000016e-05
+        },
+        "cudaDeviceSynchronize": {
+          "count": 1,
+          "cpu_seconds": 4.967000000000553e-06
+        }
+      },
+      "gpu_parity": true
+    },
+    {
+      "evaluation": {
+        "baseline_seconds": 2.07129040453583,
+        "optimized_seconds": 2.6231968430802226,
+        "prediction_disagreement_fractions": [
+          3.5954409808362993e-05,
+          7.190881961672599e-05,
+          3.5954409808362993e-05
+        ],
+        "note": "Independent FP16 scatter reductions can differ near decision boundaries; same-hidden routing checked exactly."
+      },
+      "family": "TEASAR",
+      "architecture": "pointwise_mlp",
+      "dataset_startup_seconds": 0.12528714910149574,
+      "sampling_seconds": 0.04849180579185486,
+      "windows": 53183,
+      "training_wall_seconds": 1.9649380594491959,
+      "loader_wait_seconds": 1.6897419160231948,
+      "copy_host_seconds": 0.015983492136001587,
+      "copy_gpu_seconds": 0.0160106880068779,
+      "compute_gpu_seconds": 0.24197769570350647,
+      "checkpoint_seconds": 0.012827643193304539,
+      "sync_profile_four_steps": {
+        "cudaMemcpyAsync": {
+          "count": 12,
+          "cpu_seconds": 8.865500000000248e-05
+        },
+        "aten::item": {
+          "count": 212,
+          "cpu_seconds": 7.303300000001491e-05
+        },
+        "cudaStreamSynchronize": {
+          "count": 4,
+          "cpu_seconds": 2.1963999999999033e-05
+        },
+        "cudaDeviceSynchronize": {
+          "count": 1,
+          "cpu_seconds": 4.804000000000087e-06
+        }
+      },
+      "gpu_parity": true
+    },
+    {
+      "evaluation": {
+        "baseline_seconds": 2.264431966468692,
+        "optimized_seconds": 2.9655250320211053,
+        "prediction_disagreement_fractions": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "note": "Independent FP16 scatter reductions can differ near decision boundaries; same-hidden routing checked exactly."
+      },
+      "family": "TEASAR",
+      "architecture": "graph_transformer",
+      "dataset_startup_seconds": 0.12528714910149574,
+      "sampling_seconds": 0.04849180579185486,
+      "windows": 53183,
+      "training_wall_seconds": 2.165270200930536,
+      "loader_wait_seconds": 1.2162004094570875,
+      "copy_host_seconds": 0.01824098266661167,
+      "copy_gpu_seconds": 0.019556543990969656,
+      "compute_gpu_seconds": 0.9105954256057739,
+      "checkpoint_seconds": 0.055842095986008644,
+      "sync_profile_four_steps": {
+        "cudaMemcpyAsync": {
+          "count": 212,
+          "cpu_seconds": 0.0010332879999999922
+        },
+        "cudaStreamSynchronize": {
+          "count": 36,
+          "cpu_seconds": 0.00015655300000002125
+        },
+        "aten::is_nonzero": {
+          "count": 8,
+          "cpu_seconds": 6.350999999980559e-06
+        },
+        "aten::item": {
+          "count": 704,
+          "cpu_seconds": 0.00024166399999998975
+        },
+        "cudaDeviceSynchronize": {
+          "count": 1,
+          "cpu_seconds": 5.415999999997439e-06
+        }
+      },
+      "gpu_parity": true
+    }
+  ],
+  "voting_450k_seconds": 0.04136438015848398
+}

@@ -11,7 +11,7 @@ preserved. A single three-output root classifier trains on these merged labels.
 The class-balanced sampling policy uses the merged-class counts.
 
 Input databases:
-`/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_confidence_cave/k10/conf0.7/foldN`.
+`/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/morpho_confidence_cave/k10/conf0.7/foldN`.
 Post embeddings are aligned by synapse ID in a separate cache:
 `/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/cave_skeletons_pre_post/k10/conf0.7/postsynaptic`.
 The preparation job requires post-inference coverage for every valid CAVE window

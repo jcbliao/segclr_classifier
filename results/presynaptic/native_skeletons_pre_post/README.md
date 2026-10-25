@@ -5,7 +5,7 @@ presynaptic features alone or presynaptic features plus a 64-dimensional
 postsynaptic embedding concatenated after pooling, immediately before the
 shared 4-layer/128-wide ResNet classification trunk and LCPN heads.
 
-The existing native bin16, k17, Casey confidence >=0.7 fold-0 dataset, labels,
+The existing native bin16, k17, Morpho confidence >=0.7 fold-0 dataset, labels,
 cell-held-out splits, and thalamocortical inclusion are reused. Both groups
 exclude unresolved postsynaptic root IDs and empty postsynaptic masks before applying the same existing
 window deduplication: uniqueness is the complete sorted presynaptic node set

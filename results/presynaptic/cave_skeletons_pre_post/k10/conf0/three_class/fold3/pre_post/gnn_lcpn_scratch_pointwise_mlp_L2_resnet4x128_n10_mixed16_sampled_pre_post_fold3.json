@@ -1,0 +1,152 @@
+{
+  "args": {
+    "postsynaptic_cache": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/cave_skeletons_pre_post/k10/conf0/postsynaptic",
+    "append_presynaptic_mean": false,
+    "single_presynaptic_embedding": false,
+    "use_postsynaptic": true,
+    "architecture": "pointwise_mlp",
+    "dataset": "presynaptic_cave",
+    "presynaptic_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_confidence_cave/k10/conf0/fold3",
+    "manifest": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/db_deployment/presynaptic/conf0/manifests/cave_n10/three/fold3.json",
+    "selection_domain": null,
+    "embedding_augmentation": null,
+    "embedding_augmentation_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/cave_embedding_training_choices/conf0/fold0/cutoff5000_fp16",
+    "results_dir": "results/presynaptic/cave_skeletons_pre_post/k10/conf0/three_class/fold3/pre_post",
+    "attention_budget": 14450688,
+    "mixed_cell_batch_size": 16,
+    "presynaptic_cell_cache": 16,
+    "presynaptic_memmap_root": null,
+    "presynaptic_compartment_filter": null,
+    "pointwise_mlp_layers": 2,
+    "pointwise_mlp_hidden_dim": 128,
+    "linear_out_dim": 128,
+    "mpnn_layers": 2,
+    "mpnn_hidden_dim": 128,
+    "mpnn_dropout": 0.1,
+    "spatial": false,
+    "position": false,
+    "lpe": false,
+    "cls_hidden_dim": null,
+    "classifier": "lcpn",
+    "cls_resnet": true,
+    "cls_resnet_hidden": 128,
+    "cls_resnet_layers": 4,
+    "cls_resnet_dropout": 0.0,
+    "class_balance": "sample",
+    "gt_dim": 128,
+    "gt_depth": 4,
+    "gt_heads": 4,
+    "gt_mlp_ratio": 4,
+    "gt_pos_dim": 8,
+    "gt_no_exp": false,
+    "gt_dropout": 0.0,
+    "gt_no_lpe": false,
+    "gt_no_rel_pos": false,
+    "gt_no_adj_bias": false,
+    "gt_use_thickness": false,
+    "gt_attention_scope": "global",
+    "no_embeddings": false,
+    "freeze_aggregator": false,
+    "num_embeddings": 10,
+    "neighborhood_root": "/orcd/scratch/orcd/013/jcbliao/embedding_paths/r5um",
+    "window_nm": 10000.0,
+    "batch_size": 4096,
+    "epochs": 30,
+    "resume": true,
+    "lr": 0.0001,
+    "weight_decay": 1e-05,
+    "num_workers": 8,
+    "seed": 0,
+    "amp": true,
+    "optimized_loading": true,
+    "cuda_graphs": true
+  },
+  "window_test_metrics": {
+    "accuracy": 0.8846955751280248,
+    "balanced_accuracy": 0.8761703649965895,
+    "macro_precision": 0.8718752743086974,
+    "macro_f1": 0.8738591290069824,
+    "per_class_recall": {
+      "BasketFam": 0.9456086062594754,
+      "Excitatory": 0.8954156642608928,
+      "nonBasketInhibitory": 0.7874868244694002
+    },
+    "per_class_precision": {
+      "BasketFam": 0.91032138751437,
+      "Excitatory": 0.9191373183882342,
+      "nonBasketInhibitory": 0.7861671170234878
+    },
+    "confusion_matrix": [
+      [
+        91064,
+        2133,
+        3105
+      ],
+      [
+        2295,
+        133990,
+        13355
+      ],
+      [
+        6676,
+        9655,
+        60516
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9729064039408867,
+    "balanced_accuracy": 0.9517951144496362,
+    "macro_precision": 0.9515895525251784,
+    "macro_f1": 0.9496064814814814,
+    "per_class_recall": {
+      "BasketFam": 1.0,
+      "Excitatory": 0.987460815047022,
+      "nonBasketInhibitory": 0.8679245283018868
+    },
+    "per_class_precision": {
+      "BasketFam": 0.8947368421052632,
+      "Excitatory": 0.9813084112149533,
+      "nonBasketInhibitory": 0.9787234042553191
+    },
+    "confusion_matrix": [
+      [
+        34,
+        0,
+        0
+      ],
+      [
+        3,
+        315,
+        1
+      ],
+      [
+        1,
+        6,
+        46
+      ]
+    ]
+  },
+  "dataset_test_metrics": {},
+  "classes": [
+    "BasketFam",
+    "Excitatory",
+    "nonBasketInhibitory"
+  ],
+  "best_epoch": 28,
+  "postsynaptic_cache": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/cave_skeletons_pre_post/k10/conf0/postsynaptic",
+  "use_postsynaptic": true,
+  "append_presynaptic_mean": false,
+  "single_presynaptic_embedding": false,
+  "dataset_counts": {
+    "train_windows": 1285604,
+    "test_windows": 322789
+  },
+  "fold": "fold_3",
+  "fold_index": 3,
+  "split_seed": 0,
+  "split_fracs": [
+    0.8,
+    0.2
+  ]
+}

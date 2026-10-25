@@ -1,0 +1,84 @@
+train=4178 val=569 test=569 windows, classes=['BasketFam', 'BipFam', 'MartFam', 'NglFam', 'pyramidal', 'thalamocortical']
+class balance: resampling train windows with replacement (1/sqrt(count), theirs)
+train:   0%|          | 0/1 [00:00<?, ?epoch/s]
+epoch 0:   0%|          | 0/34 [00:00<?, ?batch/s][A
+epoch 0:  79%|███████▉  | 27/34 [00:00<00:00, 262.18batch/s][A
+                                                            [A                                               train:   0%|          | 0/1 [00:00<?, ?epoch/s]train:   0%|          | 0/1 [00:00<?, ?epoch/s, train_loss=0.5609, val_cell_f1=0.000, val_window_f1=0.010]                                                                                                          train:   0%|          | 0/1 [00:00<?, ?epoch/s, train_loss=0.5609, val_cell_f1=0.000, val_window_f1=0.010]train: 100%|██████████| 1/1 [00:00<00:00,  5.84epoch/s, train_loss=0.5609, val_cell_f1=0.000, val_window_f1=0.010]train: 100%|██████████| 1/1 [00:00<00:00,  5.84epoch/s, train_loss=0.5609, val_cell_f1=0.000, val_window_f1=0.010]
+  new best selection metric (window macro F1)=0.010 at epoch 0 -> checkpoint_best.pt
+epoch    0  train_loss=0.5609  window[P=1.000 R=0.005 F1=0.010]  cell[P=0.000 R=0.000 F1=0.000]
+loaded best checkpoint from epoch 0 for final test evaluation
+=== test metrics (GNN) ===
+window-level  P=1.0000 R=0.0053 F1=0.0105 acc=0.0053
+{
+  "accuracy": 0.0,
+  "balanced_accuracy": 0.0,
+  "macro_precision": 0.0,
+  "macro_f1": 0.0,
+  "per_class_recall": {
+    "BasketFam": 0.0,
+    "BipFam": 0.0,
+    "MartFam": 0.0,
+    "NglFam": 0.0,
+    "pyramidal": 0.0,
+    "thalamocortical": 0.0
+  },
+  "per_class_precision": {
+    "BasketFam": 0.0,
+    "BipFam": 0.0,
+    "MartFam": 0.0,
+    "NglFam": 0.0,
+    "pyramidal": 0.0,
+    "thalamocortical": 0.0
+  },
+  "confusion_matrix": [
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ]
+}
+wrote /orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/cave_teasar_confidence_5fold_20261010/performance/smoke_results/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold1.json

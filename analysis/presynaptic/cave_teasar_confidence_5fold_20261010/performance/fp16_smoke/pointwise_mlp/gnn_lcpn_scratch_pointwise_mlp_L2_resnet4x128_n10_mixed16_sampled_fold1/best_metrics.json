@@ -1,0 +1,157 @@
+{
+  "run": "gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold1",
+  "epoch": 0,
+  "classes": [
+    "BasketFam",
+    "BipFam",
+    "MartFam",
+    "NglFam",
+    "pyramidal",
+    "thalamocortical"
+  ],
+  "window_test_metrics": {
+    "accuracy": 0.0,
+    "balanced_accuracy": 0.0,
+    "macro_precision": 0.0,
+    "macro_f1": 0.0,
+    "per_class_recall": {
+      "BasketFam": 0.0,
+      "BipFam": 0.0,
+      "MartFam": 0.0,
+      "NglFam": 0.0,
+      "pyramidal": 0.0,
+      "thalamocortical": 0.0
+    },
+    "per_class_precision": {
+      "BasketFam": 0.0,
+      "BipFam": 0.0,
+      "MartFam": 0.0,
+      "NglFam": 0.0,
+      "pyramidal": 0.0,
+      "thalamocortical": 0.0
+    },
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        569,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.0,
+    "balanced_accuracy": 0.0,
+    "macro_precision": 0.0,
+    "macro_f1": 0.0,
+    "per_class_recall": {
+      "BasketFam": 0.0,
+      "BipFam": 0.0,
+      "MartFam": 0.0,
+      "NglFam": 0.0,
+      "pyramidal": 0.0,
+      "thalamocortical": 0.0
+    },
+    "per_class_precision": {
+      "BasketFam": 0.0,
+      "BipFam": 0.0,
+      "MartFam": 0.0,
+      "NglFam": 0.0,
+      "pyramidal": 0.0,
+      "thalamocortical": 0.0
+    },
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        2,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "complete": false
+}

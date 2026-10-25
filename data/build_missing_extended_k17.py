@@ -23,7 +23,7 @@ ROUTES = Path('/orcd/scratch/orcd/013/jcbliao/skeletons/segclr_registered_teasar
 STORE = Path('/orcd/compute/sdorkenw/001/segclr-db/microns')
 SOURCE = Path('/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/resampled_teasar_2209/training_local_center/scale16/k17')
 OUTPUT = Path('/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/casey_k17_full_tc_source/scale16/k17')
-COMPARISON = ROOT / 'data/v1718_extended_axon_neurons_casey_comparison.csv'
+COMPARISON = ROOT / 'data/v1718_extended_axon_neurons_morpho_comparison.csv'
 RUN = 'resnet_860b_reshuffled__20260603_150412'
 CHECKPOINT = 'checkpoint_e0_s95000'
 

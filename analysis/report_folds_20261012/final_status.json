@@ -1,0 +1,108 @@
+{
+  "notebooks": [
+    {
+      "notebook": "analysis/all_windows/linear_vs_resnet_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_linear_vs_resnet_all_folds.log"
+    },
+    {
+      "notebook": "analysis/all_windows/architecture_comparison_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_architecture_comparison_all_folds.log"
+    },
+    {
+      "notebook": "analysis/presynaptic/new_skeletons_native/skeleton_comparison_native_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_skeleton_comparison_native_all_folds.log"
+    },
+    {
+      "notebook": "analysis/presynaptic/skeleton_comparison/skeleton_comparison_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_skeleton_comparison_all_folds.log"
+    },
+    {
+      "notebook": "analysis/presynaptic/cave_v1dd_addition/embedding_augmentation_comparison_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_embedding_augmentation_comparison_all_folds.log"
+    },
+    {
+      "notebook": "analysis/presynaptic/native_skeletons_pre_post/pre_post_comparison_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_pre_post_comparison_all_folds.log"
+    },
+    {
+      "notebook": "analysis/presynaptic/native_single_pre_post/pre_post_comparison_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_pre_post_comparison_all_folds.log"
+    },
+    {
+      "notebook": "analysis/presynaptic/cave_skeletons_pre_post/six_class/pre_post_comparison_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_pre_post_comparison_all_folds.log"
+    },
+    {
+      "notebook": "analysis/presynaptic/cave_embedding_augmentation_conf0.7/embedding_augmentation_comparison_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_embedding_augmentation_comparison_all_folds.log"
+    },
+    {
+      "notebook": "analysis/presynaptic/morpho_confidence_cave/morpho_confidence_comparison_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_morpho_confidence_comparison_all_folds.log"
+    },
+    {
+      "notebook": "analysis/presynaptic/morpho_confidence_native/morpho_confidence_comparison_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_morpho_confidence_comparison_all_folds.log"
+    },
+    {
+      "notebook": "analysis/presynaptic/cave_teasar_confidence_5fold_20261010/comparison_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_comparison_all_folds.log"
+    },
+    {
+      "notebook": "analysis/presynaptic/axon_vs_whole_cell_morpho6/paired_comparison_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_paired_comparison_all_folds.log"
+    },
+    {
+      "notebook": "analysis/presynaptic/native_skeletons_pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_pre_post_5folds_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_pre_post_5folds_all_folds.log"
+    },
+    {
+      "notebook": "analysis/presynaptic/native_skeletons_pre_post/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_post_5folds_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_post_5folds_all_folds.log"
+    },
+    {
+      "notebook": "analysis/presynaptic/native_single_pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_5folds_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_5folds_all_folds.log"
+    },
+    {
+      "notebook": "analysis/presynaptic/cave_skeletons_pre_post/six_class/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_six_class_5folds_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_six_class_5folds_all_folds.log"
+    },
+    {
+      "notebook": "analysis/presynaptic/cave_skeletons_pre_post/six_class/mean_pre_post_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_mean_pre_post_all_folds.log"
+    },
+    {
+      "notebook": "analysis/presynaptic/cave_skeletons_pre_post/six_class/gt_pre_post_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_gt_pre_post_all_folds.log"
+    },
+    {
+      "notebook": "analysis/all_windows/structure_ablation_all_folds.ipynb",
+      "exit_code": 0,
+      "log": "logs/render_structure_ablation_all_folds.log"
+    }
+  ],
+  "missing_training_reports": [],
+  "training_runs": 204,
+  "all_training_reports_present": true,
+  "missing_inference_caches": []
+}

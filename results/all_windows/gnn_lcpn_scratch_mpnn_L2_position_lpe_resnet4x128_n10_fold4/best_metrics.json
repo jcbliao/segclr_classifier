@@ -1,0 +1,340 @@
+{
+  "run": "gnn_lcpn_scratch_mpnn_L2_position_lpe_resnet4x128_n10_fold4",
+  "epoch": 12,
+  "classes": [
+    "astrocyte",
+    "microglia",
+    "oligo",
+    "putative_cge",
+    "putative_parvalbumin",
+    "putative_somatostatin",
+    "pyramidal",
+    "thalamocortical"
+  ],
+  "window_test_metrics": {
+    "accuracy": 0.9145645385901295,
+    "balanced_accuracy": 0.8787763423833432,
+    "macro_precision": 0.8259730002472775,
+    "macro_f1": 0.8489030432560383,
+    "per_class_recall": {
+      "astrocyte": 0.99581589958159,
+      "microglia": 0.9900332225913622,
+      "oligo": 0.9736842105263158,
+      "putative_cge": 0.5655979017235842,
+      "putative_parvalbumin": 0.9035908938093707,
+      "putative_somatostatin": 0.7573996779759502,
+      "pyramidal": 0.9630388711938779,
+      "thalamocortical": 0.8810500616646951
+    },
+    "per_class_precision": {
+      "astrocyte": 0.9995252528941314,
+      "microglia": 0.9575151731524456,
+      "oligo": 0.7272727272727273,
+      "putative_cge": 0.5368474533214784,
+      "putative_parvalbumin": 0.9505831814497183,
+      "putative_somatostatin": 0.7618195689320562,
+      "pyramidal": 0.9595120002580434,
+      "thalamocortical": 0.7147086446976193
+    },
+    "confusion_matrix": [
+      [
+        27370,
+        0,
+        0,
+        19,
+        83,
+        0,
+        13,
+        0
+      ],
+      [
+        0,
+        2682,
+        0,
+        15,
+        3,
+        1,
+        8,
+        0
+      ],
+      [
+        0,
+        0,
+        888,
+        0,
+        0,
+        0,
+        24,
+        0
+      ],
+      [
+        1,
+        17,
+        1,
+        63399,
+        4263,
+        17891,
+        25974,
+        546
+      ],
+      [
+        1,
+        15,
+        12,
+        7148,
+        368216,
+        15535,
+        11905,
+        4671
+      ],
+      [
+        10,
+        34,
+        40,
+        21266,
+        6629,
+        170755,
+        24651,
+        2064
+      ],
+      [
+        1,
+        53,
+        280,
+        25876,
+        7485,
+        18981,
+        1546860,
+        6692
+      ],
+      [
+        0,
+        0,
+        0,
+        372,
+        679,
+        978,
+        2697,
+        35005
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9892933618843683,
+    "balanced_accuracy": 0.98046875,
+    "macro_precision": 0.998229461756374,
+    "macro_f1": 0.9885151962088059,
+    "per_class_recall": {
+      "astrocyte": 1.0,
+      "microglia": 1.0,
+      "oligo": 1.0,
+      "putative_cge": 0.84375,
+      "putative_parvalbumin": 1.0,
+      "putative_somatostatin": 1.0,
+      "pyramidal": 1.0,
+      "thalamocortical": 1.0
+    },
+    "per_class_precision": {
+      "astrocyte": 1.0,
+      "microglia": 1.0,
+      "oligo": 1.0,
+      "putative_cge": 1.0,
+      "putative_parvalbumin": 1.0,
+      "putative_somatostatin": 1.0,
+      "pyramidal": 0.9858356940509915,
+      "thalamocortical": 1.0
+    },
+    "confusion_matrix": [
+      [
+        16,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        6,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        27,
+        0,
+        0,
+        5,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        35,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        24,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        348,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3
+      ]
+    ]
+  },
+  "complete": false,
+  "selection_domain": null,
+  "selection_metrics": {
+    "accuracy": 0.9145645385901295,
+    "balanced_accuracy": 0.8787763423833432,
+    "macro_precision": 0.8259730002472775,
+    "macro_f1": 0.8489030432560383,
+    "per_class_recall": {
+      "astrocyte": 0.99581589958159,
+      "microglia": 0.9900332225913622,
+      "oligo": 0.9736842105263158,
+      "putative_cge": 0.5655979017235842,
+      "putative_parvalbumin": 0.9035908938093707,
+      "putative_somatostatin": 0.7573996779759502,
+      "pyramidal": 0.9630388711938779,
+      "thalamocortical": 0.8810500616646951
+    },
+    "per_class_precision": {
+      "astrocyte": 0.9995252528941314,
+      "microglia": 0.9575151731524456,
+      "oligo": 0.7272727272727273,
+      "putative_cge": 0.5368474533214784,
+      "putative_parvalbumin": 0.9505831814497183,
+      "putative_somatostatin": 0.7618195689320562,
+      "pyramidal": 0.9595120002580434,
+      "thalamocortical": 0.7147086446976193
+    },
+    "confusion_matrix": [
+      [
+        27370,
+        0,
+        0,
+        19,
+        83,
+        0,
+        13,
+        0
+      ],
+      [
+        0,
+        2682,
+        0,
+        15,
+        3,
+        1,
+        8,
+        0
+      ],
+      [
+        0,
+        0,
+        888,
+        0,
+        0,
+        0,
+        24,
+        0
+      ],
+      [
+        1,
+        17,
+        1,
+        63399,
+        4263,
+        17891,
+        25974,
+        546
+      ],
+      [
+        1,
+        15,
+        12,
+        7148,
+        368216,
+        15535,
+        11905,
+        4671
+      ],
+      [
+        10,
+        34,
+        40,
+        21266,
+        6629,
+        170755,
+        24651,
+        2064
+      ],
+      [
+        1,
+        53,
+        280,
+        25876,
+        7485,
+        18981,
+        1546860,
+        6692
+      ],
+      [
+        0,
+        0,
+        0,
+        372,
+        679,
+        978,
+        2697,
+        35005
+      ]
+    ]
+  }
+}

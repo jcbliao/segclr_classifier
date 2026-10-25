@@ -1,0 +1,126 @@
+{
+  "run": "gnn_lcpn_scratch_gt_teasar_L4_H4_resnet4x128_n10_sampled_fold0",
+  "epoch": 96,
+  "classes": [
+    "putative_cge",
+    "putative_parvalbumin",
+    "putative_somatostatin",
+    "pyramidal",
+    "thalamocortical"
+  ],
+  "window_test_metrics": {
+    "accuracy": 0.862586387110043,
+    "balanced_accuracy": 0.7589257199352369,
+    "macro_precision": 0.7737191354339543,
+    "macro_f1": 0.7645307054608679,
+    "per_class_recall": {
+      "putative_cge": 0.31154131376605126,
+      "putative_parvalbumin": 0.9531422655371169,
+      "putative_somatostatin": 0.7880106246565305,
+      "pyramidal": 0.9319240935186833,
+      "thalamocortical": 0.8100103021978022
+    },
+    "per_class_precision": {
+      "putative_cge": 0.42145836633401973,
+      "putative_parvalbumin": 0.9466773450399945,
+      "putative_somatostatin": 0.8095126082047422,
+      "pyramidal": 0.8872162050226534,
+      "thalamocortical": 0.8037311525683619
+    },
+    "confusion_matrix": [
+      [
+        7982,
+        1857,
+        7193,
+        8322,
+        267
+      ],
+      [
+        811,
+        95746,
+        1005,
+        2188,
+        703
+      ],
+      [
+        5534,
+        1440,
+        51621,
+        6581,
+        332
+      ],
+      [
+        4499,
+        1658,
+        3169,
+        141385,
+        1002
+      ],
+      [
+        113,
+        438,
+        780,
+        882,
+        9435
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9389140271493213,
+    "balanced_accuracy": 0.8342907117869636,
+    "macro_precision": 0.9218397085610202,
+    "macro_f1": 0.8503914993227338,
+    "per_class_recall": {
+      "putative_cge": 0.3333333333333333,
+      "putative_parvalbumin": 0.9714285714285714,
+      "putative_somatostatin": 0.8695652173913043,
+      "pyramidal": 0.9971264367816092,
+      "thalamocortical": 1.0
+    },
+    "per_class_precision": {
+      "putative_cge": 0.9166666666666666,
+      "putative_parvalbumin": 0.9444444444444444,
+      "putative_somatostatin": 0.8,
+      "pyramidal": 0.9480874316939891,
+      "thalamocortical": 1.0
+    },
+    "confusion_matrix": [
+      [
+        11,
+        1,
+        5,
+        16,
+        0
+      ],
+      [
+        0,
+        34,
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        0,
+        20,
+        2,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        347,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        3
+      ]
+    ]
+  },
+  "complete": false
+}

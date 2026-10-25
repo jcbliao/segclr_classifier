@@ -6,6 +6,8 @@ number of optimizer steps and the set of windows per epoch stay unchanged.
 
 from __future__ import annotations
 
+import numpy as np
+
 from data.dataset_presynaptic import AttentionBudgetBatchSampler
 
 
@@ -23,16 +25,12 @@ class MixedCellBatchSampler(AttentionBudgetBatchSampler):
         mixed = []
         for start in range(0, len(original), self.cells_per_batch):
             group = original[start:start + self.cells_per_batch]
-            outputs = [[] for _ in group]
-            offset = 0
-            for source_batch in group:
-                for index in source_batch:
-                    outputs[offset % len(outputs)].append(index)
-                    offset += 1
+            flat = [index for source_batch in group for index in source_batch]
+            outputs = [flat[offset::len(group)] for offset in range(len(group))]
             for batch in outputs:
                 if len(batch) > self.max_windows:
                     raise ValueError("mixed batch exceeds max_windows")
-                largest = max(int(self.dataset.window_sizes[index]) for index in batch) + 1
+                largest = int(self.dataset.window_sizes[np.asarray(batch)].max()) + 1
                 if len(batch) * largest**2 > self.attention_budget:
                     raise ValueError("mixed batch exceeds attention_budget")
             mixed.extend(outputs)

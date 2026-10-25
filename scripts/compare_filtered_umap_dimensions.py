@@ -1,4 +1,4 @@
-"""Compare 2D/3D UMAP on identical means balanced by Casey L2 class."""
+"""Compare 2D/3D UMAP on identical means balanced by Morpho L2 class."""
 import argparse
 import json
 import sys
@@ -16,7 +16,7 @@ from sklearn.neighbors import NearestNeighbors
 import umap
 
 HERE = Path(__file__).resolve().parents[1]
-DEFAULT = HERE / 'analysis/presynaptic/compartment_filtered/casey_l2'
+DEFAULT = HERE / 'analysis/presynaptic/compartment_filtered/morpho_l2'
 
 
 def main():
@@ -74,7 +74,7 @@ def main():
             ax.set_zlabel('UMAP 3')
         else:
             ax.scatter(*coords.T,**kwargs)
-        ax.set(title=f'{dim}D UMAP of presynaptic window means · Casey L2',xlabel='UMAP 1',ylabel='UMAP 2')
+        ax.set(title=f'{dim}D UMAP of presynaptic window means · Morpho L2',xlabel='UMAP 1',ylabel='UMAP 2')
         ax.legend(handles=[Line2D([],[],marker='o',linestyle='',color=colors[name],label=f'{name} (n={count:,})')
             for name,count in zip(names,counts)],loc='center left',bbox_to_anchor=(1.02,.5),frameon=False)
         fig.tight_layout()
@@ -104,14 +104,14 @@ def main():
     html = '''<!doctype html><html><head><meta charset="utf-8"><title>Presynaptic mean UMAP: 2D / 3D</title>
 <script src="https://cdn.plot.ly/plotly-3.1.0.min.js"></script>
 <style>body{font:15px system-ui;margin:20px}#plot{height:85vh;min-height:600px}button{margin:0 8px 0 0;padding:8px 18px}</style></head>
-<body><h2>Dendrite-filtered presynaptic window means · Casey L2 classes</h2><p>Equal window counts per Casey L2 class; identical samples in 2D and 3D. Drag to rotate 3D; click legend entries to hide classes; double-click to isolate.</p>
+<body><h2>Dendrite-filtered presynaptic window means · Morpho L2 classes</h2><p>Equal window counts per Morpho L2 class; identical samples in 2D and 3D. Drag to rotate 3D; click legend entries to hide classes; double-click to isolate.</p>
 <button onclick="draw(2)">2D UMAP</button><button onclick="draw(3)">3D UMAP</button><div id="plot"></div>
 <script>const data=PAYLOAD;function draw(dim){Plotly.react('plot',data[dim],{title:dim+'D UMAP',margin:{l:60,r:240,t:60,b:60},
 xaxis:{title:'UMAP 1'},yaxis:{title:'UMAP 2'},scene:{xaxis:{title:'UMAP 1'},yaxis:{title:'UMAP 2'},zaxis:{title:'UMAP 3'},aspectmode:'data'},legend:{itemsizing:'constant'}},{responsive:true,displaylogo:false})}draw(2)</script></body></html>'''
     (a.output / 'mean_embedding_umap_2d_3d.html').write_text(html.replace('PAYLOAD',json.dumps(payload,separators=(',',':')).replace('</','<\\/')))
     pd.DataFrame(metrics).to_csv(a.output / 'dimension_comparison.csv',index=False)
     settings.update(dimensions=[2,3],colors=colors,palette_source=str(a.palette_json.resolve()) if a.palette_json else
-        'tab10; labels from the source manifest Casey hierarchy at L2',
+        'tab10; labels from the source manifest Morpho hierarchy at L2',
         comparison=metrics,comparison_note='Trustworthiness on the same 100 windows per class; neighbor agreement is descriptive, not a held-out classification score')
     (a.output / 'dimension_comparison_settings.json').write_text(json.dumps(settings,indent=2)+'\n')
     print(json.dumps(metrics,indent=2),flush=True)

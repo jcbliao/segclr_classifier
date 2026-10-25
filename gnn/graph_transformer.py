@@ -344,6 +344,9 @@ class GraphTransformer(nn.Module):
         rel_pos: torch.Tensor | None = None,
         thickness: torch.Tensor | None = None,
         has_segclr: torch.Tensor | None = None,
+        batch_shape: tuple[int, int] | None = None,
+        node_valid: torch.Tensor | None = None,
+        dense_adjacency: torch.Tensor | None = None,
     ) -> torch.Tensor:
         """
         x: (N_total, feat_dim) -- raw node features, PyG-batched (concatenated
@@ -380,10 +383,29 @@ class GraphTransformer(nn.Module):
         """
         from torch_geometric.utils import to_dense_adj, to_dense_batch
 
-        x_dense, node_mask = to_dense_batch(x, batch_index)  # (B, N, feat_dim), (B, N)
+        if batch_shape is not None:
+            from gnn.dense_layout import dense_layout, pack_dense, pack_adjacency
+            layout = dense_layout(batch_index, *batch_shape)
+            def to_dense_batch(values, batch, **kwargs):
+                return pack_dense(values, layout)
+            def to_dense_adj(edges, batch, **kwargs):
+                return pack_adjacency(edges, batch, layout)
+
+        if node_valid is not None:
+            if batch_shape is None or dense_adjacency is None:
+                raise ValueError("Padded graph input requires dimensions and adjacency")
+            def to_dense_batch(values, batch, **kwargs):
+                return values.view((batch_shape[0], batch_shape[1]) + tuple(values.shape[1:])), node_valid.view(batch_shape)
+            def to_dense_adj(edges, batch, **kwargs):
+                return dense_adjacency
+
+        shape_kwargs = ({} if batch_shape is None else
+                        dict(batch_size=batch_shape[0], max_num_nodes=batch_shape[1]))
+        x_dense, node_mask = to_dense_batch(x, batch_index, **shape_kwargs)  # (B, N, feat_dim), (B, N)
         B, N, _ = x_dense.shape
 
-        adj_raw = to_dense_adj(edge_index, batch_index, max_num_nodes=N)  # (B, N, N), 0/1
+        adj_raw = to_dense_adj(edge_index, batch_index, max_num_nodes=N,
+                               batch_size=B if batch_shape is not None else None)  # (B, N, N), 0/1
         self_loops = torch.diag_embed(node_mask.to(adj_raw.dtype))
         adj = torch.maximum(adj_raw, self_loops)  # self-loops on real nodes only
 
@@ -391,7 +413,7 @@ class GraphTransformer(nn.Module):
         if self.use_rel_pos:
             if rel_pos is None:
                 raise ValueError("use_rel_pos=True but rel_pos was not provided")
-            rel_pos_dense, _ = to_dense_batch(rel_pos, batch_index)  # (B, N, 3)
+            rel_pos_dense, _ = to_dense_batch(rel_pos, batch_index, **shape_kwargs)  # (B, N, 3)
             # rel_pos is already scaled by REL_POS_SCALE_NM, so its norm is on
             # the same O(1) scale -- no second constant needed. Padding rows
             # are all-zero and stay at distance 0; they are masked out below
@@ -403,11 +425,11 @@ class GraphTransformer(nn.Module):
                     "use_thickness=True but thickness was not provided -- build the dataset "
                     "with WindowedGraphDatasetLCPN(..., use_thickness=True)"
                 )
-            thickness_dense, _ = to_dense_batch(thickness, batch_index)  # (B, N, 2)
+            thickness_dense, _ = to_dense_batch(thickness, batch_index, **shape_kwargs)  # (B, N, 2)
         has_segclr_dense = None
         if has_segclr is not None:
             has_segclr_dense, _ = to_dense_batch(
-                has_segclr.to(dtype=torch.bool), batch_index
+                has_segclr.to(dtype=torch.bool), batch_index, **shape_kwargs
             )
 
         node_emb = self._embed_nodes(
@@ -416,7 +438,7 @@ class GraphTransformer(nn.Module):
         if self.use_lpe:
             if pos_enc is None:
                 raise ValueError("use_lpe=True but pos_enc was not provided")
-            pos_dense, _ = to_dense_batch(pos_enc, batch_index)  # (B, N, pos_dim)
+            pos_dense, _ = to_dense_batch(pos_enc, batch_index, **shape_kwargs)  # (B, N, pos_dim)
             node_emb = node_emb + self.to_pos_embedding(pos_dense)
         node_emb = node_emb * node_mask.unsqueeze(-1)  # zero out padding rows
 

@@ -1,0 +1,9 @@
+source /orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/scripts/sbatch/latest_conf0_env.sh
+export LATEST_SEGCLR_WORK=/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1
+export LATEST_SEGCLR_SCOPE=training
+export CONF0_STATE=/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/db_deployment/presynaptic/latest_segclr/morpho6
+export CONF0_POST_SOURCE=$LATEST_SEGCLR_WORK/training_post
+export CONF0_OUTPUT=$LATEST_SEGCLR_WORK/models
+export CONF0_FEATURE_PLAN=$LATEST_SEGCLR_WORK/plan.json
+export CONF0_CLASS_SETS=six
+export CONF0_TRAIN_ONLY=1

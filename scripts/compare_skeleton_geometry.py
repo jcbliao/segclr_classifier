@@ -311,7 +311,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('mode', choices=['prepare', 'run', 'summarize'])
     parser.add_argument('--output', type=Path, default=DEFAULT_OUT)
-    parser.add_argument('--comparison', type=Path, default=ROOT / 'data/v1718_extended_axon_neurons_casey_comparison.csv')
+    parser.add_argument('--comparison', type=Path, default=ROOT / 'data/v1718_extended_axon_neurons_morpho_comparison.csv')
     parser.add_argument('--routes', type=Path, default=BASE / 'skeletons/segclr_registered_teasar_111nm_20260911/routes.json')
     parser.add_argument('--store', type=Path, default=Path('/orcd/compute/sdorkenw/001/segclr-db/microns'))
     parser.add_argument('--spacing-nm', type=float, default=250)

@@ -1,0 +1,14 @@
+{
+  "prepare": 25597845,
+  "gpu_validation": 25597924,
+  "inference_array": 25597995,
+  "array_tasks": {
+    "0": "all deterministic and random interventions, seed 0",
+    "1": "random interventions, seed 1",
+    "2": "random interventions, seed 2",
+    "3": "activation and parameter analysis"
+  },
+  "cpu_per_job": 16,
+  "gpu_dtype": "float16",
+  "render_notebook": 25598002
+}

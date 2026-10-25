@@ -1,0 +1,23 @@
+{
+  "packing_array": 26168294,
+  "pilot_job": 26168301,
+  "release_job": 26168302,
+  "held_cv_tasks": [
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44
+  ],
+  "training_array": 26130459,
+  "require_speedup": 2,
+  "all_gpu_partition": "mit_normal_gpu"
+}

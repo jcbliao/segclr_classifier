@@ -21,7 +21,7 @@ DEFAULT = Path('/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/compartment_fil
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--cache', type=Path, default=DEFAULT)
-    p.add_argument('--output', type=Path, default=Path('analysis/presynaptic/compartment_filtered/casey_l2'))
+    p.add_argument('--output', type=Path, default=Path('analysis/presynaptic/compartment_filtered/morpho_l2'))
     p.add_argument('--per-class', type=int, default=2000)
     p.add_argument('--seed', type=int, default=0)
     p.add_argument('--hierarchy-level', type=int, default=2)
@@ -73,7 +73,7 @@ def main():
         seed=a.seed, n_neighbors=15, min_dist=0.1, metric='euclidean', n_epochs=500,
         standardization=False, supervised=False, umap_version=umap.__version__)
     settings.update(hierarchy_level=a.hierarchy_level, source_to_class=label_map,
-                    label_source='source database Casey hierarchy_tree, zero-based L2')
+                    label_source='source database Morpho hierarchy_tree, zero-based L2')
     print(json.dumps(settings, indent=2), flush=True)
     reducer = umap.UMAP(n_neighbors=min(15,len(samples['x'])-1), min_dist=0.1, metric='euclidean',
         n_epochs=500, random_state=a.seed, n_jobs=1, verbose=True, tqdm_kwds={'file':sys.stderr})

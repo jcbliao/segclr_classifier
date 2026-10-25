@@ -1,0 +1,54 @@
+{
+  "completed_cells": 32,
+  "expected_cells": 32,
+  "complete": true,
+  "statistics": [
+    {
+      "augmentation_id": "segmask_n6_clean",
+      "n": 16384,
+      "cells": 32,
+      "mean_voxels": 22050.849487304688,
+      "voxel_quantiles": [
+        2362.83,
+        3328.15,
+        6011.0,
+        10594.0,
+        18763.5,
+        66040.79999999993,
+        181618.28000000003
+      ],
+      "mean_delta_voxels": 0.0,
+      "delta_quantiles": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mean_fractional_change": 0.0,
+      "fractional_change_quantiles": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "empty_masks": 0,
+      "baseline_empty_masks": 0,
+      "halo_clipped_masks": 15,
+      "mean_occupancy": 0.01027202798696257,
+      "mean_volume_um3": 0.903202795,
+      "mean_baseline_cosine": 1.0,
+      "baseline_cosine_quantiles": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  ],
+  "timing_totals": {
+    "n_crops": 16384,
+    "transfer_normalize_ms": 4991.429218292236,
+    "morphology_ms": 183.90342369675636,
+    "mask_and_count_ms": 1165.7636322975159,
+    "model_ms": 22297.81702041626,
+    "download_ms": 329.6303043961525,
+    "morphology_over_model_time": 0.008247597669689874
+  }
+}

@@ -1,4 +1,4 @@
-"""Resume a v1718 outgoing-target inventory for the established Casey 0.7 cohort."""
+"""Resume a v1718 outgoing-target inventory for the established Morpho 0.7 cohort."""
 import argparse
 import json
 import sys

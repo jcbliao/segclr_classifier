@@ -1,0 +1,135 @@
+{
+  "root_id": 864691135325071004,
+  "seconds": 4.100600974983536,
+  "batches": [
+    {
+      "n_crops": 32,
+      "transfer_normalize_ms": 9.679840087890625,
+      "morphology_ms": 0.35417601466178894,
+      "mask_and_count_ms": 2.1678080558776855,
+      "model_ms": 33.33427047729492,
+      "download_ms": 0.557919979095459
+    },
+    {
+      "n_crops": 32,
+      "transfer_normalize_ms": 9.673983573913574,
+      "morphology_ms": 0.3632960021495819,
+      "mask_and_count_ms": 2.173952102661133,
+      "model_ms": 33.31270217895508,
+      "download_ms": 0.46639999747276306
+    },
+    {
+      "n_crops": 32,
+      "transfer_normalize_ms": 9.686847686767578,
+      "morphology_ms": 0.3577280044555664,
+      "mask_and_count_ms": 2.1739840507507324,
+      "model_ms": 33.31379318237305,
+      "download_ms": 0.46239998936653137
+    },
+    {
+      "n_crops": 32,
+      "transfer_normalize_ms": 9.658783912658691,
+      "morphology_ms": 0.35683199763298035,
+      "mask_and_count_ms": 2.170880079269409,
+      "model_ms": 33.324031829833984,
+      "download_ms": 0.5140799880027771
+    },
+    {
+      "n_crops": 32,
+      "transfer_normalize_ms": 9.755359649658203,
+      "morphology_ms": 0.35971200466156006,
+      "mask_and_count_ms": 2.169856071472168,
+      "model_ms": 33.35145568847656,
+      "download_ms": 0.4601599872112274
+    },
+    {
+      "n_crops": 32,
+      "transfer_normalize_ms": 9.737279891967773,
+      "morphology_ms": 0.3547520041465759,
+      "mask_and_count_ms": 2.180095911026001,
+      "model_ms": 33.38137435913086,
+      "download_ms": 0.4519360065460205
+    },
+    {
+      "n_crops": 32,
+      "transfer_normalize_ms": 9.690496444702148,
+      "morphology_ms": 0.36134400963783264,
+      "mask_and_count_ms": 2.1790719032287598,
+      "model_ms": 33.303550720214844,
+      "download_ms": 0.4668479859828949
+    },
+    {
+      "n_crops": 32,
+      "transfer_normalize_ms": 9.683775901794434,
+      "morphology_ms": 0.358240008354187,
+      "mask_and_count_ms": 2.1637120246887207,
+      "model_ms": 33.32406234741211,
+      "download_ms": 0.46931201219558716
+    },
+    {
+      "n_crops": 32,
+      "transfer_normalize_ms": 9.67244815826416,
+      "morphology_ms": 0.3591040074825287,
+      "mask_and_count_ms": 2.165760040283203,
+      "model_ms": 33.41209411621094,
+      "download_ms": 0.511135995388031
+    },
+    {
+      "n_crops": 32,
+      "transfer_normalize_ms": 9.78809642791748,
+      "morphology_ms": 0.3606719970703125,
+      "mask_and_count_ms": 2.1626880168914795,
+      "model_ms": 33.305599212646484,
+      "download_ms": 0.5378879904747009
+    },
+    {
+      "n_crops": 32,
+      "transfer_normalize_ms": 9.69587230682373,
+      "morphology_ms": 0.3563520014286041,
+      "mask_and_count_ms": 2.1667840480804443,
+      "model_ms": 33.364990234375,
+      "download_ms": 0.48342400789260864
+    },
+    {
+      "n_crops": 32,
+      "transfer_normalize_ms": 9.710944175720215,
+      "morphology_ms": 0.3583360016345978,
+      "mask_and_count_ms": 2.1678080558776855,
+      "model_ms": 33.32915115356445,
+      "download_ms": 0.5622400045394897
+    },
+    {
+      "n_crops": 32,
+      "transfer_normalize_ms": 9.70627212524414,
+      "morphology_ms": 0.35452800989151,
+      "mask_and_count_ms": 2.1729280948638916,
+      "model_ms": 33.45920181274414,
+      "download_ms": 0.47596800327301025
+    },
+    {
+      "n_crops": 32,
+      "transfer_normalize_ms": 9.668000221252441,
+      "morphology_ms": 0.35580798983573914,
+      "mask_and_count_ms": 2.169856071472168,
+      "model_ms": 33.35590362548828,
+      "download_ms": 0.5829439759254456
+    },
+    {
+      "n_crops": 32,
+      "transfer_normalize_ms": 9.707167625427246,
+      "morphology_ms": 0.3527039885520935,
+      "mask_and_count_ms": 2.173952102661133,
+      "model_ms": 33.311744689941406,
+      "download_ms": 0.4696640074253082
+    },
+    {
+      "n_crops": 32,
+      "transfer_normalize_ms": 9.72873592376709,
+      "morphology_ms": 0.3640640079975128,
+      "mask_and_count_ms": 2.1719040870666504,
+      "model_ms": 33.311744689941406,
+      "download_ms": 0.37273600697517395
+    }
+  ],
+  "write_seconds": 0.005392552993725985
+}

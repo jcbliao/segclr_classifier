@@ -1,0 +1,262 @@
+{
+  "renames": [
+    {
+      "legacy": "analysis/presynaptic/skeleton_comparison/geometry_confidence_figures/casey_coarse_confidence__casey_coarse",
+      "canonical": "analysis/presynaptic/skeleton_comparison/geometry_confidence_figures/morpho_coarse_confidence__morpho_coarse"
+    },
+    {
+      "legacy": "analysis/presynaptic/casey_confidence_cave/casey_confidence_comparison.py",
+      "canonical": "analysis/presynaptic/morpho_confidence_cave/morpho_confidence_comparison.py"
+    },
+    {
+      "legacy": "analysis/presynaptic/casey_confidence_cave/casey_confidence_comparison.ipynb",
+      "canonical": "analysis/presynaptic/morpho_confidence_cave/morpho_confidence_comparison.ipynb"
+    },
+    {
+      "legacy": "analysis/presynaptic/casey_confidence_native/casey_confidence_comparison.ipynb",
+      "canonical": "analysis/presynaptic/morpho_confidence_native/morpho_confidence_comparison.ipynb"
+    },
+    {
+      "legacy": "analysis/presynaptic/casey_confidence_native/casey_confidence_comparison.py",
+      "canonical": "analysis/presynaptic/morpho_confidence_native/morpho_confidence_comparison.py"
+    },
+    {
+      "legacy": "analysis/presynaptic/compartment_filtered/casey_l2",
+      "canonical": "analysis/presynaptic/compartment_filtered/morpho_l2"
+    },
+    {
+      "legacy": "scripts/sbatch/train_casey_confidence_k17.sh",
+      "canonical": "scripts/sbatch/train_morpho_confidence_k17.sh"
+    },
+    {
+      "legacy": "scripts/sbatch/summarize_casey_confidence_k17.sh",
+      "canonical": "scripts/sbatch/summarize_morpho_confidence_k17.sh"
+    },
+    {
+      "legacy": "scripts/sbatch/build_casey_k17_memmap.sh",
+      "canonical": "scripts/sbatch/build_morpho_k17_memmap.sh"
+    },
+    {
+      "legacy": "scripts/sbatch/train_casey_confidence_cave.sh",
+      "canonical": "scripts/sbatch/train_morpho_confidence_cave.sh"
+    },
+    {
+      "legacy": "scripts/sbatch/summarize_casey_confidence_cave.sh",
+      "canonical": "scripts/sbatch/summarize_morpho_confidence_cave.sh"
+    },
+    {
+      "legacy": "analysis/presynaptic/casey_confidence_cave",
+      "canonical": "analysis/presynaptic/morpho_confidence_cave"
+    },
+    {
+      "legacy": "analysis/presynaptic/casey_confidence_native",
+      "canonical": "analysis/presynaptic/morpho_confidence_native"
+    },
+    {
+      "legacy": "analysis/presynaptic/axon_vs_whole_cell_casey6",
+      "canonical": "analysis/presynaptic/axon_vs_whole_cell_morpho6"
+    },
+    {
+      "legacy": "analysis/casey_additional_axons_v1928/casey_candidates_audit.parquet",
+      "canonical": "analysis/morpho_additional_axons_v1928/morpho_candidates_audit.parquet"
+    },
+    {
+      "legacy": "analysis/casey_additional_axons_v1928/additional_casey_extended_axons.csv",
+      "canonical": "analysis/morpho_additional_axons_v1928/additional_morpho_extended_axons.csv"
+    },
+    {
+      "legacy": "analysis/casey_additional_axons_v1928/additional_casey_extended_axons.parquet",
+      "canonical": "analysis/morpho_additional_axons_v1928/additional_morpho_extended_axons.parquet"
+    },
+    {
+      "legacy": "analysis/casey_additional_axons_v1928/casey_bip_mart_ngl_partial_to_full.csv",
+      "canonical": "analysis/morpho_additional_axons_v1928/morpho_bip_mart_ngl_partial_to_full.csv"
+    },
+    {
+      "legacy": "analysis/incoming_presynaptic_fragments_k10_collina/casey_hierarchy_registration.json",
+      "canonical": "analysis/incoming_presynaptic_fragments_k10_collina/morpho_hierarchy_registration.json"
+    },
+    {
+      "legacy": "results/presynaptic/casey_coarse_confidence_with_tc_mixed16",
+      "canonical": "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16"
+    },
+    {
+      "legacy": "results/presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5",
+      "canonical": "results/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5"
+    },
+    {
+      "legacy": "results/presynaptic/casey_confidence_cave",
+      "canonical": "results/presynaptic/morpho_confidence_cave"
+    },
+    {
+      "legacy": "results/presynaptic/axon_vs_whole_cell_casey6",
+      "canonical": "results/presynaptic/axon_vs_whole_cell_morpho6"
+    },
+    {
+      "legacy": "models/presynaptic/casey_coarse_confidence_with_tc_mixed16_stratified5",
+      "canonical": "models/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5"
+    },
+    {
+      "legacy": "models/presynaptic/casey_confidence_cave",
+      "canonical": "models/presynaptic/morpho_confidence_cave"
+    },
+    {
+      "legacy": "scripts/map_casey_unmatched_neurons.py",
+      "canonical": "scripts/map_morpho_unmatched_neurons.py"
+    },
+    {
+      "legacy": "scripts/build_casey_confidence_sweep.py",
+      "canonical": "scripts/build_morpho_confidence_sweep.py"
+    },
+    {
+      "legacy": "scripts/summarize_casey_confidence_k17.py",
+      "canonical": "scripts/summarize_morpho_confidence_k17.py"
+    },
+    {
+      "legacy": "scripts/submit_casey_confidence_k17.sh",
+      "canonical": "scripts/submit_morpho_confidence_k17.sh"
+    },
+    {
+      "legacy": "scripts/build_casey_stratified_folds.py",
+      "canonical": "scripts/build_morpho_stratified_folds.py"
+    },
+    {
+      "legacy": "scripts/check_casey_additional_axons.py",
+      "canonical": "scripts/check_morpho_additional_axons.py"
+    },
+    {
+      "legacy": "scripts/submit_casey_confidence_cave.sh",
+      "canonical": "scripts/submit_morpho_confidence_cave.sh"
+    },
+    {
+      "legacy": "scripts/summarize_casey_confidence_cave.py",
+      "canonical": "scripts/summarize_morpho_confidence_cave.py"
+    },
+    {
+      "legacy": "scripts/prepare_casey_confidence_cave.py",
+      "canonical": "scripts/prepare_morpho_confidence_cave.py"
+    },
+    {
+      "legacy": "data/v1718_extended_axon_neurons_unresolved_casey.csv",
+      "canonical": "data/v1718_extended_axon_neurons_unresolved_morpho.csv"
+    },
+    {
+      "legacy": "data/v1718_extended_axon_neurons_casey_root_map.csv",
+      "canonical": "data/v1718_extended_axon_neurons_morpho_root_map.csv"
+    },
+    {
+      "legacy": "data/v1718_extended_axon_neurons_casey_comparison.csv",
+      "canonical": "data/v1718_extended_axon_neurons_morpho_comparison.csv"
+    },
+    {
+      "legacy": "analysis/casey_coarse_vs_hierarchy.ipynb",
+      "canonical": "analysis/morpho_coarse_vs_hierarchy.ipynb"
+    },
+    {
+      "legacy": "analysis/casey_additional_axons_v1928",
+      "canonical": "analysis/morpho_additional_axons_v1928"
+    }
+  ],
+  "presentation_files_updated": [
+    "scripts/submit_morpho_confidence_k17.sh",
+    "scripts/build_morpho_stratified_folds.py",
+    "scripts/check_morpho_additional_axons.py",
+    "scripts/build_postsynaptic_target_inventory.py",
+    "scripts/submit_morpho_confidence_cave.sh",
+    "scripts/prepare_morpho_confidence_cave.py",
+    "scripts/compare_skeleton_geometry.py",
+    "scripts/make_skeleton_geometry_confidence_notebook.py",
+    "scripts/plot_filtered_presynaptic_umap.py",
+    "scripts/compare_filtered_umap_dimensions.py",
+    "scripts/plot_filtered_presynaptic_umap_grid.py",
+    "scripts/prepare_raw_presynaptic_umap.py",
+    "scripts/prepare_single_presynaptic_umap.py",
+    "scripts/prepare_cave_three_class_pre_post.py",
+    "scripts/predict_incoming_fragment_cell_types.py",
+    "scripts/paired_axon_experiment.py",
+    "scripts/train_paired_axon_experiment.py",
+    "scripts/launch_cave_teasar_confidence_sweep.py",
+    "scripts/continue_cave_teasar_confidence_sweep.py",
+    "scripts/map_morpho_unmatched_neurons.py",
+    "scripts/build_morpho_confidence_sweep.py",
+    "scripts/summarize_morpho_confidence_k17.py",
+    "scripts/summarize_morpho_confidence_cave.py",
+    "scripts/sbatch/build_morpho_k17_memmap.sh",
+    "scripts/sbatch/train_morpho_confidence_cave.sh",
+    "scripts/sbatch/finalize_missing_extended_k17.sh",
+    "scripts/sbatch/train_cave_three_class_pre_post_folds.sh",
+    "scripts/sbatch/train_cave_six_class_pre_post_folds.sh",
+    "scripts/sbatch/continue_cave_teasar_confidence_sweep.sh",
+    "scripts/sbatch/train_cave_teasar_confidence_preemptable.sh",
+    "scripts/sbatch/train_morpho_confidence_k17.sh",
+    "scripts/sbatch/summarize_morpho_confidence_k17.sh",
+    "scripts/sbatch/summarize_morpho_confidence_cave.sh",
+    "data/build_missing_extended_k17.py",
+    "analysis/README.md",
+    "analysis/NOTEBOOKS.md",
+    "analysis/morpho_coarse_vs_hierarchy.ipynb",
+    "analysis/all_windows/linear_vs_resnet.ipynb",
+    "analysis/presynaptic/skeleton_comparison/geometry_confidence.py",
+    "analysis/presynaptic/skeleton_comparison/geometry_vs_confidence.ipynb",
+    "analysis/presynaptic/compartment_filtered/README.md",
+    "analysis/presynaptic/compartment_filtered/morpho_l2/README.md",
+    "analysis/presynaptic/cave_skeletons_pre_post/README.md",
+    "analysis/presynaptic/cave_teasar_confidence_5fold_20261010/README.md",
+    "analysis/presynaptic/morpho_confidence_cave/test_experiment.py",
+    "analysis/presynaptic/morpho_confidence_cave/README.md",
+    "analysis/presynaptic/morpho_confidence_cave/morpho_confidence_comparison.py",
+    "analysis/presynaptic/morpho_confidence_cave/morpho_confidence_comparison.ipynb",
+    "analysis/presynaptic/morpho_confidence_native/morpho_confidence_comparison.ipynb",
+    "analysis/presynaptic/morpho_confidence_native/morpho_confidence_comparison.py",
+    "analysis/presynaptic/axon_vs_whole_cell_morpho6/README.md",
+    "analysis/postsynaptic_targets_conf0.7/README.md",
+    "analysis/incoming_presynaptic_fragments_k10_collina/README.md",
+    "analysis/morpho_additional_axons_v1928/README.md",
+    "results/presynaptic/native_skeletons_pre_post/README.md",
+    "results/presynaptic/cave_v1dd_addition/README.md",
+    "models/README.md",
+    "models/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.3/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.5/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.7/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold0/gnn_lcpn_scratch_mean_resnet4x128_n17_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_coarse_confidence_with_tc_mixed16_stratified5/scale16/k17/conf0.9/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_confidence_cave/k10/conf0/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_confidence_cave/k10/conf0/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_confidence_cave/k10/conf0/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_confidence_cave/k10/conf0.3/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_confidence_cave/k10/conf0.3/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_confidence_cave/k10/conf0.3/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_confidence_cave/k10/conf0.5/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_confidence_cave/k10/conf0.5/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_confidence_cave/k10/conf0.5/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_confidence_cave/k10/conf0.7/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_confidence_cave/k10/conf0.7/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_confidence_cave/k10/conf0.7/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_confidence_cave/k10/conf0.9/fold0/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n10_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_confidence_cave/k10/conf0.9/fold0/gnn_lcpn_scratch_mean_resnet4x128_n10_mixed16_sampled_fold0/README.md",
+    "models/presynaptic/morpho_confidence_cave/k10/conf0.9/fold0/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_fold0/README.md",
+    "docs/skeleton_geometry_comparison.md"
+  ],
+  "preserved": "Frozen JSON/CSV/parquet/checkpoints, source attribution, external storage and database IDs; old local paths are compatibility symlinks.",
+  "validation": {
+    "frozen_artifacts_checked": 23262,
+    "frozen_artifact_errors": 0,
+    "python_files_parsed": 292,
+    "canonical_legacy_pairs_checked": 39,
+    "shell_scripts_checked": 235,
+    "tests_passed": 13,
+    "subtests_passed": 9,
+    "cuda_tests_skipped": 16,
+    "legacy_and_canonical_imports_passed": true
+  }
+}

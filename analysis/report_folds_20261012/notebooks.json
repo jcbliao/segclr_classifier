@@ -1,0 +1,160 @@
+[
+  {
+    "original": "analysis/all_windows/linear_vs_resnet.ipynb",
+    "all_folds": "analysis/all_windows/linear_vs_resnet_all_folds.ipynb",
+    "category": "Whole-cell linear versus ResNet",
+    "family": null,
+    "model": null,
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/all_windows/linear_vs_resnet.ipynb"
+  },
+  {
+    "original": "analysis/all_windows/architecture_comparison.ipynb",
+    "all_folds": "analysis/all_windows/architecture_comparison_all_folds.ipynb",
+    "category": "Whole-cell linear versus ResNet",
+    "family": null,
+    "model": null,
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/all_windows/architecture_comparison.ipynb"
+  },
+  {
+    "original": "analysis/presynaptic/new_skeletons_native/skeleton_comparison_native.ipynb",
+    "all_folds": "analysis/presynaptic/new_skeletons_native/skeleton_comparison_native_all_folds.ipynb",
+    "category": "Morpho TEASAR density sweep",
+    "family": null,
+    "model": null,
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/presynaptic/new_skeletons_native/skeleton_comparison_native.ipynb"
+  },
+  {
+    "original": "analysis/presynaptic/skeleton_comparison/skeleton_comparison.ipynb",
+    "all_folds": "analysis/presynaptic/skeleton_comparison/skeleton_comparison_all_folds.ipynb",
+    "category": "Historical CAVE versus original mesh TEASAR",
+    "family": null,
+    "model": null,
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/presynaptic/skeleton_comparison/skeleton_comparison.ipynb"
+  },
+  {
+    "original": "analysis/presynaptic/cave_v1dd_addition/embedding_augmentation_comparison.ipynb",
+    "all_folds": "analysis/presynaptic/cave_v1dd_addition/embedding_augmentation_comparison_all_folds.ipynb",
+    "category": "V1DD addition",
+    "family": null,
+    "model": null,
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/presynaptic/cave_v1dd_addition/embedding_augmentation_comparison.ipynb"
+  },
+  {
+    "original": "analysis/presynaptic/native_skeletons_pre_post/pre_post_comparison.ipynb",
+    "all_folds": "analysis/presynaptic/native_skeletons_pre_post/pre_post_comparison_all_folds.ipynb",
+    "category": "TEASAR neighborhood pre/post",
+    "family": null,
+    "model": null,
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/presynaptic/native_skeletons_pre_post/pre_post_comparison.ipynb"
+  },
+  {
+    "original": "analysis/presynaptic/native_single_pre_post/pre_post_comparison.ipynb",
+    "all_folds": "analysis/presynaptic/native_single_pre_post/pre_post_comparison_all_folds.ipynb",
+    "category": "Single-embedding pre/post",
+    "family": null,
+    "model": null,
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/presynaptic/native_single_pre_post/pre_post_comparison.ipynb"
+  },
+  {
+    "original": "analysis/presynaptic/cave_skeletons_pre_post/six_class/pre_post_comparison.ipynb",
+    "all_folds": "analysis/presynaptic/cave_skeletons_pre_post/six_class/pre_post_comparison_all_folds.ipynb",
+    "category": "CAVE six-class pre+post",
+    "family": null,
+    "model": null,
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/presynaptic/cave_skeletons_pre_post/six_class/pre_post_comparison.ipynb"
+  },
+  {
+    "original": "analysis/presynaptic/cave_embedding_augmentation_conf0.7/embedding_augmentation_comparison.ipynb",
+    "all_folds": "analysis/presynaptic/cave_embedding_augmentation_conf0.7/embedding_augmentation_comparison_all_folds.ipynb",
+    "category": "EM augmentation",
+    "family": null,
+    "model": null,
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/presynaptic/cave_embedding_augmentation_conf0.7/embedding_augmentation_comparison.ipynb"
+  },
+  {
+    "original": "analysis/presynaptic/morpho_confidence_cave/morpho_confidence_comparison.ipynb",
+    "all_folds": "analysis/presynaptic/morpho_confidence_cave/morpho_confidence_comparison_all_folds.ipynb",
+    "category": "Morpho CAVE/TEASAR confidence sweep",
+    "family": "CAVE",
+    "model": null,
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/presynaptic/morpho_confidence_cave/morpho_confidence_comparison.ipynb"
+  },
+  {
+    "original": "analysis/presynaptic/morpho_confidence_native/morpho_confidence_comparison.ipynb",
+    "all_folds": "analysis/presynaptic/morpho_confidence_native/morpho_confidence_comparison_all_folds.ipynb",
+    "category": "Morpho CAVE/TEASAR confidence sweep",
+    "family": "TEASAR",
+    "model": null,
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/presynaptic/morpho_confidence_native/morpho_confidence_comparison.ipynb"
+  },
+  {
+    "original": "analysis/presynaptic/cave_teasar_confidence_5fold_20261010/comparison.ipynb",
+    "all_folds": "analysis/presynaptic/cave_teasar_confidence_5fold_20261010/comparison_all_folds.ipynb",
+    "category": "Morpho CAVE/TEASAR confidence sweep",
+    "family": null,
+    "model": null,
+    "archived_original": null
+  },
+  {
+    "original": "analysis/presynaptic/axon_vs_whole_cell_morpho6/paired_comparison.ipynb",
+    "all_folds": "analysis/presynaptic/axon_vs_whole_cell_morpho6/paired_comparison_all_folds.ipynb",
+    "category": "Paired axon versus axon+dendrite",
+    "family": null,
+    "model": null,
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/presynaptic/axon_vs_whole_cell_morpho6/paired_comparison.ipynb"
+  },
+  {
+    "original": "analysis/presynaptic/native_skeletons_pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_pre_post_5folds.ipynb",
+    "all_folds": "analysis/presynaptic/native_skeletons_pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_pre_post_5folds_all_folds.ipynb",
+    "category": "TEASAR neighborhood pre/post",
+    "family": null,
+    "model": "Pointwise MLP",
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/presynaptic/native_skeletons_pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_pre_post_5folds.ipynb"
+  },
+  {
+    "original": "analysis/presynaptic/native_skeletons_pre_post/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_post_5folds.ipynb",
+    "all_folds": "analysis/presynaptic/native_skeletons_pre_post/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_post_5folds_all_folds.ipynb",
+    "category": "TEASAR neighborhood pre/post",
+    "family": null,
+    "model": "GT",
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/presynaptic/native_skeletons_pre_post/gnn_lcpn_scratch_gt_L4_H4_resnet4x128_n17_mixed16_sampled_pre_post_5folds.ipynb"
+  },
+  {
+    "original": "analysis/presynaptic/native_single_pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_5folds.ipynb",
+    "all_folds": "analysis/presynaptic/native_single_pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_5folds_all_folds.ipynb",
+    "category": "Single-embedding pre/post",
+    "family": null,
+    "model": "Pointwise MLP",
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/presynaptic/native_single_pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_5folds.ipynb"
+  },
+  {
+    "original": "analysis/presynaptic/cave_skeletons_pre_post/six_class/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_six_class_5folds.ipynb",
+    "all_folds": "analysis/presynaptic/cave_skeletons_pre_post/six_class/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_six_class_5folds_all_folds.ipynb",
+    "category": "CAVE six-class pre+post",
+    "family": null,
+    "model": "Pointwise MLP",
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/presynaptic/cave_skeletons_pre_post/six_class/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_six_class_5folds.ipynb"
+  },
+  {
+    "original": "analysis/presynaptic/cave_skeletons_pre_post/six_class/mean_pre_post.ipynb",
+    "all_folds": "analysis/presynaptic/cave_skeletons_pre_post/six_class/mean_pre_post_all_folds.ipynb",
+    "category": "CAVE six-class pre+post",
+    "family": null,
+    "model": "Mean",
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/presynaptic/cave_skeletons_pre_post/six_class/mean_pre_post.ipynb"
+  },
+  {
+    "original": "analysis/presynaptic/cave_skeletons_pre_post/six_class/gt_pre_post.ipynb",
+    "all_folds": "analysis/presynaptic/cave_skeletons_pre_post/six_class/gt_pre_post_all_folds.ipynb",
+    "category": "CAVE six-class pre+post",
+    "family": null,
+    "model": "GT",
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/presynaptic/cave_skeletons_pre_post/six_class/gt_pre_post.ipynb"
+  },
+  {
+    "original": "analysis/all_windows/structure_ablation.ipynb",
+    "all_folds": "analysis/all_windows/structure_ablation_all_folds.ipynb",
+    "category": "Whole-cell inference interventions",
+    "archived_original": "analysis/report_folds_20261012/legacy_notebooks/analysis/all_windows/structure_ablation.ipynb"
+  }
+]

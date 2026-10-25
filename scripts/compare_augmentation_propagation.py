@@ -54,7 +54,8 @@ def main() -> None:
     checkpoint = torch.load(CHECKPOINT, map_location=device, weights_only=False)
     model = WindowClassifier(checkpoint["config"], hierarchy=clean.hierarchy).to(device).eval()
     model.load_state_dict(checkpoint["model_state"])
-    clean_loader = DataLoader(Subset(clean, indices.tolist()), batch_size=512, shuffle=False)
+    clean_loader = DataLoader(Subset(clean, indices.tolist()), batch_size=512, shuffle=False,
+                              num_workers=7,pin_memory=True)
 
     results = {"n_windows": int(len(indices)), "checkpoint_epoch": int(checkpoint["epoch"]),
                "policies": {}}
@@ -63,7 +64,8 @@ def main() -> None:
             manifest, "train", "cave", database=DATABASE,
             embedding_augmentation=policy, augmentation_database=AUGMENTATIONS,
         )
-        aug_loader = DataLoader(Subset(augmented, indices.tolist()), batch_size=512, shuffle=False)
+        aug_loader = DataLoader(Subset(augmented, indices.tolist()), batch_size=512, shuffle=False,
+                                num_workers=7,pin_memory=True)
         metrics = {name: [] for name in ("node_cosine", "mean_cosine", "gt_cosine", "trunk_cosine")}
         n, agree, clean_correct, aug_correct, fixed, broken = 0, 0, 0, 0, 0, 0
         with torch.inference_mode():
@@ -75,7 +77,7 @@ def main() -> None:
                 metrics["mean_cosine"].append(cosine(
                     mean_pool(clean_batch.x, clean_batch.batch),
                     mean_pool(aug_batch.x, aug_batch.batch)))
-                with torch.autocast("cuda", dtype=torch.bfloat16):
+                with torch.autocast("cuda", dtype=torch.float16):
                     clean_g = model(clean_batch.x, clean_batch.edge_index, clean_batch.batch,
                         pos_enc=clean_batch.pos_enc, rel_pos=clean_batch.rel_pos,
                         has_segclr=clean_batch.has_segclr)

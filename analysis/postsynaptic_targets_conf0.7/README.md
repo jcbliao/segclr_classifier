@@ -1,10 +1,10 @@
-# Postsynaptic targets of the Casey confidence 0.7 cohort
+# Postsynaptic targets of the Morpho confidence 0.7 cohort
 
 The target list is complete at **minnie65_public materialization 1718**:
 1,773 presynaptic cells, 2,197,243 outgoing synapses, and 325,574 nonzero
 postsynaptic root IDs. One synapse has unresolved target ID 0 and is retained
 in `synapses` but excluded from the target list. The cohort includes all splits
-and the project's 30 thalamocortical cells, which have no Casey confidence and
+and the project's 30 thalamocortical cells, which have no Morpho confidence and
 are included by the established cohort policy.
 
 **Skeleton checks are complete; volume enrichment has resumed at the user's request.**

@@ -1,5 +1,7 @@
 # Running the analysis notebooks
 
+For the current report, use the [`*_all_folds.ipynb` index](report_folds_20261012/README.md#notebook-index). These pages show five-fold means and 95% fold intervals, and explicitly mark incomplete comparisons as pending.
+
 Select **segclr_db (.venv)** in Jupyter or VS Code. It points to
 `segclr_db/.venv/bin/python`, which contains the project's scientific Python,
 PyTorch/PyG, database, and notebook dependencies. A generic Python kernel can
@@ -21,7 +23,7 @@ Check only setup/import cells, or execute one notebook:
 
 ```bash
 segclr_db/.venv/bin/python scripts/check_notebooks.py --setup-only
-segclr_db/.venv/bin/python scripts/check_notebooks.py analysis/presynaptic/casey_confidence_cave/casey_confidence_comparison.ipynb
+segclr_db/.venv/bin/python scripts/check_notebooks.py analysis/presynaptic/morpho_confidence_cave/morpho_confidence_comparison.ipynb
 ```
 
 Reports and copies are written under `logs/notebook_checks/`. `--timeout`

@@ -1,0 +1,62 @@
+[
+  {
+    "architecture": "mean",
+    "mode": "eager",
+    "epoch_seconds": [
+      0.8230902329087257,
+      0.3292615972459316,
+      0.3282334292307496
+    ],
+    "total_seconds": 1.5039783474057913
+  },
+  {
+    "architecture": "mean",
+    "mode": "compiled",
+    "epoch_seconds": [
+      28.93853792268783,
+      2.767864653840661,
+      0.2143444735556841
+    ],
+    "total_seconds": 31.921246557496488
+  },
+  {
+    "architecture": "pointwise_mlp",
+    "mode": "eager",
+    "epoch_seconds": [
+      0.41649883799254894,
+      0.3683343445882201,
+      0.368675971403718
+    ],
+    "total_seconds": 1.153928198851645
+  },
+  {
+    "architecture": "pointwise_mlp",
+    "mode": "compiled",
+    "epoch_seconds": [
+      19.996548391878605,
+      3.5665062749758363,
+      0.2254875311627984
+    ],
+    "total_seconds": 23.789061712101102
+  },
+  {
+    "architecture": "graph_transformer",
+    "mode": "eager",
+    "epoch_seconds": [
+      1.4061604384332895,
+      1.2495675683021545,
+      1.2390643395483494
+    ],
+    "total_seconds": 3.8952143508940935
+  },
+  {
+    "architecture": "graph_transformer",
+    "mode": "compiled",
+    "epoch_seconds": [
+      84.85964136850089,
+      16.5866658128798,
+      0.5173886436969042
+    ],
+    "total_seconds": 101.96454520709813
+  }
+]

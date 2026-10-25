@@ -1,0 +1,157 @@
+{
+  "run": "gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n17_mixed16_sampled_fold1",
+  "epoch": 27,
+  "classes": [
+    "BasketFam",
+    "BipFam",
+    "MartFam",
+    "NglFam",
+    "pyramidal",
+    "thalamocortical"
+  ],
+  "window_test_metrics": {
+    "accuracy": 0.8767776218737556,
+    "balanced_accuracy": 0.6952024965145386,
+    "macro_precision": 0.7249802044028368,
+    "macro_f1": 0.7081933408791699,
+    "per_class_recall": {
+      "BasketFam": 0.948674733397323,
+      "BipFam": 0.32611940298507464,
+      "MartFam": 0.7970556141226951,
+      "NglFam": 0.36255767963085034,
+      "pyramidal": 0.9394351159856352,
+      "thalamocortical": 0.7973724329656533
+    },
+    "per_class_precision": {
+      "BasketFam": 0.9583734176248722,
+      "BipFam": 0.31484149855907784,
+      "MartFam": 0.8880554725573632,
+      "NglFam": 0.44426494345718903,
+      "pyramidal": 0.853280102766898,
+      "thalamocortical": 0.891065791451621
+    },
+    "confusion_matrix": [
+      [
+        125522,
+        1285,
+        2758,
+        14,
+        2119,
+        615
+      ],
+      [
+        701,
+        4370,
+        2885,
+        117,
+        5259,
+        68
+      ],
+      [
+        2233,
+        5431,
+        86192,
+        481,
+        13319,
+        482
+      ],
+      [
+        5,
+        88,
+        550,
+        550,
+        309,
+        15
+      ],
+      [
+        1856,
+        2569,
+        3243,
+        74,
+        135506,
+        994
+      ],
+      [
+        657,
+        137,
+        1429,
+        2,
+        2294,
+        17783
+      ]
+    ]
+  },
+  "test_metrics": {
+    "accuracy": 0.9439775910364145,
+    "balanced_accuracy": 0.7848810988109882,
+    "macro_precision": 0.9613932615299641,
+    "macro_f1": 0.827538441824156,
+    "per_class_recall": {
+      "BasketFam": 1.0,
+      "BipFam": 0.3,
+      "MartFam": 0.9166666666666666,
+      "NglFam": 0.5,
+      "pyramidal": 0.992619926199262,
+      "thalamocortical": 1.0
+    },
+    "per_class_precision": {
+      "BasketFam": 0.9411764705882353,
+      "BipFam": 1.0,
+      "MartFam": 0.88,
+      "NglFam": 1.0,
+      "pyramidal": 0.9471830985915493,
+      "thalamocortical": 1.0
+    },
+    "confusion_matrix": [
+      [
+        32,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        6,
+        2,
+        0,
+        12,
+        0
+      ],
+      [
+        0,
+        0,
+        22,
+        0,
+        2,
+        0
+      ],
+      [
+        0,
+        0,
+        1,
+        2,
+        1,
+        0
+      ],
+      [
+        2,
+        0,
+        0,
+        0,
+        269,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        6
+      ]
+    ]
+  },
+  "complete": false
+}

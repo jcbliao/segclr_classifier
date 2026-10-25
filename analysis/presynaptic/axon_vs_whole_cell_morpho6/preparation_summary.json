@@ -1,0 +1,161 @@
+{
+  "plan_sha256": "317827e875be6910e76d16b1d43d28e8151895967172d3d509a2c2a03f5b0ee3",
+  "summary": [
+    {
+      "fold": 0,
+      "split": "train",
+      "condition": "axon_only",
+      "roots": 1271,
+      "windows": 1041976
+    },
+    {
+      "fold": 0,
+      "split": "train",
+      "condition": "axon_dendrite",
+      "roots": 1271,
+      "windows": 2528784
+    },
+    {
+      "fold": 0,
+      "split": "validation",
+      "condition": "shared",
+      "roots": 141,
+      "windows": 110626
+    },
+    {
+      "fold": 0,
+      "split": "test",
+      "condition": "shared",
+      "roots": 359,
+      "windows": 287381
+    },
+    {
+      "fold": 1,
+      "split": "train",
+      "condition": "axon_only",
+      "roots": 1274,
+      "windows": 1024927
+    },
+    {
+      "fold": 1,
+      "split": "train",
+      "condition": "axon_dendrite",
+      "roots": 1274,
+      "windows": 2511211
+    },
+    {
+      "fold": 1,
+      "split": "validation",
+      "condition": "shared",
+      "roots": 142,
+      "windows": 118876
+    },
+    {
+      "fold": 1,
+      "split": "test",
+      "condition": "shared",
+      "roots": 355,
+      "windows": 296534
+    },
+    {
+      "fold": 2,
+      "split": "train",
+      "condition": "axon_only",
+      "roots": 1275,
+      "windows": 1033391
+    },
+    {
+      "fold": 2,
+      "split": "train",
+      "condition": "axon_dendrite",
+      "roots": 1275,
+      "windows": 2523783
+    },
+    {
+      "fold": 2,
+      "split": "validation",
+      "condition": "shared",
+      "roots": 142,
+      "windows": 125111
+    },
+    {
+      "fold": 2,
+      "split": "test",
+      "condition": "shared",
+      "roots": 354,
+      "windows": 281930
+    },
+    {
+      "fold": 3,
+      "split": "train",
+      "condition": "axon_only",
+      "roots": 1276,
+      "windows": 1028457
+    },
+    {
+      "fold": 3,
+      "split": "train",
+      "condition": "axon_dendrite",
+      "roots": 1276,
+      "windows": 2514335
+    },
+    {
+      "fold": 3,
+      "split": "validation",
+      "condition": "shared",
+      "roots": 142,
+      "windows": 121362
+    },
+    {
+      "fold": 3,
+      "split": "test",
+      "condition": "shared",
+      "roots": 353,
+      "windows": 290531
+    },
+    {
+      "fold": 4,
+      "split": "train",
+      "condition": "axon_only",
+      "roots": 1279,
+      "windows": 1026041
+    },
+    {
+      "fold": 4,
+      "split": "train",
+      "condition": "axon_dendrite",
+      "roots": 1279,
+      "windows": 2519409
+    },
+    {
+      "fold": 4,
+      "split": "validation",
+      "condition": "shared",
+      "roots": 142,
+      "windows": 130403
+    },
+    {
+      "fold": 4,
+      "split": "test",
+      "condition": "shared",
+      "roots": 350,
+      "windows": 283898
+    }
+  ],
+  "shared_test_windows": true,
+  "dendritic_source_missing_roots": [
+    "864691134966249759",
+    "864691135060784027",
+    "864691135119335645",
+    "864691135351159255",
+    "864691135685030130",
+    "864691135689015264",
+    "864691135778081453",
+    "864691135782873936",
+    "864691135783317840",
+    "864691135997428394",
+    "864691136118294692",
+    "864691136120465944",
+    "864691136927366986"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "fast_training_seconds": 1.293967172736302,
+  "previous_training_seconds": 73.5628063250333,
+  "speedup": 56.85059704372013,
+  "resident_features": true,
+  "cuda_graphs": true,
+  "passed": true
+}

@@ -12,8 +12,8 @@ set -euo pipefail
 cd /home/jcbliao/rotation/segclr/gnn_classifier
 export OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1
 segclr_db/.venv/bin/python -u data/build_missing_extended_k17.py finalize
-segclr_db/.venv/bin/python -u scripts/build_casey_confidence_sweep.py
-segclr_db/.venv/bin/python -u scripts/build_casey_stratified_folds.py
+segclr_db/.venv/bin/python -u scripts/build_morpho_confidence_sweep.py
+segclr_db/.venv/bin/python -u scripts/build_morpho_stratified_folds.py
 segclr_db/.venv/bin/python - <<'PY'
 import csv
 from pathlib import Path

@@ -1,0 +1,15 @@
+{
+  "status": "submitted",
+  "label_confidence_min": 0,
+  "configurations": 4,
+  "folds": 5,
+  "training_array": "26829045",
+  "preparation": "26829040",
+  "inference_plan": "26829046",
+  "inference_parity": "26829048",
+  "prediction_array": "26829049",
+  "prediction_audit": "26829050",
+  "import_preflight": "26829051",
+  "import_job": "26829052",
+  "output": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/incoming_presynaptic_fragments_k10_collina_conf0_v1"
+}

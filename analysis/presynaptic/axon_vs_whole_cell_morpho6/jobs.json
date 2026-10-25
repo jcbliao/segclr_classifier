@@ -1,0 +1,42 @@
+{
+  "preparation_job": 25447345,
+  "finalize_job": 25447390,
+  "prior_gpu_array": 25432628,
+  "cpus_per_training_job": 16,
+  "data_loader_workers": 15,
+  "gpu_concurrency": 4,
+  "training_array": "0-9%4",
+  "training_dependency": "afterok:25447390,afterany:25432628",
+  "submitted_at": "2026-10-09T22:41:12.972424+00:00",
+  "training_job": 25447541,
+  "prepared_roots": 1773,
+  "implementation_tests_passed": 4,
+  "real_data_smoke_audit_passed": true,
+  "validation_dtype_fix_restart": {
+    "failed_array": 25447541,
+    "replacement_array": 25505196,
+    "reason": "BF16 encoder features versus float32 hierarchy head probabilities; decode outside autocast in float32",
+    "tests": "5 passed",
+    "timestamp": "2026-10-10T16:35:36.635206+00:00"
+  },
+  "cuda_node_retry": {
+    "array_job": 25524153,
+    "tasks": [
+      0,
+      4,
+      5,
+      6,
+      9
+    ],
+    "excluded_node": "node3006",
+    "reason": "All five failed tasks had CUDA initialization failure on node3006 before training",
+    "completed_tasks": [
+      1,
+      2,
+      3,
+      7,
+      8
+    ],
+    "timestamp": "2026-10-10T21:02:14.695931+00:00"
+  }
+}

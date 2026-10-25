@@ -1,4 +1,4 @@
-"""Plots of per-cell CAVE/TEASAR agreement versus Casey label confidence."""
+"""Plots of per-cell CAVE/TEASAR agreement versus Morpho label confidence."""
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -92,7 +92,7 @@ def palette(frame):
     return {name: colors(i) for i, name in enumerate(names)}
 
 
-def plot_global(frame, metrics=DEFAULT_METRICS, confidence_label='Casey coarse confidence', bins=10):
+def plot_global(frame, metrics=DEFAULT_METRICS, confidence_label='Morpho coarse confidence', bins=10):
     columns = 3
     fig, axes = plt.subplots(int(np.ceil(len(metrics) / columns)), columns,
                              figsize=(16, 4.7 * np.ceil(len(metrics) / columns)), squeeze=False)
@@ -113,7 +113,7 @@ def plot_global(frame, metrics=DEFAULT_METRICS, confidence_label='Casey coarse c
     return fig
 
 
-def plot_by_cell_type(frame, metric, label, confidence_label='Casey coarse confidence', bins=10, columns=4):
+def plot_by_cell_type(frame, metric, label, confidence_label='Morpho coarse confidence', bins=10, columns=4):
     names = sorted(frame.cell_type.unique())
     rows = int(np.ceil(len(names) / columns))
     fig, axes = plt.subplots(rows, columns, figsize=(4.3 * columns, 3.7 * rows),
