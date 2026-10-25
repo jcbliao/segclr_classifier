@@ -22,6 +22,7 @@ from data.dataset_lcpn import load_hierarchy, split_cells
 from data.geodesic_window import REL_POS_SCALE_NM
 from data.segmentation_augmentation import TRAINING_POLICIES, training_choice_indices
 from gnn.hierarchy import with_dropped_labels
+from data.postsynaptic_cache import load_postsynaptic_features
 
 DEFAULT_DATABASE = Path("/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/k10")
 DEFAULT_AUGMENTATION_DATABASE = Path(
@@ -248,7 +249,8 @@ class PresynapticWindowDataset(Dataset):
             with np.load(self.postsynaptic_cache / 'cells' / f'{root_id}.npz') as post:
                 cell['synapse_ids'] = post['synapse_ids'].copy()
                 if self.use_postsynaptic:
-                    cell['post_x'] = post['post_x'].copy()
+                    cell['post_x'] = load_postsynaptic_features(
+                        self.postsynaptic_cache / 'cells' / f'{root_id}.npz')
         cell['targets'] = self._targets(root_id)
         # Full-cell edges are scanned only once: adjacency makes induced-edge
         # extraction O(sum degree in the window), not O(all cell edges).
