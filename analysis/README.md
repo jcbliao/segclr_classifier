@@ -8,6 +8,9 @@ Notebooks remain grouped with their experiment helpers and caches. This index de
 
 | Experiment directory | Notebook |
 |---|---|
+| `analysis/presynaptic/latest100k_geodesic20um` | [20 µm, full hierarchy, five folds](presynaptic/latest100k_geodesic20um/five_fold_results.ipynb) |
+| `analysis/presynaptic/latest100k_geodesic10um` | [10 µm, full hierarchy, five folds](presynaptic/latest100k_geodesic10um/five_fold_results.ipynb) |
+| `analysis/presynaptic/latest100k_k10_full_hierarchy` | [10 observed embeddings, full hierarchy, five folds](presynaptic/latest100k_k10_full_hierarchy/five_fold_results.ipynb) |
 | `analysis/all_windows` | [linear_vs_resnet](all_windows/linear_vs_resnet.ipynb) |
 | `analysis/all_windows` | [architecture_comparison](all_windows/architecture_comparison.ipynb) |
 | `analysis/all_windows` | [embedding_path_geodesics](all_windows/embedding_path_geodesics.ipynb) |

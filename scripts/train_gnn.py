@@ -235,8 +235,14 @@ def build_training_datasets(args):
             expected_k = 1 if args.single_presynaptic_embedding else metadata['k_observed']
             if args.num_embeddings != expected_k:
                 raise SystemExit(f"Use --num-embeddings {expected_k} for this configuration")
-        elif args.num_embeddings != 10:
-            raise SystemExit("presynaptic databases were built with K=10; use --num-embeddings 10")
+        else:
+            from data.presynaptic_radius import FORMAT, validate_radius_training
+            metadata_path = Path(args.presynaptic_database) / 'metadata.json'
+            metadata = json.loads(metadata_path.read_text()) if metadata_path.exists() else {}
+            if metadata.get('format') == FORMAT or args.num_embeddings is None:
+                validate_radius_training(args, metadata)
+            elif args.num_embeddings != 10:
+                raise SystemExit("presynaptic databases were built with K=10; use --num-embeddings 10")
         if args.gt_no_lpe or args.gt_no_rel_pos or args.gt_no_adj_bias:
             raise SystemExit(
                 "presynaptic training requires the full model: LPE, relative position, "
@@ -1186,7 +1192,7 @@ def build_training_parser():
     )
     p.add_argument(
         "--radius-dataset", dest="num_embeddings", action="store_const", const=None,
-        help=argparse.SUPPRESS,
+        help="use a prepared presynaptic CAVE geodesic-radius database instead of fixed-K windows",
     )
     p.add_argument(
         "--neighborhood-root",

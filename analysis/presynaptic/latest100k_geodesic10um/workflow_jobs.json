@@ -1,0 +1,9 @@
+{
+  "state": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/latest100k_geodesic10um",
+  "gpu_preflight_job": "26930133",
+  "training_array": "26930155",
+  "summary_job": "26930156",
+  "export_job": "26930671",
+  "notebook_job": "26930672",
+  "status": "complete"
+}

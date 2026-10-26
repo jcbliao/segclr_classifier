@@ -56,3 +56,8 @@ archive/        Historical experiment snapshots
 ```
 
 `20260811/` and `20260812_level4/` remain frozen historical snapshots. The separately managed `segclr_db/` and `segCLR_cell_classification/` dependency clones, local data caches, logs, and checkpoint files are excluded from Git. Model cards record verified publication information separately from experiment results.
+
+The [presynaptic neighborhood workflow](docs/presynaptic_geodesic20um.md) covers
+10 µm and 20 µm geodesic windows, fixed-ten observed embedding windows, full
+morphology hierarchy training, and parallel prediction/logit export to segclr-db.
+Executed five-fold result notebooks are linked in the [analysis index](analysis/README.md).

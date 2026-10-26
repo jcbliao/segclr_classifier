@@ -1,0 +1,9 @@
+{
+  "state": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/latest100k_k10_full_hierarchy",
+  "gpu_preflight_job": "26930134",
+  "training_array": "26930160",
+  "summary_job": "26930161",
+  "export_job": "26930673",
+  "notebook_job": "26930674",
+  "status": "complete"
+}

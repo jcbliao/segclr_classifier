@@ -1,0 +1,163 @@
+{
+  "audited_lost_sites": 1032,
+  "affected_cells": 13,
+  "cause": "Source summary declares 2000nm; these records use larger accepted anchor distances. Final radius data preserve source eligibility flags.",
+  "cells": [
+    {
+      "root": "864691134966249759",
+      "lost": 31,
+      "absent_observed_centers": 0,
+      "distance_range": [
+        2008.5098876953125,
+        4932.85498046875
+      ],
+      "source_cutoff_flags": [
+        true
+      ]
+    },
+    {
+      "root": "864691135060784027",
+      "lost": 15,
+      "absent_observed_centers": 0,
+      "distance_range": [
+        2024.395263671875,
+        3404.392578125
+      ],
+      "source_cutoff_flags": [
+        true
+      ]
+    },
+    {
+      "root": "864691135119335645",
+      "lost": 133,
+      "absent_observed_centers": 0,
+      "distance_range": [
+        2006.5333251953125,
+        4952.439453125
+      ],
+      "source_cutoff_flags": [
+        true
+      ]
+    },
+    {
+      "root": "864691135351159255",
+      "lost": 42,
+      "absent_observed_centers": 0,
+      "distance_range": [
+        2015.6666259765625,
+        4993.8583984375
+      ],
+      "source_cutoff_flags": [
+        true
+      ]
+    },
+    {
+      "root": "864691135685030130",
+      "lost": 34,
+      "absent_observed_centers": 0,
+      "distance_range": [
+        2015.2696533203125,
+        4866.00634765625
+      ],
+      "source_cutoff_flags": [
+        true
+      ]
+    },
+    {
+      "root": "864691135689015264",
+      "lost": 211,
+      "absent_observed_centers": 0,
+      "distance_range": [
+        2007.266845703125,
+        4993.0576171875
+      ],
+      "source_cutoff_flags": [
+        true
+      ]
+    },
+    {
+      "root": "864691135778081453",
+      "lost": 81,
+      "absent_observed_centers": 0,
+      "distance_range": [
+        2027.5384521484375,
+        4760.77978515625
+      ],
+      "source_cutoff_flags": [
+        true
+      ]
+    },
+    {
+      "root": "864691135782873936",
+      "lost": 51,
+      "absent_observed_centers": 0,
+      "distance_range": [
+        2018.760009765625,
+        4864.65771484375
+      ],
+      "source_cutoff_flags": [
+        true
+      ]
+    },
+    {
+      "root": "864691135783317840",
+      "lost": 77,
+      "absent_observed_centers": 0,
+      "distance_range": [
+        2023.1143798828125,
+        4946.73046875
+      ],
+      "source_cutoff_flags": [
+        true
+      ]
+    },
+    {
+      "root": "864691135997428394",
+      "lost": 118,
+      "absent_observed_centers": 0,
+      "distance_range": [
+        2001.8870849609375,
+        4743.2041015625
+      ],
+      "source_cutoff_flags": [
+        true
+      ]
+    },
+    {
+      "root": "864691136118294692",
+      "lost": 108,
+      "absent_observed_centers": 0,
+      "distance_range": [
+        2009.44970703125,
+        4592.59228515625
+      ],
+      "source_cutoff_flags": [
+        true
+      ]
+    },
+    {
+      "root": "864691136120465944",
+      "lost": 94,
+      "absent_observed_centers": 0,
+      "distance_range": [
+        2013.347412109375,
+        4983.46044921875
+      ],
+      "source_cutoff_flags": [
+        true
+      ]
+    },
+    {
+      "root": "864691136927366986",
+      "lost": 37,
+      "absent_observed_centers": 0,
+      "distance_range": [
+        2006.1346435546875,
+        4872.6962890625
+      ],
+      "source_cutoff_flags": [
+        true
+      ]
+    }
+  ]
+}

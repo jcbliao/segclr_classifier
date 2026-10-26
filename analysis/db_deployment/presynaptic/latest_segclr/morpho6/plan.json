@@ -1,0 +1,129 @@
+{
+  "label_confidence_min": 0,
+  "cells": 2029,
+  "models": [
+    {
+      "index": 0,
+      "family": "cave_n10",
+      "classes": "six",
+      "fold": 0,
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/db_deployment/presynaptic/latest_segclr/morpho6/configs/00.json",
+      "config_sha256": "a0dadc326b67b6808dc6e848b92ee79bc030729f26b7678d0297bc81cf507a7b",
+      "manifest_sha256": "4a8ae9447c8756e02bc09eb35d0f5958638e6890a49ffe971404e486e09eccd5",
+      "template": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold0/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold0.json",
+      "template_sha256": "64898a14b89cc9840eaa97ca4040c37110d391c46c1776d1fb37f92136d76675",
+      "checkpoint": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/cave_skeletons_pre_post/k10/conf0/six_class/fold0/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold0/checkpoint_best.pt"
+    },
+    {
+      "index": 1,
+      "family": "cave_n10",
+      "classes": "six",
+      "fold": 1,
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/db_deployment/presynaptic/latest_segclr/morpho6/configs/01.json",
+      "config_sha256": "d4209e4db38eb7e1b47a4208a2a74d335861f624026737c3b7436e21c734110f",
+      "manifest_sha256": "eb74a74b138ea1e4dfc4a375977e359ef6bbd1ab3172074ad7ec390eed7d02c8",
+      "template": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold1/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold1.json",
+      "template_sha256": "8569a3b0a425bb125f27f20d44c7df1eb2cf4c64d10791788ef70229dc292d0e",
+      "checkpoint": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/cave_skeletons_pre_post/k10/conf0/six_class/fold1/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold1/checkpoint_best.pt"
+    },
+    {
+      "index": 2,
+      "family": "cave_n10",
+      "classes": "six",
+      "fold": 2,
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/db_deployment/presynaptic/latest_segclr/morpho6/configs/02.json",
+      "config_sha256": "2881f5f4f65d24d76553d1cfda0ba67d514da26a6a938f39a6614bfdafbb437a",
+      "manifest_sha256": "94eaef8137f50c1d0b3c412c9ca215485e481fd6f59651f48ef54b1efa0f6a5e",
+      "template": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold2/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold2.json",
+      "template_sha256": "7a26c7f4a41031a209196f7bb905f1688e2ca59b7ef4cf9d00e1bcedcafc4cc4",
+      "checkpoint": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/cave_skeletons_pre_post/k10/conf0/six_class/fold2/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold2/checkpoint_best.pt"
+    },
+    {
+      "index": 3,
+      "family": "cave_n10",
+      "classes": "six",
+      "fold": 3,
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/db_deployment/presynaptic/latest_segclr/morpho6/configs/03.json",
+      "config_sha256": "4dde3d31037f8afdd8076c5d9a70e0994ffbe46a8a9847c25895fc5db409c22c",
+      "manifest_sha256": "7ec6155d3f995888a730f059edc512a978b2fe2d046bfd12bc59f45e202c9771",
+      "template": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold3/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold3.json",
+      "template_sha256": "2cfe81caed0fc4ce5cbd15d45d885e963e3705ad46b284d307ca5fb241f6a02c",
+      "checkpoint": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/cave_skeletons_pre_post/k10/conf0/six_class/fold3/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold3/checkpoint_best.pt"
+    },
+    {
+      "index": 4,
+      "family": "cave_n10",
+      "classes": "six",
+      "fold": 4,
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/db_deployment/presynaptic/latest_segclr/morpho6/configs/04.json",
+      "config_sha256": "3787e3c7894f9317ca25ed7c4e7de3381dd65e34a8720969ee3b3056d94a4566",
+      "manifest_sha256": "aebe877650495de81a9d9578db826158a0ed6aad537f0e9f846c228aade019d5",
+      "template": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/cave_skeletons_pre_post/k10/conf0.7/six_class/fold4/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold4.json",
+      "template_sha256": "86eea671a0864071d88b6f68aab7b7dacff8815c10f0a693be5a4b64c9eb0cd3",
+      "checkpoint": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/cave_skeletons_pre_post/k10/conf0/six_class/fold4/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold4/checkpoint_best.pt"
+    },
+    {
+      "index": 5,
+      "family": "single_pre_post",
+      "classes": "six",
+      "fold": 0,
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/db_deployment/presynaptic/latest_segclr/morpho6/configs/05.json",
+      "config_sha256": "e2b7cd57ef4c9fbfeca012ac9eff384310870620d2d8e1315d3b353b7b849122",
+      "manifest_sha256": "0a0178dd34837e880883574ec0b1d9118f4a8c4a951232e68a6b8be6835bab20",
+      "template": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold0/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_fold0.json",
+      "template_sha256": "da977657488a73a64f5012afe8c855679562fd8313f6af702fef1c565e073e95",
+      "checkpoint": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/native_single_pre_post/scale16/k1/conf0/fold0/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_fold0/checkpoint_best.pt"
+    },
+    {
+      "index": 6,
+      "family": "single_pre_post",
+      "classes": "six",
+      "fold": 1,
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/db_deployment/presynaptic/latest_segclr/morpho6/configs/06.json",
+      "config_sha256": "2167c9672beff8578b87100edc9497a32a11cc01620ccf90d64dae4358270514",
+      "manifest_sha256": "be71bfe0fca23a952c068d48696a1501b737519a3808c5d1f75819edda31299b",
+      "template": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold1/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_fold1.json",
+      "template_sha256": "d6ad5f98808439aad93d99f5ab62e56400b4ecdf81f171d8ce650102be3224a2",
+      "checkpoint": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/native_single_pre_post/scale16/k1/conf0/fold1/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_fold1/checkpoint_best.pt"
+    },
+    {
+      "index": 7,
+      "family": "single_pre_post",
+      "classes": "six",
+      "fold": 2,
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/db_deployment/presynaptic/latest_segclr/morpho6/configs/07.json",
+      "config_sha256": "a1ccb61564318a935b98c67a3d6c46a9704801639a234f0f5e9ddffccc68cab9",
+      "manifest_sha256": "8061f0bea22a0cbc310751bd2f969c3a471252a0f53ca91c7453f92360704c0a",
+      "template": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold2/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_fold2.json",
+      "template_sha256": "a0da91a3bf2f73774c02e4bf9bed6c848c8459b8778b76a6513c5bbb4abc3ac1",
+      "checkpoint": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/native_single_pre_post/scale16/k1/conf0/fold2/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_fold2/checkpoint_best.pt"
+    },
+    {
+      "index": 8,
+      "family": "single_pre_post",
+      "classes": "six",
+      "fold": 3,
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/db_deployment/presynaptic/latest_segclr/morpho6/configs/08.json",
+      "config_sha256": "b0f3f4743c798e78ea8897670ee8af14dd8e56206af6a30190438241dc94f5d0",
+      "manifest_sha256": "a4200040943c6eb657adfc8188639edbe5aa7ca72d596fa421858712f5bf614f",
+      "template": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold3/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_fold3.json",
+      "template_sha256": "d61bbf2103a1d0647241e1ecfbd9f139be66a99dfbe7c84295ff7933c8455d95",
+      "checkpoint": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/native_single_pre_post/scale16/k1/conf0/fold3/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_fold3/checkpoint_best.pt"
+    },
+    {
+      "index": 9,
+      "family": "single_pre_post",
+      "classes": "six",
+      "fold": 4,
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/db_deployment/presynaptic/latest_segclr/morpho6/configs/09.json",
+      "config_sha256": "c609cdf2cf26bdba58d18d9c13814a113beea2008f0cc422370b5e57b1400573",
+      "manifest_sha256": "63b24cb0ca1194cc6236b5a587442aa0b9e74f629bd26ef6a14cdf3536d298ed",
+      "template": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic/native_single_pre_post/scale16/k1/conf0.7/fold4/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_fold4.json",
+      "template_sha256": "9522dbe16903bf23e3ff9c366ea7aee1a625ecc783df0de93f991ae9188b536f",
+      "checkpoint": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/native_single_pre_post/scale16/k1/conf0/fold4/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n1_mixed16_sampled_pre_post_fold4/checkpoint_best.pt"
+    }
+  ],
+  "output": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_morpho6_centers_v1/models",
+  "fold_policy": "unchanged original assignments",
+  "training_feature_plan_sha256": "20d78acc065fb7be9030db846827a1c8295eb651aa33f99911bb6c25d58486a6"
+}

@@ -74,3 +74,7 @@ archive/logs*/
 analysis/**/cache/
 analysis/**/*.tmp
 analysis/**/*.pkl
+analysis/presynaptic/latest100k_*/**/*.lock
+analysis/presynaptic/latest100k_*/segclr_db_export/inventory.json
+analysis/presynaptic/latest100k_*/segclr_db_export/preflight.json
+analysis/presynaptic/latest100k_*/segclr_db_export/progress.json

@@ -1,0 +1,309 @@
+{
+  "checkpoint": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/k10/full_hierarchy/conf0/fold1/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold1/checkpoint_best.pt",
+  "checkpoint_sha256": "287e506072ea59d13977ffce5d92086477c17899a51b9a4fafc18d6d445ae96b",
+  "manifest_sha256": "376a4e23c85a338eed0351923b51b5b869a54162df9742cacc4df32e5b153d46",
+  "plan_sha256": "61420eb946f0098ddf6e78bc6255b4c6bcc9ad6670be95dfa287adad44ad6258",
+  "fold": 1,
+  "windows": 328236,
+  "level_classes": [
+    [
+      "neuron"
+    ],
+    [
+      "excitatory",
+      "inhibitory"
+    ],
+    [
+      "BasketFam",
+      "BipFam",
+      "MartFam",
+      "NglFam",
+      "pyramidal",
+      "thalamocortical"
+    ],
+    [
+      "BasketFam",
+      "BipFam",
+      "ET",
+      "IT",
+      "MartFam",
+      "NP",
+      "NglFam",
+      "corticothalamic",
+      "thalamocortical"
+    ],
+    [
+      "BasketFam",
+      "BipFam",
+      "L2IT",
+      "L3IT",
+      "L4IT",
+      "L5ET",
+      "L5IT",
+      "L5NP",
+      "L6CT",
+      "L6IT",
+      "MartFam",
+      "NglFam",
+      "thalamocortical"
+    ]
+  ],
+  "local_heads": [
+    {
+      "parent_level": 0,
+      "child_level": 1,
+      "parent_name": "neuron",
+      "parent_global_idx": 0,
+      "children": [
+        "excitatory",
+        "inhibitory"
+      ],
+      "child_global_indices": [
+        0,
+        1
+      ],
+      "n_children": 2
+    },
+    {
+      "parent_level": 1,
+      "child_level": 2,
+      "parent_name": "excitatory",
+      "parent_global_idx": 0,
+      "children": [
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "child_global_indices": [
+        4,
+        5
+      ],
+      "n_children": 2
+    },
+    {
+      "parent_level": 1,
+      "child_level": 2,
+      "parent_name": "inhibitory",
+      "parent_global_idx": 1,
+      "children": [
+        "BasketFam",
+        "BipFam",
+        "MartFam",
+        "NglFam"
+      ],
+      "child_global_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "n_children": 4
+    },
+    {
+      "parent_level": 2,
+      "child_level": 3,
+      "parent_name": "pyramidal",
+      "parent_global_idx": 4,
+      "children": [
+        "ET",
+        "IT",
+        "NP",
+        "corticothalamic"
+      ],
+      "child_global_indices": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "n_children": 4
+    },
+    {
+      "parent_level": 3,
+      "child_level": 4,
+      "parent_name": "IT",
+      "parent_global_idx": 3,
+      "children": [
+        "L2IT",
+        "L3IT",
+        "L4IT",
+        "L5IT",
+        "L6IT"
+      ],
+      "child_global_indices": [
+        2,
+        3,
+        4,
+        6,
+        9
+      ],
+      "n_children": 5
+    }
+  ],
+  "score_semantics": "all local heads on every row; probabilities conditional on parent; joint level probabilities separate",
+  "split": "held_out_fold; same fold used for checkpoint selection",
+  "deduplication": "one representative synapse per per-cell membership set, matching training",
+  "parquet_sha256": "8fd206cf340dd9678bd6c88868592b40fea4665a8639d2cc348090c3bfebac7b",
+  "local_head_metrics_conditioned_on_true_parent": [
+    {
+      "parent": "neuron",
+      "children": [
+        "excitatory",
+        "inhibitory"
+      ],
+      "support": 328236,
+      "accuracy": 0.9736104510169512,
+      "confusion_matrix": [
+        [
+          151002,
+          3008
+        ],
+        [
+          5654,
+          168572
+        ]
+      ]
+    },
+    {
+      "parent": "excitatory",
+      "children": [
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "support": 154010,
+      "accuracy": 0.9875787286539836,
+      "confusion_matrix": [
+        [
+          136373,
+          1089
+        ],
+        [
+          824,
+          15724
+        ]
+      ]
+    },
+    {
+      "parent": "inhibitory",
+      "children": [
+        "BasketFam",
+        "BipFam",
+        "MartFam",
+        "NglFam"
+      ],
+      "support": 174226,
+      "accuracy": 0.9284090778643831,
+      "confusion_matrix": [
+        [
+          91887,
+          1086,
+          940,
+          60
+        ],
+        [
+          275,
+          10200,
+          595,
+          400
+        ],
+        [
+          4471,
+          3111,
+          58684,
+          1243
+        ],
+        [
+          9,
+          123,
+          160,
+          982
+        ]
+      ]
+    },
+    {
+      "parent": "pyramidal",
+      "children": [
+        "ET",
+        "IT",
+        "NP",
+        "corticothalamic"
+      ],
+      "support": 137462,
+      "accuracy": 0.9306935734966755,
+      "confusion_matrix": [
+        [
+          2097,
+          670,
+          8,
+          255
+        ],
+        [
+          378,
+          120947,
+          763,
+          4232
+        ],
+        [
+          2,
+          445,
+          306,
+          99
+        ],
+        [
+          29,
+          2575,
+          71,
+          4585
+        ]
+      ]
+    },
+    {
+      "parent": "IT",
+      "children": [
+        "L2IT",
+        "L3IT",
+        "L4IT",
+        "L5IT",
+        "L6IT"
+      ],
+      "support": 126320,
+      "accuracy": 0.5842146928435719,
+      "confusion_matrix": [
+        [
+          8387,
+          2407,
+          7056,
+          2792,
+          756
+        ],
+        [
+          2274,
+          7305,
+          8722,
+          2728,
+          703
+        ],
+        [
+          1677,
+          3448,
+          43740,
+          3957,
+          1581
+        ],
+        [
+          735,
+          702,
+          5836,
+          7347,
+          1012
+        ],
+        [
+          400,
+          359,
+          2395,
+          2982,
+          7019
+        ]
+      ]
+    }
+  ]
+}

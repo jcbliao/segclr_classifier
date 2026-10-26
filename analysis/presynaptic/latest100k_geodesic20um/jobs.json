@@ -1,0 +1,11 @@
+{
+  "preparation_job": "26921250",
+  "gpu_preflight_job": "26921436",
+  "normal_training_array": "26921527",
+  "status": "complete",
+  "preemptable_training_array": "26921528",
+  "summary_job": "26921529",
+  "completion": "analysis/presynaptic/latest100k_geodesic20um/completion.json",
+  "completed_folds": 5,
+  "epochs_per_fold": 30
+}

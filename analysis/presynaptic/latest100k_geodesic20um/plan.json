@@ -1,0 +1,230 @@
+{
+  "format": "presynaptic-geodesic-radius-v1",
+  "window_nm": 20000.0,
+  "source_declared_match_cutoff_nm": 2000.0,
+  "anchor_match_policy": "preserve per-site cave_within_match_cutoff; source records include 2um and 5um cutoffs",
+  "feature_run_id": "resnet50_1280b_slab1280_50um_mac_partial_aug_2_style_bf16_100k__20261022_140504",
+  "feature_checkpoint_sha256": "826eebf68fdd47e979385c8f401825a8c9f4f2ea2c838794066f5b906a080897",
+  "source_manifests_sha256": [
+    "4a8ae9447c8756e02bc09eb35d0f5958638e6890a49ffe971404e486e09eccd5",
+    "eb74a74b138ea1e4dfc4a375977e359ef6bbd1ab3172074ad7ec390eed7d02c8",
+    "94eaef8137f50c1d0b3c412c9ca215485e481fd6f59651f48ef54b1efa0f6a5e",
+    "7ec6155d3f995888a730f059edc512a978b2fe2d046bfd12bc59f45e202c9771",
+    "aebe877650495de81a9d9578db826158a0ed6aad537f0e9f846c228aade019d5"
+  ],
+  "complete": true,
+  "missing_root_ids": [],
+  "cells": 2029,
+  "selection": "all observed embeddings at skeleton distance <= window_nm from existing nearest observed anchor",
+  "soma_exclusion": "source CAVE skeleton cut, unchanged",
+  "minimum_embeddings": 1,
+  "k_observed": null,
+  "geometry_features_prepared": false,
+  "eligibility": "valid anchor and existing postsynaptic eligibility; no K10 minimum",
+  "deduplication": "existing per-cell membership-set deduplication",
+  "totals": {
+    "sites": 2379370,
+    "valid": 2243331,
+    "old_k10_valid": 2243279,
+    "newly_valid": 52,
+    "unique_windows": 1744226,
+    "membership_count": 48179402,
+    "below_ten": 34316,
+    "above_ten": 2182396
+  },
+  "models": [
+    {
+      "fold": 0,
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/latest100k_geodesic20um/configs/00.json",
+      "config_sha256": "15cf213ca398f7b559ef6a6825275993f898584538d23cf96bd59f94ce226f11",
+      "manifest_sha256": "d3ea37b790f02b6f7440a0acd131e4dea9a24db967d8cfa5688f5cede574a031",
+      "train_windows": 1400071,
+      "test_windows": 344139,
+      "train_cells": 1623,
+      "test_cells": 406,
+      "results_dir": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/geodesic20000nm/full_hierarchy/conf0/fold0"
+    },
+    {
+      "fold": 1,
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/latest100k_geodesic20um/configs/01.json",
+      "config_sha256": "a931731b0c89253ef860a896ce17bb361053bd3033125173cd9e329f5f69c3e0",
+      "manifest_sha256": "529392099bd8772d4fff24f384fe0cbfb13db2075044ed6b8e5bbae9df33fa08",
+      "train_windows": 1388379,
+      "test_windows": 355831,
+      "train_cells": 1623,
+      "test_cells": 406,
+      "results_dir": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/geodesic20000nm/full_hierarchy/conf0/fold1"
+    },
+    {
+      "fold": 2,
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/latest100k_geodesic20um/configs/02.json",
+      "config_sha256": "fc2f6dd448532a2db390b3b45dc887c3af12c405e6f7d378a027e984415c6cb9",
+      "manifest_sha256": "4c9ee22c7fd60243650c00a44d57326d00fe5a54bd24a0f8fe42aea9452f233a",
+      "train_windows": 1402105,
+      "test_windows": 342105,
+      "train_cells": 1624,
+      "test_cells": 405,
+      "results_dir": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/geodesic20000nm/full_hierarchy/conf0/fold2"
+    },
+    {
+      "fold": 3,
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/latest100k_geodesic20um/configs/03.json",
+      "config_sha256": "dc55d566821c03d15c1eb00fecc96b6dc27dd7cfe1bfbeaf90d18351120882f6",
+      "manifest_sha256": "858baea094724d6b18257475d98b28ccb9ea04bd6a4ff1246cc5301a4aa461d5",
+      "train_windows": 1394799,
+      "test_windows": 349411,
+      "train_cells": 1623,
+      "test_cells": 406,
+      "results_dir": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/geodesic20000nm/full_hierarchy/conf0/fold3"
+    },
+    {
+      "fold": 4,
+      "config": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/latest100k_geodesic20um/configs/04.json",
+      "config_sha256": "65cad639687cc309d14de2c9b112aa1e5e3450f1c4247d4cdcd18596d0d7ed50",
+      "manifest_sha256": "490c47e3de405a9964dedb29c0e618a5aeeb2bc95006d9df5f401bb7a824567b",
+      "train_windows": 1391486,
+      "test_windows": 352724,
+      "train_cells": 1623,
+      "test_cells": 406,
+      "results_dir": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/geodesic20000nm/full_hierarchy/conf0/fold4"
+    }
+  ],
+  "hierarchy": {
+    "level_classes": [
+      [
+        "neuron"
+      ],
+      [
+        "excitatory",
+        "inhibitory"
+      ],
+      [
+        "BasketFam",
+        "BipFam",
+        "MartFam",
+        "NglFam",
+        "pyramidal",
+        "thalamocortical"
+      ],
+      [
+        "BasketFam",
+        "BipFam",
+        "ET",
+        "IT",
+        "MartFam",
+        "NP",
+        "NglFam",
+        "corticothalamic",
+        "thalamocortical"
+      ],
+      [
+        "BasketFam",
+        "BipFam",
+        "L2IT",
+        "L3IT",
+        "L4IT",
+        "L5ET",
+        "L5IT",
+        "L5NP",
+        "L6CT",
+        "L6IT",
+        "MartFam",
+        "NglFam",
+        "thalamocortical"
+      ]
+    ],
+    "local_heads": [
+      {
+        "parent_level": 0,
+        "child_level": 1,
+        "parent_name": "neuron",
+        "parent_global_idx": 0,
+        "children": [
+          "excitatory",
+          "inhibitory"
+        ],
+        "child_global_indices": [
+          0,
+          1
+        ],
+        "n_children": 2
+      },
+      {
+        "parent_level": 1,
+        "child_level": 2,
+        "parent_name": "excitatory",
+        "parent_global_idx": 0,
+        "children": [
+          "pyramidal",
+          "thalamocortical"
+        ],
+        "child_global_indices": [
+          4,
+          5
+        ],
+        "n_children": 2
+      },
+      {
+        "parent_level": 1,
+        "child_level": 2,
+        "parent_name": "inhibitory",
+        "parent_global_idx": 1,
+        "children": [
+          "BasketFam",
+          "BipFam",
+          "MartFam",
+          "NglFam"
+        ],
+        "child_global_indices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "n_children": 4
+      },
+      {
+        "parent_level": 2,
+        "child_level": 3,
+        "parent_name": "pyramidal",
+        "parent_global_idx": 4,
+        "children": [
+          "ET",
+          "IT",
+          "NP",
+          "corticothalamic"
+        ],
+        "child_global_indices": [
+          2,
+          3,
+          5,
+          7
+        ],
+        "n_children": 4
+      },
+      {
+        "parent_level": 3,
+        "child_level": 4,
+        "parent_name": "IT",
+        "parent_global_idx": 3,
+        "children": [
+          "L2IT",
+          "L3IT",
+          "L4IT",
+          "L5IT",
+          "L6IT"
+        ],
+        "child_global_indices": [
+          2,
+          3,
+          4,
+          6,
+          9
+        ],
+        "n_children": 5
+      }
+    ],
+    "hierarchy_levels_dropped": 0
+  },
+  "maximum_embeddings": 97
+}

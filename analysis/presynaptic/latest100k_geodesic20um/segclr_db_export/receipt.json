@@ -1,0 +1,1571 @@
+{
+  "complete": true,
+  "database_root": "/orcd/compute/sdorkenw/001/segclr-db",
+  "dataset": "microns",
+  "shared_bundle": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_geodesic20um_full_hierarchy_a80f0ef007370c0b",
+  "plan_sha256": "a80f0ef007370c0b2cfcccb1f2b3119a667a15843cf972a719ed7ae2055709d8",
+  "hierarchy_id": "morpho_neuron_full_v1718_a80f0ef00737",
+  "node_set_id": "cave_skeleton_v4",
+  "score_semantics": "Raw conditional logits from EVERY local head, scattered into registered level class order. Apply softmax separately over each head child_global_indices, never over the whole level. Unary positions have zero logits. Top-down labels use parent routing. Full conditional and joint probabilities are preserved in shared source Parquet.",
+  "canonical_cells_verified": 2029,
+  "pilot_passed": true,
+  "models": [
+    {
+      "fold": 0,
+      "windows": 344139,
+      "checkpoint_sha256": "e573c8e87e9b6ff6bbeb7ca1b1d9b3a32abb3b0284456467e28ca96826642dff",
+      "parquet_sha256": "4c272eecfb954b495e1d4b21e8f5eafaeb5a272c7380f9f63ec52507c963bea5",
+      "manifest_sha256": "d3ea37b790f02b6f7440a0acd131e4dea9a24db967d8cfa5688f5cede574a031",
+      "local_heads": [
+        {
+          "parent_level": 0,
+          "child_level": 1,
+          "parent_name": "neuron",
+          "parent_global_idx": 0,
+          "children": [
+            "excitatory",
+            "inhibitory"
+          ],
+          "child_global_indices": [
+            0,
+            1
+          ],
+          "n_children": 2
+        },
+        {
+          "parent_level": 1,
+          "child_level": 2,
+          "parent_name": "excitatory",
+          "parent_global_idx": 0,
+          "children": [
+            "pyramidal",
+            "thalamocortical"
+          ],
+          "child_global_indices": [
+            4,
+            5
+          ],
+          "n_children": 2
+        },
+        {
+          "parent_level": 1,
+          "child_level": 2,
+          "parent_name": "inhibitory",
+          "parent_global_idx": 1,
+          "children": [
+            "BasketFam",
+            "BipFam",
+            "MartFam",
+            "NglFam"
+          ],
+          "child_global_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "n_children": 4
+        },
+        {
+          "parent_level": 2,
+          "child_level": 3,
+          "parent_name": "pyramidal",
+          "parent_global_idx": 4,
+          "children": [
+            "ET",
+            "IT",
+            "NP",
+            "corticothalamic"
+          ],
+          "child_global_indices": [
+            2,
+            3,
+            5,
+            7
+          ],
+          "n_children": 4
+        },
+        {
+          "parent_level": 3,
+          "child_level": 4,
+          "parent_name": "IT",
+          "parent_global_idx": 3,
+          "children": [
+            "L2IT",
+            "L3IT",
+            "L4IT",
+            "L5IT",
+            "L6IT"
+          ],
+          "child_global_indices": [
+            2,
+            3,
+            4,
+            6,
+            9
+          ],
+          "n_children": 5
+        }
+      ],
+      "level_classes": [
+        [
+          "neuron"
+        ],
+        [
+          "excitatory",
+          "inhibitory"
+        ],
+        [
+          "BasketFam",
+          "BipFam",
+          "MartFam",
+          "NglFam",
+          "pyramidal",
+          "thalamocortical"
+        ],
+        [
+          "BasketFam",
+          "BipFam",
+          "ET",
+          "IT",
+          "MartFam",
+          "NP",
+          "NglFam",
+          "corticothalamic",
+          "thalamocortical"
+        ],
+        [
+          "BasketFam",
+          "BipFam",
+          "L2IT",
+          "L3IT",
+          "L4IT",
+          "L5ET",
+          "L5IT",
+          "L5NP",
+          "L6CT",
+          "L6IT",
+          "MartFam",
+          "NglFam",
+          "thalamocortical"
+        ]
+      ],
+      "best_epoch": 26,
+      "training_args": {
+        "postsynaptic_cache": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons_latest100k/cave_skeletons_pre_post/k10/conf0/postsynaptic",
+        "append_presynaptic_mean": false,
+        "single_presynaptic_embedding": false,
+        "use_postsynaptic": true,
+        "architecture": "pointwise_mlp",
+        "dataset": "presynaptic_cave",
+        "presynaptic_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons_latest100k/geodesic20um_sourceanchors/conf0",
+        "manifest": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/latest100k_geodesic20um/manifests/fold0.json",
+        "selection_domain": null,
+        "embedding_augmentation": null,
+        "embedding_augmentation_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/cave_embedding_training_choices/conf0/fold0/cutoff5000_fp16",
+        "results_dir": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/geodesic20000nm/full_hierarchy/conf0/fold0",
+        "attention_budget": 14450688,
+        "mixed_cell_batch_size": 16,
+        "presynaptic_cell_cache": 16,
+        "presynaptic_memmap_root": null,
+        "presynaptic_compartment_filter": null,
+        "pointwise_mlp_layers": 2,
+        "pointwise_mlp_hidden_dim": 128,
+        "linear_out_dim": 128,
+        "mpnn_layers": 2,
+        "mpnn_hidden_dim": 128,
+        "mpnn_dropout": 0.1,
+        "spatial": false,
+        "position": false,
+        "lpe": false,
+        "cls_hidden_dim": null,
+        "classifier": "lcpn",
+        "cls_resnet": true,
+        "cls_resnet_hidden": 128,
+        "cls_resnet_layers": 4,
+        "cls_resnet_dropout": 0.0,
+        "class_balance": "sample",
+        "gt_dim": 128,
+        "gt_depth": 4,
+        "gt_heads": 4,
+        "gt_mlp_ratio": 4,
+        "gt_pos_dim": 8,
+        "gt_no_exp": false,
+        "gt_dropout": 0.0,
+        "gt_no_lpe": false,
+        "gt_no_rel_pos": false,
+        "gt_no_adj_bias": false,
+        "gt_use_thickness": false,
+        "gt_attention_scope": "global",
+        "no_embeddings": false,
+        "freeze_aggregator": false,
+        "num_embeddings": null,
+        "neighborhood_root": "/orcd/scratch/orcd/013/jcbliao/embedding_paths/r5um",
+        "window_nm": 20000.0,
+        "batch_size": 4096,
+        "epochs": 30,
+        "resume": true,
+        "lr": 0.0001,
+        "weight_decay": 1e-05,
+        "num_workers": 8,
+        "seed": 0,
+        "amp": true,
+        "optimized_loading": true,
+        "cuda_graphs": true
+      },
+      "label_paths": {
+        "L5ET": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "ET",
+          "L5ET"
+        ],
+        "L2IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L2IT"
+        ],
+        "L3IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L3IT"
+        ],
+        "L4IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L4IT"
+        ],
+        "L6IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L6IT"
+        ],
+        "L5IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L5IT"
+        ],
+        "L5NP": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "NP",
+          "L5NP"
+        ],
+        "L6CT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "corticothalamic",
+          "L6CT"
+        ],
+        "thalamocortical": [
+          "neuron",
+          "excitatory",
+          "thalamocortical",
+          "thalamocortical",
+          "thalamocortical"
+        ],
+        "BasketFam": [
+          "neuron",
+          "inhibitory",
+          "BasketFam",
+          "BasketFam",
+          "BasketFam"
+        ],
+        "BipFam": [
+          "neuron",
+          "inhibitory",
+          "BipFam",
+          "BipFam",
+          "BipFam"
+        ],
+        "MartFam": [
+          "neuron",
+          "inhibitory",
+          "MartFam",
+          "MartFam",
+          "MartFam"
+        ],
+        "NglFam": [
+          "neuron",
+          "inhibitory",
+          "NglFam",
+          "NglFam",
+          "NglFam"
+        ]
+      },
+      "hierarchy_id": "morpho_neuron_full_v1718_a80f0ef00737",
+      "experiment_id": "presynaptic_geo20um_full_lcpn_fold0_a80f0ef00737",
+      "classifier_run_id": "presynaptic_geo20um_full_lcpn_fold0_a80f0ef00737__20261026_154159",
+      "agg_spec_id": "pre_geo20um_pointwise_mlp_fold0_e573c8e87e9b",
+      "prediction_run_id": "presynaptic_geo20um_full_lcpn_fold0_a80f0ef00737__20261026_154159.checkpoint_best.heldout_all_heads",
+      "shared_checkpoint": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_geodesic20um_full_hierarchy_a80f0ef007370c0b/models/fold0/checkpoint_best.pt"
+    },
+    {
+      "fold": 1,
+      "windows": 355831,
+      "checkpoint_sha256": "1efd64f2537766c8efe0a0c12fd4e5cd874142bbec4de5707f210f72c5bcffde",
+      "parquet_sha256": "4300460ea03793d5984c1755559d9007992440dd039fb47da643ab2a60ff038c",
+      "manifest_sha256": "529392099bd8772d4fff24f384fe0cbfb13db2075044ed6b8e5bbae9df33fa08",
+      "local_heads": [
+        {
+          "parent_level": 0,
+          "child_level": 1,
+          "parent_name": "neuron",
+          "parent_global_idx": 0,
+          "children": [
+            "excitatory",
+            "inhibitory"
+          ],
+          "child_global_indices": [
+            0,
+            1
+          ],
+          "n_children": 2
+        },
+        {
+          "parent_level": 1,
+          "child_level": 2,
+          "parent_name": "excitatory",
+          "parent_global_idx": 0,
+          "children": [
+            "pyramidal",
+            "thalamocortical"
+          ],
+          "child_global_indices": [
+            4,
+            5
+          ],
+          "n_children": 2
+        },
+        {
+          "parent_level": 1,
+          "child_level": 2,
+          "parent_name": "inhibitory",
+          "parent_global_idx": 1,
+          "children": [
+            "BasketFam",
+            "BipFam",
+            "MartFam",
+            "NglFam"
+          ],
+          "child_global_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "n_children": 4
+        },
+        {
+          "parent_level": 2,
+          "child_level": 3,
+          "parent_name": "pyramidal",
+          "parent_global_idx": 4,
+          "children": [
+            "ET",
+            "IT",
+            "NP",
+            "corticothalamic"
+          ],
+          "child_global_indices": [
+            2,
+            3,
+            5,
+            7
+          ],
+          "n_children": 4
+        },
+        {
+          "parent_level": 3,
+          "child_level": 4,
+          "parent_name": "IT",
+          "parent_global_idx": 3,
+          "children": [
+            "L2IT",
+            "L3IT",
+            "L4IT",
+            "L5IT",
+            "L6IT"
+          ],
+          "child_global_indices": [
+            2,
+            3,
+            4,
+            6,
+            9
+          ],
+          "n_children": 5
+        }
+      ],
+      "level_classes": [
+        [
+          "neuron"
+        ],
+        [
+          "excitatory",
+          "inhibitory"
+        ],
+        [
+          "BasketFam",
+          "BipFam",
+          "MartFam",
+          "NglFam",
+          "pyramidal",
+          "thalamocortical"
+        ],
+        [
+          "BasketFam",
+          "BipFam",
+          "ET",
+          "IT",
+          "MartFam",
+          "NP",
+          "NglFam",
+          "corticothalamic",
+          "thalamocortical"
+        ],
+        [
+          "BasketFam",
+          "BipFam",
+          "L2IT",
+          "L3IT",
+          "L4IT",
+          "L5ET",
+          "L5IT",
+          "L5NP",
+          "L6CT",
+          "L6IT",
+          "MartFam",
+          "NglFam",
+          "thalamocortical"
+        ]
+      ],
+      "best_epoch": 28,
+      "training_args": {
+        "postsynaptic_cache": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons_latest100k/cave_skeletons_pre_post/k10/conf0/postsynaptic",
+        "append_presynaptic_mean": false,
+        "single_presynaptic_embedding": false,
+        "use_postsynaptic": true,
+        "architecture": "pointwise_mlp",
+        "dataset": "presynaptic_cave",
+        "presynaptic_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons_latest100k/geodesic20um_sourceanchors/conf0",
+        "manifest": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/latest100k_geodesic20um/manifests/fold1.json",
+        "selection_domain": null,
+        "embedding_augmentation": null,
+        "embedding_augmentation_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/cave_embedding_training_choices/conf0/fold0/cutoff5000_fp16",
+        "results_dir": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/geodesic20000nm/full_hierarchy/conf0/fold1",
+        "attention_budget": 14450688,
+        "mixed_cell_batch_size": 16,
+        "presynaptic_cell_cache": 16,
+        "presynaptic_memmap_root": null,
+        "presynaptic_compartment_filter": null,
+        "pointwise_mlp_layers": 2,
+        "pointwise_mlp_hidden_dim": 128,
+        "linear_out_dim": 128,
+        "mpnn_layers": 2,
+        "mpnn_hidden_dim": 128,
+        "mpnn_dropout": 0.1,
+        "spatial": false,
+        "position": false,
+        "lpe": false,
+        "cls_hidden_dim": null,
+        "classifier": "lcpn",
+        "cls_resnet": true,
+        "cls_resnet_hidden": 128,
+        "cls_resnet_layers": 4,
+        "cls_resnet_dropout": 0.0,
+        "class_balance": "sample",
+        "gt_dim": 128,
+        "gt_depth": 4,
+        "gt_heads": 4,
+        "gt_mlp_ratio": 4,
+        "gt_pos_dim": 8,
+        "gt_no_exp": false,
+        "gt_dropout": 0.0,
+        "gt_no_lpe": false,
+        "gt_no_rel_pos": false,
+        "gt_no_adj_bias": false,
+        "gt_use_thickness": false,
+        "gt_attention_scope": "global",
+        "no_embeddings": false,
+        "freeze_aggregator": false,
+        "num_embeddings": null,
+        "neighborhood_root": "/orcd/scratch/orcd/013/jcbliao/embedding_paths/r5um",
+        "window_nm": 20000.0,
+        "batch_size": 4096,
+        "epochs": 30,
+        "resume": true,
+        "lr": 0.0001,
+        "weight_decay": 1e-05,
+        "num_workers": 8,
+        "seed": 0,
+        "amp": true,
+        "optimized_loading": true,
+        "cuda_graphs": true
+      },
+      "label_paths": {
+        "L5ET": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "ET",
+          "L5ET"
+        ],
+        "L2IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L2IT"
+        ],
+        "L3IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L3IT"
+        ],
+        "L4IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L4IT"
+        ],
+        "L6IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L6IT"
+        ],
+        "L5IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L5IT"
+        ],
+        "L5NP": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "NP",
+          "L5NP"
+        ],
+        "L6CT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "corticothalamic",
+          "L6CT"
+        ],
+        "thalamocortical": [
+          "neuron",
+          "excitatory",
+          "thalamocortical",
+          "thalamocortical",
+          "thalamocortical"
+        ],
+        "BasketFam": [
+          "neuron",
+          "inhibitory",
+          "BasketFam",
+          "BasketFam",
+          "BasketFam"
+        ],
+        "BipFam": [
+          "neuron",
+          "inhibitory",
+          "BipFam",
+          "BipFam",
+          "BipFam"
+        ],
+        "MartFam": [
+          "neuron",
+          "inhibitory",
+          "MartFam",
+          "MartFam",
+          "MartFam"
+        ],
+        "NglFam": [
+          "neuron",
+          "inhibitory",
+          "NglFam",
+          "NglFam",
+          "NglFam"
+        ]
+      },
+      "hierarchy_id": "morpho_neuron_full_v1718_a80f0ef00737",
+      "experiment_id": "presynaptic_geo20um_full_lcpn_fold1_a80f0ef00737",
+      "classifier_run_id": "presynaptic_geo20um_full_lcpn_fold1_a80f0ef00737__20261026_154159",
+      "agg_spec_id": "pre_geo20um_pointwise_mlp_fold1_1efd64f25377",
+      "prediction_run_id": "presynaptic_geo20um_full_lcpn_fold1_a80f0ef00737__20261026_154159.checkpoint_best.heldout_all_heads",
+      "shared_checkpoint": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_geodesic20um_full_hierarchy_a80f0ef007370c0b/models/fold1/checkpoint_best.pt"
+    },
+    {
+      "fold": 2,
+      "windows": 342105,
+      "checkpoint_sha256": "03f7d05acb5dfca79d66cfa50a762414bc3470b84102f421230eebff6ac7d6cd",
+      "parquet_sha256": "09727c46f0d2e9b5e9ab9fa003651ac6dd60daafcf6455505e629182e0cac6a0",
+      "manifest_sha256": "4c9ee22c7fd60243650c00a44d57326d00fe5a54bd24a0f8fe42aea9452f233a",
+      "local_heads": [
+        {
+          "parent_level": 0,
+          "child_level": 1,
+          "parent_name": "neuron",
+          "parent_global_idx": 0,
+          "children": [
+            "excitatory",
+            "inhibitory"
+          ],
+          "child_global_indices": [
+            0,
+            1
+          ],
+          "n_children": 2
+        },
+        {
+          "parent_level": 1,
+          "child_level": 2,
+          "parent_name": "excitatory",
+          "parent_global_idx": 0,
+          "children": [
+            "pyramidal",
+            "thalamocortical"
+          ],
+          "child_global_indices": [
+            4,
+            5
+          ],
+          "n_children": 2
+        },
+        {
+          "parent_level": 1,
+          "child_level": 2,
+          "parent_name": "inhibitory",
+          "parent_global_idx": 1,
+          "children": [
+            "BasketFam",
+            "BipFam",
+            "MartFam",
+            "NglFam"
+          ],
+          "child_global_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "n_children": 4
+        },
+        {
+          "parent_level": 2,
+          "child_level": 3,
+          "parent_name": "pyramidal",
+          "parent_global_idx": 4,
+          "children": [
+            "ET",
+            "IT",
+            "NP",
+            "corticothalamic"
+          ],
+          "child_global_indices": [
+            2,
+            3,
+            5,
+            7
+          ],
+          "n_children": 4
+        },
+        {
+          "parent_level": 3,
+          "child_level": 4,
+          "parent_name": "IT",
+          "parent_global_idx": 3,
+          "children": [
+            "L2IT",
+            "L3IT",
+            "L4IT",
+            "L5IT",
+            "L6IT"
+          ],
+          "child_global_indices": [
+            2,
+            3,
+            4,
+            6,
+            9
+          ],
+          "n_children": 5
+        }
+      ],
+      "level_classes": [
+        [
+          "neuron"
+        ],
+        [
+          "excitatory",
+          "inhibitory"
+        ],
+        [
+          "BasketFam",
+          "BipFam",
+          "MartFam",
+          "NglFam",
+          "pyramidal",
+          "thalamocortical"
+        ],
+        [
+          "BasketFam",
+          "BipFam",
+          "ET",
+          "IT",
+          "MartFam",
+          "NP",
+          "NglFam",
+          "corticothalamic",
+          "thalamocortical"
+        ],
+        [
+          "BasketFam",
+          "BipFam",
+          "L2IT",
+          "L3IT",
+          "L4IT",
+          "L5ET",
+          "L5IT",
+          "L5NP",
+          "L6CT",
+          "L6IT",
+          "MartFam",
+          "NglFam",
+          "thalamocortical"
+        ]
+      ],
+      "best_epoch": 26,
+      "training_args": {
+        "postsynaptic_cache": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons_latest100k/cave_skeletons_pre_post/k10/conf0/postsynaptic",
+        "append_presynaptic_mean": false,
+        "single_presynaptic_embedding": false,
+        "use_postsynaptic": true,
+        "architecture": "pointwise_mlp",
+        "dataset": "presynaptic_cave",
+        "presynaptic_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons_latest100k/geodesic20um_sourceanchors/conf0",
+        "manifest": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/latest100k_geodesic20um/manifests/fold2.json",
+        "selection_domain": null,
+        "embedding_augmentation": null,
+        "embedding_augmentation_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/cave_embedding_training_choices/conf0/fold0/cutoff5000_fp16",
+        "results_dir": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/geodesic20000nm/full_hierarchy/conf0/fold2",
+        "attention_budget": 14450688,
+        "mixed_cell_batch_size": 16,
+        "presynaptic_cell_cache": 16,
+        "presynaptic_memmap_root": null,
+        "presynaptic_compartment_filter": null,
+        "pointwise_mlp_layers": 2,
+        "pointwise_mlp_hidden_dim": 128,
+        "linear_out_dim": 128,
+        "mpnn_layers": 2,
+        "mpnn_hidden_dim": 128,
+        "mpnn_dropout": 0.1,
+        "spatial": false,
+        "position": false,
+        "lpe": false,
+        "cls_hidden_dim": null,
+        "classifier": "lcpn",
+        "cls_resnet": true,
+        "cls_resnet_hidden": 128,
+        "cls_resnet_layers": 4,
+        "cls_resnet_dropout": 0.0,
+        "class_balance": "sample",
+        "gt_dim": 128,
+        "gt_depth": 4,
+        "gt_heads": 4,
+        "gt_mlp_ratio": 4,
+        "gt_pos_dim": 8,
+        "gt_no_exp": false,
+        "gt_dropout": 0.0,
+        "gt_no_lpe": false,
+        "gt_no_rel_pos": false,
+        "gt_no_adj_bias": false,
+        "gt_use_thickness": false,
+        "gt_attention_scope": "global",
+        "no_embeddings": false,
+        "freeze_aggregator": false,
+        "num_embeddings": null,
+        "neighborhood_root": "/orcd/scratch/orcd/013/jcbliao/embedding_paths/r5um",
+        "window_nm": 20000.0,
+        "batch_size": 4096,
+        "epochs": 30,
+        "resume": true,
+        "lr": 0.0001,
+        "weight_decay": 1e-05,
+        "num_workers": 8,
+        "seed": 0,
+        "amp": true,
+        "optimized_loading": true,
+        "cuda_graphs": true
+      },
+      "label_paths": {
+        "L5ET": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "ET",
+          "L5ET"
+        ],
+        "L2IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L2IT"
+        ],
+        "L3IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L3IT"
+        ],
+        "L4IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L4IT"
+        ],
+        "L6IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L6IT"
+        ],
+        "L5IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L5IT"
+        ],
+        "L5NP": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "NP",
+          "L5NP"
+        ],
+        "L6CT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "corticothalamic",
+          "L6CT"
+        ],
+        "thalamocortical": [
+          "neuron",
+          "excitatory",
+          "thalamocortical",
+          "thalamocortical",
+          "thalamocortical"
+        ],
+        "BasketFam": [
+          "neuron",
+          "inhibitory",
+          "BasketFam",
+          "BasketFam",
+          "BasketFam"
+        ],
+        "BipFam": [
+          "neuron",
+          "inhibitory",
+          "BipFam",
+          "BipFam",
+          "BipFam"
+        ],
+        "MartFam": [
+          "neuron",
+          "inhibitory",
+          "MartFam",
+          "MartFam",
+          "MartFam"
+        ],
+        "NglFam": [
+          "neuron",
+          "inhibitory",
+          "NglFam",
+          "NglFam",
+          "NglFam"
+        ]
+      },
+      "hierarchy_id": "morpho_neuron_full_v1718_a80f0ef00737",
+      "experiment_id": "presynaptic_geo20um_full_lcpn_fold2_a80f0ef00737",
+      "classifier_run_id": "presynaptic_geo20um_full_lcpn_fold2_a80f0ef00737__20261026_154159",
+      "agg_spec_id": "pre_geo20um_pointwise_mlp_fold2_03f7d05acb5d",
+      "prediction_run_id": "presynaptic_geo20um_full_lcpn_fold2_a80f0ef00737__20261026_154159.checkpoint_best.heldout_all_heads",
+      "shared_checkpoint": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_geodesic20um_full_hierarchy_a80f0ef007370c0b/models/fold2/checkpoint_best.pt"
+    },
+    {
+      "fold": 3,
+      "windows": 349411,
+      "checkpoint_sha256": "5438e4bb2a92d0a5b878823a969a46dec172be52e89ca00fe877ab692d1c236e",
+      "parquet_sha256": "8cfdb21979e8d2c66fa67321f9fcbe24f46c33f05a39aedff95942d3446718b2",
+      "manifest_sha256": "858baea094724d6b18257475d98b28ccb9ea04bd6a4ff1246cc5301a4aa461d5",
+      "local_heads": [
+        {
+          "parent_level": 0,
+          "child_level": 1,
+          "parent_name": "neuron",
+          "parent_global_idx": 0,
+          "children": [
+            "excitatory",
+            "inhibitory"
+          ],
+          "child_global_indices": [
+            0,
+            1
+          ],
+          "n_children": 2
+        },
+        {
+          "parent_level": 1,
+          "child_level": 2,
+          "parent_name": "excitatory",
+          "parent_global_idx": 0,
+          "children": [
+            "pyramidal",
+            "thalamocortical"
+          ],
+          "child_global_indices": [
+            4,
+            5
+          ],
+          "n_children": 2
+        },
+        {
+          "parent_level": 1,
+          "child_level": 2,
+          "parent_name": "inhibitory",
+          "parent_global_idx": 1,
+          "children": [
+            "BasketFam",
+            "BipFam",
+            "MartFam",
+            "NglFam"
+          ],
+          "child_global_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "n_children": 4
+        },
+        {
+          "parent_level": 2,
+          "child_level": 3,
+          "parent_name": "pyramidal",
+          "parent_global_idx": 4,
+          "children": [
+            "ET",
+            "IT",
+            "NP",
+            "corticothalamic"
+          ],
+          "child_global_indices": [
+            2,
+            3,
+            5,
+            7
+          ],
+          "n_children": 4
+        },
+        {
+          "parent_level": 3,
+          "child_level": 4,
+          "parent_name": "IT",
+          "parent_global_idx": 3,
+          "children": [
+            "L2IT",
+            "L3IT",
+            "L4IT",
+            "L5IT",
+            "L6IT"
+          ],
+          "child_global_indices": [
+            2,
+            3,
+            4,
+            6,
+            9
+          ],
+          "n_children": 5
+        }
+      ],
+      "level_classes": [
+        [
+          "neuron"
+        ],
+        [
+          "excitatory",
+          "inhibitory"
+        ],
+        [
+          "BasketFam",
+          "BipFam",
+          "MartFam",
+          "NglFam",
+          "pyramidal",
+          "thalamocortical"
+        ],
+        [
+          "BasketFam",
+          "BipFam",
+          "ET",
+          "IT",
+          "MartFam",
+          "NP",
+          "NglFam",
+          "corticothalamic",
+          "thalamocortical"
+        ],
+        [
+          "BasketFam",
+          "BipFam",
+          "L2IT",
+          "L3IT",
+          "L4IT",
+          "L5ET",
+          "L5IT",
+          "L5NP",
+          "L6CT",
+          "L6IT",
+          "MartFam",
+          "NglFam",
+          "thalamocortical"
+        ]
+      ],
+      "best_epoch": 25,
+      "training_args": {
+        "postsynaptic_cache": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons_latest100k/cave_skeletons_pre_post/k10/conf0/postsynaptic",
+        "append_presynaptic_mean": false,
+        "single_presynaptic_embedding": false,
+        "use_postsynaptic": true,
+        "architecture": "pointwise_mlp",
+        "dataset": "presynaptic_cave",
+        "presynaptic_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons_latest100k/geodesic20um_sourceanchors/conf0",
+        "manifest": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/latest100k_geodesic20um/manifests/fold3.json",
+        "selection_domain": null,
+        "embedding_augmentation": null,
+        "embedding_augmentation_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/cave_embedding_training_choices/conf0/fold0/cutoff5000_fp16",
+        "results_dir": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/geodesic20000nm/full_hierarchy/conf0/fold3",
+        "attention_budget": 14450688,
+        "mixed_cell_batch_size": 16,
+        "presynaptic_cell_cache": 16,
+        "presynaptic_memmap_root": null,
+        "presynaptic_compartment_filter": null,
+        "pointwise_mlp_layers": 2,
+        "pointwise_mlp_hidden_dim": 128,
+        "linear_out_dim": 128,
+        "mpnn_layers": 2,
+        "mpnn_hidden_dim": 128,
+        "mpnn_dropout": 0.1,
+        "spatial": false,
+        "position": false,
+        "lpe": false,
+        "cls_hidden_dim": null,
+        "classifier": "lcpn",
+        "cls_resnet": true,
+        "cls_resnet_hidden": 128,
+        "cls_resnet_layers": 4,
+        "cls_resnet_dropout": 0.0,
+        "class_balance": "sample",
+        "gt_dim": 128,
+        "gt_depth": 4,
+        "gt_heads": 4,
+        "gt_mlp_ratio": 4,
+        "gt_pos_dim": 8,
+        "gt_no_exp": false,
+        "gt_dropout": 0.0,
+        "gt_no_lpe": false,
+        "gt_no_rel_pos": false,
+        "gt_no_adj_bias": false,
+        "gt_use_thickness": false,
+        "gt_attention_scope": "global",
+        "no_embeddings": false,
+        "freeze_aggregator": false,
+        "num_embeddings": null,
+        "neighborhood_root": "/orcd/scratch/orcd/013/jcbliao/embedding_paths/r5um",
+        "window_nm": 20000.0,
+        "batch_size": 4096,
+        "epochs": 30,
+        "resume": true,
+        "lr": 0.0001,
+        "weight_decay": 1e-05,
+        "num_workers": 8,
+        "seed": 0,
+        "amp": true,
+        "optimized_loading": true,
+        "cuda_graphs": true
+      },
+      "label_paths": {
+        "L5ET": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "ET",
+          "L5ET"
+        ],
+        "L2IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L2IT"
+        ],
+        "L3IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L3IT"
+        ],
+        "L4IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L4IT"
+        ],
+        "L6IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L6IT"
+        ],
+        "L5IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L5IT"
+        ],
+        "L5NP": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "NP",
+          "L5NP"
+        ],
+        "L6CT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "corticothalamic",
+          "L6CT"
+        ],
+        "thalamocortical": [
+          "neuron",
+          "excitatory",
+          "thalamocortical",
+          "thalamocortical",
+          "thalamocortical"
+        ],
+        "BasketFam": [
+          "neuron",
+          "inhibitory",
+          "BasketFam",
+          "BasketFam",
+          "BasketFam"
+        ],
+        "BipFam": [
+          "neuron",
+          "inhibitory",
+          "BipFam",
+          "BipFam",
+          "BipFam"
+        ],
+        "MartFam": [
+          "neuron",
+          "inhibitory",
+          "MartFam",
+          "MartFam",
+          "MartFam"
+        ],
+        "NglFam": [
+          "neuron",
+          "inhibitory",
+          "NglFam",
+          "NglFam",
+          "NglFam"
+        ]
+      },
+      "hierarchy_id": "morpho_neuron_full_v1718_a80f0ef00737",
+      "experiment_id": "presynaptic_geo20um_full_lcpn_fold3_a80f0ef00737",
+      "classifier_run_id": "presynaptic_geo20um_full_lcpn_fold3_a80f0ef00737__20261026_154159",
+      "agg_spec_id": "pre_geo20um_pointwise_mlp_fold3_5438e4bb2a92",
+      "prediction_run_id": "presynaptic_geo20um_full_lcpn_fold3_a80f0ef00737__20261026_154159.checkpoint_best.heldout_all_heads",
+      "shared_checkpoint": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_geodesic20um_full_hierarchy_a80f0ef007370c0b/models/fold3/checkpoint_best.pt"
+    },
+    {
+      "fold": 4,
+      "windows": 352724,
+      "checkpoint_sha256": "fb7a6a1903e327dd565d14afb0dbb8b6b793fd309bed9a52e5228cadb9a7a2cc",
+      "parquet_sha256": "74f42da7f727d3741cc8026e2d84e86b0d8f8b5ecbf25f16ca50ab62602044e3",
+      "manifest_sha256": "490c47e3de405a9964dedb29c0e618a5aeeb2bc95006d9df5f401bb7a824567b",
+      "local_heads": [
+        {
+          "parent_level": 0,
+          "child_level": 1,
+          "parent_name": "neuron",
+          "parent_global_idx": 0,
+          "children": [
+            "excitatory",
+            "inhibitory"
+          ],
+          "child_global_indices": [
+            0,
+            1
+          ],
+          "n_children": 2
+        },
+        {
+          "parent_level": 1,
+          "child_level": 2,
+          "parent_name": "excitatory",
+          "parent_global_idx": 0,
+          "children": [
+            "pyramidal",
+            "thalamocortical"
+          ],
+          "child_global_indices": [
+            4,
+            5
+          ],
+          "n_children": 2
+        },
+        {
+          "parent_level": 1,
+          "child_level": 2,
+          "parent_name": "inhibitory",
+          "parent_global_idx": 1,
+          "children": [
+            "BasketFam",
+            "BipFam",
+            "MartFam",
+            "NglFam"
+          ],
+          "child_global_indices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "n_children": 4
+        },
+        {
+          "parent_level": 2,
+          "child_level": 3,
+          "parent_name": "pyramidal",
+          "parent_global_idx": 4,
+          "children": [
+            "ET",
+            "IT",
+            "NP",
+            "corticothalamic"
+          ],
+          "child_global_indices": [
+            2,
+            3,
+            5,
+            7
+          ],
+          "n_children": 4
+        },
+        {
+          "parent_level": 3,
+          "child_level": 4,
+          "parent_name": "IT",
+          "parent_global_idx": 3,
+          "children": [
+            "L2IT",
+            "L3IT",
+            "L4IT",
+            "L5IT",
+            "L6IT"
+          ],
+          "child_global_indices": [
+            2,
+            3,
+            4,
+            6,
+            9
+          ],
+          "n_children": 5
+        }
+      ],
+      "level_classes": [
+        [
+          "neuron"
+        ],
+        [
+          "excitatory",
+          "inhibitory"
+        ],
+        [
+          "BasketFam",
+          "BipFam",
+          "MartFam",
+          "NglFam",
+          "pyramidal",
+          "thalamocortical"
+        ],
+        [
+          "BasketFam",
+          "BipFam",
+          "ET",
+          "IT",
+          "MartFam",
+          "NP",
+          "NglFam",
+          "corticothalamic",
+          "thalamocortical"
+        ],
+        [
+          "BasketFam",
+          "BipFam",
+          "L2IT",
+          "L3IT",
+          "L4IT",
+          "L5ET",
+          "L5IT",
+          "L5NP",
+          "L6CT",
+          "L6IT",
+          "MartFam",
+          "NglFam",
+          "thalamocortical"
+        ]
+      ],
+      "best_epoch": 22,
+      "training_args": {
+        "postsynaptic_cache": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons_latest100k/cave_skeletons_pre_post/k10/conf0/postsynaptic",
+        "append_presynaptic_mean": false,
+        "single_presynaptic_embedding": false,
+        "use_postsynaptic": true,
+        "architecture": "pointwise_mlp",
+        "dataset": "presynaptic_cave",
+        "presynaptic_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons_latest100k/geodesic20um_sourceanchors/conf0",
+        "manifest": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/analysis/presynaptic/latest100k_geodesic20um/manifests/fold4.json",
+        "selection_domain": null,
+        "embedding_augmentation": null,
+        "embedding_augmentation_database": "/orcd/scratch/orcd/013/jcbliao/presynaptic_axons/cave_embedding_training_choices/conf0/fold0/cutoff5000_fp16",
+        "results_dir": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/geodesic20000nm/full_hierarchy/conf0/fold4",
+        "attention_budget": 14450688,
+        "mixed_cell_batch_size": 16,
+        "presynaptic_cell_cache": 16,
+        "presynaptic_memmap_root": null,
+        "presynaptic_compartment_filter": null,
+        "pointwise_mlp_layers": 2,
+        "pointwise_mlp_hidden_dim": 128,
+        "linear_out_dim": 128,
+        "mpnn_layers": 2,
+        "mpnn_hidden_dim": 128,
+        "mpnn_dropout": 0.1,
+        "spatial": false,
+        "position": false,
+        "lpe": false,
+        "cls_hidden_dim": null,
+        "classifier": "lcpn",
+        "cls_resnet": true,
+        "cls_resnet_hidden": 128,
+        "cls_resnet_layers": 4,
+        "cls_resnet_dropout": 0.0,
+        "class_balance": "sample",
+        "gt_dim": 128,
+        "gt_depth": 4,
+        "gt_heads": 4,
+        "gt_mlp_ratio": 4,
+        "gt_pos_dim": 8,
+        "gt_no_exp": false,
+        "gt_dropout": 0.0,
+        "gt_no_lpe": false,
+        "gt_no_rel_pos": false,
+        "gt_no_adj_bias": false,
+        "gt_use_thickness": false,
+        "gt_attention_scope": "global",
+        "no_embeddings": false,
+        "freeze_aggregator": false,
+        "num_embeddings": null,
+        "neighborhood_root": "/orcd/scratch/orcd/013/jcbliao/embedding_paths/r5um",
+        "window_nm": 20000.0,
+        "batch_size": 4096,
+        "epochs": 30,
+        "resume": true,
+        "lr": 0.0001,
+        "weight_decay": 1e-05,
+        "num_workers": 8,
+        "seed": 0,
+        "amp": true,
+        "optimized_loading": true,
+        "cuda_graphs": true
+      },
+      "label_paths": {
+        "L5ET": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "ET",
+          "L5ET"
+        ],
+        "L2IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L2IT"
+        ],
+        "L3IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L3IT"
+        ],
+        "L4IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L4IT"
+        ],
+        "L6IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L6IT"
+        ],
+        "L5IT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "IT",
+          "L5IT"
+        ],
+        "L5NP": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "NP",
+          "L5NP"
+        ],
+        "L6CT": [
+          "neuron",
+          "excitatory",
+          "pyramidal",
+          "corticothalamic",
+          "L6CT"
+        ],
+        "thalamocortical": [
+          "neuron",
+          "excitatory",
+          "thalamocortical",
+          "thalamocortical",
+          "thalamocortical"
+        ],
+        "BasketFam": [
+          "neuron",
+          "inhibitory",
+          "BasketFam",
+          "BasketFam",
+          "BasketFam"
+        ],
+        "BipFam": [
+          "neuron",
+          "inhibitory",
+          "BipFam",
+          "BipFam",
+          "BipFam"
+        ],
+        "MartFam": [
+          "neuron",
+          "inhibitory",
+          "MartFam",
+          "MartFam",
+          "MartFam"
+        ],
+        "NglFam": [
+          "neuron",
+          "inhibitory",
+          "NglFam",
+          "NglFam",
+          "NglFam"
+        ]
+      },
+      "hierarchy_id": "morpho_neuron_full_v1718_a80f0ef00737",
+      "experiment_id": "presynaptic_geo20um_full_lcpn_fold4_a80f0ef00737",
+      "classifier_run_id": "presynaptic_geo20um_full_lcpn_fold4_a80f0ef00737__20261026_154159",
+      "agg_spec_id": "pre_geo20um_pointwise_mlp_fold4_fb7a6a1903e3",
+      "prediction_run_id": "presynaptic_geo20um_full_lcpn_fold4_a80f0ef00737__20261026_154159.checkpoint_best.heldout_all_heads",
+      "shared_checkpoint": "/orcd/compute/sdorkenw/001/jcbliao/segclr_workflows/latest100k_geodesic20um_full_hierarchy_a80f0ef007370c0b/models/fold4/checkpoint_best.pt"
+    }
+  ],
+  "folds": [
+    {
+      "fold": 0,
+      "prediction_run_id": "presynaptic_geo20um_full_lcpn_fold0_a80f0ef00737__20261026_154159.checkpoint_best.heldout_all_heads",
+      "predictions": 344139,
+      "level_logit_rows": 1720695,
+      "exact_roundtrip_verified": true
+    },
+    {
+      "fold": 1,
+      "prediction_run_id": "presynaptic_geo20um_full_lcpn_fold1_a80f0ef00737__20261026_154159.checkpoint_best.heldout_all_heads",
+      "predictions": 355831,
+      "level_logit_rows": 1779155,
+      "exact_roundtrip_verified": true
+    },
+    {
+      "fold": 2,
+      "prediction_run_id": "presynaptic_geo20um_full_lcpn_fold2_a80f0ef00737__20261026_154159.checkpoint_best.heldout_all_heads",
+      "predictions": 342105,
+      "level_logit_rows": 1710525,
+      "exact_roundtrip_verified": true
+    },
+    {
+      "fold": 3,
+      "prediction_run_id": "presynaptic_geo20um_full_lcpn_fold3_a80f0ef00737__20261026_154159.checkpoint_best.heldout_all_heads",
+      "predictions": 349411,
+      "level_logit_rows": 1747055,
+      "exact_roundtrip_verified": true
+    },
+    {
+      "fold": 4,
+      "prediction_run_id": "presynaptic_geo20um_full_lcpn_fold4_a80f0ef00737__20261026_154159.checkpoint_best.heldout_all_heads",
+      "predictions": 352724,
+      "level_logit_rows": 1763620,
+      "exact_roundtrip_verified": true
+    }
+  ],
+  "predictions": 1744210,
+  "level_logit_rows": 8721050,
+  "completed_utc": "2026-10-26T15:59:50.853620+00:00",
+  "importer_sha256": "65a7b0b9c8345d5cc59c90ec24e7958a7d59835a6e186f7624b52c8792b7f5b1",
+  "coordinate_read_note": "Public return_coords=True encounters an existing restricted nodes scalar index. Coordinate verification used the same nodes table with use_scalar_index=False; public labels/logits retrieval passed."
+}

@@ -60,6 +60,7 @@ def ready(key):
     return all((cache_dir(key,s)/'complete.json').exists() for s in ('train','test'))
 
 _training_leases = ContextVar('packing_training_leases', default=None)
+_training_mappings = ContextVar('packing_training_mappings', default=None)
 
 def _lease(key):
     if not key or Path(key).name != key or key in ('.', '..'):
@@ -67,7 +68,8 @@ def _lease(key):
     # Keep lock inodes outside the cache directories that cleanup removes.
     directory = cache_dir(key, 'train').parent.parent / '.leases'
     directory.mkdir(parents=True, exist_ok=True)
-    lock = (directory / f'{key}.lock').open('a')
+    # NFS implements shared flock using a read lock, requiring a readable fd.
+    lock = (directory / f'{key}.lock').open('a+')
     fcntl.flock(lock, fcntl.LOCK_SH)
     return lock
 
@@ -76,12 +78,20 @@ def training_cache_session():
     """Keep caches through a run; the last successful consumer removes them."""
     leases = {}
     token = _training_leases.set(leases)
+    mappings = []
+    mappings_token = _training_mappings.set(mappings)
     succeeded = False
     try:
         yield
         succeeded = True
     finally:
         _training_leases.reset(token)
+        _training_mappings.reset(mappings_token)
+        # Unlinking an open mmap on NFS creates .nfs files and prevents rmdir.
+        # All consumers in this training session have finished at this point.
+        for mapping in mappings:
+            if not mapping._mmap.closed:
+                mapping._mmap.close()
         for key, lock in leases.items():
             fcntl.flock(lock, fcntl.LOCK_UN)
             try:
@@ -118,6 +128,9 @@ def _load(dataset, directory):
     packed={}
     for name,desc in meta['arrays'].items():
         value=None if desc is None else np.load(directory/desc,mmap_mode='c',allow_pickle=False)
+        mappings = _training_mappings.get()
+        if isinstance(value,np.memmap) and mappings is not None:
+            mappings.append(value)
         if name.startswith('fields/'):
             packed.setdefault('fields',{})[name.split('/')[1]]=value
         else: packed[name]=value

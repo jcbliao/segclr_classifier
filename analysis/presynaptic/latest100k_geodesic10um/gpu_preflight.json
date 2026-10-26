@@ -1,0 +1,181 @@
+{
+  "passed": true,
+  "device": "NVIDIA L40S",
+  "plan_sha256": "e1adb559bc3b1769c4b9d55ab20d178501c3707ab5be3bd1369beaba18af8321",
+  "reference_checkpoint": "/orcd/home/002/jcbliao/rotation/segclr/gnn_classifier/results/presynaptic_latest100k/cave_skeletons_pre_post/k10/conf0/six_class/fold0/pre_post/gnn_lcpn_scratch_pointwise_mlp_L2_resnet4x128_n10_mixed16_sampled_pre_post_fold0/checkpoint_best.pt",
+  "reference_checkpoint_sha256": "752f5ccb1a40cab37a813b3a61a085ba8ce06edbf12947c2ea85d8f56b44dc27",
+  "checks": [
+    {
+      "split": "train",
+      "counts": [
+        8,
+        8,
+        1,
+        8,
+        11,
+        12,
+        13,
+        7,
+        11,
+        6,
+        11,
+        11,
+        8,
+        10,
+        36,
+        12
+      ],
+      "roots": [
+        864691134886037498,
+        864691134886335738,
+        864691134887026938,
+        864691134887444730,
+        864691134887460346,
+        864691134887552506,
+        864691134919529994,
+        864691134919927050,
+        864691134920000010,
+        864691135014600950,
+        864691135067181124,
+        864691135082074359,
+        864691135115194009,
+        864691135294194358,
+        864691135839979667,
+        864691136927366986
+      ],
+      "loss": 0.9995608925819397
+    },
+    {
+      "split": "test",
+      "counts": [
+        10,
+        15,
+        10,
+        10,
+        9,
+        14,
+        1,
+        8,
+        6,
+        11,
+        9,
+        7,
+        13,
+        9,
+        39,
+        14
+      ],
+      "roots": [
+        864691134887444986,
+        864691134919403530,
+        864691134942169955,
+        864691134949248508,
+        864691134989909114,
+        864691134991067002,
+        864691135014276342,
+        864691135014681590,
+        864691135015425942,
+        864691135083577335,
+        864691135134695328,
+        864691135362104647,
+        864691135387277397,
+        864691136177127174,
+        864691137022180974,
+        864691135997428394
+      ],
+      "loss": 0.9907593727111816
+    }
+  ],
+  "local_heads": [
+    {
+      "parent_level": 0,
+      "child_level": 1,
+      "parent_name": "neuron",
+      "parent_global_idx": 0,
+      "children": [
+        "excitatory",
+        "inhibitory"
+      ],
+      "child_global_indices": [
+        0,
+        1
+      ],
+      "n_children": 2
+    },
+    {
+      "parent_level": 1,
+      "child_level": 2,
+      "parent_name": "excitatory",
+      "parent_global_idx": 0,
+      "children": [
+        "pyramidal",
+        "thalamocortical"
+      ],
+      "child_global_indices": [
+        4,
+        5
+      ],
+      "n_children": 2
+    },
+    {
+      "parent_level": 1,
+      "child_level": 2,
+      "parent_name": "inhibitory",
+      "parent_global_idx": 1,
+      "children": [
+        "BasketFam",
+        "BipFam",
+        "MartFam",
+        "NglFam"
+      ],
+      "child_global_indices": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "n_children": 4
+    },
+    {
+      "parent_level": 2,
+      "child_level": 3,
+      "parent_name": "pyramidal",
+      "parent_global_idx": 4,
+      "children": [
+        "ET",
+        "IT",
+        "NP",
+        "corticothalamic"
+      ],
+      "child_global_indices": [
+        2,
+        3,
+        5,
+        7
+      ],
+      "n_children": 4
+    },
+    {
+      "parent_level": 3,
+      "child_level": 4,
+      "parent_name": "IT",
+      "parent_global_idx": 3,
+      "children": [
+        "L2IT",
+        "L3IT",
+        "L4IT",
+        "L5IT",
+        "L6IT"
+      ],
+      "child_global_indices": [
+        2,
+        3,
+        4,
+        6,
+        9
+      ],
+      "n_children": 5
+    }
+  ],
+  "scope": "forward and backward on presynaptic bags; explicit phi-then-mean parity; not a performance evaluation"
+}
